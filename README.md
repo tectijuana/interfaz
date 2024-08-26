@@ -1,4 +1,4 @@
-# Bienvenida al Curso de Lenguaje de Interfaz: ARM Assembly con Raspberry Pi Pico W
+# Bienvenida al Curso de Lenguaje de Interfaz: ARM Assembly con Raspberry Pi y Pico W
 
 Estimados estudiantes,
 
