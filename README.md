@@ -1,4 +1,4 @@
-Bienvenida al Curso de Lenguaje de Interfaz: ARM Assembly con Raspberry Pi Pico W
+# Bienvenida al Curso de Lenguaje de Interfaz: ARM Assembly con Raspberry Pi Pico W
 
 Estimados estudiantes,
 
@@ -16,7 +16,7 @@ Estoy emocionado de embarcarnos juntos en esta aventura de aprendizaje y no pued
 
 Con entusiasmo y expectativa,
 
-[MC. Rene Solis R (@IoTeacher)
-Docente TECNM Campus ITT
-CTO Amazon Web Services para Academia de ITT
+[MC. Rene Solis R (@IoTeacher)](https://twitter.com/IoTeacher)  
+Docente TECNM Campus ITT  
+CTO Amazon Web Services para Academia de ITT  
 Instituto Tecnológico de Tijuana
