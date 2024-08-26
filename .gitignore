@@ -30,3 +30,27 @@
 *.exe
 *.out
 *.app
+
+# macOS system files
+.DS_Store
+.AppleDouble
+.LSOverride
+
+# macOS Finder directory attributes
+*.DS_Store
+.DS_Store?
+
+# macOS resource forks
+._*
+
+# macOS Finder resource forks
+.Spotlight-V100
+.Trashes
+.AppleDB
+.AppleDesktop
+.VolumeIcon.icns
+.com.apple.timemachine.donotpresent
+
+# Directories to ignore for macOS
+__MACOSX
+
