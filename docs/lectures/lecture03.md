@@ -91,7 +91,6 @@ Las **instrucciones de salto** son esenciales para controlar el flujo de ejecuci
 
 > **Nota**: ARM64 incluye una variedad de sufijos condicionales como `eq` (igual), `ne` (no igual), `lt` (menor que), `gt` (mayor que), etc.
 
----
 
 ## Estructuras de control de alto nivel
 
@@ -100,7 +99,8 @@ Las **estructuras de control** permiten la ejecución secuencial, condicional y 
 ### Estructuras básicas:
 
 1. **If-Else**:
-   ```assembly
+   
+```assembly
    cmp x0, #10        // Compara el valor en x0 con 10
    b.eq es_igual      // Si es igual, salta a la etiqueta 'es_igual'
    // Bloque de código para "else"
@@ -108,20 +108,20 @@ Las **estructuras de control** permiten la ejecución secuencial, condicional y 
 es_igual:
    // Bloque de código para "if"
 fin_condicion:
-   ```
+```
 
 2. **While** (bucle condicional):
-   ```assembly
+```assembly
    bucle:
    cmp x1, #0        // Compara x1 con 0
    b.eq fin_bucle    // Si x1 es 0, salta al final del bucle
    sub x1, x1, #1    // Decrementa x1
    b bucle           // Repite el bucle
 fin_bucle:
-   ```
+```
 
 3. **For** (bucle controlado por contador):
-   ```assembly
+```assembly
    mov x2, #10      // Inicializa el contador a 10
 bucle_for:
    cmp x2, #0       // Compara el contador con 0
@@ -129,7 +129,7 @@ bucle_for:
    sub x2, x2, #1   // Decrementa el contador
    b bucle_for      // Repite el bucle
 fin_for:
-   ```
+```
 
 ---
 
