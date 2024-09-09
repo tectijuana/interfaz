@@ -50,15 +50,17 @@ Para escribir, ensamblar y ejecutar programas en ensamblador en la **Raspberry P
 - **GNU Assembler (as)**: Convierte el código ensamblador a código máquina.
 - **GNU Linker (ld)**: Enlaza archivos objeto para crear ejecutables.
 - **GNU Debugger (gdb)**: Depura programas en ensamblador.
+- **Extensión para GNU Debugger (GEF)**: Depura de manera interactiva visualizando registros, pila, descompilacion y otros elementos via GEF 
 
 ---
 
-## Configuración del entorno en casa
+## Configuración del entorno
 
 ### Instalación del sistema operativo (Raspberry Pi OS):
 1. Descarga la última versión de **Raspberry Pi OS** desde [la página oficial](https://www.raspberrypi.org/software/operating-systems/).
 2. Usa la herramienta **Raspberry Pi Imager** o **balenaEtcher** para grabar la imagen en una tarjeta SD.
 3. Inserta la tarjeta SD en la Raspberry Pi 5 y arranca el sistema.
+4. Darse de alta en RPI Connect via https://www.raspberrypi.com/software/connect/, aplicando las librerias de enlace remoto,
 
 ### Conexión remota:
 - Usa **SSH** para acceder a tu Raspberry Pi 5 desde otro equipo. Si no tienes teclado o monitor, habilita `ssh` en la tarjeta SD añadiendo un archivo vacío llamado `ssh` en la partición de arranque.
