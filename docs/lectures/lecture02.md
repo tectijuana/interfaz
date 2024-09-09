@@ -1,5 +1,9 @@
  **ARM64 Assembly Hello World** 
 
+ En ARM64 Assembly, el **"Hello World"** es un programa básico que demuestra cómo interactuar directamente con el sistema operativo mediante llamadas al sistema (syscalls) para realizar tareas simples, como escribir en la consola. A diferencia de los lenguajes de alto nivel como C, donde la función `printf` se encarga de la salida, en ensamblador es necesario gestionar directamente los registros del procesador y las llamadas al sistema.
+
+Este tipo de programas es útil para comprender cómo funciona el hardware a bajo nivel y cómo el software interactúa directamente con el sistema operativo, en este caso, un sistema Linux en arquitectura ARM64.
+
 ```assembly
 /*=======================================================
 * Programa:     hello_world.s
