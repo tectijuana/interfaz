@@ -112,7 +112,7 @@ fin_condicion:
 
 2. **While** (bucle condicional):
 ```assembly
-   bucle:
+bucle:
    cmp x1, #0        // Compara x1 con 0
    b.eq fin_bucle    // Si x1 es 0, salta al final del bucle
    sub x1, x1, #1    // Decrementa x1
@@ -152,6 +152,7 @@ Para compilar un programa en ARM64 ensamblador en la **Raspberry Pi 5**, utiliza
    ```bash
    ./programa
    ```
+NOTS: sse presente una sección para el uso de Makefile para automatizar la compilación.
 
 ---
 
