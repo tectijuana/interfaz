@@ -201,4 +201,4 @@ Escribe un programa que multiplique dos números enteros y almacene el resultado
 ### Conclusión
 
 En este capítulo, hemos explorado los **modos de direccionamiento**, los **tipos de datos** y las **instrucciones de control de flujo** en ARM64 utilizando la Raspberry Pi 5. Comprender estos conceptos es fundamental para escribir programas optimizados y eficientes a bajo nivel, maximizando el rendimiento del hardware disponible.
-```
+
