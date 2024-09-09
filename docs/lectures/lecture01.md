@@ -64,4 +64,7 @@ Para escribir, ensamblar y ejecutar programas en ensamblador en la **Raspberry P
 - Usa **SSH** para acceder a tu Raspberry Pi 5 desde otro equipo. Si no tienes teclado o monitor, habilita `ssh` en la tarjeta SD añadiendo un archivo vacío llamado `ssh` en la partición de arranque.
 - Conéctate con el comando:
   ```bash
-  ssh pi@<raspberry_pi_ip>
+  ssh pi@<raspberry_pi_ip> ```
+
+
+NOTA: En visual Studio Code, es posible agregar la libreria de SSH para conectarse remotamente.
