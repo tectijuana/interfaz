@@ -44,18 +44,26 @@ _start:
     svc #0                  // Realizamos la llamada al sistema
 ```
 
-### Explicación de los comentarios y el encabezado:
-- **Encabezado profesional**: Incluye el nombre del autor, fecha, descripción del programa, cómo compilarlo, cómo ejecutarlo, y el número de versión.
-- **Comentarios en español**: Explican cada línea del programa para que sea claro cómo funcionan las llamadas al sistema (`syscalls`).
 
-### Pasos para compilar y ejecutar:
+
+### Pasos para compilar, enlazar y ejecutar:
 
 1. **Assemble**:
+   El comando as es el ensamblador del sistema GNU que convierte el código fuente en ensamblador (archivo .s) en un archivo objeto binario (archivo .o). Este archivo objeto contiene código máquina que puede ser posteriormente enlazado para crear un programa ejecutable.
+
+Función principal: Traduce instrucciones en lenguaje ensamblador a código binario entendible por la CPU.
+Uso común: Se utiliza en procesos de compilación de programas escritos en ensamblador o como parte del flujo de construcción en otros lenguajes que generan código ensamblador.
+
    ```bash
    as -o hello_world.o hello_world.s
    ```
 
 2. **Link**:
+    El comando ld es el enlazador de GNU (GNU Linker) que toma uno o más archivos objeto (.o) generados por el ensamblador o el compilador y los enlaza para crear un archivo ejecutable. El enlazador resuelve las referencias a funciones y variables entre los diferentes archivos objeto y las bibliotecas necesarias.
+
+Función principal: Enlaza archivos objeto y bibliotecas para generar el ejecutable final.
+Uso común: Es el paso final en la creación de un programa ejecutable a partir de código ensamblador o compilado en otros lenguajes.
+
    ```bash
    ld -o hello_world hello_world.o
    ```
@@ -65,7 +73,7 @@ _start:
    ./hello_world
    ```
 -----
-### ¿Qué es un Makefile y por qué es importante para los estudiantes de sistemas?
+### ¿Qué es un Makefile y por qué es importante para los estudiantes?
 
 Un **Makefile** es un archivo de texto que contiene reglas e instrucciones para automatizar la compilación y construcción de proyectos en programación. Utiliza el comando `make` para ejecutar una serie de acciones, como compilar código fuente, enlazar archivos y generar ejecutables.
 
@@ -166,4 +174,4 @@ clean:
    make clean
    ```
 
-This Makefile simplifies the process of compiling and linking your assembly code and provides detailed comments in Spanish to explain each step. Let me know if you need any further adjustments!
+Es posible ampliar el makefile para incluso enviar respaldo al GitHub 
