@@ -1,6 +1,4 @@
-Aquí te dejo el **Capítulo 2** actualizado para la **Raspberry Pi 5** en formato **README.md**.
 
-```markdown
 # Tipos de Datos y Sentencias de Alto Nivel en ARM64 (Raspberry Pi 5)
 
 ## Contenidos
