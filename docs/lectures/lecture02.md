@@ -12,6 +12,15 @@
 *               ld -o hello_world hello_world.o
 * Ejecución:    ./hello_world
 * Versión:      1.0
+* 
+* Código equivalente en C:
+* -----------------------------------------------------
+* #include <stdio.h>
+* int main() {
+*     printf("Hello, World!\n");
+*     return 0;
+* }
+* -----------------------------------------------------
 =========================================================*/
 
 .section .data
