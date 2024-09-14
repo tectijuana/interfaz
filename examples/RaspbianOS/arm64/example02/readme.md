@@ -142,6 +142,10 @@ upload:
 
 # Información de ayuda
 help:
+	@echo "┳┓                     ┓     "
+	@echo "┃┃┏┓┏┳┓┏┓  ╋┓┏  ┏┓┏┓┏┳┓┣┓┏┓┏┓"
+	@echo "┻┛┗┻┛┗┗┗   ┗┗┻  ┛┗┗┛┛┗┗┗┛┛ ┗ "
+	@echo
 	@echo "Makefile para ask_name.s"
 	@echo
 	@echo "Uso: make [objetivo]"
@@ -154,6 +158,9 @@ help:
 	@echo "  clean    - Eliminar archivos generados"
 	@echo "  upload   - Subir el código fuente a GitHub"
 	@echo "  help     - Mostrar esta ayuda"
+```
+
+Este bloque de código en el Makefile muestra el arte ASCII seguido de la información de ayuda cuando se ejecuta el objetivo `help`. Puedes copiar este bloque directamente y reemplazar el bloque existente en tu Makefile para agregar el arte ASCII.
 ```
 
 ---
