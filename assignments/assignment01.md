@@ -74,3 +74,8 @@ Referencia: https://learn.adafruit.com/raspberry-pi-zero-creation/give-it-life
 2. Una vez encendida la Raspberry Pi, verás que PuTTY comienza a mostrar los mensajes de arranque en la ventana de la consola.
 
 3. **Accede al sistema** introduciendo tus credenciales cuando se te solicite.
+
+---
+
+### ACTUALIZACION DEL FIRMWARE DE RASPBERRY ZERO 2W
+
