@@ -86,9 +86,6 @@ _start:
 A continuación, se proporciona un **Makefile** que automatiza el proceso de ensamblado, enlazado, ejecución, depuración con GDB y subida del código fuente a GitHub. Este Makefile está diseñado para ser utilizado en un entorno Raspbian 64 bits con arquitectura ARM64.
 
 ```makefile
-# ┳┓                     ┓     
-# ┃┃┏┓┏┳┓┏┓  ╋┓┏  ┏┓┏┓┏┳┓┣┓┏┓┏┓
-# ┻┛┗┻┛┗┗┗   ┗┗┻  ┛┗┗┛┛┗┗┗┛┛ ┗ 
 # Makefile para el programa ask_name en ARM64
 
 # Variables
@@ -160,16 +157,13 @@ help:
 	@echo "  help     - Mostrar esta ayuda"
 ```
 
-Este bloque de código en el Makefile muestra el arte ASCII seguido de la información de ayuda cuando se ejecuta el objetivo `help`. Puedes copiar este bloque directamente y reemplazar el bloque existente en tu Makefile para agregar el arte ASCII.
-```
-
 ---
 
 ## Instrucciones para Utilizar el Makefile
 
 ### 1. Guardar el Makefile
 
-Guarda el contenido anterior en un archivo llamado `Makefile` en el mismo directorio donde se encuentra `ask_name.s`.
+Guarda el contenido anterior en un archivo llamado `Makefile` en el mismo directorio donde se encuentra `ask_name.s`, ambos es obligatorio, recomendaciones hacer un directorio de practicas.
 
 ### 2. Configurar el Repositorio GitHub
 
