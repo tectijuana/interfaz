@@ -86,6 +86,9 @@ _start:
 A continuación, se proporciona un **Makefile** que automatiza el proceso de ensamblado, enlazado, ejecución, depuración con GDB y subida del código fuente a GitHub. Este Makefile está diseñado para ser utilizado en un entorno Raspbian 64 bits con arquitectura ARM64.
 
 ```makefile
+# ┳┓                     ┓     
+# ┃┃┏┓┏┳┓┏┓  ╋┓┏  ┏┓┏┓┏┳┓┣┓┏┓┏┓
+# ┻┛┗┻┛┗┗┗   ┗┗┻  ┛┗┗┛┛┗┗┗┛┛ ┗ 
 # Makefile para el programa ask_name en ARM64
 
 # Variables
