@@ -88,8 +88,8 @@ Los programas deben ser implementados en dos lenguajes, el promeero es el CSHARP
 
 **Fecha de Entrega:** 
 
+<img width="345" alt="Screenshot 2024-10-02 at 3 53 37 p m" src="https://github.com/user-attachments/assets/14ad7f61-86eb-49ad-bd8a-f6774dcccb5b">
 
-<img width="294" alt="Screenshot 2024-10-02 at 3 34 55 p m" src="https://github.com/user-attachments/assets/2b36b3f8-c2d9-4361-87cc-2951a124e0cf">
 
 **Consejos Adicionales:**
 
