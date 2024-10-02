@@ -94,6 +94,8 @@ Los programas deben ser implementados en dos lenguajes, el promeero es el CSHARP
 
 **Fecha de Entrega:** Para grupo de 4pm
 
+<img width="349" alt="Screenshot 2024-10-02 at 4 33 00 p m" src="https://github.com/user-attachments/assets/626d9fb2-ee99-4bfe-809b-b90c87fa76ba">
+
 
 ---
 
