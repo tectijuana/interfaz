@@ -151,3 +151,24 @@ itoa_loop:
     ret                         // Regresar de la función
 
 ```
+
+```bash
+rene@raspberrypi:~$ ./cuantasletras 
+Ingrese su nombre:rene solis 
+Su nombre tiene: 11 letras
+rene@raspberrypi:~$ ./cuantasletras 
+Ingrese su nombre:rene solis
+Su nombre tiene: 01 letras
+rene@raspberrypi:~$ ./cuantasletras 
+Ingrese su nombre:rene solis
+Su nombre tiene: 01 letras
+rene@raspberrypi:~$ ./cuantasletras 
+Ingrese su nombre:rene
+Su nombre tiene: 4 letras
+rene@raspberrypi:~$ ./cuantasletras 
+Ingrese su nombre:renerene
+Su nombre tiene: 8 letras
+rene@raspberrypi:~$ ./cuantasletras 
+Ingrese su nombre:rene s
+Su nombre tiene: 6 letras
+```
