@@ -2,7 +2,7 @@
 
 #  Asciinema de programa 1
 
-Depositar su programa en ASCIINEMA en IDOCEO
+Depositar su compilacion, corrida, depuracion  GEF del programa en ASCIINEMA para IDOCEO
 
 
 ```assembly
