@@ -50,6 +50,8 @@ _start:
 
 # Programa 2
 
+Martes: ( Indicaciones el clase ) no las doy por adelantado para que no la manden por whazap
+
 ```assembly
 
 // ChatGTP 4o - Fecha: 2024-10-07
