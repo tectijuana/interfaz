@@ -2,7 +2,7 @@
 
 #  Asciinema de programa 1
 
-Depositar su compilacion, corrida, depuracion  GEF del programa en ASCIINEMA para IDOCEO
+> Lunes: Depositar su compilacion, corrida, depuracion  GEF del programa en ASCIINEMA para IDOCEO
 
 
 ```assembly
@@ -47,6 +47,8 @@ _start:
 ```
 
 ---
+
+# Programa 2
 
 ```assembly
 
