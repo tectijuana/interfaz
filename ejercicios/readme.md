@@ -9,6 +9,7 @@ Depositar su programa en ASCIINEMA en IDOCEO
 
 // ChatGTP 4o - Fecha: 2024-10-07
 // Programa en ARM64 Assembly para RaspbianOS
+// Grabar esta corrida en el asciinema.org, con sus generales de estudiante, seguido de la compilación, ejecución, depuración en GEF, recuerde vincular su asciinema a su correo, evitando sea borrado en 7 días.
 
 .data
     prompt:    .asciz "Ingrese su nombre: "  // Mensaje que se mostrará al usuario para solicitar su nombre
