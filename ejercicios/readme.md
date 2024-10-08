@@ -54,9 +54,43 @@ Martes: ( Indicaciones el clase ) no las doy por adelantado para que no la mande
 
 ```assembly
 
-// ChatGTP 4o - Fecha: 2024-10-07
+// Creado en  ChatGTP 4o - Fecha: 2024-10-07
 // Programa en ARM64 Assembly para RaspbianOS
-// Grabar esta corrida en el asciinema.org, con sus generales de estudiante, seguido de la compilación, ejecución, depuración en GEF, recuerde vincular su asciinema a su correo, evitando sea borrado en 7 días.
+// Autores: Rene Solis y ChatGTP agilizador
+// Objetivo: Este programa solicita al usuario su nombre, calcula la longitud del nombre y muestra el resultado.
+// Plataforma: Raspbian OS en ARM64
+// Instrucciones: 
+//  1. Grabar esta corrida en asciinema.org, con los datos generales del estudiante.
+//  2. Realizar la compilación, ejecución y depuración en GEF.
+//  3. Vincular su asciinema a su correo para evitar que sea borrado en 7 días.
+
+// Código en lenguaje C a continuación (todo es un comentario):
+
+/*
+#include <iostream>
+#include <string>
+
+int main() {
+    // Solicitar al usuario que ingrese su nombre
+    std::string nombre;
+    std::cout << "Ingrese su nombre: ";
+    std::getline(std::cin, nombre);
+
+    // Calcular la longitud del nombre
+    size_t longitud = nombre.length();
+
+    // Mostrar la longitud del nombre
+    std::cout << "Su nombre tiene: " << longitud << " letras\n";
+
+    return 0;
+}
+
+*/
+
+/*
+Este programa en C++ pide al usuario que ingrese su nombre, luego calcula la longitud de la cadena ingresada y muestra el resultado.
+Utiliza la biblioteca <string> para manejar la entrada del usuario y calcular la longitud de la cadena.
+*/
 
 .data
     prompt:    .asciz "Ingrese su nombre: "         // Mensaje que se mostrará al usuario para solicitar su nombre
@@ -151,7 +185,7 @@ itoa_loop:
     ret                         // Regresar de la función
 
 ```
-
+> Corrida
 ```bash
 rene@raspberrypi:~$ ./cuantasletras 
 Ingrese su nombre:rene solis 
