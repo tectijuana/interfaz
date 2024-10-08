@@ -50,7 +50,8 @@ _start:
 
 # Programa 2
 
-Martes: ( Indicaciones el clase ) no las doy por adelantado para que no la manden por whazap
+Martes: ( Indicaciones el clase ) 
+![Untitled diagram-2024-10-08-052013](https://github.com/user-attachments/assets/b6bc704a-2140-4b29-9d45-cce9566104cb)
 
 ```assembly
 
