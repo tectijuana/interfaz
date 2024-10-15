@@ -2,6 +2,10 @@
 ![cooltext468348822700204](https://github.com/user-attachments/assets/e51da0b4-e0ad-418a-9d77-5b5a83ed27f3)
 
 
+![mermaid-diagram-2024-10-15-151516](https://github.com/user-attachments/assets/63a02782-cd06-40db-824e-920e2a00e6af)
+
+
+
 
 ### 1. Código ensamblador con la macro del MCD en ARM64 (Raspbian OS)
 
