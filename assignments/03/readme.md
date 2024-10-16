@@ -11,16 +11,20 @@
 
 Este archivo contiene la macro **gcd** (Maximo Comun Denominador) en ensamblador y se guardará como **mcd_macro.s**:
 
+
+
 ```asm
 @ Archivo: mcd_macro.s
-@ Descripción: Implementación de la macro MCD para ARM64 en Raspbian OS
+@ Descripción: Implementación de la macro MCD para ARM64 en Ubuntu 24 LTS
 
 .macro gcd a, b
-gcd_\@:                    
-    cmp \a, \b         @ Comparar a y b
-    subgt \a, \a, \b   @ Si a > b, restar b de a
-    sublt \b, \b, \a   @ Si a < b, restar a de b
-    bne gcd_\@         @ Si no son iguales, continuar
+1:                     
+    cmp \a, \b          @ Comparar a y b
+    b.eq 2f             @ Si a == b, saltar al final
+    subgt \a, \a, \b    @ Si a > b, restar b de a
+    sublt \b, \b, \a    @ Si a < b, restar a de b
+    b 1b                @ Volver a comparar
+2:
 .endm
 
 @ Función en ensamblador que calcula el MCD
@@ -32,7 +36,9 @@ gcd_func:
     @ Argumentos en X0 y X1
     @ X0 = a, X1 = b
     gcd x0, x1         @ Llamar a la macro gcd con los argumentos en X0 y X1
+    mov x0, x1         @ Mover el valor de X1 (b o el MCD) a X0 para retornar
     ret                @ Retornar el resultado en X0
+
 ```
 
 ### 2. Código en C que llama a la macro ensamblador
@@ -40,6 +46,7 @@ gcd_func:
 El código C que invocará la macro de ensamblador y se guardará como **mcd.c**:
 
 ```c
+
 // Archivo: mcd.c
 // Descripción: Programa en C que llama a una macro ensamblador en ARM64 para calcular el MCD.
 
@@ -60,6 +67,11 @@ int main() {
 
     return 0;
 }
+
+
+
+
+
 ```
 
 ### 3. Proceso de compilación y enlace con dos archivos en **Raspbian OS**
