@@ -33,7 +33,7 @@ El estudiante será capaz de:
    Deberías ver la versión 8.0 o superior.
 
 ## Paso 2: Crear la Macro en ARM64 Assembly
-1. **Abrir un editor de texto y crear un archivo llamado `gcd.asm`**.
+1. **Abrir un editor de texto y crear un archivo llamado `gcd.s`**.
 2. **Escribir el código en ARM64 assembly para el algoritmo de MCD**:
    ```assembly
    .global gcd
@@ -55,7 +55,7 @@ El estudiante será capaz de:
 
 3. **Guardar y compilar el código**:
    ```bash
-   as -o gcd.o gcd.asm
+   as -o gcd.o gcd.s
    ld -o gcd gcd.o
    ```
 
