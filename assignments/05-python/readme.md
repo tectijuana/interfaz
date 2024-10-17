@@ -118,9 +118,15 @@ Este proyecto tiene como objetivo guiar a los estudiantes en la implementación 
      El MCD de 6099 y 2166 es: 33
      ```
 
-## Solución de Problemas
-- Si encuentras errores durante la compilación, asegúrate de que tienes instaladas las herramientas de compilación necesarias para ARM64.
-- Asegúrate de que los valores ingresados sean números enteros positivos.
+## Solución de Problemas 
+
+Comentarios en el Código Ensamblador:
+- Si encuentras errores relacionados con los comentarios durante la compilación, asegúrate de que todos los comentarios en el código ensamblador comiencen con @ en lugar de //.
+- Errores de Compilación:
+- Si usas as y experimentas errores, intenta usar gcc para compilar el código ensamblador, como se mostró anteriormente.
+
+## Compatibilidad de Arquitectura:
+- Asegúrate de que estás trabajando en un entorno ARM64. Puedes verificar tu arquitectura con el comando uname -m. Debería devolver aarch64.
 
 ## Recursos Adicionales
 - [Documentación oficial de Python](https://docs.python.org/3/) para obtener más detalles sobre la sintaxis y las herramientas.
