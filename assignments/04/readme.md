@@ -67,25 +67,26 @@ El estudiante será capaz de:
    ```
 
 2. **Modificar el archivo `Program.cs`** para incluir la llamada a la función en assembly:
-   ```csharp
-   using System;
-   using System.Runtime.InteropServices;
+```csharp
+using System;
+using System.Runtime.InteropServices;
 
-   class Program
-   {
-       [DllImport("gcd", EntryPoint = "gcd")]
-       public static extern int Gcd(int a, int b);
+class Program
+{
+    [DllImport("libgcd.so", EntryPoint = "gcd")]
+    public static extern int Gcd(int a, int b);
 
-       static void Main(string[] args)
-       {
-           Console.WriteLine("Ingrese dos números para calcular el MCD:");
-           int a = int.Parse(Console.ReadLine());
-           int b = int.Parse(Console.ReadLine());
-           int resultado = Gcd(a, b);
-           Console.WriteLine($"El MCD de {a} y {b} es: {resultado}");
-       }
-   }
-   ```
+    static void Main(string[] args)
+    {
+        Console.WriteLine("Ingrese dos números para calcular el MCD:");
+        int a = int.Parse(Console.ReadLine());
+        int b = int.Parse(Console.ReadLine());
+
+        int resultado = Gcd(a, b);
+        Console.WriteLine($"El MCD de {a} y {b} es: {resultado}");
+    }
+}
+```
 
 3. **Compilar el programa**:
    ```bash
