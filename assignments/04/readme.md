@@ -10,7 +10,7 @@ El estudiante será capaz de:
 3. Llamar a la rutina en assembly desde un programa en C#.
 
 ## Materiales Necesarios
-- Ubuntu 22 LTS
+- Ubuntu 24 LTS
 - Terminal de Ubuntu
 - Editor de texto (por ejemplo, Visual Studio Code)
 - Conexión a Internet
