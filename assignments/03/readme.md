@@ -120,11 +120,6 @@ Instalar FIGLET command para anunciar el proceso donde se encuentre:
      El MCD de 6099 y 2166 es: 33
      ```
 
-## Preguntas para Reflexionar
-- ¿Qué sucede si los valores de `a` y `b` son negativos?
-- ¿Cómo podrías modificar el código para manejar casos en los que `a` o `b` sean cero?
-- ¿Cómo se comunicarían diferentes tipos de datos entre C y ensamblador en ARM64?
-
 ## Solución de Problemas
 - Si encuentras errores durante la compilación, verifica que los comentarios estén escritos con `//` en lugar de `@`, ya que la sintaxis de ensamblador ARM64 en Ubuntu 24 LTS no acepta `@` para comentarios.
 - Asegúrate de estar utilizando un entorno ARM64, ya que este código está diseñado específicamente para esa arquitectura.
