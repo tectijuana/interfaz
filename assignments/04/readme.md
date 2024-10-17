@@ -35,23 +35,25 @@ El estudiante será capaz de:
 ## Paso 2: Crear la Macro en ARM64 Assembly
 1. **Abrir un editor de texto y crear un archivo llamado `gcd.s`**.
 2. **Escribir el código en ARM64 assembly para el algoritmo de MCD**:
-   ```assembly
-   .global gcd
-   .text
-   gcd:
-       cmp x1, x0         // Compara a x1 con x0
-       beq end            // Si son iguales, salta a fin
-       blt swap           // Si x1 < x0, intercambia
-       sub x1, x1, x0     // x1 = x1 - x0
-       b gcd              // Llama recursivamente a gcd
-   swap:
-       mov x0, x1         // Intercambia valores
-       mov x1, x0
-       sub x0, x0, x1     // x0 = x0 - x1
-       b gcd              // Llama recursivamente a gcd
-   end:
-       ret                 // Retorna
-   ```
+```assembly
+.global gcd
+.text
+gcd:
+    cmp x1, x0           // Compara x1 con x0
+    beq end              // Si son iguales, salta al final
+    blt swap             // Si x1 < x0, intercambia
+    sub x1, x1, x0       // x1 = x1 - x0
+    b gcd                // Llama recursivamente a gcd
+
+swap:
+    mov x2, x0           // Guarda x0 en x2 (registro temporal)
+    mov x0, x1           // Mueve x1 a x0
+    mov x1, x2           // Mueve x2 (anterior x0) a x1
+    b gcd                // Llama recursivamente a gcd
+
+end:
+    ret                  // Retorna
+ ```
 
 3. **Guardar y compilar el código**:
    ```bash
