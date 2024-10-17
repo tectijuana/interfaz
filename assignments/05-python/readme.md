@@ -1,4 +1,7 @@
-# README: Cálculo del Máximo Común Divisor (MCD) utilizando Ensamblador ARM64 y Python
+![](https://codeconverter.com/images/convert-assembly-language-to-python.png)
+
+
+# Cálculo del Máximo Común Divisor (MCD) utilizando Ensamblador ARM64 y Python
 
 ## Descripción
 Este proyecto tiene como objetivo guiar a los estudiantes en la implementación de una función en ensamblador ARM64 para calcular el Máximo Común Divisor (MCD) de dos números, invocada desde un programa escrito en Python. El proyecto está diseñado para ejecutarse en Ubuntu 24 LTS sobre arquitectura ARM64.
