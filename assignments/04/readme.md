@@ -5,7 +5,7 @@
 
 ## Objetivo
 El estudiante será capaz de:
-1. Instalar C# 8 en Ubuntu 22 LTS.
+1. Instalar C# 8 en Ubuntu 24 LTS.
 2. Crear una macro en ARM64 assembly que implemente el algoritmo de mínimo común divisor (MCD).
 3. Llamar a la rutina en assembly desde un programa en C#.
 
