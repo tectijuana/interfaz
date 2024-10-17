@@ -1,113 +1,133 @@
 
 ![Cool Text - CSharp y ARM64 assembly 468401178312254](https://github.com/user-attachments/assets/92cb8abf-773d-4e7e-9466-f099d4f62a27)
 
-# Guion de Trabajo Personal (GTP): Integración de C# y ARM64 Assembly en Ubuntu 22 LTS
+# README: Cálculo del Máximo Común Divisor (MCD) utilizando C# 8 en Consola
 
-## Objetivo
-El estudiante será capaz de:
-1. Instalar C# 8 en Ubuntu 24 LTS.
-2. Crear una macro en ARM64 assembly que implemente el algoritmo de mínimo común divisor (MCD).
-3. Llamar a la rutina en assembly desde un programa en C#.
+## Descripción
+Este proyecto tiene como objetivo guiar a los estudiantes en la implementación de una función en C# para calcular el Máximo Común Divisor (MCD) de dos números utilizando una aplicación de consola. El proyecto está diseñado para ejecutarse en .NET Core, utilizando las capacidades de C# 8.
 
-## Materiales Necesarios
-- Ubuntu 24 LTS
-- Terminal de Ubuntu
-- Editor de texto (por ejemplo, Visual Studio Code)
-- Conexión a Internet
+## Archivos del Proyecto
 
-## Paso 1: Instalación de C# 8 en Ubuntu 22 LTS
-1. **Abrir la terminal**.
-2. **Actualizar el sistema**:
-   ```bash
-   sudo apt update
-   sudo apt upgrade
-   ```
-3. **Instalar los paquetes necesarios**:
-   ```bash
-   sudo apt install -y dotnet-sdk-8.0
-   ```
-4. **Verificar la instalación**:
-   ```bash
-   dotnet --version
-   ```
-   Deberías ver la versión 8.0 o superior.
+1. **Program.cs**: Archivo principal que contiene el código de la aplicación de consola para calcular el MCD.
 
-## Paso 2: Crear la Macro en ARM64 Assembly
-1. **Abrir un editor de texto y crear un archivo llamado `gcd.s`**.
-2. **Escribir el código en ARM64 assembly para el algoritmo de MCD**:
-```assembly
-.global gcd
-.text
-gcd:
-    cmp x1, x0           // Compara x1 con x0
-    beq end              // Si son iguales, salta al final
-    blt swap             // Si x1 < x0, intercambia
-    sub x1, x1, x0       // x1 = x1 - x0
-    b gcd                // Llama recursivamente a gcd
+## Objetivos de Aprendizaje
 
-swap:
-    mov x2, x0           // Guarda x0 en x2 (registro temporal)
-    mov x0, x1           // Mueve x1 a x0
-    mov x1, x2           // Mueve x2 (anterior x0) a x1
-    b gcd                // Llama recursivamente a gcd
+- Comprender la implementación de algoritmos matemáticos en C#.
+- Entender cómo trabajar con aplicaciones de consola en .NET Core.
+- Practicar la validación de entradas de usuario y el manejo de errores.
 
-end:
-    ret                  // Retorna
- ```
+## Instrucciones
 
-3. **Guardar y compilar el código**:
-   ```bash
-   as -o gcd.o gcd.s
-   ld -o gcd gcd.o
-   ```
+1. **Instalación del Soporte de C# en Ubuntu 24 LTS en AWS**
+   - Primero, actualice la lista de paquetes e instale los paquetes necesarios para agregar repositorios HTTPS:
+     ```bash
+     sudo apt update
+     sudo apt install -y wget apt-transport-https software-properties-common
+     ```
+   - Importe la clave pública de Microsoft:
+     ```bash
+     wget https://packages.microsoft.com/config/ubuntu/24.04/packages-microsoft-prod.deb -O packages-microsoft-prod.deb
+     sudo dpkg -i packages-microsoft-prod.deb
+     ```
+   - Instale el SDK de .NET 8:
+     ```bash
+     sudo apt update
+     sudo apt install -y dotnet-sdk-8.0
+     ```
+   - Verifique la instalación:
+     ```bash
+     dotnet --version
+     ```
+   - Asegúrese de que la salida muestre la versión instalada de .NET SDK.
 
-## Paso 3: Llamar a la Macro desde C#
-1. **Crear un nuevo proyecto de C#**:
-   ```bash
-   dotnet new console -n GcdExample
-   cd GcdExample
-   ```
+2. **Creación del Archivo**
+   - Cree un archivo denominado `Program.cs` e incluya el siguiente código:
+     
+     ```csharp
+     // Archivo: Program.cs
+     // Descripción: Programa en C# que calcula el Máximo Común Divisor (MCD) de dos números.
 
-2. **Modificar el archivo `Program.cs`** para incluir la llamada a la función en assembly:
-```csharp
-using System;
-using System.Runtime.InteropServices;
+     using System;
 
-class Program
-{
-    [DllImport("libgcd.so", EntryPoint = "gcd")]
-    public static extern int Gcd(int a, int b);
+     namespace MCDApp
+     {
+         class Program
+         {
+             static void Main(string[] args)
+             {
+                 long a, b;
 
-    static void Main(string[] args)
-    {
-        Console.WriteLine("Ingrese dos números para calcular el MCD:");
-        int a = int.Parse(Console.ReadLine());
-        int b = int.Parse(Console.ReadLine());
+                 // Capturar los valores de a y b desde el usuario
+                 Console.Write("Ingrese el primer número (positivo): ");
+                 while (!long.TryParse(Console.ReadLine(), out a) || a <= 0)
+                 {
+                     Console.WriteLine("Error: Debe ingresar un número positivo y mayor que cero.");
+                     Console.Write("Ingrese el primer número (positivo): ");
+                 }
 
-        int resultado = Gcd(a, b);
-        Console.WriteLine($"El MCD de {a} y {b} es: {resultado}");
-    }
-}
-```
+                 Console.Write("Ingrese el segundo número (positivo): ");
+                 while (!long.TryParse(Console.ReadLine(), out b) || b <= 0)
+                 {
+                     Console.WriteLine("Error: Debe ingresar un número positivo y mayor que cero.");
+                     Console.Write("Ingrese el segundo número (positivo): ");
+                 }
 
-3. **Compilar el programa**:
-   ```bash
-   dotnet build
-   ```
+                 // Calcular el MCD usando el método Euclides
+                 long result = Gcd(a, b);
 
-4. **Ejecutar el programa**:
-   ```bash
-   dotnet run
-   ```
+                 // Imprimir el resultado
+                 Console.WriteLine($"El MCD de {a} y {b} es: {result}");
+             }
 
-## Rubrica de Evaluación
-1. **Asciinema (50%)**: Grabación de la compilación y ejecución de la macro ARM64 desde C# consola. Debe incluir el nombre en "figlet".
-2. **Comentarios y Encabezados (25%)**: Ambos códigos fuente deben tener comentarios claros y encabezados informativos.
-3. **GIST (25%)**: El GIST del trabajo elaborado debe ser depositado en IDOCEO en la fecha indicada.
+             // Método para calcular el MCD utilizando el algoritmo de Euclides
+             static long Gcd(long a, long b)
+             {
+                 while (b != 0)
+                 {
+                     long temp = b;
+                     b = a % b;
+                     a = temp;
+                 }
+                 return a;
+             }
+         }
+     }
+     ```
 
-## Ejemplo de Uso
-1. Compila y ejecuta el programa.
-2. Ingresa dos números, por ejemplo, `48` y `18`.
-3. El programa debería devolver `6`, que es el MCD de `48` y `18`.
+3. **Compilación del Proyecto**
+   - Abra una terminal y navegue al directorio donde está el archivo `Program.cs`.
+   - Compile el proyecto utilizando el SDK de .NET Core:
+     ```bash
+     dotnet new console -o MCDApp
+     mv Program.cs MCDApp/
+     cd MCDApp
+     dotnet run
+     ```
+
+4. **Ejecución del Programa**
+   - Una vez que se haya compilado correctamente, ejecute el programa:
+     ```bash
+     dotnet run
+     ```
+   - Debería observar un resultado similar al siguiente:
+     ```
+     Ingrese el primer número (positivo): 6099
+     Ingrese el segundo número (positivo): 2166
+     El MCD de 6099 y 2166 es: 33
+     ```
+
+- 
+
+## Solución de Problemas
+- Si encuentras errores durante la compilación, asegúrate de que tienes instalada la versión correcta del SDK de .NET Core.
+- Asegúrate de que los valores ingresados sean números enteros positivos.
+
+## Recursos Adicionales
+- [Documentación oficial de .NET](https://learn.microsoft.com/dotnet/) para obtener más detalles sobre la sintaxis y las herramientas.
+- [Documentación de C#](https://learn.microsoft.com/dotnet/csharp/) para comprender mejor el lenguaje C# y sus características.
+
+
+
+
 
 
