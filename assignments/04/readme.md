@@ -1,20 +1,21 @@
 
 ![Cool Text - CSharp y ARM64 assembly 468401178312254](https://github.com/user-attachments/assets/92cb8abf-773d-4e7e-9466-f099d4f62a27)
 
-# README: Cálculo del Máximo Común Divisor (MCD) utilizando C# 8 en Consola
+# README: Cálculo del Máximo Común Divisor (MCD) utilizando Ensamblador ARM64 y C# 8 en Consola
 
 ## Descripción
-Este proyecto tiene como objetivo guiar a los estudiantes en la implementación de una función en C# para calcular el Máximo Común Divisor (MCD) de dos números utilizando una aplicación de consola. El proyecto está diseñado para ejecutarse en .NET Core, utilizando las capacidades de C# 8.
+Este proyecto tiene como objetivo guiar a los estudiantes en la implementación de una función en ensamblador ARM64 para calcular el Máximo Común Divisor (MCD) de dos números, invocada desde un programa escrito en C#. El proyecto está diseñado para ejecutarse en .NET Core, utilizando las capacidades de C# 8 y un entorno ARM64.
 
 ## Archivos del Proyecto
 
-1. **Program.cs**: Archivo principal que contiene el código de la aplicación de consola para calcular el MCD.
+1. **mcd_macro.s**: Archivo que contiene el código ensamblador ARM64 para implementar la macro que calcula el MCD.
+2. **Program.cs**: Archivo principal que contiene el código de la aplicación de consola en C# para invocar la función ensambladora y calcular el MCD.
 
 ## Objetivos de Aprendizaje
 
-- Comprender la implementación de algoritmos matemáticos en C#.
-- Entender cómo trabajar con aplicaciones de consola en .NET Core.
-- Practicar la validación de entradas de usuario y el manejo de errores.
+- Comprender la implementación de macros y funciones en ensamblador ARM64.
+- Entender cómo integrar funciones en ensamblador dentro de un programa en C#.
+- Practicar la compilación y el enlace de código ensamblador y C#.
 
 ## Instrucciones
 
@@ -40,19 +41,51 @@ Este proyecto tiene como objetivo guiar a los estudiantes en la implementación 
      ```
    - Asegúrese de que la salida muestre la versión instalada de .NET SDK.
 
-2. **Creación del Archivo**
+2. **Creación del Archivo Ensamblador**
+   - Cree un archivo denominado `mcd_macro.s` e incluya el siguiente código ensamblador:
+     
+     ```asm
+     // Archivo: mcd_macro.s
+     // Descripción: Implementación de la macro MCD para ARM64 en Ubuntu 24 LTS
+
+     .macro gcd a, b
+     1:                     
+         cmp \a, \b          // Comparar a y b
+         b.eq 2f             // Si a == b, saltar al final
+         subgt \a, \a, \b    // Si a > b, restar b de a
+         sublt \b, \b, \a    // Si a < b, restar a de b
+         b 1b                // Volver a comparar
+     2:
+     .endm
+
+     // Función en ensamblador que calcula el MCD
+     .text
+     .globl gcd_func
+     .type gcd_func, %function
+     gcd_func:
+         // Argumentos en X0 y X1 (a y b)
+         gcd x0, x1          // Ejecutar la macro gcd con X0 y X1
+         mov x0, x1          // Mover el resultado a X0 para retornarlo
+         ret                 // Retornar el valor en X0
+     ```
+
+3. **Creación del Archivo C#**
    - Cree un archivo denominado `Program.cs` e incluya el siguiente código:
      
      ```csharp
      // Archivo: Program.cs
-     // Descripción: Programa en C# que calcula el Máximo Común Divisor (MCD) de dos números.
+     // Descripción: Programa en C# que invoca una función ensambladora en ARM64 para calcular el MCD.
 
      using System;
+     using System.Runtime.InteropServices;
 
      namespace MCDApp
      {
          class Program
          {
+             [DllImport("libmcd_macro.so")]
+             public static extern long gcd_func(long a, long b);
+
              static void Main(string[] args)
              {
                  long a, b;
@@ -72,31 +105,24 @@ Este proyecto tiene como objetivo guiar a los estudiantes en la implementación 
                      Console.Write("Ingrese el segundo número (positivo): ");
                  }
 
-                 // Calcular el MCD usando el método Euclides
-                 long result = Gcd(a, b);
+                 // Llamar a la función ensambladora que ejecuta la macro gcd
+                 long result = gcd_func(a, b);
 
                  // Imprimir el resultado
                  Console.WriteLine($"El MCD de {a} y {b} es: {result}");
-             }
-
-             // Método para calcular el MCD utilizando el algoritmo de Euclides
-             static long Gcd(long a, long b)
-             {
-                 while (b != 0)
-                 {
-                     long temp = b;
-                     b = a % b;
-                     a = temp;
-                 }
-                 return a;
              }
          }
      }
      ```
 
-3. **Compilación del Proyecto**
-   - Abra una terminal y navegue al directorio donde está el archivo `Program.cs`.
-   - Compile el proyecto utilizando el SDK de .NET Core:
+4. **Compilación del Proyecto**
+   - Abra una terminal y navegue al directorio donde están los archivos.
+   - Compile el archivo ensamblador:
+     ```bash
+     as -o mcd_macro.o mcd_macro.s
+     gcc -shared -o libmcd_macro.so mcd_macro.o
+     ```
+   - Compile el proyecto en C# utilizando el SDK de .NET Core:
      ```bash
      dotnet new console -o MCDApp
      mv Program.cs MCDApp/
@@ -104,7 +130,7 @@ Este proyecto tiene como objetivo guiar a los estudiantes en la implementación 
      dotnet run
      ```
 
-4. **Ejecución del Programa**
+5. **Ejecución del Programa**
    - Una vez que se haya compilado correctamente, ejecute el programa:
      ```bash
      dotnet run
@@ -116,15 +142,18 @@ Este proyecto tiene como objetivo guiar a los estudiantes en la implementación 
      El MCD de 6099 y 2166 es: 33
      ```
 
-- 
-
 ## Solución de Problemas
-- Si encuentras errores durante la compilación, asegúrate de que tienes instalada la versión correcta del SDK de .NET Core.
+- Si encuentras errores durante la compilación, asegúrate de que tienes instalada la versión correcta del SDK de .NET Core y de las herramientas de compilación para ARM64.
 - Asegúrate de que los valores ingresados sean números enteros positivos.
 
 ## Recursos Adicionales
 - [Documentación oficial de .NET](https://learn.microsoft.com/dotnet/) para obtener más detalles sobre la sintaxis y las herramientas.
 - [Documentación de C#](https://learn.microsoft.com/dotnet/csharp/) para comprender mejor el lenguaje C# y sus características.
+- [Documentación de GNU Assembler](https://sourceware.org/binutils/docs/as/index.html) para aprender sobre ensamblador ARM64.
+
+¡Buena suerte y disfruten aprendiendo ensamblador ARM64 y programación en C#!
+
+
 
 
 
