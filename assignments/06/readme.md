@@ -84,4 +84,3 @@ Además de la cantidad de programas completados, se pueden evaluar otros aspecto
 - **90 puntos**: Completa **45 programas**, mostrando una habilidad clara en la solución de problemas de programación en ensamblador, incluyendo aquellos con mayor nivel de dificultad.
 - **100 puntos**: Completa **los 50 programas**, con la implementación correcta y funcional de todos los ejercicios. Demuestra un dominio completo de los conceptos y la capacidad de aplicar ensamblador ARM64 a distintos problemas.
 
-¿Te gustaría que añadiéramos algún otro criterio o aspecto en la rúbrica para evaluar la calidad del trabajo de los estudiantes?
