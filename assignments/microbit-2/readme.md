@@ -1,4 +1,8 @@
-¡Claro! A continuación, te presento una práctica detallada para implementar un **termómetro remoto** utilizando la **micro:bit versión 2** con comunicación por **radio**. En este escenario, una micro:bit transmitirá la temperatura medida a través de radio, y una PC en el laboratorio ejecutará una aplicación en **C#** para recibir y mostrar estos datos.
+
+![cooltext468844477408449](https://github.com/user-attachments/assets/f7891d5c-999b-402f-9d8c-4c4e9a6e5706)
+
+
+
 
 Este proyecto consta de dos partes principales:
 
