@@ -14,7 +14,7 @@ Este proyecto consta de dos partes principales:
 
 ### **Hardware:**
 
-- **Dos micro:bit versión 2**
+- **Dos micro:bit versión 2** una con una pila
 - **Dos cables USB** para conectar las micro:bits a las PC (solo la micro:bit receptora necesitará estar conectada a la PC que ejecutará la aplicación en C#).
 - **PC con Windows** (para ejecutar la aplicación en C#)
 - **Baterías o fuente de alimentación** para la micro:bit transmisora (opcional, si no se conecta a una PC).
@@ -362,6 +362,6 @@ Para enriquecer aún más este proyecto, considera las siguientes mejoras:
 
 ## CIERRE
 
-Este proyecto de **termómetro remoto** integra la **micro:bit versión 2** con **C#** para crear una solución completa de monitoreo de temperatura. A través de la comunicación por radio, se logra una transmisión eficiente de datos desde la micro:bit transmisora hasta una PC receptora, donde una aplicación en C# procesa y muestra la información.
+A través de la comunicación por radio, se logra una transmisión eficiente de datos desde la micro:bit transmisora hasta una PC receptora, donde una aplicación en C# procesa y muestra la información.
 
 Este enfoque no solo refuerza conceptos de programación y comunicación inalámbrica, sino que también proporciona una experiencia práctica valiosa para estudiantes universitarios en áreas de sistemas embebidos, programación de microcontroladores y desarrollo de aplicaciones de escritorio.
