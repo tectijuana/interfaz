@@ -5,7 +5,7 @@
 
 
 
-Este proyecto consta de dos partes principales:
+Este proyecto consta de dos partes principales, se concidera como la 2da parte:
 
 1. **Micro:bit Transmisora:** Mide la temperatura y envía los datos vía radio.
 2. **Micro:bit Receptora conectada a la PC:** Recibe los datos vía radio y los envía a la PC a través del puerto serial. La PC ejecuta una aplicación en C# que lee y muestra la temperatura recibida.
