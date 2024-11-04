@@ -79,8 +79,4 @@ Además de la cantidad de programas completados, se pueden evaluar otros aspecto
    - El estudiante proporciona documentación clara, explicando la lógica del programa y su funcionamiento.
    - Uso de comentarios útiles para explicar secciones complejas del código.
 
-### **Criterios de Evaluación Final**
-- **70 puntos**: El estudiante logra completar **40 programas**. Demuestra una comprensión básica del lenguaje y de la estructura de ARM64. Se espera que los programas funcionen con precisión, aunque puede que algunos tengan margen para mejorar.
-- **90 puntos**: Completa **45 programas**, mostrando una habilidad clara en la solución de problemas de programación en ensamblador, incluyendo aquellos con mayor nivel de dificultad.
-- **100 puntos**: Completa **los 50 programas**, con la implementación correcta y funcional de todos los ejercicios. Demuestra un dominio completo de los conceptos y la capacidad de aplicar ensamblador ARM64 a distintos problemas.
 
