@@ -2,6 +2,8 @@
 
  GTP de Acompañamiento:
  
+ <img width="787" alt="Screenshot 2024-11-05 at 3 24 04 p m" src="https://github.com/user-attachments/assets/1c5d2541-41f7-4ba6-afa2-200b883d7a92">
+
  https://chatgpt.com/g/g-ikW4IppBT-arm64-assembly-tutor-for-raspbianos-linux
 
 | **#** | **Nombre del Programa**                           | **Concepto/Temática**                  | **Dificultad** | **Tiempo Estimado** | **Aplicación Práctica**                     |
