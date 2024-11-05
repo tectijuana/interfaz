@@ -1,5 +1,9 @@
  **50 ejercicios**, cada uno complementado con **Dificultad**, **Tiempo Estimado**, y **Aplicación Práctica**:
 
+ GTP de Acompañamiento:
+ 
+ https://chatgpt.com/g/g-ikW4IppBT-arm64-assembly-tutor-for-raspbianos-linux
+
 | **#** | **Nombre del Programa**                           | **Concepto/Temática**                  | **Dificultad** | **Tiempo Estimado** | **Aplicación Práctica**                     |
 |-------|----------------------------------------------------|----------------------------------------|---------------|---------------------|---------------------------------------------|
 | 1     | Convertir temperatura de Celsius a Fahrenheit      | Conversión de unidades, I/O            | Fácil         | 15-20 minutos       | Dispositivos de monitoreo ambiental         |
