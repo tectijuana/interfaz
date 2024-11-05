@@ -6,7 +6,22 @@
 
  https://chatgpt.com/g/g-ikW4IppBT-arm64-assembly-tutor-for-raspbianos-linux
 
----
+-----
+Estructura es:
+
+Extension *.s por cada programa en su respectivo Repositorio personal privado (procure no publicar al mundo si todavia no estan listos)
+
+1. Encabezado
+2. Solucion Alto nivel (CSharo, CPP, Python, etc.) como comentario
+3. Código ARM64 Assembly
+4. Agrupar el Asciinema para la grabación
+- Inclur corrida del debugger GEF
+- Documentar el ASCIINEMA Web Sharing de su programa con el codigo del punto 1-3 para verse profesional.
+
+Notará que la mayoria de los programas son similares en su estructura repetivia, es paso por paso mas extensible. Sea breve en sus programas su objetivo.
+
+
+-----
  **50 ejercicios**, cada uno complementado con **Dificultad**, **Tiempo Estimado**, y **Aplicación Práctica**:
 
 | **#** | **Nombre del Programa**                           | **Concepto/Temática**                  | **Dificultad** | **Tiempo Estimado** | **Aplicación Práctica**                     |
