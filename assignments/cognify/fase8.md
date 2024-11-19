@@ -1,6 +1,3 @@
-Aquí tienes una propuesta para un **menú de acciones** que podría ser desplegado en la pantalla LCD del accesorio del proyecto Cognify. El menú tiene opciones claras y accesibles, diseñadas para guiar al operador en el uso del dispositivo.
-
----
 
 ### **Menú Principal de Acciones - Cognify**
 
