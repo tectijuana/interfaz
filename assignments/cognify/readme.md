@@ -173,4 +173,19 @@ Los datos involucrados en el aspecto criminal del proyecto Cognify son multifac�
 
 ---
 
+# PROPUESTA DE INNOVACION DE DISPOSITIVO
+
+<img width="840" alt="Screenshot 2024-11-19 at 2 58 38 p m" src="https://github.com/user-attachments/assets/5b1c70c5-cabd-45e6-9651-5627f4541286">
+
+<img width="972" alt="Screenshot 2024-11-19 at 2 58 50 p m" src="https://github.com/user-attachments/assets/f5aceb84-f69f-4dd7-b3c4-69781e2899f5">
+
+<img width="707" alt="Screenshot 2024-11-19 at 2 58 27 p m" src="https://github.com/user-attachments/assets/1f3406bd-41df-4cd6-bbc0-b63dfed5ed84">
+
+
+
 # AREA DE INTERFAZ
+
+
+
+
+
