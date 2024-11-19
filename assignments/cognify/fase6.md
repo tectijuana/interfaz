@@ -1,6 +1,3 @@
-Claro, aquí te dejo una propuesta detallada para la integración de un sistema de **biofeedback** utilizando **ARM64 Assembly** que puede ser utilizada por un programador:
-
----
 
 ### **6. Integración de Sistemas de Biofeedback para el Accesorio Cognify**
 
