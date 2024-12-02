@@ -1,3 +1,9 @@
+
+A el SEMESTRAL.pdf le falta la calificaciòn de Cognify para 1/4 de grupo. Mas tardes se actualiza
+
+
+
+-------
 # Informe de Avances y Observaciones de los Bloques 1 y 2 (valor 95% del curso)
 
 ## Resumen de Resultados
