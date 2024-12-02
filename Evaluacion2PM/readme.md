@@ -39,8 +39,11 @@ Cada práctica debe incluir:
 
 **Agradecemos su tiempo y dedicación. Sigamos trabajando en su perfil de ingeniero, la codificación es una de sus muchas habilidades de su perfil.**
 
+Un saludo especial a los estudiantes anonimos que con sus habilidades gran aportación, apoyaron a sus colegas y reconocieron el "ZEN" del Assembly. Suerte en sus travesias !
 
-# 50 programas deben de tener:
+----
+
+# Los programas debien de tener:
 
 [Asciinema Demo](https://asciinema.org/a/IdRVERPClj2H98ivQccCM1oPe)
 
