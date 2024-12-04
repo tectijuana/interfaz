@@ -1,6 +1,4 @@
-
-A el SEMESTRAL.pdf le falta la calificaciòn de Cognify para 1/4 de grupo. Mas tardes se actualiza
-
+Actualizacion al 3 de dic a las 10pm
 
 
 -------
