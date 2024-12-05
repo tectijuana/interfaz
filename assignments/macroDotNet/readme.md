@@ -1,3 +1,4 @@
+<img width="693" alt="Screenshot 2024-12-04 at 5 29 42 p m" src="https://github.com/user-attachments/assets/bd5049bb-7cd9-4539-a4a2-5319aac3b41d">
 
 # **Guía Completa: Compilación e Instalación de Software para Ejecutar el Programa en AWS Ubuntu ARM64**
 
