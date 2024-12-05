@@ -1,134 +1,138 @@
-# **Práctica: Implementación de un Programa en Ensamblador ARM64 y su Integración con C#**
 
-## **Objetivo**
-Aprender a desarrollar una macro en lenguaje ensamblador ARM64 para calcular el MCD (Máximo Común Divisor) y vincularla a un programa en C# utilizando la interoperabilidad entre lenguajes.
+# **MACRO: Implementación del Programa en Ensamblador ARM64 y C#**
 
 ---
 
-## **Requisitos**
-- Entorno Linux con soporte para ARM64.
-- Compiladores necesarios:
-  - `gcc` para ensamblador.
-  - `dotnet` o `mono` para C#.
-- Editor de texto (Nano, VS Code, o cualquier otro de su preferencia).
-- Conocimientos básicos de ensamblador y C#.
+## **Macro en Ensamblador ARM64**
+
+### **Nombre del Archivo**
+`gcd.s`
+
+### **Descripción**
+Este programa implementa la función de cálculo del Máximo Común Divisor (MCD) utilizando el algoritmo de Euclides en lenguaje ensamblador ARM64. La función se expone como una biblioteca compartida (`.so`) para ser utilizada por otros programas.
+
+### **Funcionamiento**
+1. **Comparación**: Los valores de los registros `x0` y `x1` son comparados.
+2. **Decisión**:
+   - Si ambos valores son iguales (`beq`), la función termina y el valor del MCD se retorna.
+   - Si `x1 < x0`, los valores son intercambiados.
+   - En otros casos, se resta `x1 - x0`.
+3. **Recursión**: La función se llama a sí misma hasta que los valores sean iguales.
+4. **Resultado**: El MCD se devuelve en el registro `x0`.
+
+### **Código**
+
+```assembly
+// Casildo Rubalcava Aaron 22212222
+// Programa en assembly que es la llamada para el programa principal
+
+.global gcd
+.text
+gcd:
+    cmp x1, x0         // Compara a x1 con x0
+    beq end            // Si son iguales, salta a fin
+    blt swap           // Si x1 < x0, intercambia
+    sub x1, x1, x0     // x1 = x1 - x0
+    b gcd              // Llama recursivamente a gcd
+swap:
+    mov x0, x1         // Intercambia valores
+    mov x1, x0
+    sub x0, x0, x1     // x0 = x0 - x1
+    b gcd              // Llama recursivamente a gcd
+end:
+    ret                 // Retorna
+```
+
+### **Registros Utilizados**
+- `x0`: Almacena uno de los números iniciales y, posteriormente, el resultado (MCD).
+- `x1`: Almacena el otro número inicial.
 
 ---
 
-## **Instrucciones**
+## **Programa en C#**
 
-### Paso 1: Crear la Macro en Ensamblador
+### **Nombre del Archivo**
+`Program.cs`
 
-1. Cree un archivo llamado `gcd.s`.
-2. Escriba el siguiente código ensamblador en ARM64:
+### **Descripción**
+Este programa permite al usuario ingresar dos números para calcular su MCD utilizando la función implementada en ensamblador ARM64. Se establece una comunicación con la macro ensambladora a través de interoperabilidad de C# con bibliotecas compartidas (`DllImport`).
 
-   ```assembly
-   // Casildo Rubalcava Aaron 22212222
-   // Programa en assembly que es la llamada para el programa principal
+### **Funcionamiento**
+1. **Interacción con el Usuario**:
+   - Solicita al usuario ingresar dos números enteros.
+2. **Interoperabilidad**:
+   - Llama a la función `gcd` implementada en ensamblador a través de la biblioteca `libgcd.so`.
+3. **Cálculo del MCD**:
+   - Utiliza la función `gcd` para realizar el cálculo.
+4. **Salida**:
+   - Muestra el resultado al usuario.
 
-   .global gcd
-   .text
-   gcd:
-       cmp x1, x0         // Compara a x1 con x0
-       beq end            // Si son iguales, salta a fin
-       blt swap           // Si x1 < x0, intercambia
-       sub x1, x1, x0     // x1 = x1 - x0
-       b gcd              // Llama recursivamente a gcd
-   swap:
-       mov x0, x1         // Intercambia valores
-       mov x1, x0
-       sub x0, x0, x1     // x0 = x0 - x1
-       b gcd              // Llama recursivamente a gcd
-   end:
-       ret                 // Retorna
-   ```
+### **Código**
 
-3. Guarde el archivo.
+```csharp
+// Casildo Rubalcava Aaron 222122222
+// Este programa calcula el MCD en un par de números ingresados por el usuario
+// Referenciamos al archivo gcd.s
 
----
+using System;
+using System.Runtime.InteropServices;
 
-### Paso 2: Compilar el Código Ensamblador
+class Program
+{
+    [DllImport("libgcd.so", EntryPoint = "gcd")]
+    public static extern int Gcd(int a, int b);
 
-1. Compile el archivo ensamblador para generar una biblioteca compartida (`.so`):
+    static void Main(string[] args)
+    {
+        Console.WriteLine("Ingrese dos números para calcular el MCD:");
+        int a = int.Parse(Console.ReadLine());
+        int b = int.Parse(Console.ReadLine());
 
-   ```bash
-   gcc -shared -o libgcd.so gcd.s
-   ```
+        int resultado = Gcd(a, b);
+        Console.WriteLine($"El MCD de {a} y {b} es: {resultado}");
+    }
+}
+```
 
----
-
-### Paso 3: Crear el Programa en C#
-
-1. Cree un archivo llamado `Program.cs`.
-2. Escriba el siguiente código en C#:
-
-   ```csharp
-   // Casildo Rubalcava Aaron 222122222
-   // Este programa calcula el MCD en un par de números ingresados por el usuario
-   // Referenciamos al archivo gcd.s
-
-   using System;
-   using System.Runtime.InteropServices;
-
-   class Program
-   {
-       [DllImport("libgcd.so", EntryPoint = "gcd")]
-       public static extern int Gcd(int a, int b);
-
-       static void Main(string[] args)
-       {
-           Console.WriteLine("Ingrese dos números para calcular el MCD:");
-           int a = int.Parse(Console.ReadLine());
-           int b = int.Parse(Console.ReadLine());
-
-           int resultado = Gcd(a, b);
-           Console.WriteLine($"El MCD de {a} y {b} es: {resultado}");
-       }
-   }
-   ```
-
-3. Guarde el archivo.
+### **Detalles Técnicos**
+- **Biblioteca Compartida**: 
+  - `DllImport` enlaza la función ensambladora como un método externo.
+  - La biblioteca compartida se compila previamente desde el ensamblador usando `gcc`.
+- **Interacción del Usuario**:
+  - `Console.ReadLine()` captura los números ingresados por el usuario.
+  - `int.Parse()` convierte las entradas a enteros.
+- **Resultado**:
+  - Se imprime el MCD calculado.
 
 ---
 
-### Paso 4: Compilar y Ejecutar el Programa en C#
+## **Interacción entre los Programas**
 
-1. Compile el programa usando `mcs` (Mono):
-
-   ```bash
-   mcs -out:Program.exe Program.cs
-   ```
-
-2. Ejecute el programa:
-
-   ```bash
-   mono Program.exe
-   ```
+### **Diagrama de Flujo**
+1. **C#**:
+   - Captura números desde la entrada estándar.
+   - Llama a la biblioteca compartida `libgcd.so` a través de `DllImport`.
+2. **Ensamblador**:
+   - Realiza el cálculo del MCD usando el algoritmo de Euclides.
+   - Retorna el resultado a `C#`.
+3. **C#**:
+   - Muestra el resultado al usuario.
 
 ---
 
-## **Pruebas**
+## **Casos de Uso**
 
-1. Ingrese dos números enteros para calcular el MCD.
-2. Verifique que el resultado sea correcto.
-3. Ejemplo de ejecución:
-   ```plaintext
-   Ingrese dos números para calcular el MCD:
-   48
-   18
-   El MCD de 48 y 18 es: 6
-   ```
+1. **Entrada Normal**:
+   - Ejemplo:
+     - Entrada: `48` y `18`.
+     - Salida: `El MCD de 48 y 18 es: 6`.
+
+2. **Validación**:
+   - Se recomienda manejar errores en la entrada, como números negativos o valores no numéricos, en futuras versiones.
 
 ---
 
-## **Preguntas para Reflexión**
-1. ¿Cómo interactúan el ensamblador y el programa en C# a través de la biblioteca compartida?
-2. ¿Qué sucede si los números ingresados son negativos? ¿Cómo podría manejar este caso en ensamblador?
-
----
-
-## **Extensión de la Práctica**
-
-1. Modifique la macro en ensamblador para manejar casos especiales como valores negativos o ceros.
-2. Añada un bucle en C# para permitir cálculos repetidos sin cerrar el programa.
-
+## **Extensiones Sugeridas**
+1. Manejar entradas no válidas en C#.
+2. Modificar la macro ensambladora para calcular valores negativos o cero.
+3. Crear un bucle en el programa C# para realizar múltiples cálculos sin cerrar la aplicación.
