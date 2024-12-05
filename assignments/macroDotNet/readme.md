@@ -1,27 +1,55 @@
 
-# **MACRO: Implementación del Programa en Ensamblador ARM64 y C#**
+# **Guía Completa: Compilación e Instalación de Software para Ejecutar el Programa en AWS Ubuntu ARM64**
+
+Este documento describe cómo configurar un entorno en Ubuntu ARM64 sobre AWS para compilar y ejecutar un programa en ensamblador ARM64 integrado con C#.
 
 ---
 
-## **Macro en Ensamblador ARM64**
+## **Requisitos Previos**
+1. **Máquina Virtual**: Instancia de Ubuntu 22.04 LTS o posterior en AWS, con arquitectura ARM64.
+2. **Acceso SSH**: Conexión a la instancia mediante SSH.
+3. **Permisos de Superusuario**: Debe tener permisos de administrador (`sudo`).
 
-### **Nombre del Archivo**
-`gcd.s`
+---
 
-### **Descripción**
-Este programa implementa la función de cálculo del Máximo Común Divisor (MCD) utilizando el algoritmo de Euclides en lenguaje ensamblador ARM64. La función se expone como una biblioteca compartida (`.so`) para ser utilizada por otros programas.
+## **Instalación de Software Necesario**
 
-### **Funcionamiento**
-1. **Comparación**: Los valores de los registros `x0` y `x1` son comparados.
-2. **Decisión**:
-   - Si ambos valores son iguales (`beq`), la función termina y el valor del MCD se retorna.
-   - Si `x1 < x0`, los valores son intercambiados.
-   - En otros casos, se resta `x1 - x0`.
-3. **Recursión**: La función se llama a sí misma hasta que los valores sean iguales.
-4. **Resultado**: El MCD se devuelve en el registro `x0`.
+### Paso 1: Actualizar el Sistema
+Ejecute los siguientes comandos para actualizar los paquetes existentes:
+```bash
+sudo apt update
+sudo apt upgrade -y
+```
 
-### **Código**
+### Paso 2: Instalar `gcc` y Herramientas de Desarrollo
+Instale el compilador GCC para ensamblador ARM64 y las herramientas básicas de desarrollo:
+```bash
+sudo apt install -y gcc make build-essential
+```
 
+### Paso 3: Instalar `mono` para Soporte de C#
+Mono es una herramienta para compilar y ejecutar programas en C#. Instale `mono-complete`:
+```bash
+sudo apt install -y mono-complete
+```
+
+Verifique la instalación ejecutando:
+```bash
+mono --version
+```
+
+### Paso 4: Instalar el Editor de Texto (Opcional)
+Recomendado para editar código:
+```bash
+sudo apt install -y nano
+```
+
+---
+
+## **Compilación del Código**
+
+### Paso 1: Preparar la Macro en Ensamblador
+Cree un archivo llamado `gcd.s` con el siguiente contenido:
 ```assembly
 // Casildo Rubalcava Aaron 22212222
 // Programa en assembly que es la llamada para el programa principal
@@ -43,32 +71,13 @@ end:
     ret                 // Retorna
 ```
 
-### **Registros Utilizados**
-- `x0`: Almacena uno de los números iniciales y, posteriormente, el resultado (MCD).
-- `x1`: Almacena el otro número inicial.
+Compile el archivo para generar la biblioteca compartida:
+```bash
+gcc -shared -o libgcd.so gcd.s
+```
 
----
-
-## **Programa en C#**
-
-### **Nombre del Archivo**
-`Program.cs`
-
-### **Descripción**
-Este programa permite al usuario ingresar dos números para calcular su MCD utilizando la función implementada en ensamblador ARM64. Se establece una comunicación con la macro ensambladora a través de interoperabilidad de C# con bibliotecas compartidas (`DllImport`).
-
-### **Funcionamiento**
-1. **Interacción con el Usuario**:
-   - Solicita al usuario ingresar dos números enteros.
-2. **Interoperabilidad**:
-   - Llama a la función `gcd` implementada en ensamblador a través de la biblioteca `libgcd.so`.
-3. **Cálculo del MCD**:
-   - Utiliza la función `gcd` para realizar el cálculo.
-4. **Salida**:
-   - Muestra el resultado al usuario.
-
-### **Código**
-
+### Paso 2: Crear el Programa en C#
+Cree un archivo llamado `Program.cs` con el siguiente contenido:
 ```csharp
 // Casildo Rubalcava Aaron 222122222
 // Este programa calcula el MCD en un par de números ingresados por el usuario
@@ -94,45 +103,60 @@ class Program
 }
 ```
 
-### **Detalles Técnicos**
-- **Biblioteca Compartida**: 
-  - `DllImport` enlaza la función ensambladora como un método externo.
-  - La biblioteca compartida se compila previamente desde el ensamblador usando `gcc`.
-- **Interacción del Usuario**:
-  - `Console.ReadLine()` captura los números ingresados por el usuario.
-  - `int.Parse()` convierte las entradas a enteros.
-- **Resultado**:
-  - Se imprime el MCD calculado.
+Compile el programa usando Mono:
+```bash
+mcs -out:Program.exe Program.cs
+```
+
+### Paso 3: Ejecutar el Programa
+1. Asegúrese de que la biblioteca `libgcd.so` esté en el mismo directorio que `Program.exe`.
+2. Ejecute el programa:
+   ```bash
+   mono Program.exe
+   ```
 
 ---
 
-## **Interacción entre los Programas**
+## **Configuración Adicional (Opcional)**
 
-### **Diagrama de Flujo**
-1. **C#**:
-   - Captura números desde la entrada estándar.
-   - Llama a la biblioteca compartida `libgcd.so` a través de `DllImport`.
-2. **Ensamblador**:
-   - Realiza el cálculo del MCD usando el algoritmo de Euclides.
-   - Retorna el resultado a `C#`.
-3. **C#**:
-   - Muestra el resultado al usuario.
+### Asegurar la Biblioteca Compartida
+Para que el programa encuentre la biblioteca sin estar en el mismo directorio, mueva `libgcd.so` a una ruta de biblioteca estándar y actualice el caché:
+```bash
+sudo cp libgcd.so /usr/lib/
+sudo ldconfig
+```
 
----
-
-## **Casos de Uso**
-
-1. **Entrada Normal**:
-   - Ejemplo:
-     - Entrada: `48` y `18`.
-     - Salida: `El MCD de 48 y 18 es: 6`.
-
-2. **Validación**:
-   - Se recomienda manejar errores en la entrada, como números negativos o valores no numéricos, en futuras versiones.
+### Instalar un Depurador (Opcional)
+Para depurar programas en ensamblador y C#, instale `gdb`:
+```bash
+sudo apt install -y gdb
+```
 
 ---
 
-## **Extensiones Sugeridas**
-1. Manejar entradas no válidas en C#.
-2. Modificar la macro ensambladora para calcular valores negativos o cero.
-3. Crear un bucle en el programa C# para realizar múltiples cálculos sin cerrar la aplicación.
+## **Pruebas**
+1. Ejecute el programa con diferentes entradas.
+2. Ejemplo:
+   ```plaintext
+   Ingrese dos números para calcular el MCD:
+   48
+   18
+   El MCD de 48 y 18 es: 6
+   ```
+
+3. Valide que el resultado sea correcto.
+
+---
+
+## **Preguntas Frecuentes**
+### ¿Qué sucede si `libgcd.so` no se encuentra?
+Asegúrese de que:
+1. La biblioteca esté en el mismo directorio o en una ubicación estándar como `/usr/lib/`.
+2. El archivo tenga permisos adecuados:
+   ```bash
+   chmod +x libgcd.so
+   ```
+
+---
+
+¡Ahora su entorno está listo para compilar y ejecutar programas en ensamblador ARM64 y C#! 🎉
