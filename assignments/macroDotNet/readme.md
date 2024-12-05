@@ -1,4 +1,3 @@
-```markdown
 # **Práctica: Implementación de un Programa en Ensamblador ARM64 y su Integración con C#**
 
 ## **Objetivo**
@@ -133,6 +132,3 @@ Aprender a desarrollar una macro en lenguaje ensamblador ARM64 para calcular el 
 1. Modifique la macro en ensamblador para manejar casos especiales como valores negativos o ceros.
 2. Añada un bucle en C# para permitir cálculos repetidos sin cerrar el programa.
 
----
-
-```
