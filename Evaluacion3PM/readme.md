@@ -1,3 +1,5 @@
+Actualizado 7 Dic œ 10_19pm
+
 Evaluaciones:
 
 - Bloque 1 en los encabezados se ve el peso de las categorias, un peso de 30% del calificado hubo pocas activides
