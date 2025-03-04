@@ -1,12 +1,49 @@
+<div align="center"> 
+<img src='https://github.com/user-attachments/assets/557f8390-faa7-418b-a2ff-900898e2c929'  height="100" />  <!-- logoSEP -->
+<img src='https://github.com/user-attachments/assets/e3f26081-87a3-4b22-8347-0abc68b2ab00'  height="100" />  <!-- logoITTazul -->
+<img src='https://github.com/user-attachments/assets/c7f4b98c-6353-42c5-897d-52f96860d9d2' width="100" height="100" /><!-- logoITTverde -->
+
+# TECNOLÓGICO NACIONAL DE MÉXICO
+
+INSTITUTO TECNOLÓGICO DE TIJUANA  
+SUBDIRECCIÓN ACADÉMICA  
+DEPARTAMENTO DE SISTEMAS Y COMPUTACIÓN  
+PERIODO:  Enero - Julio 2025
+
+Ingeniería en Sistemas Computacionales  
+Lenguaje de Interfaz  
+**SCC-1014**  
+**UNIDAD 2:**  
+Programación Básica
+
+# Introducción a los Computadores de 8 Bits y Ensamblador
+
+**Gpo. SC06**   
+
+**22211889** Castellon Godinez Hugo David  
+
+**Facilitador(a):**  
+Rene Solis Reyes  
+**Aula: 91L6**  
+**15:00 - 16:00**  
+**03/03/25**  
+ 
+</div>
+
+## Índice
+ - [Código Fuente](Codigo-Fuente)
+ - [Funcionamiento Lógico](Funcionamiento-Logico)
+ - [Demostración](Demostracion)
+
 # 1. Código fuente
 	
- 	; ===============================================
+	; ===============================================
 	; Multiplicación por sumas sucesivas con valores en registros A y B.
 	; -----------------------------------------------
 	; Troy's 8-bit computer - Emulator
 	; Código realizado por Hugo David Castellon Godinez (C22211889)
 	; ===============================================
-
+	
 		data Rb, 3		; ENTRADA Indica número multiplicando
 		sto Rb, 0x10	; Se almacena multiplicando en memoria
 		data Rb, 20		; ENTRADA Indica número multiplicador
@@ -27,7 +64,7 @@
 		mvd Ra			; Mantiene en pantalla el resultado final
 		jmp .end
 
-# 2. Funcionamiento
+# 2. Funcionamiento Lógico
 El objetivo del código es sumar un mismo número guardado en un espacio de memoria **`0x10`**, el número de veces indicadas en otro espacio
 de memoria **`0x11`**. Ésto mediante un **`.loop`** que se rompe una vez el contador **`Rc`** haya igualado al número almacenado en el espacio
 de memoria **`0x11`**. Mientras el **`.loop`** se ejecuta, los resultados de la sumatoria se almacenan en **`Ra`** que a su vez se muestran en pantalla
