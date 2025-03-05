@@ -1,0 +1,188 @@
+<table style="width:100%; text-align:center;">
+<tr>
+<td>
+
+# INSTITUTO TECNOLÓGICO DE TIJUANA
+## SUBDIRECCIÓN ACADÉMICA
+### DEPARTAMENTO DE SISTEMAS Y COMPUTACIÓN
+
+#### 1. PORTADA:
+
+**SEMESTRE:**
+ENERO-AGOSTO 2025
+
+**CARRERA:**
+INGENIERÍA EN SISTEMAS COMPUTACIONALES 
+
+**MATERIA Y SERIE:**
+LENGUAJES DE INTERFAZ
+(SCC-1014)
+
+**TÍTULO:**
+Convierta un número en binario a decimal y muéstrelo en la pantalla de 7 segmentos
+
+**UNIDAD PARA EVALUAR:**
+1
+
+**NOMBRE Y NÚMERO DE CONTROL DEL ALUMNO:**
+NUÑEZ VARGAS DAVID IGNACIO
+
+**NOMBRE DEL MAESTRO:**
+RENE SOLIS REYES
+
+**FECHA DE ENTREGA:**
+02/03/2025
+
+</td>
+</tr>
+</table>
+
+# Convierta un número en binario a decimal y muéstrelo en la pantalla de 7 segmentos
+## Descripción General
+Este programa en ensamblador convierte un número binario de 8 bits a su representación decimal y muestra el resultado en una pantalla LCD. El número binario que se va a convertir está almacenado en la variable `NUMBER`.
+
+## Variables y Constantes
+- `NUMBER`: Contiene el número binario de 8 bits que se va a convertir.
+- `ADDR`: Dirección de memoria inicial para almacenar los dígitos decimales.
+- `TERMINATOR`: Delimitador que marca el final de los dígitos en memoria.
+- `ZERO`: Valor ASCII del carácter '0' para convertir los dígitos en caracteres imprimibles.
+
+## Instrucciones Principales
+### Inicialización:
+- Se inicializa el puntero de pila (`SP`) en 255.
+- Se cargan `NUMBER` y `ADDR` en los registros `Rd` y `Ra`, respectivamente.
+- Se copia el número binario en el registro `Rb`.
+
+### Conversión a Decimal:
+- La función `toDec8` convierte el número binario a una secuencia de dígitos decimales. Cada dígito se almacena en la memoria a partir de la dirección `ADDR`.
+- Se utiliza una función de división para obtener los dígitos decimales del número binario.
+
+### Impresión en la Pantalla LCD:
+- La función `printResult` muestra los dígitos decimales en la pantalla LCD.
+  - Primero, limpia la pantalla LCD.
+  - Luego, recorre la memoria desde la dirección `ADDR` hasta encontrar el delimitador `TERMINATOR`.
+  - Convierte cada dígito decimal en su valor ASCII y lo muestra en la pantalla LCD.
+
+## Funciones Auxiliares
+- **`toDec8`**: Convierte el número binario a decimal utilizando una división repetida por 10. Los dígitos resultantes se almacenan en la memoria.
+- **`div8`**: Realiza la división de un número de 8 bits por 10 y devuelve el cociente y el resto.
+- **`printStr`**: Muestra una cadena de caracteres en la pantalla LCD (no utilizado directamente en este programa, pero puede ser útil).
+
+## Flujo del Programa
+1. Inicializa el puntero de pila y carga el número binario y la dirección de memoria.
+2. Convierte el número binario a decimal y almacena los dígitos en la memoria.
+3. Muestra los dígitos decimales en la pantalla LCD.
+4. Mantiene el programa en ejecución en un bucle infinito para que el resultado permanezca visible.
+
+
+
+# Código de Conversión Binaria a Decimal
+
+```assembly
+;Nombre: Nuñez Vargas David Ignacio
+;Numero de control: 22211624
+
+NUMBER = 135       ; Número binario de 8 bits que se va a convertir.
+ADDR   = 0         ; Dirección de memoria inicial para almacenar los dígitos decimales.
+TERMINATOR = 255   ; Delimitador para marcar el final de los dígitos en memoria.
+ZERO = 48          ; Valor ASCII para el carácter '0'.
+
+DISPLAY_MODE = LCD_CMD_DISPLAY | LCD_CMD_DISPLAY_ON  ; Modo de visualización del LCD.
+main:
+    data SP, 255     ; Inicializa el stack pointer en la dirección 255.
+    data Rd, NUMBER  ; Carga el número binario en el registro Rd.
+    data Ra, ADDR    ; Carga la dirección de memoria inicial en el registro Ra.
+    mov Rb, Rd       ; Copia el número binario al registro Rb.
+
+    call toDec8      ; Llama a la función para convertir el número a decimal.
+
+    .output:
+        call printResult  ; Llama a la función para mostrar el resultado en el LCD.
+        jmp .output       ; Bucle infinito para mantener el programa en ejecución.
+
+printResult:
+    lcc #LCD_CMD_CLEAR  ; Limpia el display LCD.
+    data Ra, ADDR       ; Carga la dirección de memoria inicial en Ra.
+    data Rb, TERMINATOR ; Carga el delimitador en Rb.
+    data Rd, NUMBER    ; Carga el número binario en Rd.
+
+    .findEnd:
+        lod Rc, Ra      ; Carga el valor en la dirección Ra en Rc.
+        cmp Rb, Rc      ; Compara Rc con el delimitador.
+        jz .startPrint  ; Si son iguales, comienza a imprimir.
+        inc Ra          ; Incrementa la dirección de memoria.
+        jmp .findEnd    ; Repite el proceso.
+
+    .startPrint:
+        data Rc, ADDR   ; Carga la dirección de memoria inicial en Rc.
+
+    .nextDigit:
+        dec Ra          ; Decrementa la dirección de memoria.
+        lod Rd, Ra      ; Carga el dígito en Rd.
+        data Rb, ZERO   ; Carga el valor ASCII de '0' en Rb.
+        add Rd          ; Convierte el dígito a su valor ASCII.
+        lcd Rd          ; Muestra el dígito en el LCD.
+        mov Rb, Ra      ; Copia la dirección actual a Rb.
+        cmp Rb, Rc      ; Compara Rb con la dirección inicial.
+        jz .return      ; Si son iguales, termina.
+        jmp .nextDigit  ; Repite el proceso.
+
+    .return:
+        ret             ; Retorna de la función.
+
+toDec8:
+    push Ra          ; Guarda el valor de Ra en el stack.
+    push Rb          ; Guarda el valor de Rb en el stack.
+
+    .nextDigit:
+        pop Ra       ; Recupera el número restante desde el stack.
+        data Rb, 10  ; Carga el divisor (10) en Rb.
+        call div8    ; Llama a la función de división.
+        pop Rb       ; Recupera la dirección de memoria desde el stack.
+        sto Rb, Ra   ; Almacena el resto (dígito decimal) en la dirección Rb.
+        inc Rb       ; Incrementa la dirección de memoria.
+        push Rb      ; Guarda la nueva dirección en el stack.
+        tst Rc       ; Verifica si el cociente es cero.
+        jz .return   ; Si es cero, termina.
+        push Rc      ; Guarda el cociente en el stack.
+        jmp .nextDigit  ; Repite el proceso.
+
+    .return:
+        pop Rb       ; Recupera la dirección de memoria desde el stack.
+        data Ra, TERMINATOR  ; Carga el delimitador en Ra.
+        sto Rb, Ra   ; Almacena el delimitador en la última posición.
+        ret          ; Retorna de la función.
+
+div8:
+    data Rc, 0x00  ; Inicializa el cociente en 0.
+
+    .step:
+        cmp Rb, Ra  ; Compara el divisor (Rb) con el dividendo (Ra).
+        jz .add     ; Si son iguales, salta a .add.
+        jc .return  ; Si Rb > Ra, termina.
+
+    .add:
+        inc Rc      ; Incrementa el cociente.
+        sub Ra      ; Resta el divisor (Rb) del dividendo (Ra).
+        jnz .step   ; Si Ra no es cero, repite el proceso.
+
+    .return:
+        ret        ; Retorna de la función.
+
+.printStr:
+    mov Rc, Ra      ; Copia la dirección de la cadena a Rc.
+
+    .nextChar:
+        lod Ra, Rc  ; Carga el carácter en Ra.
+        tst Ra      ; Verifica si el carácter es cero (fin de cadena).
+        jz .done    ; Si es cero, termina.
+        lcd Ra      ; Muestra el carácter en el LCD.
+        inc Rc      ; Incrementa la dirección de memoria.
+        jmp .nextChar  ; Repite el proceso.
+
+    .done:
+        ret         ; Retorna de la función.
+```
+
+
+
