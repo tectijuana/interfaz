@@ -17,7 +17,6 @@ Dia 7 de mayo
 
 [![Need title card for new micro tutorial "Cat Napping" · Issue #4791 ...](https://tse2.mm.bing.net/th?id=OIP.Wi4Clo3YJUYODQ6P82YhVAHaEs\&pid=Api)](https://github.com/microsoft/pxt-microbit/issues/4791)
 
-Aquí tienes una guía en formato Markdown para una práctica basada en el proyecto **"Cat Napping"** de micro:bit, utilizando **MicroPython**.
 
 ---
 
