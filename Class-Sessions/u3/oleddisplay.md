@@ -10,4 +10,5 @@ B.- Despliegue de una pre-prompt usando el API de OpenAI ChatGTP (o similares)
 
 Observaciones:
 https://www.youtube.com/results?search_query=picow+oled+animation
+
 https://www.youtube.com/results?search_query=openai+api+on+raspberry+picow+display
