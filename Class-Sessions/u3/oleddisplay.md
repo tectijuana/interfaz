@@ -1,4 +1,4 @@
-![image](https://gist.github.com/user-attachments/assets/ef9c4b3e-9144-4705-adf4-7ce972318053)
+![image](https://github.com/user-attachments/assets/7bdcd6c7-ea43-4f7d-8355-56ced9f5d128)
 
 Elabore dos ejercicios (puede unificarlos)
 
