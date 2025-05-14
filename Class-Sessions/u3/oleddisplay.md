@@ -1,6 +1,8 @@
 ![image](https://github.com/user-attachments/assets/7bdcd6c7-ea43-4f7d-8355-56ced9f5d128)
 
-Elabore dos ejercicios (puede unificarlos)
+Elabore dos ejercicios (puede unificarlos) en el emulador WOKWI con PICOW
+
+https://wokwi.com/projects/new/micropython-pi-pico-w
 
 A.- Menu interactivo con botones:
 - De el clima de una region especifica a su gusto, con 5 iconos/bitmaps animados simples.
