@@ -1,1 +1,0 @@
-# Módulo de examenes parciales
