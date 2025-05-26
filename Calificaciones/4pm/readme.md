@@ -1,1 +1,1 @@
-Estar atentos al whazap, lunes tengo 450 examenes de admision en la PFLC de 1400 de todas la semana, estare apoyando esporadicamente de 7-1pm pero habra oportunidad de avanzar, pero ya solo queda este curso 
+Estar atentos al whazap, lunes tengo 450 examenes de admision en la PFLC (es por PC local) de 1400 de todas la semana, estare apoyando esporadicamente de 7-1pm pero habra oportunidad de avanzar, pero ya solo queda este curso 
