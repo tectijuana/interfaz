@@ -31,3 +31,14 @@ Para más detalles, consulta [LICENSE.md](./LICENSE.md).
 
 Además se aplica el [Código de Conducta](./CODE_OF_CONDUCT.md) y las guías para contribuir se indican en [CONTRIBUTING.md](./CONTRIBUTING.md).
 
+---
+
+## English summary
+
+**Course Title:** Interface Languages  
+**What you’ll find:** syllabus, lessons, assignments, rubrics, code templates.  
+**License:** CC BY-NC-SA 4.0 (see LICENSE.md)  
+**Conduct & contributions:** see CODE_OF_CONDUCT.md and CONTRIBUTING.md  
+**Getting started:** see SYLLABUS.md and units/U01-introduccion/
+
+
