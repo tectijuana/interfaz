@@ -25,4 +25,9 @@ Repositorio oficial del curso **Lenguajes de Interfaz** (Tec Tijuana). Aquí enc
 - Navegador moderno con herramientas de desarrollo.
 
 ## Licencia
-Este contenido se distribuye bajo la licencia indicada CC BY-NC-SA 4.0
+
+Este curso y sus materiales se distribuyen bajo la licencia **Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International (CC BY-NC-SA 4.0)**.  
+Para más detalles, consulta [LICENSE.md](./LICENSE.md).
+
+Además se aplica el [Código de Conducta](./CODE_OF_CONDUCT.md) y las guías para contribuir se indican en [CONTRIBUTING.md](./CONTRIBUTING.md).
+
