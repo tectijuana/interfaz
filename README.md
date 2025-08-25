@@ -125,7 +125,7 @@ El curso adopta metodologías activas y apoyos tecnológicos inspirados en insti
 * **Aspiración y creatividad:** Se motivará a los estudiantes a ver más allá del currículo mínimo. Charlas breves sobre tendencias (p.ej., *soft* talk sobre cómo Apple diseña sus chips ARM, o cómo RISC-V puede cambiar la industria) se intercalarán para inspirar. Los estudiantes tendrán espacios para investigar y compartir (por ejemplo, exposiciones cortas sobre temas asignados, como mencionar algún uso real de Bash scripting en DevOps, o un proyecto open-source relevante en RISC-V).
 * **Recursos abiertos:** Siguiendo la filosofía de aprendizaje abierto de Harvard/MIT, se proporcionará una lista de recursos abiertos: manuales gratuitos, documentación oficial, foros, y se incentivará a los alumnos a utilizarlos. Por ejemplo, en lugar de un libro de texto cerrado, se usarán manuales en línea y referencias técnicas accesibles libremente.
 
-## Uso de ChatGPT-4.5 como Asistente Didáctico
+## Uso de ChatGPT-5 como Asistente Didáctico
 
 Un componente innovador será la incorporación responsable de herramientas de IA generativa (como ChatGPT 4.5) en el proceso de aprendizaje:
 
