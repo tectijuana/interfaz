@@ -23,3 +23,8 @@ Este proyecto adopta el **Contributor Covenant**, una guía reconocida internaci
 Los incumplimientos pueden dar lugar a advertencias o, en casos graves, a la expulsión del repositorio o actividades relacionadas.  
 
 Para reportes: abrir un issue con la etiqueta `conduct` o contactar al responsable del curso.
+
+## Normas del repositorio
+
+- Respeto y colaboración están garantizados bajo nuestro [Código de Conducta](./CODE_OF_CONDUCT.md).
+- Si deseas contribuir, revisa nuestra guía en [CONTRIBUTING.md](./CONTRIBUTING.md) para conocer el flujo de PR, convención de nombres, formato y buenas prácticas.
