@@ -25,4 +25,4 @@ Repositorio oficial del curso **Lenguajes de Interfaz** (Tec Tijuana). Aquí enc
 - Navegador moderno con herramientas de desarrollo.
 
 ## Licencia
-Este contenido se distribuye bajo la licencia indicada en [LICENSE](./LICENSE).
+Este contenido se distribuye bajo la licencia indicada CC BY-NC-SA 4.0
