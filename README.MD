@@ -1,44 +1,59 @@
-# Lenguajes de Interfaz
+# Curso: Lenguajes de Interfaz
 
-Repositorio oficial del curso **Lenguajes de Interfaz** (Tec Tijuana). Aquí encontrarás plan de estudios, políticas, lecciones, prácticas, materiales y rúbricas.
 
-## Objetivos de aprendizaje
-- Modelar interfaces web accesibles y responsivas.
-- Aplicar semántica HTML5 y sistemas de layout modernos (Flexbox, Grid).
-- Diseñar interacciones con JavaScript sin sacrificar rendimiento ni accesibilidad.
-- Evaluar usabilidad y conformidad con WCAG 2.x / WAI-ARIA.
+Repositorio oficial del curso **Lenguajes de Interfaz**. Aquí encontrarás materiales, ejemplos y prácticas relacionadas con **programación en ensamblador** y **lenguajes de bajo nivel** para arquitecturas ARM (32/64 bits) y RISC‑V.
 
-## Estructura
-- `units/` Unidades y sus lecciones/prácticas.
-- `materials/` Slides, lecturas y ejemplos adicionales.
-- `docs/` Guías de entorno, estilo y referencias.
-- `templates/` Plantillas para crear contenido uniforme.
-- `tools/` Scripts para validación y formateo.
 
-## Cómo navegar
-1. Revisa el [SYLLABUS](./SYLLABUS.md) y el [SCHEDULE](./SCHEDULE.md).
-2. Entra a `units/U01-introduccion/` y sigue las lecciones en orden.
-3. Entregas: cada práctica indica entregables y rúbrica.
+## 🎯 Objetivos del curso
+- Comprender el funcionamiento de microprocesadores ARM y RISC‑V a nivel de registros e instrucciones.
+- Aplicar convenciones de llamadas (ABI) y preservación de contexto en rutinas.
+- Programar rutinas en ensamblador para operaciones aritméticas, manejo de memoria y periféricos.
+- Desarrollar prácticas de laboratorio con simuladores y hardware real.
 
-## Requisitos
-- Node.js LTS y un editor con soporte para ESLint/Prettier.
-- Navegador moderno con herramientas de desarrollo.
 
-## Licencia
+## 🗂 Estructura del repositorio
+```plaintext
+interfaz/
+├── README.md ← Presentación del curso
+├── AI_GUIDANCE.md ← Uso responsable de IA en el curso
+├── CONTRIBUTING.md ← Guía para colaborar
+├── LICENSE ← Licencia de uso
+├── docs/ ← Documentación extendida
+├── ejemplos/ ← Códigos en ARM y RISC‑V
+├── practicas/ ← Actividades de laboratorio
+├── proyecto_final/ ← Proyecto integrador
+└── recursos/ ← Manuales, datasheets y plantillas
+```
 
-Este curso y sus materiales se distribuyen bajo la licencia **Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International (CC BY-NC-SA 4.0)**.  
-Para más detalles, consulta [LICENSE.md](./LICENSE.md).
 
-Además se aplica el [Código de Conducta](./CODE_OF_CONDUCT.md) y las guías para contribuir se indican en [CONTRIBUTING.md](./CONTRIBUTING.md).
+## 📘 Contenidos
+- **ARMv7 y ARMv8 (32/64 bits)**: instrucciones, modos de direccionamiento, ABI.
+- **RISC‑V (RV32I/RV64I)**: instrucciones básicas, control de flujo, extensiones opcionales.
+- **Convenciones**: preservación de registros, stack frames, llamadas C ↔ ASM.
+- **Interrupciones y E/S mapeada**.
+
+
+## 💻 Requisitos previos
+- Conocimientos básicos de arquitectura de computadoras.
+- Experiencia con programación en C.
+- Familiaridad con herramientas como `gcc`, `as`, `ld`, `qemu` o simuladores de RISC‑V.
+
+
+## 📚 Bibliografía recomendada
+- ARM Architecture Reference Manual.
+- Patterson & Hennessy – *Computer Organization and Design RISC‑V Edition*.
+- Sloss, Symes & Wright – *ARM System Developer’s Guide*.
+
+
+## 🤝 Contribuciones
+Consulta la guía [CONTRIBUTING.md](./CONTRIBUTING.md) para aportar mejoras.
+
+
+## 🔎 Uso responsable de IA
+Este curso cuenta con la guía [AI_GUIDANCE.md](./AI_GUIDANCE.md), donde se explica cómo usar Inteligencia Artificial como apoyo didáctico sin sustituir el aprendizaje experimental ni comprometer la honestidad académica.
+
 
 ---
 
-## English summary
 
-**Course Title:** Interface Languages  
-**What you’ll find:** syllabus, lessons, assignments, rubrics, code templates.  
-**License:** CC BY-NC-SA 4.0 (see LICENSE.md)  
-**Conduct & contributions:** see CODE_OF_CONDUCT.md and CONTRIBUTING.md  
-**Getting started:** see SYLLABUS.md and units/U01-introduccion/
-
-
+> 📣 Este curso es parte del esfuerzo por ofrecer materiales abiertos en ingeniería desde Latinoamérica. ¡Tu colaboración es bienvenida!
