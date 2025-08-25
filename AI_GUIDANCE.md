@@ -1,52 +1,7 @@
-# AI_GUIDANCE.md – Uso responsable de IA en el curso *Interfaces Hombre-Máquina*
 
-Este documento orienta a los estudiantes sobre el uso ético y responsable de **Inteligencia Artificial (IA)** en el curso *Interfaz*, enfocado en interfaces gráficas, interacción humano-computadora y diseño de experiencias de usuario.
-
-## 🎯 Objetivo
-Aprovechar la IA como herramienta de apoyo en el diseño y desarrollo de interfaces sin reemplazar la creatividad, el razonamiento crítico ni el trabajo individual.
-
-## ✅ Usos recomendados
-- Generar ideas iniciales para prototipos de interfaces (wireframes, flujos de usuario).
-- Obtener sugerencias de diseño accesible (contrastes, tipografías, layouts responsivos).
-- Generar fragmentos de código de referencia en frameworks de interfaces (HTML/CSS, JavaScript, React, Flutter, etc.).
-- Pedir explicaciones sobre buenas prácticas de usabilidad, accesibilidad y UX.
-- Traducir contenidos o preparar documentación técnica para usuarios.
-
-## 🚫 Usos no permitidos
-- Copiar diseños completos sugeridos por IA sin modificaciones.
-- Presentar proyectos finales generados únicamente por IA.
-- Usar IA como reemplazo de pruebas con usuarios o validación de accesibilidad.
-
-## 📋 Recomendaciones prácticas
-1. **Documenta la asistencia de IA**: indica qué parte fue apoyada por IA (ej. sugerencia de layout, código base de un componente).
-2. **Itera y valida**: ajusta el diseño según retroalimentación de usuarios, no solo según IA.
-3. **Enfócate en el aprendizaje**: comprende la justificación detrás de cada decisión de diseño o código.
-
-## 📌 Declaración sugerida en entregas
-
-```text
-Asistencia de IA: Describa qué pidió, qué recibió y qué cambios realizó.
-Herramienta: (ChatGPT u otra)
-Fecha:
-Tecnología utilizada (ej. React, Flutter, HTML/CSS):
-```
-
-## 📌 Ejemplo
-```text
-Asistencia de IA: Consulté a ChatGPT para sugerir un diseño de menú lateral en React. Usé la propuesta como base, cambié la paleta de colores y validé la accesibilidad con herramientas de contraste.
-Herramienta: ChatGPT (GPT-5)
-Fecha: 2025-08-25
-Tecnología: React con Tailwind CSS
-```
-
----
-
-> ℹ️ En interfaces hombre-máquina, la IA puede inspirar y sugerir, pero la **experiencia del usuario real y la validación con pruebas** son insustituibles.
-
----
 ## AI_GUIDANCE.md – Curso *Lenguajes de Interfaz* (ARM 32/64 y RISC‑V)
 
-```markdown
+
 # Guía de uso responsable de IA en *Lenguajes de Interfaz*
 
 Este curso aborda ensamblador y conceptos de interfase a bajo nivel (ARM 32/64 y RISC‑V). Usa esta guía para aprovechar herramientas de IA (p.ej., ChatGPT) sin comprometer la integridad académica ni la comprensión técnica. (Ver descripción del repo).  
