@@ -35,7 +35,7 @@
 # 🎬 SAGA: “iCODE: LA INTERFAZ DE LOS GEEKS”
 
 ```
-# 📘 Práctica: Acceso Remoto a EC2 ARM64 con Tailscale
+# 📘 Práctica: Acceso Remoto a EC2 ARM64 con Tailscale para compilar en Iphone por las restricciones del fabricante.
 
 
 ## 🎯 Objetivo
