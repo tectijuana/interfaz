@@ -105,8 +105,8 @@ En tu EC2 instala lo básico con la practica de COMPILADOR EN AWS:
    https://github.com/tectijuana/interfaz/tree/main/units/U01.1-setupCompilador
 
 🔹 Parte 7 – Probar un programa en ensamblador
-- utiliza editor desde como _$ nano_ u otro que le agrade:
-- 
+Utiliza editor desde como _$ nano_ u otro que le agrade:
+  
 Ejemplo hola.s:
 
 ```asm
