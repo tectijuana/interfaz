@@ -399,34 +399,84 @@ msg:
 Guarda con **CTRL+O, ENTER, CTRL+X**.
 
 ---
+## 2. Compilación y depuracion con GEF
 
-## 2. Compilar y enlazar con clang + lld
-
-Ejecuta:
-
-```bash
-clang -fuse-ld=lld -nostdlib -Wl,-e,_start -o hello hello.S
-```
-
-Explicación rápida:
-
-* `-nostdlib` → no usa libc, solo tu `_start`.
-* `-Wl,-e,_start` → define `_start` como punto de entrada.
-* `-fuse-ld=lld` → usa el linker de LLVM que ya tienes.
+# ✅ Práctica: Instalar GEF para GDB en Termux (ARM64 / Raspberry Pi)
 
 ---
 
-## 3. Ejecutar
+## 🧠 ¿Qué es GEF?
+
+GEF (GDB Enhanced Features) es un conjunto de extensiones para el depurador GDB, ideal para programar y depurar en Assembly (como ARM64).
+
+---
+
+## 🛠️ Requisitos
+
+Abre Termux y ejecuta:
 
 ```bash
-./hello
+pkg update && pkg upgrade -y
+pkg install python python-pip git gdb -y
+```
+
+---
+
+## 🚀 Clonar GEF
+
+```bash
+git clone https://github.com/hugsy/gef.git /data/data/com.termux/files/home/gef
+```
+
+---
+
+## ⚙️ Activar GEF en GDB
+
+Este paso crea el archivo `.gdbinit` con la ruta **absoluta**:
+
+```bash
+echo 'source /data/data/com.termux/files/home/gef/gef.py' > /data/data/com.termux/files/home/.gdbinit
+```
+
+---
+
+## 🧪 Probar que funciona
+
+Lanza GDB el depurador:
+
+```bash
+gdb
 ```
 
 Y deberías ver:
 
 ```
-Hola Mundo desde ARM64 en Termux!
+GEF for linux ready, type `gef` to start, `gef config` to configure
 ```
+para salir solo teclea la salida universal: **"q"**
 
 ---
+
+## 🧠 Tips adicionales
+
+* Para que GDB depure bien tus archivos `.s` (ensamblador), compílalos con la opción `-g`, ejemplo:
+
+```bash
+as -g hola.s -o hola.o
+ld hola.o -o hola
+gdb ./hola
+```
+
+* En GDB puedes usar:
+
+  ```bash
+  start       # iniciar ejecución
+  stepi       # siguiente linea y en la parte superor se ven los registros, etc.
+  break main  # poner breakpoints
+  next        # siguiente instrucción
+  si          # step instruction
+  x/x $sp     # ver contenido de stack
+  ```
+
+finalmente recuerda "q" para salir del depurador GDB (con GEF)
 
