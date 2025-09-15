@@ -99,6 +99,37 @@ En iPhone ( iSH / Termius):
 ```bash
 ssh ubuntu@100.x.y.z
 ```
+🔹 Parte 6 – Preparar el entorno ARM64 Assembly
+En tu EC2 instala lo básico con la practica de COMPILADOR EN AWS:
+   https://github.com/tectijuana/interfaz/tree/main/units/U01.1-setupCompilador
 
+🔹 Parte 7 – Probar un programa en ensamblador
+- utiliza editor desde como _$ nano_ u otro que le agrade:
+- 
+Ejemplo hola.s:
 
+```asm
+// hola.s - ARM64 Assembly
+// Versión C (comentada):
+// #include <stdio.h>
+// int main() { printf("Hola mundo\n"); return 0; }
 
+.global _start
+
+.section .data
+msg:    .asciz "Hola mundo\n"
+
+.section .text
+_start:
+    // write(1, msg, len)
+    mov x8, 64          // syscall: write
+    mov x0, 1           // fd = stdout
+    ldr x1, =msg        // buffer
+    mov x2, 11          // length
+    svc 0
+
+    // exit(0)
+    mov x8, 93          // syscall: exit
+    mov x0, 0
+    svc 0
+```
