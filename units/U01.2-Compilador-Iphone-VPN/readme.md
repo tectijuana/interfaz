@@ -43,6 +43,7 @@
 - Instalar **Tailscale** usando el correo personal de **Gmail** (no institucional).  
 - Conectarse desde un **celular** (para este caso iPhone) a la VM mediante **red privada Tailscale**.  
 - Probar compilación de un programa **ARM64 assembly**.
+- Grabar en LOOM.com (el demo solo da 5 minutos) del logro final mostrando fecha y hora, y modificacion del enecabezado del programa
 
 ---
 
