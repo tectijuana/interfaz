@@ -44,7 +44,8 @@ zip \
 python \
 python-pip \
 figlet \
-mc
+mc \
+mandoc
 ```
 ----
 
@@ -354,3 +355,78 @@ pip setup...
 Writing to /data/data/com.termux/files/usr/etc/pip.conf
 ~ $
 ```
+---
+
+Ya tenemos **todo el toolchain instalado en Termux** 
+
+Aquí va el ejemplo mínimo y probado en Termux:
+
+---
+
+## 1. Crear el archivo fuente
+
+Edita con `nano` o `vim`:
+
+```bash
+nano hello.S
+```
+
+Pega este código:
+
+```asm
+    .section .text
+    .global _start
+
+_start:
+    // write(1, msg, len)
+    mov     x0, #1              // fd = 1 (stdout)
+    ldr     x1, =msg            // buf = &msg
+    mov     x2, #len            // count = len
+    mov     x8, #64             // syscall write = 64
+    svc     #0
+
+    // exit(0)
+    mov     x0, #0              // status = 0
+    mov     x8, #93             // syscall exit = 93
+    svc     #0
+
+    .section .rodata
+msg:
+    .ascii  "Hola Mundo desde ARM64 en Termux!\n"
+    .equ    len, . - msg
+```
+
+Guarda con **CTRL+O, ENTER, CTRL+X**.
+
+---
+
+## 2. Compilar y enlazar con clang + lld
+
+Ejecuta:
+
+```bash
+clang -fuse-ld=lld -nostdlib -Wl,-e,_start -o hello hello.S
+```
+
+Explicación rápida:
+
+* `-nostdlib` → no usa libc, solo tu `_start`.
+* `-Wl,-e,_start` → define `_start` como punto de entrada.
+* `-fuse-ld=lld` → usa el linker de LLVM que ya tienes.
+
+---
+
+## 3. Ejecutar
+
+```bash
+./hello
+```
+
+Y deberías ver:
+
+```
+Hola Mundo desde ARM64 en Termux!
+```
+
+---
+
