@@ -84,10 +84,10 @@ sudo tailscale up
 Verfica:
 ```bash
 tailscale ip -4
-# Activando el servicio de SSH remoto por Tailscale y no por AWS, te pedirá autorización.
-tailscale up --ssh --accept-routes
+# Activando el servicio de SSH remoto por Tailscale y no por AWS
+sudo tailscale up --ssh --accept-routes
 ```
-Te dará algo tipo 100.x.y.z → esa será la IP privada
+Te dará algo tipo 100.x.y.z → esa será la IP privada, te pedirá autorización.
 
 🔹 Parte 4 – Instalar Tailscale en tu Celular
 - Descarga Tailscale en Android/iOS desde la tienda.
