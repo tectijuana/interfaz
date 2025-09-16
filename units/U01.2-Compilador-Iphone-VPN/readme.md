@@ -47,7 +47,7 @@
 
 ---
 
-## 🔹 Parte 1 – Crear instancia EC2 Ubuntu ARM64 en AWS Academy
+## 🔹 Parte 1 – Crear instancia EC2 Ubuntu ARM64 en AWS Academy (si ya esta lista una usarla)
 1. Entra a [AWS Academy Learner Lab](https://awsacademy.instructure.com/).  
 2. Abre la **AWS Management Console**.  
 3. Ve a **EC2 → Launch Instance**.  
@@ -84,6 +84,8 @@ sudo tailscale up
 Verfica:
 ```bash
 tailscale ip -4
+# Activando el servicio de SSH remoto por Tailscale y no por AWS, te pedirá autorización.
+tailscale up --ssh --accept-routes
 ```
 Te dará algo tipo 100.x.y.z → esa será la IP privada
 
