@@ -1,6 +1,5 @@
 ### Ulises Hernandez Bojorquez - 23210598 - Rother22
 ---
-## 📖 Introducción
 La **emulación de hardware** permite simular el comportamiento de una arquitectura de computadora en otra completamente diferente.  
 En el campo de la *ingeniería de sistemas*, **QEMU (Quick EMUlator)** se ha consolidado como una herramienta fundamental para **desarrollar, probar e investigar software** para arquitecturas **ARM**, las cuales dominan el mercado de:
 
