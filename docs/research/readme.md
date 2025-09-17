@@ -1,3 +1,4 @@
+<img width="762" height="800" alt="GitHub Mascor typing" src="https://github.com/user-attachments/assets/388a523e-c3ed-4388-9867-bce1b82fcade" />
 
 
 ### ✅ **Esquema del Proyecto de Investigación**
