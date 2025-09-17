@@ -14,10 +14,6 @@ https://cpu.visualrealmsoftware.com/?utm_source=chatgpt.com
 
 ---
 
-¡Claro! Aquí tienes una explicación clara y breve del **Troy's Breadboard Computer** como una **puerta de entrada ideal al mundo del lenguaje ensamblador**, especialmente útil antes de saltar a **ARM Assembly**.
-
----
-
 ## 🧠 ¿Qué es el Troy's Breadboard Computer?
 
 Es una **computadora educativa de 8 bits** diseñada por **Troy Schrapel**, que funciona sobre una arquitectura sencilla pero completamente funcional. Simula:
