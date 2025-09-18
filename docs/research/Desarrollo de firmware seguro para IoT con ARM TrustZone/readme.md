@@ -8,13 +8,12 @@
 ## 📚 Bibliografía (IEEE)
 
 # Desarrollo de firmware seguro para IoT con ARM TrustZone
-# Desarrollo de firmware seguro para IoT con ARM TrustZone
+
 
 ## Introducción
 El Internet de las Cosas (IoT) mete millones de microcontroladores a internet—sensores, cerraduras, medidores, wearables—y cada uno puede convertirse en puerta de entrada si el firmware no está blindado. **ARM TrustZone para ARMv8-M** ofrece aislamiento por hardware entre un mundo **Seguro (S)** y otro **No Seguro (NS)**, de modo que el código crítico (claves, crypto, attestation, almacenamiento protegido) viva en un entorno separado y con fronteras bien definidas. El resultado: una base para implementar **arranque verificado**, **servicios de seguridad estandarizados (PSA APIs)** y **actualizaciones seguras** a lo largo de la vida del dispositivo. :contentReference[oaicite:0]{index=0}
 
 ---
-![Arquitectura ARM TrustZone](https://upload.wikimedia.org/wikipedia/commons/thumb/4/4c/ARM_TrustZone.svg/800px-ARM_TrustZone.svg.png)
 
 ### 1) Aislamiento por hardware con TrustZone-M
 En Cortex-M con ARMv8-M, TrustZone separa ejecución y memoria en **Secure** y **Non-Secure**. La **Security Attribution Unit (SAU)** asigna atributos de seguridad a rangos de memoria y periféricos; algunos SoC añaden una **Implementation-Defined Attribution Unit (IDAU)** para granularidad adicional conforme al mapeo físico. Las interrupciones, vectores y hasta SysTick pueden tener bancos/atributos independientes, lo que reduce superficies de ataque y asegura que sólo el mundo S acceda a secretos y periféricos sensibles. :contentReference[oaicite:1]{index=1}
