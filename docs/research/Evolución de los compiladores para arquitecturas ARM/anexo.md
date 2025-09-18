@@ -8,7 +8,7 @@
 **Instrucción:**  
 Presentame informacion general sobre el siguiente tema: *Evolución de los compiladores para arquitecturas ARM*  
 
-**Espacio para documentación:**  
+**Espacio para Reflexión:**  
 ...
 
 ---
@@ -17,7 +17,7 @@ Presentame informacion general sobre el siguiente tema: *Evolución de los compi
 **Instrucción:**  
 Implicaciones de este desarrollo en comparación al entorno actual de la tecnología  
 
-**Espacio para documentación:**  
+**Espacio para Reflexión:**  
 ...
 
 ---
@@ -26,7 +26,7 @@ Implicaciones de este desarrollo en comparación al entorno actual de la tecnolo
 **Instrucción:**  
 Compara esta información con fuentes oficiales  
 
-**Espacio para documentación:**  
+**Espacio para Reflexión:**  
 ...
 
 ---
@@ -35,7 +35,7 @@ Compara esta información con fuentes oficiales
 **Instrucción:**  
 Añade las fuentes de los sitios oficiales consultados en formato IEEE  
 
-**Espacio para documentación:**  
+**Espacio para Reflexión:**  
 ...
 
 ---
