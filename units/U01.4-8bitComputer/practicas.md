@@ -1,3 +1,5 @@
+NOTA: es Borrador no hay tema libre se asignará...
+
 
 | NombreAlumno                        | PracticaAsignada                                     |
 |:------------------------------------|:-----------------------------------------------------|
