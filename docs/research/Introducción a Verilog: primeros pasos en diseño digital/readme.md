@@ -45,8 +45,9 @@ Las instrucciones secuenciales se colocan dentro de un bloque `begin/end` y se e
 
 ## Bibliografía
 
-- Silva, L. (s. f.). *Uso de Verilog* [PDF]. Universidad Técnica Federico Santa María. Recuperado el 18 de septiembre de 2025, de [http://ramos.elo.utfsm.cl/~elo212/docs/lsilva-ap5.pdf](http://ramos.elo.utfsm.cl/~elo212/docs/lsilva-ap5.pdf)  
+[1] L. Silva, "Uso de Verilog," Universidad Técnica Federico Santa María, [PDF]. [Online]. Available: http://ramos.elo.utfsm.cl/~elo212/docs/lsilva-ap5.pdf. [Accessed: Sep. 18, 2025].
 
-- Contributors to Wikimedia projects. (2025, 27 agosto). *Verilog*. Wikipedia. [https://en-m-wikipedia-org.translate.goog/wiki/Verilog?_x_tr_sl=en&_x_tr_tl=es&_x_tr_hl=es&_x_tr_pto=tc](https://en-m-wikipedia-org.translate.goog/wiki/Verilog?_x_tr_sl=en&_x_tr_tl=es&_x_tr_hl=es&_x_tr_pto=tc)  
+[2] Contributors to Wikimedia projects, "Verilog," Wikipedia, Aug. 27, 2025. [Online]. Available: https://en-m-wikipedia-org.translate.goog/wiki/Verilog?_x_tr_sl=en&_x_tr_tl=es&_x_tr_hl=es&_x_tr_pto=tc. [Accessed: Sep. 18, 2025].
 
-- *Tutorial Verilog* (s. f.). Recuperado el 18 de septiembre de 2025, de [https://marceluda.github.io/rp_dummy/EEOF2018/Verilog_Tutorial_v1.pdf](https://marceluda.github.io/rp_dummy/EEOF2018/Verilog_Tutorial_v1.pdf)  
+[3] "Tutorial Verilog," [Online]. Available: https://marceluda.github.io/rp_dummy/EEOF2018/Verilog_Tutorial_v1.pdf. [Accessed: Sep. 18, 2025].
+ 
