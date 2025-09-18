@@ -1,4 +1,4 @@
-![Integración de IA en Documentación Técnica](https://images.unsplash.com/photo-1676299166933-31fb014fb36e?q=80&w=1200&auto=format&fit=crop)  
+![Integración de IA en Documentación Técnica](https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fwww.klippa.com%2Fwp-content%2Fuploads%2F2023%2F01%2FChatGPT-preview.jpg&f=1&nofb=1&ipt=913ceb15527144c5a68f9bb02c5fbd44dc874275cca1ad8c6ee1183fbe3c6c89)  
 
 # Integración de ChatGPT para Generación de Documentación Técnica  
 
