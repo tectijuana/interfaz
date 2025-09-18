@@ -1,3 +1,8 @@
+| **Nombre**        | **Número de control** | **Fecha**       |
+|-------------------|-----------------------|-----------------|
+| Osciel G          | 23210678             | 17/09/2025       |
+
+# Desarrollo de firmware seguro para IoT con ARM TrustZone
 # Desarrollo de firmware seguro para IoT con ARM TrustZone
 
 ## Introducción
