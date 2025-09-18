@@ -3,15 +3,13 @@
 **Nombre:** Rogelio Avilez Jr  
 **Número de control:** 22210284  
 **Tema:** Protocolos de Comunicación en Tiempo Real: CAN y LIN
+**Profesor:** René Solis
+**Materia:** Lengauje de interfaz
 
 ---
 
 ## 1. Introducción
 
-### a) ¿Por qué es importante que los dispositivos “hablen” entre sí?  
-Hoy en día, especialmente en los autos modernos, hay muchos sistemas electrónicos que necesitan trabajar juntos. Por ejemplo, cuando pisas el freno, no solo se activa el freno mecánico, también se activan sensores, luces, control de estabilidad, etc. Para que todo eso funcione bien, esos dispositivos tienen que “comunicarse” entre sí, rápido y sin errores. Ahí es donde entran los protocolos de comunicación como CAN y LIN.
-
-### b) ¿Qué es un protocolo de comunicación?  
 Un protocolo es básicamente un conjunto de reglas que permite que diferentes dispositivos electrónicos se entiendan entre sí. Es como si todos hablaran el mismo idioma. En lugar de cables individuales para cada función (como pasaba antes), ahora los sistemas se conectan a un mismo cable (un bus de datos) y se comunican mediante estos protocolos.
 
 ### c) ¿Por qué CAN y LIN?  
@@ -24,15 +22,8 @@ CAN y LIN son dos de los protocolos más usados en la industria automotriz. Ambo
 ### a) ¿Qué es el CAN y para qué sirve?  
 El protocolo CAN fue creado por Bosch para que los dispositivos electrónicos dentro de un auto pudieran comunicarse sin necesidad de una computadora central. Permite que varios dispositivos (llamados “nodos”) compartan un solo canal de comunicación, enviando y recibiendo datos de forma ordenada y rápida.
 
-### b) ¿Cómo funciona CAN de forma simple?  
+### b) ¿Cómo funciona CAN?  
 En lugar de que un dispositivo tenga que esperar a que otro termine para enviar su información, todos los dispositivos están conectados a un mismo cable y pueden intentar enviar mensajes cuando lo necesiten. Si dos intentan hablar al mismo tiempo, el sistema detecta cuál mensaje es más importante (por una especie de prioridad) y deja que ese pase primero. Así se evitan colisiones o pérdidas de datos.
-
-### c) ¿Dónde se usa CAN en la vida real?  
-Este protocolo está en casi todos los autos modernos. Por ejemplo:  
-- En el **sistema de frenos ABS**, para coordinar sensores y actuadores.  
-- En el **control del motor**, para ajustar combustible, temperatura, velocidad, etc.  
-- En sistemas como la **dirección asistida**, **control de tracción**, **airbags**, etc.  
-En general, donde hay que tomar decisiones rápidas y seguras, CAN está presente.
 
 ---
 
@@ -44,16 +35,9 @@ LIN fue creado como una solución más sencilla y barata que CAN. Está pensado 
 ### b) ¿Cómo se comunica un sistema con LIN?  
 En LIN siempre hay un “jefe” (maestro) que manda y varios “ayudantes” (esclavos) que responden. El maestro inicia la conversación preguntando algo o pidiendo datos, y solo entonces uno de los esclavos puede responder. No se interrumpen entre sí, lo que lo hace muy ordenado, aunque más lento.
 
-### c) ¿Dónde se usa LIN habitualmente?  
-LIN se utiliza en funciones más simples, como:  
-- **Subir y bajar vidrios eléctricos**  
-- **Controlar los espejos retrovisores eléctricos**  
-- **Encender luces interiores**  
-- **Sensores de lluvia o de luz**  
-
 ---
 
-## 4. Comparación entre CAN y LIN
+## 4. Tabla comparativa entre CAN y LIN
 
 | Característica       | CAN                      | LIN                          |
 |----------------------|--------------------------|------------------------------|
@@ -64,33 +48,6 @@ LIN se utiliza en funciones más simples, como:
 | Cantidad de nodos    | Hasta 32 o más           | Hasta 16 esclavos por maestro|
 | Aplicaciones         | Sistemas críticos        | Funciones auxiliares         |
 
-### a) Diferencias en velocidad y capacidad  
-CAN puede transmitir datos muy rápido, ideal para sistemas críticos. LIN es más lento, suficiente para funciones básicas. Es como comparar una autopista con una calle residencial.
-
-### b) Diferencias en estructura y funcionamiento  
-CAN permite que cualquier dispositivo hable en cualquier momento, con prioridades. LIN siempre depende de un maestro que coordina todo, haciendo el sistema más sencillo pero menos autónomo.
-
-### c) ¿Por qué se usan los dos juntos?  
-En autos modernos, CAN se encarga de partes críticas (frenos, motor) y LIN de funciones auxiliares (luces, ventanas). Así se optimiza el sistema en costo, eficiencia y seguridad.
-
----
-
-## 5. Beneficios de cada protocolo
-
-### a) Beneficios del protocolo CAN  
-- **Muy confiable**: Ideal para sistemas donde un error podría causar un accidente.  
-- **Rápido y eficiente**: Maneja muchos mensajes sin perder velocidad.  
-- **Menos cables**: Al usar un solo bus de datos, se reduce mucho el cableado.
-
-### b) Beneficios del protocolo LIN  
-- **Económico**: Más barato de implementar que CAN.  
-- **Sencillo**: Fácil de programar, entender y mantener.  
-- **Ideal para funciones secundarias**: No compite con CAN por tareas que no necesitan tanta velocidad.
-
-### c) Beneficios de usarlos combinados  
-- **Se aprovechan las ventajas de ambos**: velocidad y seguridad con CAN, bajo costo y simplicidad con LIN.  
-- **Diseños más flexibles y escalables**: Se pueden agregar más funciones sin complicar todo.  
-- **Optimización de recursos**: CAN no se satura con funciones que no lo requieren.
 
 ---
 
