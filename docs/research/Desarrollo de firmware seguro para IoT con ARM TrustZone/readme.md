@@ -5,7 +5,7 @@ El Internet de las Cosas (IoT) mete millones de microcontroladores a internet—
 
 ---
 
-## Desarrollo técnico (≥500 palabras)
+
 ### 1) Aislamiento por hardware con TrustZone-M
 En Cortex-M con ARMv8-M, TrustZone separa ejecución y memoria en **Secure** y **Non-Secure**. La **Security Attribution Unit (SAU)** asigna atributos de seguridad a rangos de memoria y periféricos; algunos SoC añaden una **Implementation-Defined Attribution Unit (IDAU)** para granularidad adicional conforme al mapeo físico. Las interrupciones, vectores y hasta SysTick pueden tener bancos/atributos independientes, lo que reduce superficies de ataque y asegura que sólo el mundo S acceda a secretos y periféricos sensibles. :contentReference[oaicite:1]{index=1}
 
