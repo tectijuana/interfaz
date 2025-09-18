@@ -2,6 +2,11 @@
 |-------------------|-----------------------|-----------------|
 | Osciel G          | 23210678             | 17/09/2025       |
 
+## 📍 Introducción
+## ⚙️ Desarrollo técnico
+## 📑 Conclusiones
+## 📚 Bibliografía (IEEE)
+
 # Desarrollo de firmware seguro para IoT con ARM TrustZone
 # Desarrollo de firmware seguro para IoT con ARM TrustZone
 
