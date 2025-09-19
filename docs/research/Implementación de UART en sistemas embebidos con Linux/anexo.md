@@ -1,5 +1,6 @@
 # Pedido de informacion detallada 
-## Prompt utilizado en Deepseek IA con busqueda en internet
+## Prompt utilizado en Deepseek IA con busqueda en internet / Deepseek Version 3.1
+
 Quiero información detallada sobre el tema de Implementación de UART en sistemas embebidos con Linux
 Con la siguiente estructura
 
@@ -187,3 +188,5 @@ UART sigue siendo un protocolo fundamental en sistemas embebidos debido a su sim
 Nota: Todas las fuentes citadas fueron verificadas para asegurar su relevancia y confiabilidad técnica. La información se compiló considerando la congruencia entre múltiples fuentes y se actualizó hasta la fecha actual (2025-09-18).
 
 ```
+## Reflexion
+Deepseek funciona muy bien para las investigaciones basadas en la web, ya que incluye una funcion para los prompts, donde al enviarle la instruccion puede dar una respuesta basada en la informacion que busco en interne, mejorando la capacidad para dar al usuario informacion veridica que compara una por una hasta dar con los datos correctos, en este trabajo me ayudo muy bien, con una buena estructura de la informacion
