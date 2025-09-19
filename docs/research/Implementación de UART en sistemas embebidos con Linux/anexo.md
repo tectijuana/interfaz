@@ -13,6 +13,7 @@ Pero tomando en cuenta y siguiendo la estructura del tema
 
 Procura que sea informacion real, veridica, de fuentes confiables, por ende verifica que el contenido sea congruente y real 
 
+# Respuesta de DeepSeek 
 ```
 # Implementación de UART en Sistemas Embebidos con Linux 
 
