@@ -3,6 +3,8 @@
 
 ## Nombre
 Axel Alvarez Estrada 
+
+
 Numero de control: 23210542  
 
 # Introduccion al tema 
@@ -84,8 +86,9 @@ options.c_cflag &= ~PARENB; // Sin paridad
 options.c_cflag &= ~CSTOPB; // 1 bit de parada
 tcsetattr(fd, TCSANOW, &options);
 ``` :cite[4]:cite[9]
-
-### Formatos de Datos<a name="formatos-de-datos"></a>
+```
+## Formatos de Datos
+```
 Una trama UART típica se compone de:
 1. **Bit de Inicio**: 1 bit en bajo.
 2. **Datos**: 5-9 bits (ej: ASCII 'S' = 0x52 → bits 1010011 en orden LSB first).
@@ -95,18 +98,18 @@ Una trama UART típica se compone de:
 Ejemplo para transmitir el carácter 'S' (ASCII 0x52) en 7 bits con paridad par:
 - Datos: `1 0 1 0 0 1 1` → orden LSB: `1 1 0 0 1 0 1`
 - Paridad: 0 (paridad par) :cite[1].
-
-### Ventajas y Desventajas<a name="ventajas-y-desventajas"></a>
-
+```
+## Ventajas y Desventajas
+```
 | **Ventajas**                                                                 | **Desventajas**                                                                 |
 |-----------------------------------------------------------------------------|--------------------------------------------------------------------------------|
 | ✅ Simplicidad de implementación y bajo costo :cite[1]:cite[6].       | ❌ Limitada detección de errores (solo paridad para bits únicos) :cite[1]. |
 | ✅ Operación asíncrona sin necesidad de reloj compartido :cite[3].        | ❌ Distancias cortas (sujeto a degradación de señal) :cite[6].             |
 | ✅ Bajo overhead de protocolo :cite[6].                                  | ❌ Velocidades moderadas vs. SPI/I2C :cite[2].                             |
 | ✅ Amplio soporte en microcontroladores y Linux :cite[8]:cite[9].     | ❌ Solo comunicación punto a punto (no multipunto nativo) :cite[2].        |
-
-### Implementación en Sistemas Embebidos con Linux<a name="implementación-en-sistemas-embebidos-con-linux"></a>
-
+```
+## Implementación en Sistemas Embebidos con Linux
+```
 La implementación de UART en Linux embebido implica:
 1. **Configuración del Hardware**: 
    - Uso de device trees para definir pines y modos de operación. Ejemplo:
@@ -128,7 +131,7 @@ La implementación de UART en Linux embebido implica:
 5. **Integración con Aplicaciones de Alto Nivel**:
    - Frameworks como Azure Sphere proporcionan APIs dedicadas para UART :cite[10].
 
-
+```
 Ejemplo de código para lectura/escritura:
 ```c
 #include <termios.h>
@@ -145,13 +148,13 @@ close(fd);
 ``` :cite[4]:cite[9]
 
 ---
-
-## Conclusiones<a name="conclusiones"></a>
+```
+## Conclusiones
 
 UART sigue siendo un protocolo fundamental en sistemas embebidos debido a su simplicidad, bajo costo y amplia adopción. En entornos Linux, su implementación se ve facilitada por frameworks como termios y la integración con device trees, permitiendo su uso en aplicaciones que van desde la depuración hasta la comunicación con periféricos críticos. Aunque presenta limitaciones en velocidad, detección de errores y distancia, su eficiencia y flexibilidad lo mantienen relevante en el ecosistema embebido, especialmente en escenarios donde la complejidad de protocolos como SPI o I2C no está justificada. El futuro de UART en Linux embebido likely se centrará en mejoras de seguridad (ej: encriptación) y integración con tecnologías inalámbricas :cite[3]:cite[6]:cite[10].
-```
 
-## Bibliografía<a name="bibliografía"></a>
+
+## Bibliografía
 
 1. R&S®Essentials. "Entendiendo el UART." Rohde & Schwarz, 2025. [https://www.rohde-schwarz.com/lat/productos/prueba-y-medicion/essentials-test-equipment/digital-oscilloscopes/entendiendo-el-uart_254524.html](https://www.rohde-schwarz.com/lat/productos/prueba-y-medicion/essentials-test-equipment/digital-oscilloscopes/entendiendo-el-uart_254524.html).  
 2. Electronic Team, Inc. "Estableciendo la comunicación serie en el desarrollo embebido." Virtual Serial Port, 2025. [https://www.virtual-serial-port.org/es/articles/serial-communication-in-embedded-development/](https://www.virtual-serial-port.org/es/articles/serial-communication-in-embedded-development/).  
@@ -165,7 +168,7 @@ UART sigue siendo un protocolo fundamental en sistemas embebidos debido a su sim
 10. Microsoft. "Usar UART en aplicaciones de alto nivel - Azure Sphere." 2025. [https://learn.microsoft.com/es-es/azure-sphere/app-development/uart](https://learn.microsoft.com/es-es/azure-sphere/app-development/uart).  
 
 --- 
-**Nota**: Todas las fuentes citadas fueron verificadas para asegurar su relevancia y confiabilidad técnica. La información se compiló considerando la congruencia entre múltiples fuentes y se actualizó hasta la fecha actual (2025-09-19).
+Nota: Todas las fuentes citadas fueron verificadas para asegurar su relevancia y confiabilidad técnica. La información se compiló considerando la congruencia entre múltiples fuentes y se actualizó hasta la fecha actual (2025-09-18).
 
 
 
