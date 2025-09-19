@@ -11,4 +11,4 @@ Explicame principalmente: ¿Que es UART?, Aplicaciones con linux, como opera en 
 
 Pero tomando en cuenta y siguiendo la estructura del tema
 
-Procura que sea informacion real, veridica, de fuentes confiables, por ende verifica que el contenido sea congruente y real
+Procura que sea informacion real, veridica, de fuentes confiables, por ende verifica que el contenido sea congruente y real 
