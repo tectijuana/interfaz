@@ -1,3 +1,5 @@
+Irving Alejandro Santos Duarte 
+
 Sistemas Embebidos en Automóviles Eléctricos
 
 Introducción
