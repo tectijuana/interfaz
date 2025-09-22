@@ -8,7 +8,6 @@
 * `birotate.asm`: Rotar bits en el registro Rc.
 * `binarydec.asm` y `binary.asm`: Convertir número binario a decimal en display.
 
-Aquí tienes la tabla corregida:
 
 | NombreAlumno                        | PracticaAsignada                                     |
 | :---------------------------------- | :--------------------------------------------------- |
