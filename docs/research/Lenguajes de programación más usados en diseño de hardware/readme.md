@@ -1,4 +1,3 @@
-Informe Exhaustivo sobre Lenguajes de Programación para Diseño de Hardware
 
 Introducción
 
