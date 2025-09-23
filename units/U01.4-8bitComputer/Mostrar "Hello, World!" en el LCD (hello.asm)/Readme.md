@@ -7,7 +7,7 @@ Matricula: 23210542
 # Practica: Mostrar Hello World! en el LCD del emulador 
 
 Codigo del programa
-´´´
+
 ; Hola Mundo para Troy's Breadboard Computer
 ; Muestra "Hola, Mundo!" en la pantalla LCD
 ; Adaptado del ejemplo hello.asm
