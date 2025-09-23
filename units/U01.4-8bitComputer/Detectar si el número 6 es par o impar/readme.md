@@ -1,3 +1,7 @@
+# Programa en ensamblador 8-bit  
+## Detectar si un número es par o impar y mostrarlo en LCD
+
+```asm
 ; DETECTAR SI UN NÚMERO ES PAR O IMPAR Y MOSTRARLO EN LCD
 
 NUMBER = 6
@@ -42,4 +46,4 @@ printStr:
 
 ; ----------- CADENAS A MOSTRAR -----------
 msgPar:   #d "El numero es par\0"
-msgImpar: #d "El numero es impar0"
+msgImpar: #d "El numero es impar\0"
