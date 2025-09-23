@@ -42,6 +42,7 @@ lcc #DISPLAY_MODE
 .hello:
 #d "Hola, Mundo!\0"
 ```
+<img width="1227" height="811" alt="image" src="https://github.com/user-attachments/assets/1924b068-210d-4f2b-a28c-8c10aadd5b91" />
 
 
 
