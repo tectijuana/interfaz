@@ -5,6 +5,10 @@ Unidad: `U01.4 - 8-bit Computer`
 Problema: Mostrar un logo estilo **Commodore** en pantalla LCD usando caracteres personalizados.
 
 ---
+## 🖼️ Captura del Resultado
+
+Así se visualiza el logo tipo Commodore en el LCD del emulador:
+<img width="948" height="718" alt="image" src="https://github.com/user-attachments/assets/7c4c031b-a9a6-481f-9b60-a3c2d901d513" />
 
 ## 🎯 Objetivo
 
