@@ -1,3 +1,5 @@
+Irving Alejandro Santos Duarte 
+
 ; Mostrar los primeros 3 múltiplos de 2 en el LCD
 ; Resultado esperado en pantalla: 2 4 6
 
