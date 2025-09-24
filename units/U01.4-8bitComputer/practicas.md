@@ -1,44 +1,55 @@
 
+* `isprime.asm`: Verificar si un número es primo.
+* `hello.asm`: Mostrar "Hello, World!" en el LCD.
+* `power.asm`: Mostrar potencias de números del 1 al 15.
+* `facorial.asm`: Calcular factoriales del 0 al 5.
+* `reverse.asm`: Secuencia Fibonacci en reversa.
+* `comodore.asm`: Mostrar logo tipo Commodore usando CGRAM.
+* `birotate.asm`: Rotar bits en el registro Rc.
+* `binarydec.asm` y `binary.asm`: Convertir número binario a decimal en display.
 
-| NombreAlumno                          | PracticaAsignada                                      |
-|---------------------------------------|--------------------------------------------------------|
-| DELGADO BARRAGAN JESUS ALEJANDRO      | Simular rotación de bits en el registro Rc             |
-| DOMINGUEZ GARCIA FERNANDO             | Práctica libre: diseñar tu propio algoritmo #13        |
-| ESCAMILLA CASTRO JESUS ENRIQUE        | Práctica libre: diseñar tu propio algoritmo #4         |
-| FLORES DIAZ GUILLERMO                 | Práctica libre: diseñar tu propio algoritmo #1         |
-| GARCIA ESPINOZA JOSE LUIS             | Imprimir la tabla del 2 (2x1 a 2x5)                     |
-| GONZALEZ MARTINEZ HECTOR IVAN         | Práctica libre: diseñar tu propio algoritmo #8         |
-| GONZALEZ RODRIGUEZ ALAN JONATHAN      | Práctica libre: diseñar tu propio algoritmo #12        |
-| GUTIERREZ REYNA CHRISTOPHER           | Práctica libre: diseñar tu propio algoritmo #2         |
-| HERRERA RIVERA ABRAHAM                | Práctica libre: diseñar tu propio algoritmo #10        |
-| LOPEZ VAZQUEZ LUIS JESUS              | Práctica libre: diseñar tu propio algoritmo #6         |
-| MARTINEZ LOPEZ BRYAN ALEJANDRO        | Mostrar una suma de 2 + 3 en el LCD                    |
-| MARTINEZ RICO JUAN JESUS              | Mostrar el número 9 en el display                      |
-| MARTINEZ TORRES MIGUEL ANGEL          | Verificar si el número 7 es primo                      |
-| MARTINEZ VAZQUEZ JORGE ALBERTO        | Mostrar una secuencia de 1 a 5 en el display decimal   |
-| MEDINA RIVERA JESUS                   | Calcular 4 factorial usando sumas sucesivas            |
-| MORALES HERRERA JOSE DE JESUS         | Mostrar la palabra 'HOLA' en el LCD                    |
-| MURILLO CASTRO KEVIN JESUS            | Mostrar 'TEC' letra por letra en el LCD                |
-| NUNEZ AVALOS MIGUEL ANGEL             | Mostrar los primeros 3 múltiplos de 2 en el LCD        |
-| ORTEGA CASTRO JESUS IVAN              | Detectar overflow en una suma de 200 + 100             |
-| ORTIZ BARAJAS MIGUEL ANGEL            | Contar de 0 a 9 y reiniciar en bucle                   |
-| PALACIOS RAMOS JESUS GIOVANNI         | Simular una pila empujando y sacando 3 valores         |
-| PEREZ SANTILLAN LUIS ANGEL            | Hacer parpadear el número 8 en el display              |
-| RAMIREZ MARTINEZ JESUS                | Mostrar 'FIN' cuando termina un ciclo                  |
-| RAMIREZ RIOS JESUS IVAN               | Mostrar la fecha 16-09 en el LCD                       |
-| REYES MARTINEZ KEVIN                  | Mostrar 'HOLA' en el LCD                               |
-| RIVERA MARTINEZ ALEXIS                | Simular rotación de bits en el registro Rc             |
-| RIVERA VILLA CESAR                    | Detectar si el número 6 es par o impar                 |
-| RODARTE MONDRAGON ANGEL               | Mostrar la palabra 'HOLA' en el LCD                    |
-| RODRIGUEZ PEREZ MANUEL                | Imprimir la tabla del 2 (2x1 a 2x5)                     |
-| RODRIGUEZ SALAZAR EDUARDO             | Mostrar una suma de 2 + 3 en el LCD                    |
-| ROSALES ALVAREZ AXEL ALEJANDRO        | Mostrar una secuencia de 1 a 5 en el display decimal   |
-| ROSALES LEYVA JESUS                   | Mostrar el número 9 en el display                      |
-| SALAZAR GARCIA JORDAN ALEJANDRO       | Detectar overflow en una suma de 200 + 100             |
-| SALGADO CHAVEZ LUIS JAVIER            | Mostrar 'TEC' letra por letra en el LCD                |
-| SANCHEZ GARCIA JUAN                   | Verificar si el número 7 es primo                      |
-| SANDOVAL CASTRO ERIK                  | Calcular 4 factorial usando sumas sucesivas            |
-| SANTILLAN ARREDONDO DAVID             | Mostrar 'FIN' cuando termina un ciclo                  |
-| TORRES AVILA JUAN PABLO               | Mostrar los primeros 3 múltiplos de 2 en el LCD        |
-| TORRES GUADALUPE IVAN                 | Dividir 10 entre 2 usando restas                       |
-| ZEPEDA RAMIREZ ALEJANDRO              | Práctica libre: diseñar tu propio algoritmo #9         |
+
+| NombreAlumno                        | PracticaAsignada                                     |
+| :---------------------------------- | :--------------------------------------------------- |
+| ALONSO SANCHEZ OSCAR FRANCISCO      | Simular rotación de bits en el registro Rc           |
+| ALVAREZ ESTRADA AXEL                | Mostrar "Hello, World!" en el LCD (`hello.asm`)      |
+| ANGEL MONTOYA CESAR GREGORIO        | Calcular potencias del 1 al 15 (`power.asm`)         |
+| ANGULO MARENTES ANGEL GABRIEL       | Secuencia Fibonacci en reversa (`reverse.asm`)       |
+| AVILEZ JR  ROGELIO                  | Imprimir la tabla del 2 (2x1 a 2x5)                  |
+| BEDOY ALVAREZ JONATHAN              | Verificar si un número es primo (`isprime.asm`)      |
+| CARMONA VALDEZ JUAN                 | Calcular factorial del 0 al 5 (`facorial.asm`)       |
+| CASIMIRO MORALES ALEXANDRA DANIELA  | Mostrar logo tipo Commodore (`comodore.asm`)         |
+| CASTRO CASTELLANOS GUALBERTO        | Convertir número binario a decimal (`binary.asm`)    |
+| CONTRERAS HERNANDEZ JONATHAN RAMIRO | Convertir número binario a decimal (`binarydec.asm`) |
+| CORTES AGUILAR JAVIER ULISES        | Mostrar una suma de 2 + 3 en el LCD                  |
+| CRUZ CARDENAS LUIS ANGEL            | Mostrar el número 9 en el display                    |
+| DIAZ CHAVELAS ANGEL ABRAHAM         | Verificar si el número 7 es primo                    |
+| ELIZONDO ROMERO JOSE EDUARDO        | Mostrar una secuencia de 1 a 5 en el display decimal |
+| ESQUEDA CARDENAS ESTEPHANIA         | Calcular 4 factorial usando sumas sucesivas          |
+| FERNANDEZ CORTEZ JAVIER             | Mostrar la palabra 'HOLA' en el LCD                  |
+| GARCIA HERNANDEZ ANA GABRIELA       | Mostrar 'TEC' letra por letra en el LCD              |
+| GARRIDO SALAS ANDRE LUIZ            | Mostrar los primeros 3 múltiplos de 2 en el LCD      |
+| GAYOSSO PEREZ KARLA YURAY           | Detectar overflow en una suma de 200 + 100           |
+| HERNANDEZ BOJORQUEZ ULISES          | Contar de 0 a 9 y reiniciar en bucle                 |
+| HERRERA MIRANDA MARVIN JAVIER       | Simular una pila empujando y sacando 3 valores       |
+| JIMENEZ DELGADO LEONARDO SEBASTIAN  | Hacer parpadear el número 8 en el display            |
+| JIMENEZ GUERRERO VICTOR GAEL        | Mostrar 'FIN' cuando termina un ciclo                |
+| LAVENANT BALDENEBRO GILBERTO        | Mostrar la fecha 16-09 en el LCD                     |
+| LEON GASCA MARIO                    | Mostrar 'HOLA' en el LCD                             |
+| LOPEZ GARIBAY MIGUEL ANGEL          | Simular rotación de bits en el registro Rc           |
+| LOPEZ PRUDENCIO JAVIER N.           | Detectar si el número 6 es par o impar               |
+| MARTINEZ GUZMAN LEONARDO RAFAEL     | Mostrar la palabra 'HOLA' en el LCD                  |
+| MOJICA FAJARDO JOSE ANGEL           | Imprimir la tabla del 2 (2x1 a 2x5)                  |
+| NOLASCO VAZQUEZ JOSE ANTONIO        | Mostrar una suma de 2 + 3 en el LCD                  |
+| NOVELO ASTORGA KAIN ALEJANDRO       | Mostrar una secuencia de 1 a 5 en el display decimal |
+| ORTIZ MORENO KEYLA DENISSE          | Mostrar el número 9 en el display                    |
+| OSUNA  JOSE MANUEL                  | Detectar overflow en una suma de 200 + 100           |
+| RICO SANCHEZ SEBASTIAN EMILIANO     | Mostrar 'TEC' letra por letra en el LCD              |
+| RODRIGUEZ RAMIREZ JOSE URIEL        | Verificar si el número 7 es primo                    |
+| ROGEL ARZATE MANUEL                 | Calcular 4 factorial usando sumas sucesivas          |
+| RUVALCABA FERNANDEZ ALBERTO CARLOS  | Mostrar 'FIN' cuando termina un ciclo                |
+| SANTOS DUARTE IRVING ALEJANDRO      | Mostrar los primeros 3 múltiplos de 2 en el LCD      |
+| SERNA SAUCEDA JOSE ENRIQUE          | Dividir 10 entre 2 usando restas                     |
+| VAZQUEZ GONZALEZ BLESSING OSCIEL    | Mostrar logo tipo Commodore (`comodore.asm`)         |
+
+
