@@ -1,63 +1,116 @@
 
-## AI_GUIDANCE.md – Curso *Lenguajes de Interfaz* (ARM 32/64 y RISC‑V)
+# AI_GUIDANCE.md  
+**Uso responsable y profesional de Inteligencia Artificial en el curso *Lenguajes de Interfaz* (ARM 32/64 y RISC‑V)**
 
-
-# Guía de uso responsable de IA en *Lenguajes de Interfaz*
-
-Este curso aborda ensamblador y conceptos de interfase a bajo nivel (ARM 32/64 y RISC‑V). Usa esta guía para aprovechar herramientas de IA (p.ej., ChatGPT) sin comprometer la integridad académica ni la comprensión técnica. (Ver descripción del repo).  
-
-## 🎯 Objetivo
-Potenciar el aprendizaje con IA para **entender** instrucciones, ABI/llamadas, organización de memoria, E/S mapeada en memoria y prácticas de depuración; nunca para “tercerizar” el trabajo.
-
-## ✅ Usos recomendados
-- Pedir **explicaciones** de instrucciones, modos de direccionamiento y flujo de control (ej. `BL`, `ADR`, ramas con condición, `auipc` + `jalr`).
-- Solicitar **resúmenes** de convenciones de llamada (ABI) y preservación de registros para funciones en ARM64 o RISC‑V.
-- Generar **borradores** de rutinas en ensamblador como referencia (p. ej., suma de arreglos, búsqueda lineal) y luego **ajustarlas** al ensamblador/ensamblador del curso (GAS/LLVM).
-- Pedir guías para **depurar** (paso a paso, inspección de registros, banderas NZCV/CF/ZF, stack frames) en simuladores o QEMU.
-- Solicitar **tests** mínimos (valores límite, casos con overflow, entradas no alineadas) para validar rutinas.
-- Explicar **mapeo** de periféricos y manejo de interrupciones a nivel conceptual (prioridades, máscaras, latencia) con referencias a datasheets.
-
-## 🚫 Usos no permitidos
-- Entregar código de IA **sin comprenderlo** o **sin probarlo** en el entorno requerido.
-- Aceptar definiciones de registros/ABI o direcciones de E/S **sin contrastarlas** con la documentación oficial del ISA/SoC.
-- Pedir a la IA que **resuelva íntegramente** prácticas o exámenes.
-- Copiar configuraciones de linker/arranque (linker scripts, vectores de interrupción) **sin verificación**.
-
-## 🧪 Flujo sugerido con IA (pasos prácticos)
-1. **Formular el problema**: describe plataforma (ARMv8‑A o RV32I/RV64I), herramienta (GAS/Clang), formato de llamadas (C ↔ ASM) y restricciones.
-2. **Pedir un bosquejo**: solicita a la IA un **esqueleto** de rutina con comentarios detallados.
-3. **Ajuste al toolchain**: normaliza sintaxis (AT&T vs Intel, pseudo‑instrucciones), nombres de registros y secciones (`.text`, `.data`, `.bss`).
-4. **Verificación**: compila y ejecuta en emulador/simulador, inspecciona registros y memoria, agrega asserts/test vectors.
-5. **Optimización**: solicita sugerencias **locales** (desenrollado, uso de registros temporales, alineación) y mide impacto.
-6. **Documenta**: añade pre/post‑condiciones, preservación de registros, efectos colaterales y convenciones de retorno.
-
-## 🧰 Prompts útiles (ejemplos)
-- *“Explícame paso a paso cómo implementar una función en ARM64 que reciba puntero y longitud y regrese la suma, respetando el ABI y preservando registros.”*
-- *“Genera casos de prueba para una rutina en RISC‑V que invierte un arreglo de 32‑bit; incluye valores límite y longitudes pares/impares.”*
-- *“Compara `LDR`/`STR` vs `LDP`/`STP` en ARM64 y cuándo conviene cada una; incluye costos de ciclos aproximados.”*
-- *“Dame un esqueleto GAS para ISR con salvado/restauración de contexto mínimo y puntos de extensión.”*
-
-## 📋 Declaración obligatoria en entregas
-Incluye al final de cada práctica/proyecto:
-
-```
-Asistencia de IA: ¿Qué pediste? ¿Qué recibiste? ¿Qué cambiaste y por qué?
-Herramienta y versión:
-Plataforma objetivo (ARMv7/ARMv8, RV32/RV64):
-Evidencia de prueba (comando de build/ejecución, captura de registros/memoria):
-```
-
-## ✅ Checklist de verificación rápida
-- [ ] La rutina **compila** sin warnings en el toolchain del curso.
-- [ ] Preservas registros según ABI; el **stack** queda balanceado.
-- [ ] Pruebas pasan con **valores límite** y casos adversos.
-- [ ] Comentarios describen **pre/post‑condiciones** y efectos en banderas.
-- [ ] Citas/datasheets referenciados cuando usas E/S mapeada o ISR.
-
-## 🔒 Honestidad académica
-El uso de IA debe declararse y limitarse a apoyo conceptual, borradores y revisión. Las evaluaciones pueden restringir o prohibir IA.
+## 📘 Guía para estudiantes  
+Este curso trabaja ensamblador y conceptos de interfase a bajo nivel. Esta guía te orienta para aprovechar herramientas de **Inteligencia Artificial (IA)** (como ChatGPT) sin comprometer tu **formación técnica**, la **comprensión del ISA** ni la **integridad académica**.
 
 ---
 
-> Nota: Revisa siempre la documentación oficial del ISA y del SoC antes de confiar en respuestas de IA.
+## 🎯 Objetivo
+
+Usar la IA como apoyo en el aprendizaje de arquitecturas, instrucciones y procesos de depuración a bajo nivel, sin delegar el razonamiento, diseño ni pruebas. La IA **puede sugerir, pero no sustituir tu entendimiento**.
+
+---
+
+## ✅ Usos permitidos y recomendados
+- Pedir explicaciones de instrucciones, modos de direccionamiento y control de flujo (`BL`, `ADR`, `auipc`, `jalr`, `RET`, `BEQ`, etc.).
+- Resumir convenciones de llamada (ABI) y preservación de registros en ARM64 y RISC‑V.
+- Generar borradores de rutinas simples en ensamblador (suma, búsqueda, inversión), que luego **debes adaptar** a la sintaxis y convenciones del curso (GAS, LLVM).
+- Obtener guías para depuración paso a paso: registros, banderas (NZCV, CF, ZF), stack frames.
+- Solicitar test cases (valores límite, entradas no alineadas, casos de overflow).
+- Explicar mapeo de periféricos e interrupciones (prioridades, máscaras, latencia), con referencias a la documentación del SoC.
+
+---
+
+## 🚫 Usos no permitidos
+- Entregar rutinas generadas por IA sin haberlas probado ni entendido.
+- Confiar en IA para direcciones de E/S, ABI, offsets o ISR sin validar con datasheets y documentación oficial.
+- Pedir soluciones completas a prácticas o exámenes.
+- Copiar configuraciones de linker, inicialización o secciones sin comprenderlas.
+
+---
+
+## ⚙️ Flujo sugerido para trabajar con IA
+
+1. **Define el contexto**  
+   Plataforma (ARMv8‑A, RV32I, etc.), toolchain (GAS, Clang, LLVM), tipo de interfase (C ↔ ASM), restricciones.
+
+2. **Solicita un borrador guiado**  
+   Pide esqueleto comentado con roles de registros, estructura del stack y convenciones.
+
+3. **Ajusta la sintaxis y ABI**  
+   Alinea nombres de registros, formato (AT&T vs Intel), secciones (`.text`, `.bss`), y alineación.
+
+4. **Compila y ejecuta**  
+   Usa QEMU, emuladores, o simuladores para validar funcionalidad. Inspecciona registros, memoria y stack.
+
+5. **Optimiza localmente**  
+   Pide sugerencias de uso eficiente de registros, reducción de ciclos o alineación de datos.
+
+6. **Documenta profesionalmente**  
+   Indica precondiciones, postcondiciones, registros afectados, convenciones de retorno, y referencias técnicas.
+
+---
+
+## 🧰 Prompts recomendados (ejemplos)
+
+- *“Explica cómo implementar una función en ARM64 que reciba un arreglo y regrese su suma, respetando ABI y preservando registros.”*
+- *“Genera casos de prueba para una rutina en RISC‑V que invierte un arreglo de 32 bits; incluye longitudes impares.”*
+- *“¿Cuál es la diferencia entre `STR` y `STP` en ARM64? ¿Qué conviene usar en acceso alineado?”*
+- *“Esqueleto de ISR en RISC‑V con restauración mínima de contexto y posibilidad de anidamiento.”*
+
+---
+
+## 📝 Declaración obligatoria en entregas
+
+Incluye una sección clara al final de cada práctica o proyecto con la siguiente estructura:
+
+```markdown
+### Asistencia de Inteligencia Artificial
+
+- **Prompts utilizados**:
+  - "¿Cómo implementar una rutina en RISC‑V para sumar elementos de un arreglo con control de overflow?"
+  - "Esqueleto en GAS para ISR con push/pop mínimos."
+
+- **Herramientas utilizadas**:
+  - ChatGPT (GPT-4o)
+  - Perplexity AI
+
+- **Cambios y validación**:
+  - Ajusté nombres de registros y secciones al formato GAS.
+  - Verifiqué la rutina en QEMU con inputs alineados y no alineados.
+  - Validé el manejo de banderas y condiciones de retorno.
+
+- **Reflexión personal**:
+  Me ayudó a entender cómo se organiza el stack frame. Detecté errores en el manejo de registros temporales sugeridos por IA y los corregí tras revisar el ABI.
+
+- **Fecha**: 2025-09-18  
+- **Plataforma objetivo**: ARMv8-A (Raspberry Pi) – RV32I (SiFive emulado)  
+- **Evidencia de prueba**: comandos de build, capturas de dump de registros y memoria  
+````
+
+---
+
+## ✅ Checklist técnico de verificación
+
+* [ ] El código **compila** sin warnings con el toolchain del curso.
+* [ ] Se respeta el ABI (registros preservados, stack balanceado).
+* [ ] Hay **pruebas funcionales** con inputs normales y casos límite.
+* [ ] Comentarios claros de pre/postcondición, flags afectados.
+* [ ] Toda E/S o vector de interrupción está referenciado en documentación técnica.
+
+---
+
+## 🔒 Honestidad académica
+
+El uso de IA está permitido como **apoyo a la comprensión y diseño técnico**, nunca como reemplazo de tu razonamiento. El uso indebido puede tener consecuencias académicas. Durante evaluaciones, el uso de IA puede estar restringido o prohibido.
+
+---
+
+> 📌 Revisa siempre la documentación oficial del ISA (ARM Architecture Reference Manual, RISC‑V Privileged Spec) y del SoC que estés usando.
+> 💡 La IA ayuda, pero el **dominio real se logra con lectura técnica y pruebas**.
+
 ```
+
+
