@@ -1,3 +1,23 @@
+```python
+# =====================================================================
+#  ██████╗ ███████╗████████╗██████╗  ██████╗ ████████╗██████╗  ██████╗ 
+#  ██╔══██╗██╔════╝╚══██╔══╝██╔══██╗██╔═══██╗╚══██╔══╝██╔══██╗██╔═══██╗
+#  ██████╔╝█████╗     ██║   ██████╔╝██║   ██║   ██║   ██████╔╝██║   ██║
+#  ██╔═══╝ ██╔══╝     ██║   ██╔═══╝ ██║   ██║   ██║   ██╔═══╝ ██║   ██║
+#  ██║     ███████╗   ██║   ██║     ╚██████╔╝   ██║   ██║     ╚██████╔╝
+#  ╚═╝     ╚══════╝   ╚═╝   ╚═╝      ╚═════╝    ╚═╝   ╚═╝      ╚═════╝ 
+# =====================================================================
+# 💻 Asignatura: Lenguajes de Interfaz en TECNM Campus ITT
+# 🧑 Autor: Javier N Lopez
+# 📅 Fecha: 2025/09/24
+# 📝 Descripción: Programa retro para detectar si el número 6 es par. 
+# 🌐 Simulación Wokwi: https://wokwi.com/projects/xxxxxx
+# ---------------------------------------------------------------------
+# ⚡ MOTTO: "El código es la llave, los números son la puerta."
+# =====================================================================
+
+
+```asm
 ; DETECTAR SI UN NÚMERO ES PAR O IMPAR Y MOSTRARLO EN LCD
 
 NUMBER = 6
@@ -42,4 +62,4 @@ printStr:
 
 ; ----------- CADENAS A MOSTRAR -----------
 msgPar:   #d "El numero es par\0"
-msgImpar: #d "El numero es impar0"
+msgImpar: #d "El numero es impar\0"
