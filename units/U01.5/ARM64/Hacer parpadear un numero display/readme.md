@@ -3,7 +3,7 @@
 ║                                                                             ║
 ║   🔥🔥🔥   B L E S S I N G   🔥🔥🔥                                      ║
 ║                                                                             ║
-║   Asignatura : [Nombre de la asignatura aquí]                               ║
+║   Asignatura : [Lenguajes de Interfaz]                                      ║
 ║   Alumno     : Blessing Osciel Vázquez González                             ║
 ║   Fecha      : 2025/09/24                                                   ║
 ║                                                                             ║
@@ -11,7 +11,7 @@
 ║                                                                             ║
 ╚═════════════════════════════════════════════════════════════════════════════╝ 
 
-“Arde tu pasión por el código — bienvenido al fuego creativo”
+
 ```
 
 # 🔢 Proyecto: Número parpadeante en display (🖥️ ARM Assembly)
