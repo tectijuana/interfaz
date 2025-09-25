@@ -1,5 +1,5 @@
 # 
-# 🖥️ RETRO-CÓDIGO: MULTIPLICACIÓN EN ARM64 & C# 🖥️
+#   MULTIPLICAR DOS NUMEROS (6*3) EN ARM64 & C# 
 # 
 #
 # 📚 Asignatura: Lenguajes de Interfaz – TECNM Campus ITT
