@@ -14,6 +14,7 @@
 # ✍️ Autor           : Miguel Angel Lopez Garibay
 # 🆔 Número de control: 21212576
 # 📅 Fecha           : 2025/09/24
+# Link asciinema: https://asciinema.org/a/UenRyhqo2QeA8HFmCAYcLdMYW
 #
 # 📌 Descripción:
 #   Código en ARM64 (sistema operativo: Ubuntu) que verifica si el número 7
@@ -96,3 +97,5 @@ done:
     mov w0, #0                  // return 0
     ldp x29, x30, [sp], #16     // restaurar FP y LR
     ret
+
+    # Link asciinema: https://asciinema.org/a/UenRyhqo2QeA8HFmCAYcLdMYW
