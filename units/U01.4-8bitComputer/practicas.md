@@ -1,18 +1,26 @@
-NOTA: es Borrador no hay tema libre se asignará...
+
+* `isprime.asm`: Verificar si un número es primo.
+* `hello.asm`: Mostrar "Hello, World!" en el LCD.
+* `power.asm`: Mostrar potencias de números del 1 al 15.
+* `facorial.asm`: Calcular factoriales del 0 al 5.
+* `reverse.asm`: Secuencia Fibonacci en reversa.
+* `comodore.asm`: Mostrar logo tipo Commodore usando CGRAM.
+* `birotate.asm`: Rotar bits en el registro Rc.
+* `binarydec.asm` y `binary.asm`: Convertir número binario a decimal en display.
 
 
 | NombreAlumno                        | PracticaAsignada                                     |
-|:------------------------------------|:-----------------------------------------------------|
+| :---------------------------------- | :--------------------------------------------------- |
 | ALONSO SANCHEZ OSCAR FRANCISCO      | Simular rotación de bits en el registro Rc           |
-| ALVAREZ ESTRADA AXEL                | Práctica libre: diseñar tu propio algoritmo #13      |
-| ANGEL MONTOYA CESAR GREGORIO        | Práctica libre: diseñar tu propio algoritmo #4       |
-| ANGULO MARENTES ANGEL GABRIEL       | Práctica libre: diseñar tu propio algoritmo #1       |
+| ALVAREZ ESTRADA AXEL                | Mostrar "Hello, World!" en el LCD (`hello.asm`)      |
+| ANGEL MONTOYA CESAR GREGORIO        | Calcular potencias del 1 al 15 (`power.asm`)         |
+| ANGULO MARENTES ANGEL GABRIEL       | Secuencia Fibonacci en reversa (`reverse.asm`)       |
 | AVILEZ JR  ROGELIO                  | Imprimir la tabla del 2 (2x1 a 2x5)                  |
-| BEDOY ALVAREZ JONATHAN              | Práctica libre: diseñar tu propio algoritmo #8       |
-| CARMONA VALDEZ JUAN                 | Práctica libre: diseñar tu propio algoritmo #12      |
-| CASIMIRO MORALES ALEXANDRA DANIELA  | Práctica libre: diseñar tu propio algoritmo #2       |
-| CASTRO CASTELLANOS GUALBERTO        | Práctica libre: diseñar tu propio algoritmo #10      |
-| CONTRERAS HERNANDEZ JONATHAN RAMIRO | Práctica libre: diseñar tu propio algoritmo #6       |
+| BEDOY ALVAREZ JONATHAN              | Verificar si un número es primo (`isprime.asm`)      |
+| CARMONA VALDEZ JUAN                 | Calcular factorial del 0 al 5 (`facorial.asm`)       |
+| CASIMIRO MORALES ALEXANDRA DANIELA  | Mostrar logo tipo Commodore (`comodore.asm`)         |
+| CASTRO CASTELLANOS GUALBERTO        | Convertir número binario a decimal (`binary.asm`)    |
+| CONTRERAS HERNANDEZ JONATHAN RAMIRO | Convertir número binario a decimal (`binarydec.asm`) |
 | CORTES AGUILAR JAVIER ULISES        | Mostrar una suma de 2 + 3 en el LCD                  |
 | CRUZ CARDENAS LUIS ANGEL            | Mostrar el número 9 en el display                    |
 | DIAZ CHAVELAS ANGEL ABRAHAM         | Verificar si el número 7 es primo                    |
@@ -42,7 +50,6 @@ NOTA: es Borrador no hay tema libre se asignará...
 | RUVALCABA FERNANDEZ ALBERTO CARLOS  | Mostrar 'FIN' cuando termina un ciclo                |
 | SANTOS DUARTE IRVING ALEJANDRO      | Mostrar los primeros 3 múltiplos de 2 en el LCD      |
 | SERNA SAUCEDA JOSE ENRIQUE          | Dividir 10 entre 2 usando restas                     |
-| VAZQUEZ GONZALEZ BLESSING OSCIEL    | Práctica libre: diseñar tu propio algoritmo #9       |
+| VAZQUEZ GONZALEZ BLESSING OSCIEL    | Mostrar logo tipo Commodore (`comodore.asm`)         |
 
 
-¿Quieres que lo divida en **partes más pequeñas** para que no sea tan largo en pantalla y lo puedas copiar por secciones?
