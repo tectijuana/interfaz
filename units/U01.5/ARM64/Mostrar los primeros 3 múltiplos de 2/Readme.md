@@ -1,5 +1,8 @@
 Grabacion de asciinema
+
 https://asciinema.org/a/743740
+
+Irving Alejandro Santos Duarte
 
 
 
