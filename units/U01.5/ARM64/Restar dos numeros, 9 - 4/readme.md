@@ -49,7 +49,7 @@ _start:
 ```
 # Codigo en C
 ```
-// Autor: [Tu Nombre]
+// Autor: [Axel Alvarez Estrada]
 // Fecha: 28/09/2025
 // Objetivo: Programa en C# que resta 9 - 4 e imprime el resultado
 
