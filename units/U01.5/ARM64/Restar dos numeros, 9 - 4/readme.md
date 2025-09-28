@@ -14,6 +14,8 @@
 ### Fecha      : 2025/09/28
 # Descripción:
 ##   Código que realiza la resta de dos números enteros
+# Video Asciinema
+# https://asciinema.org/a/744742   
 # Codigo en ARM 64
 ```
 
@@ -46,9 +48,24 @@ _start:
 #   Efectos visuales: ≡≡≡ SIGNAL ∴ NEON ∴ CIRCUITS ≡≡≡
 ```
 # Codigo en C
-## Video Asciinema
-# ╔══════════════════════════════════════════════════════════════════════════╗
-# ║                    https://asciinema.org/a/744742                        ║
-# ╚══════════════════════════════════════════════════════════════════════════╝
-#
-#
+```
+// Autor: [Tu Nombre]
+// Fecha: 28/09/2025
+// Objetivo: Programa en C# que resta 9 - 4 e imprime el resultado
+
+using System;
+
+class Program
+{
+    static void Main()
+    {
+        int a = 9;
+        int b = 4;
+        int c = a - b;
+
+        Console.WriteLine("Resultado: " + c);
+    }
+}
+```          
+
+
