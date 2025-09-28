@@ -17,9 +17,39 @@
 # Descripción:
 #   Código que realiza la resta de dos números enteros
 #
-# Tema ambientado: Cyberpunk · Neón · Glitch · Console Hacker
-#
 # ────────────────────────────────────────────────────────────────────────────
+´´´
+//**************************************************************
+// Autor: [Tu Nombre]
+// Fecha: 28/09/2025
+// Descripción: Programa en ARM64 Assembly que realiza 9 - 4
+//              e imprime el resultado en pantalla.
+//**************************************************************
+
+    .global _start            // Punto de entrada del programa
+
+    .data
+msg:    .asciz "Resultado: %d\n"   // Formato de impresión para printf
+
+    .text
+_start:
+    // Cargar valores en registros
+    mov x0, 9            // x0 = 9
+    mov x1, 4            // x1 = 4
+
+    // Realizar la resta
+    sub x2, x0, x1       // x2 = x0 - x1 = 9 - 4 = 5
+
+    // Llamar a printf("Resultado: %d\n", x2)
+    ldr x0, =msg         // Dirección del string
+    mov x1, x2           // Argumento (resultado)
+    bl printf            // Llamar a la libc
+
+    // Salir del programa
+    mov x8, 93           // syscall exit
+    mov x0, 0            // código de retorno = 0
+    svc 0
+
 #   INPUT:  num1, num2
 #   OUTPUT: resultado = num1 - num2
 #   Efectos visuales: ≡≡≡ SIGNAL ∴ NEON ∴ CIRCUITS ≡≡≡
