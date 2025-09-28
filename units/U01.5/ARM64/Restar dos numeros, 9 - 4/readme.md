@@ -9,11 +9,13 @@
 # ║                  ✦ CYBERPUNK NUMERIC OPS ✦                               ║
 # ╚══════════════════════════════════════════════════════════════════════════╝
 # Asignatura : Lenguajes de Interfaz - TECNM Campus ITT
-### Autor      : Axel Alvarez Estrada
-### Matricula  : 23210542
-### Fecha      : 2025/09/28
+*Autor      : Axel Alvarez Estrada*
+
+*Matricula  : 23210542*
+
+*Fecha      : 2025/09/28*
 # Descripción:
-##   Código que realiza la resta de dos números enteros
+*Código que realiza la resta de dos números enteros*
 # Video Asciinema
 # https://asciinema.org/a/744742   
 # Codigo en ARM 64
