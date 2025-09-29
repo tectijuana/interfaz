@@ -1,37 +1,3 @@
-# Martinez Guzman Leonardo Rafael #22210318
-# Mostrar **HOLA** en un LCD (Arduino)
-
-A continuación se muestran los pasos para programar un **LCD 16×2 (HD44780)** con Arduino y mostrar la palabra **HOLA**. Se incluyen dos métodos: **modo paralelo (4-bit)** y **modo I²C**.
-
----
-
-## 📌 Materiales
-- Arduino (Uno, Nano, Mega, etc.)  
-- LCD 16×2 (HD44780 o compatible)  
-- Potenciómetro de 10 kΩ (para contraste)  
-- Cables de conexión  
-- (Opcional) Módulo adaptador **I²C** para el LCD  
-- Fuente de 5 V (desde Arduino)
-
----
-
-# 🔹 Método A — Conexión en paralelo (4-bit)
-
-### 1️⃣ Cableado típico
-- **VSS** → GND  
-- **VDD** → 5V  
-- **V0 (contraste)** → cursor central del potenciómetro (otros extremos: 5V y GND)  
-- **RS** → Arduino pin **7**  
-- **RW** → GND  
-- **E** → Arduino pin **8**  
-- **D4** → Arduino pin **9**  
-- **D5** → Arduino pin **10**  
-- **D6** → Arduino pin **11**  
-- **D7** → Arduino pin **12**  
-- (Opcional) **LED+** → 5V con resistencia (si no la incluye)  
-- (Opcional) **LED-** → GND  
-
----
 
 ### 2️⃣ Código Arduino (paralelo)
 ```cpp
@@ -50,3 +16,42 @@ void setup() {
 void loop() {
   // No se necesita más
 }
+
+=======
+Alumno: Javier Fernandez Cortez
+No. De control: 22211558
+Practica: Mostrar la palabra "HOLA" en el LCD
+
+```text
+; Mostrar "HOLA" en el LCD
+DISPLAY_MODE = LCD_CMD_DISPLAY | LCD_CMD_DISPLAY_ON
+
+lcc #LCD_INITIALIZE      ; Inicializa el LCD
+lcc #DISPLAY_MODE        ; Enciende el display
+lcc #LCD_CMD_CLEAR       ; Limpia pantalla
+
+.start:
+  clra                   ; Limpia registros
+  data Ra, .hola         ; Cargar dirección del string en Ra
+  call .printStr         ; Llamar rutina para imprimir cadena
+  hlt                    ; Fin del programa
+
+; --- Rutina para imprimir cadena ---
+.printStr:
+  mov Rc, Ra             ; Guardar dirección inicial en Rc
+.nextChar:
+  lod Ra, Rc             ; Cargar caracter de memoria
+  tst Ra                 ; Revisar si es nulo
+  jz .done               ; Si es fin de cadena, salir
+  lcd Ra                 ; Enviar caracter al LCD
+  inc Rc                 ; Avanzar al siguiente caracter
+  jmp .nextChar
+.done:
+  ret
+
+; --- Cadena a mostrar ---
+.hola:
+#d "HOLA\0"
+```
+
+<img width="1099" height="835" alt="image" src="https://github.com/user-attachments/assets/9bd16b22-1e88-444a-b0e0-9d81d798dcbe" />
