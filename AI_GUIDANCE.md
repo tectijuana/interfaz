@@ -1,116 +1,157 @@
 
 # AI_GUIDANCE.md  
-**Uso responsable y profesional de Inteligencia Artificial en el curso *Lenguajes de Interfaz* (ARM 32/64 y RISC‑V)**
+**Uso responsable y profesional de Inteligencia Artificial en el curso**
 
 ## 📘 Guía para estudiantes  
-Este curso trabaja ensamblador y conceptos de interfase a bajo nivel. Esta guía te orienta para aprovechar herramientas de **Inteligencia Artificial (IA)** (como ChatGPT) sin comprometer tu **formación técnica**, la **comprensión del ISA** ni la **integridad académica**.
+Este documento establece las pautas para el uso ético, reflexivo y técnicamente riguroso de herramientas de **Inteligencia Artificial (IA)** en el contexto del desarrollo de software y hardware embebido.
 
 ---
 
 ## 🎯 Objetivo
 
-Usar la IA como apoyo en el aprendizaje de arquitecturas, instrucciones y procesos de depuración a bajo nivel, sin delegar el razonamiento, diseño ni pruebas. La IA **puede sugerir, pero no sustituir tu entendimiento**.
+Aprovechar herramientas de IA como apoyo en el **aprendizaje técnico, la documentación y la exploración de código**, sin sustituir la **validación experimental**, el **razonamiento ingenieril** ni el **trabajo personal** sobre plataformas de hardware reales.
 
 ---
 
-## ✅ Usos permitidos y recomendados
-- Pedir explicaciones de instrucciones, modos de direccionamiento y control de flujo (`BL`, `ADR`, `auipc`, `jalr`, `RET`, `BEQ`, etc.).
-- Resumir convenciones de llamada (ABI) y preservación de registros en ARM64 y RISC‑V.
-- Generar borradores de rutinas simples en ensamblador (suma, búsqueda, inversión), que luego **debes adaptar** a la sintaxis y convenciones del curso (GAS, LLVM).
-- Obtener guías para depuración paso a paso: registros, banderas (NZCV, CF, ZF), stack frames.
-- Solicitar test cases (valores límite, entradas no alineadas, casos de overflow).
-- Explicar mapeo de periféricos e interrupciones (prioridades, máscaras, latencia), con referencias a la documentación del SoC.
+## ✅ Usos recomendados y valorados
+- Solicitar explicaciones de conceptos clave: comunicación UART, I2C, SPI, interrupciones, timers, ADC, DMA.
+- Generar **ejemplos de código de referencia** en C, C++ o ensamblador.
+- Explorar variantes en la implementación de controladores, protocolos o rutinas de bajo nivel.
+- Apoyarse en IA para generar **comentarios explicativos** o documentación técnica del código.
+- Traducir o resumir secciones complejas de manuales técnicos o datasheets.
 
 ---
 
 ## 🚫 Usos no permitidos
-- Entregar rutinas generadas por IA sin haberlas probado ni entendido.
-- Confiar en IA para direcciones de E/S, ABI, offsets o ISR sin validar con datasheets y documentación oficial.
-- Pedir soluciones completas a prácticas o exámenes.
-- Copiar configuraciones de linker, inicialización o secciones sin comprenderlas.
+- Entregar código generado por IA sin comprender su funcionamiento ni realizar pruebas en hardware.
+- Utilizar IA para diseñar esquemas eléctricos o temporizaciones sin consultar **fuentes oficiales ni validar experimentalmente**.
+- Delegar en IA la selección de componentes o estimación de consumo energético sin análisis ingenieril.
 
 ---
 
-## ⚙️ Flujo sugerido para trabajar con IA
+## 🧠 Buenas prácticas recomendadas
 
-1. **Define el contexto**  
-   Plataforma (ARMv8‑A, RV32I, etc.), toolchain (GAS, Clang, LLVM), tipo de interfase (C ↔ ASM), restricciones.
+1. **Valida en hardware real**  
+   La IA puede generar código que compila, pero solo tú puedes verificar su funcionamiento en un entorno físico.
 
-2. **Solicita un borrador guiado**  
-   Pide esqueleto comentado con roles de registros, estructura del stack y convenciones.
+2. **Consulta siempre el datasheet**  
+   Usa la IA como apoyo complementario, pero **la fuente oficial es el fabricante**.
 
-3. **Ajusta la sintaxis y ABI**  
-   Alinea nombres de registros, formato (AT&T vs Intel), secciones (`.text`, `.bss`), y alineación.
+3. **Transparencia profesional**  
+   Declara claramente qué parte de tu trabajo fue asistida por IA.
 
-4. **Compila y ejecuta**  
-   Usa QEMU, emuladores, o simuladores para validar funcionalidad. Inspecciona registros, memoria y stack.
+4. **Prompts técnicos y reflexión**  
+   Formula preguntas específicas y registra tus *prompts*. Evalúa críticamente las respuestas.
 
-5. **Optimiza localmente**  
-   Pide sugerencias de uso eficiente de registros, reducción de ciclos o alineación de datos.
+5. **Explora con criterio múltiples herramientas**  
+   Puedes usar ChatGPT, Copilot, Perplexity, etc., pero sé selectivo y consciente de sus limitaciones.
 
-6. **Documenta profesionalmente**  
-   Indica precondiciones, postcondiciones, registros afectados, convenciones de retorno, y referencias técnicas.
-
----
-
-## 🧰 Prompts recomendados (ejemplos)
-
-- *“Explica cómo implementar una función en ARM64 que reciba un arreglo y regrese su suma, respetando ABI y preservando registros.”*
-- *“Genera casos de prueba para una rutina en RISC‑V que invierte un arreglo de 32 bits; incluye longitudes impares.”*
-- *“¿Cuál es la diferencia entre `STR` y `STP` en ARM64? ¿Qué conviene usar en acceso alineado?”*
-- *“Esqueleto de ISR en RISC‑V con restauración mínima de contexto y posibilidad de anidamiento.”*
+6. **Incluye reflexión final**  
+   Comenta qué aprendiste, qué ajustaste y cómo validaste tus resultados.
 
 ---
 
-## 📝 Declaración obligatoria en entregas
-
-Incluye una sección clara al final de cada práctica o proyecto con la siguiente estructura:
+## 📝 Formato obligatorio de declaración en prácticas o proyectos
 
 ```markdown
 ### Asistencia de Inteligencia Artificial
 
 - **Prompts utilizados**:
-  - "¿Cómo implementar una rutina en RISC‑V para sumar elementos de un arreglo con control de overflow?"
-  - "Esqueleto en GAS para ISR con push/pop mínimos."
+  - "¿Cómo configurar el módulo ADC del PIC18F4550 en modo continuo con interrupciones?"
+  - "Genera un ejemplo de manejo de SPI en STM32 con HAL."
 
 - **Herramientas utilizadas**:
   - ChatGPT (GPT-4o)
-  - Perplexity AI
+  - GitHub Copilot
 
 - **Cambios y validación**:
-  - Ajusté nombres de registros y secciones al formato GAS.
-  - Verifiqué la rutina en QEMU con inputs alineados y no alineados.
-  - Validé el manejo de banderas y condiciones de retorno.
+  - El código generado fue modificado para adaptarse al compilador XC8.
+  - Se realizaron pruebas en protoboard con señales de entrada reales.
+  - Verifiqué el funcionamiento usando lógica de test con LEDs y osciloscopio.
 
 - **Reflexión personal**:
-  Me ayudó a entender cómo se organiza el stack frame. Detecté errores en el manejo de registros temporales sugeridos por IA y los corregí tras revisar el ABI.
+  La IA me ayudó a clarificar la configuración inicial, pero tuve que corregir errores de temporización. Esto reforzó mi entendimiento del ciclo de reloj y del manejo de interrupciones.
 
 - **Fecha**: 2025-09-18  
-- **Plataforma objetivo**: ARMv8-A (Raspberry Pi) – RV32I (SiFive emulado)  
-- **Evidencia de prueba**: comandos de build, capturas de dump de registros y memoria  
-````
+- **Plataforma de hardware utilizada**: PIC18F4550 en protoboard, oscilador de 20 MHz  
 
 ---
 
-## ✅ Checklist técnico de verificación
+Perfecto 👌. Aquí tienes la versión lista para integrar en tu AI_GUIDELINE.md, adaptada a cursos de Ingeniería en Sistemas y con un checklist crítico que los estudiantes deben aplicar cuando usen un LLM en sus prácticas:
 
-* [ ] El código **compila** sin warnings con el toolchain del curso.
-* [ ] Se respeta el ABI (registros preservados, stack balanceado).
-* [ ] Hay **pruebas funcionales** con inputs normales y casos límite.
-* [ ] Comentarios claros de pre/postcondición, flags afectados.
-* [ ] Toda E/S o vector de interrupción está referenciado en documentación técnica.
+⸻
 
----
+🧠 Pensamiento Crítico y Uso Responsable de IA
 
-## 🔒 Honestidad académica
+Guía para Ingeniería en Sistemas
 
-El uso de IA está permitido como **apoyo a la comprensión y diseño técnico**, nunca como reemplazo de tu razonamiento. El uso indebido puede tener consecuencias académicas. Durante evaluaciones, el uso de IA puede estar restringido o prohibido.
+🎯 Objetivo
 
----
+Orientar al estudiante en el uso crítico y reflexivo de LLMs (modelos de lenguaje como ChatGPT) en prácticas y proyectos académicos, asegurando que el contenido generado sea comprendido, verificado y mejorado antes de entregarlo.
 
-> 📌 Revisa siempre la documentación oficial del ISA (ARM Architecture Reference Manual, RISC‑V Privileged Spec) y del SoC que estés usando.
-> 💡 La IA ayuda, pero el **dominio real se logra con lectura técnica y pruebas**.
+⸻
 
-```
+🔹 Checklist de Preguntas Críticas
 
+👤 QUIÉN
+	•	¿Quién se beneficia de este diseño, código o propuesta?
+	•	¿Quién sería responsable si falla este sistema?
+	•	¿Quién falta en el análisis (usuarios finales, cliente, equipo de soporte)?
+	•	¿Quién ya resolvió un problema similar (estándares, frameworks, bibliografía)?
 
+📌 QUÉ
+	•	¿Qué problema técnico estoy intentando resolver realmente?
+	•	¿Qué parte de la respuesta de la IA son hechos comprobables y qué son suposiciones?
+	•	¿Qué está asumiendo la IA sin que yo lo haya validado (plataforma, librerías, contexto)?
+	•	¿Qué información o detalle falta (diagramas, dependencias, pruebas)?
+
+🕒 CUÁNDO
+	•	¿Cuándo debe tomarse esta decisión técnica?
+	•	¿Cuándo en el ciclo de vida del software es más apropiado aplicar esta solución?
+	•	¿Cuándo he visto errores similares en otros proyectos?
+	•	¿Cuándo sería riesgoso implementar lo que propone la IA?
+
+🌍 DÓNDE
+	•	¿De dónde provienen los datos o ejemplos que usó la IA?
+	•	¿Dónde se implementará este sistema (nube, local, IoT) y cambia eso la validez?
+	•	¿Dónde puede fallar este diseño (rendimiento, seguridad, escalabilidad)?
+	•	¿Dónde encuentro documentación oficial o pruebas que lo respalden?
+
+❓ POR QUÉ
+	•	¿Por qué este enfoque es mejor que otras alternativas?
+	•	¿Por qué creo que la salida es correcta y no un error del modelo?
+	•	¿Por qué otros podrían verlo distinto (otro lenguaje, paradigma, contexto)?
+	•	¿Por qué no hemos resuelto esto con técnicas tradicionales ya conocidas?
+
+⚙️ CÓMO
+	•	¿Cómo mediré el éxito de implementar esta propuesta (tests, benchmarks, validación)?
+	•	¿Cómo podría fallar este código en producción?
+	•	¿Cómo pruebo la validez de lo que me dio la IA antes de usarlo?
+	•	¿Cómo explicaré mi decisión de usar IA a mis compañeros, profesor o cliente?
+
+⸻
+
+📌 Ejemplos de aplicación en cursos
+	•	Lenguajes de Interfaz (ARM/Assembly):
+Si la IA genera un programa, preguntar:
+“¿Qué registros preserva y dónde lo verifico en el ABI oficial de ARM?”
+	•	Patrones de Diseño (GoF en C#):
+Si la IA sugiere Singleton, cuestionar:
+“¿Por qué elegir este patrón y no otro? ¿Dónde sería un antipatrón en sistemas distribuidos?”
+	•	Bases de Datos:
+Si la IA entrega un query SQL:
+“¿Cómo afectará el rendimiento en tablas grandes? ¿Qué índices faltan?”
+	•	Cultura Digital – IoT con micro:bit:
+Si la IA genera un script:
+“¿Cómo sé que maneja errores de hardware? ¿Dónde lo pruebo antes de cargarlo al dispositivo?”
+
+⸻
+
+📝 Responsabilidad académica
+	1.	Documentar en ANEXO.md:
+	•	Prompts utilizados.
+	•	Cambios o mejoras realizadas tras usar pensamiento crítico.
+	•	Referencias oficiales o pruebas adicionales consultadas.
+	2.	Reflexionar:
+	•	¿Qué sesgos, errores o vacíos encontré en la respuesta de la IA?
+	•	¿Qué aprendí del proceso de revisión?
