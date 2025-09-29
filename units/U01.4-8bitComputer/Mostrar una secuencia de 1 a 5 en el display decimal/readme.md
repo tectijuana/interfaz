@@ -1,12 +1,11 @@
-# ⚡ Mostrar una secuencia de 1 a 5 en el display decimal 🔧
-
----
 
 ## Autor
 
 **Nombre:** Kain Alejandro Novelo Astorga  
 
 **Matrícula:** 22211623  
+
+# ⚡ Mostrar una secuencia de 1 a 5 en el display decimal 🔧
 
 ---
 
@@ -35,3 +34,4 @@ delay:
     dec Rc         ; Restar 1
     jnz .wait      ; Repetir mientras Rc ≠ 0
     ret
+```
