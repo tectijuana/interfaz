@@ -1,5 +1,3 @@
-# Programa en ensamblador Troy Breadboard Computer
-## Mostrar "FIN" al terminar un ciclo
 
 **Nombre:** Alberto Ruvalcaba  
 **Número de control:** 22211653  
@@ -79,6 +77,15 @@ DISPLAY_MODE = LCD_CMD_DISPLAY | LCD_CMD_DISPLAY_ON
     jmp .nextChar
 .done:
     ret
+    
+; ----------------------------
+; Cadena "FIN"
+; ----------------------------
+.fin:
+#d "FIN\0"
+```
+![Preview del programa](https://github.com/user-attachments/assets/052685da-9333-42db-a32e-11d4d9e0f984)
+=======
 
 ; -----------------------------
 ; Datos
