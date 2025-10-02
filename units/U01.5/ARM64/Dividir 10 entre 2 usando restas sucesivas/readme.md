@@ -1,94 +1,63 @@
-# ────────────────────────────────
-#   ☠️  CODEX OBSCURUM  🔮
-# ────────────────────────────────
-# 📚 Asignatura: Lenguajes de Interfaz - TECNM Campus ITT
-# 👤 Autor: Angulo Marentes Angel Gabriel
-# 📅 Fecha: 2025/09/23
-# 📝 Descripción: Un programa para dividir 10 entre 2 usando restas sucesivas
-# ✨ "Quien domine el código, abrirá portales prohibidos." ✨
+# ☠️⚓━━━━━━━[ PIRATE CODE ]━━━━━━━⚓☠️
+### 📚 Asignatura : Lenguajes de Interfaz - TECNM Campus ITT
+#### ✍️ Autor      : Lavenant Baldenebro Gilbeto
+### 📅 Fecha      : 2025/09/23
+###
+### 🏴 Propósito : Un tesoro de lógica y código oculto en los mares digitales del aprendizaje.
+###
+###
+### ❝ El que no programa, no encuentra el tesoro ❞
+## ☠️⚓━━━━━━━[ Fin del Módulo: Seven Seas of Code ]━━━━━━━⚓☠️
 
-# Dividir 10 entre 2 usando restas sucesivas (En alto nivel Python)
+
+
 ```text
-dividendo = 10
-divisor = 2
-cociente = 0
+    .section .data
+fmt:
+    .asciz "10 / 2 = %d rem %d\n"    // formato para printf (cociente, resto)
 
-while dividendo >= divisor:
-    dividendo -= divisor
-    cociente += 1
+    .section .text
+    .global main
+    .type main, @function
 
-print("Cociente:", cociente, "Residuo:", dividendo)
+main:
+    // Prologue (ninguna reserva de pila especial es necesaria aquí)
+    // Inicializar valores:
+    mov     w19, #10        // w19 = dividendo (10)
+    mov     w20, #2         // w20 = divisor (2)
+    mov     w21, #0         // w21 = cociente (0)
 
-Salida:
-Cociente: 5 Residuo: 0
+loop:
+    // comparar si dividendo >= divisor
+    cmp     w19, w20
+    blt     done            // si dividendo < divisor saltar a done
+
+    // dividendo = dividendo - divisor
+    sub     w19, w19, w20
+
+    // cociente = cociente + 1
+    add     w21, w21, #1
+
+    // repetir
+    b       loop
+
+done:
+    // Preparar llamada a printf:
+    // printf("10 / 2 = %d rem %d\n", cociente, resto)
+    // formato -> x0, argumentos -> x1, x2 (en ARM64 el primer arg en x0, luego x1, x2, x3, ...)
+    adrp    x0, fmt
+    add     x0, x0, :lo12:fmt
+    // mover valores enteros a registros de 32 bits para printf %d
+    mov     w1, w21        // primer %d = cociente
+    mov     w2, w19        // segundo %d = resto
+
+    // llamar a printf (vinculado con libc al compilar con gcc)
+    bl      printf
+
+    // devolver 0
+    mov     w0, #0
+    ret
+
 ```
-
-# Dividir 10 entre 2 usando restas sucesivas (En ARM64)
-1) Crear el archivo de ensamblador
-```text
-nano div10entre2.s
-```
-Dentro de Nano pegue el siguiente codigo
-```text
-//=========================================================
-// Programa: div10entre2.s
-// Autor: Angulo Marentes Angel Gabriel
-// Descripción: Divide 10 entre 2 usando restas sucesivas
-//=========================================================
-//
-// Solución en C (equivalente):
-// int dividendo = 10, divisor = 2, cociente = 0;
-// while (dividendo >= divisor) {
-//     dividendo -= divisor;
-//     cociente++;
-// }
-// return cociente;
-//
-//=========================================================
-
-        .global _start
-        .text
-
-_start:
-        mov     x0, #10        // x0 = dividendo = 10
-        mov     x1, #2         // x1 = divisor   = 2
-        mov     x2, #0         // x2 = cociente  = 0
-
-bucle:
-        cmp     x0, x1         // ¿dividendo >= divisor?
-        blt     fin            // si no, salir
-        sub     x0, x0, x1     // dividendo -= divisor
-        add     x2, x2, #1     // cociente++
-        b       bucle
-
-fin:
-        // x2 = cociente, x0 = residuo
-        mov     x8, #93        // syscall: exit
-        mov     x0, x2         // devolver cociente como exit code
-        svc     #0
-```
-2) Ensamblar y enlazar (fuera de nano)
-```text
-sudo apt update
-sudo apt install build-essential binutils -y
-```
-Ahora compile paso por paso:
-```text
-as -o div10entre2.o div10entre2.s   # ensamblar
-ld -o div10entre2 div10entre2.o     # enlazar
-```
-3) Ejecucion de mi programa
-```text
-./div10entre2
-echo $?
-```
-Nos mostrará 5 (porque 10 ÷ 2 = 5)
-
-# Prueba de los comandos 
-<img width="830" height="152" alt="image" src="https://github.com/user-attachments/assets/a7905000-6361-4596-bbba-305c02ce59d9" />
-<img width="948" height="537" alt="image" src="https://github.com/user-attachments/assets/987f285a-f74b-4532-9d5b-896ef4e28227" />
-
-
-
-
-
+# <img width="619" height="534" alt="image" src="https://github.com/user-attachments/assets/dfeae1f8-d47a-4783-9804-059a4d9c38a7" />
+# <img width="200" height="178" alt="image" src="https://github.com/user-attachments/assets/d3e19652-768a-47f0-b947-6e4ac050ee24" />
