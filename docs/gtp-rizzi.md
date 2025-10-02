@@ -1,5 +1,10 @@
 
-<img width="483" alt="Screenshot 2025-01-30 at 12 42 16 p m" src="https://github.com/user-attachments/assets/c4157f5c-ab76-468e-a106-c1a38c6df21d" />
+<img 
+  src="https://github.com/user-attachments/assets/c4157f5c-ab76-468e-a106-c1a38c6df21d" 
+  alt="Screenshot 2025-01-30 at 12 42 16 p m" 
+  width="483" 
+  style="display: block; margin: 0 auto;" 
+/>
 
 
 Enlace: https://chatgpt.com/g/g-ikW4IppBT-arm64-assembly-tutor-for-raspbianos-linux
