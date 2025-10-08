@@ -1,9 +1,7 @@
-
+<img width="48" height="48" alt="image" src="https://github.com/user-attachments/assets/88e11d17-1cdf-4170-9fb3-b604c0aa92bb" />
 
 https://github.com/corellium/coremodel
 
-
-<img width="48" height="48" alt="image" src="https://github.com/user-attachments/assets/88e11d17-1cdf-4170-9fb3-b604c0aa92bb" />
 ### **CoreModel API**: Visión General
 
 La **API de CoreModel** está diseñada para proporcionar soporte remoto sobre internet, permitiendo la **conexión de modelos periféricos** a interfaces de buses de máquinas virtuales (VM). Básicamente, lo que hace esta API es permitir que dispositivos periféricos virtualizados interactúen con máquinas virtuales que emulan otros sistemas. Esto es útil cuando se desean simular interacciones entre un sistema y sus periféricos (como sensores, pantallas, o puertos de comunicación) sin tener que contar con hardware físico para realizar las pruebas.
