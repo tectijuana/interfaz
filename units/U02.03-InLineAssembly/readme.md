@@ -77,3 +77,6 @@ while True:
     sleep(1000)
 
 ```
+
+
+<img width="873" height="477" alt="image" src="https://github.com/user-attachments/assets/f4439b1b-7b6a-49d2-adb7-8d07bd17b0a2" />
