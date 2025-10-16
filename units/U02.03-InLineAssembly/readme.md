@@ -34,3 +34,46 @@
 > Incluye encabezado con autor, descripción y comentarios en español que expliquen cada instrucción.
 > Usa el decorador `@micropython.asm_thumb` para hacerlo compatible con el procesador Cortex-M4 del Micro:bit v2.”
 
+---
+
+```python
+# ==========================================================
+#  Proyecto: Ejemplo de ensamblador ARM32 incrustado en MicroPython
+#  Dispositivo: BBC Micro:bit v2 (nRF52833, ARM Cortex-M4)
+#  Lenguaje: MicroPython con código ensamblador incrustado (Thumb)
+#  Autor: IoTeacher
+#  Fecha: Octubre 2025
+#  Descripción:
+#      Este programa demuestra cómo integrar instrucciones
+#      ensamblador ARM dentro de MicroPython en un Micro:bit v2.
+#      El ejemplo realiza la suma de dos números usando registros
+#      ARM y muestra el resultado en la pantalla LED.
+# ==========================================================
+
+from microbit import *
+
+# ----------------------------------------------------------
+# Función ensamblador: suma dos números enteros (ARM Thumb)
+# Parámetros:
+#   r0 -> primer operando
+#   r1 -> segundo operando
+# Retorna:
+#   r0 -> resultado (r0 + r1)
+# ----------------------------------------------------------
+@micropython.asm_thumb
+def suma(r0, r1):
+    add(r0, r0, r1)   # r0 = r0 + r1
+    # El resultado se devuelve automáticamente en r0
+
+# ----------------------------------------------------------
+# Programa principal
+# ----------------------------------------------------------
+while True:
+    a = 5
+    b = 7
+    resultado = suma(a, b)
+
+    display.scroll(str(resultado))
+    sleep(1000)
+
+```
