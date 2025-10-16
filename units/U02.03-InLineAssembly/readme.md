@@ -1,4 +1,79 @@
 
+<img width="606" height="91" alt="image" src="https://github.com/user-attachments/assets/57c78856-a51a-4be4-b623-f21a739c0fcb" />
+
+
+## 🧩 ¿Qué es *Inline Assembly*?
+
+El **Inline Assembly** (o **ensamblador incrustado**) es una técnica que permite **mezclar código de bajo nivel en lenguaje ensamblador dentro de un programa escrito en un lenguaje de alto nivel**, como C, C++, o en nuestro caso, **MicroPython**.
+
+En otras palabras:
+
+> Permite insertar **instrucciones del procesador (CPU)** directamente dentro del código Python, para tener un **control más preciso del hardware**.
+
+---
+
+## ⚙️ ¿Por qué usar Inline Assembly?
+
+1. **Velocidad:**
+   El ensamblador se ejecuta directamente en el CPU, sin interpretación. Es ideal cuando necesitas operaciones muy rápidas.
+
+2. **Control del hardware:**
+   Puedes acceder a registros del microcontrolador, puertos de entrada/salida o periféricos sin depender de librerías.
+
+3. **Aprendizaje de arquitectura:**
+   Enseña cómo funciona internamente el procesador ARM Cortex-M4 del Micro:bit v2.
+
+---
+
+## 💻 Cómo se usa en MicroPython (Micro:bit v2)
+
+MicroPython permite usar **ensamblador ARM (modo Thumb)** con el decorador especial:
+
+```python
+@micropython.asm_thumb
+def funcion(r0, r1):
+    # Código ensamblador ARM
+    add(r0, r0, r1)
+```
+
+### Significado:
+
+* `@micropython.asm_thumb` → indica que la función siguiente usará **instrucciones ARM Thumb** (conjunto reducido de instrucciones del ARM Cortex-M4).
+* `r0`, `r1`, `r2`, etc. → son **registros del procesador** que almacenan datos temporales o parámetros.
+* Las instrucciones (`add`, `mov`, `sub`, etc.) son las **operaciones básicas del CPU**.
+
+---
+
+## 🔬 Ejemplo simple:
+
+```python
+from microbit import *
+
+@micropython.asm_thumb
+def suma(r0, r1):
+    add(r0, r0, r1)  # Suma r0 + r1, guarda resultado en r0
+
+while True:
+    resultado = suma(5, 7)
+    display.scroll(str(resultado))
+```
+
+Este programa:
+
+* Envía los números `5` y `7` al ensamblador.
+* Suma los valores dentro del procesador ARM.
+* Devuelve el resultado a Python y lo muestra en pantalla.
+
+---
+
+## 🧠 En resumen:
+
+| Concepto              | Significado                                                                   |
+| --------------------- | ----------------------------------------------------------------------------- |
+| **Inline Assembly**   | Ensamblador incrustado dentro de un lenguaje de alto nivel.                   |
+| **Ventaja principal** | Velocidad y control directo del hardware.                                     |
+| **Usado en**          | C, C++, Rust, y también MicroPython (modo Thumb).                             |
+| **En Micro:bit v2**   | Se usa con `@micropython.asm_thumb` para acceder al procesador ARM Cortex-M4. |
 
 
 ---
