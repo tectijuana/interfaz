@@ -36,15 +36,21 @@ interfaz/
 
 
 ## 💻 Requisitos previos
-- Conocimientos básicos de arquitectura de computadoras.
-- Experiencia con programación en C.
+- Conocimientos básicos de arquitectura de computadoras y sistemas operativo Linux Ubuntu (opcional Docker Alpine Linux)
+- Experiencia con programación básica en C, micropython
 - Familiaridad con herramientas como `gcc`, `as`, `ld`, `qemu` o simuladores de RISC‑V.
 
+## 💻 Materiales
+- Raspberry Pico 2W version 2025 con cable usb-microusb $8 dolares
+- Cuenta registrada en ChatGTP.com gratis o de paga con anuncios ChatGTP Go de $8 dls al mes.
+- En mayo acceso de API con saldo de $5 dolares o Gratis por otro LLM
+- Usaremos estas practicas en Marzo, el grupo se organiza para la compra masiva para el descuento beneficia a Uds.
 
 ## 📚 Bibliografía recomendada
 - ARM Architecture Reference Manual.
 - Patterson & Hennessy – *Computer Organization and Design RISC‑V Edition*.
 - Sloss, Symes & Wright – *ARM System Developer’s Guide*.
+- Rizzi LLM Chat Assistnte Bot de programación con 10 libros integrados de ARM64
 
 
 ## 🤝 Contribuciones
