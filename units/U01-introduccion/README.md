@@ -40,10 +40,7 @@ De acuerdo al temario, en esta unidad se estudiarán los siguientes aspectos:
 - Comprender la importancia del ensamblador en el control de hardware.  
 - Usar adecuadamente modos de direccionamiento en ejemplos prácticos.  
 - Implementar programas simples que interactúen con memoria y pantalla.  
-
-## 🔧 Actividad sugerida
-- Escribir un programa en ensamblador que muestre un mensaje en pantalla.  
-- Analizar los registros involucrados y el flujo de ejecución.  
+  
 
 ---
 
