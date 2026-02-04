@@ -1,65 +1,11 @@
+<img width="423" height="76" alt="image" src="https://github.com/user-attachments/assets/4852ec07-0733-4916-9181-6289837a7b49" />
 
-### 📌 Explicación de las principales utilerías y su rol en el flujo de desarrollo ARM64:
+Un **Bash script** es como darle instrucciones a la computadora para que haga varias cosas sola, sin que tú tengas que escribir cada comando uno por uno en la terminal.
 
-1. **Compiladores y ensambladores**
+En lugar de repetir siempre lo mismo, escribes los comandos en un archivo y Bash los ejecuta en orden.
+Esto se usa mucho en Linux para automatizar tareas como copiar archivos, correr programas, hacer respaldos o configurar sistemas.
 
-   * `gcc`, `clang`: Permiten compilar código en C/C++ y generar **instrucciones ARM64**.
-   * `binutils`: Incluye `as` (ensamblador) y `ld` (linker), piezas clave para convertir el código en binarios ejecutables.
-     👉 *Motivación*: Aquí es donde tus instrucciones Assembly realmente se transforman en programas que corren en el procesador.
-
-2. **Depuración y análisis**
-
-   * `gdb` + **GEF** y `lldb`: Te dejan **detener la ejecución**, inspeccionar registros, memoria y stack frame.
-   * `valgrind`: Detecta fugas de memoria.
-   * `strace`: Te enseña qué **llamadas al sistema** hace tu programa.
-     👉 *Motivación*: Estos son los “rayos X” y “microscopios” para mirar dentro de tu programa, vital para entender cómo se comporta tu Assembly en tiempo real.
-
-3. **Construcción y organización de proyectos**
-
-   * `make`, `cmake`: Sistemas de construcción que automatizan compilación de proyectos grandes.
-     👉 *Motivación*: No pierdes tiempo re-compilando todo manualmente, el sistema lo hace por ti.
-
-4. **Gestión de código y descargas**
-
-   * `git`: Control de versiones, para colaborar y guardar tu progreso.
-   * `curl`, `wget`: Descarga de recursos y librerías desde Internet.
-     👉 *Motivación*: Aquí entras al mundo profesional: proyectos compartidos, open source y colaboración en equipo.
-
-5. **Editores y entornos de trabajo**
-
-   * `vim`, `nano`: Editores ligeros en consola.
-   * `tmux`, `screen`: Permiten trabajar en múltiples sesiones a la vez.
-     👉 *Motivación*: Aquí aprendes a ser eficiente como ingeniero, manejando multitarea en servidores remotos o en Raspberry Pi.
-
-6. **Análisis del sistema**
-
-   * `htop`: Monitoriza CPU y memoria en tiempo real.
-   * `tree`: Muestra estructuras de carpetas.
-   * `file`: Te dice qué tipo de ejecutable o archivo tienes.
-     👉 *Motivación*: Te vuelves un “médico” del sistema: revisas signos vitales y estructura de tu código.
-
-7. **Calidad y estética**
-
-   * `clang-format`: Asegura código limpio y estandarizado.
-   * `figlet`: Puro estilo, para mensajes ASCII gigantes en consola.
-     👉 *Motivación*: Incluso en la terminal, la presentación importa 😎.
-
-8. **Shell y productividad**
-
-   * `zsh` + **Oh My Zsh**: Shell moderno con autocompletado y personalización.
-     👉 *Motivación*: Hace tu experiencia más fluida y divertida al trabajar largas horas en consola.
-
----
-
-### 🌍 Por qué es importante para un futuro ingeniero
-
-Al final, trabajar en ARM64 no es solo **escribir Assembly**, sino **dominar un ecosistema completo** de herramientas que:
-
-* Traducen tus ideas al lenguaje de la máquina.
-* Te permiten ver y corregir errores de bajo nivel.
-* Te enseñan cómo funciona un sistema operativo por dentro.
-* Te entrenan para trabajar en ambientes reales (servidores, nubes, dispositivos embebidos, IoT).
-
+Dicho simple: **un Bash script te facilita la vida y te evita trabajo repetitivo**.
 
 
 ```bash
@@ -182,3 +128,69 @@ sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/too
 
 
 ```
+
+<img width="1288" height="76" alt="image" src="https://github.com/user-attachments/assets/c2cbf090-4e03-4b66-969e-c4e5cecaf13e" />
+
+
+### 📌 Explicación de las principales utilerías y su rol en el flujo de desarrollo ARM64:
+
+1. **Compiladores y ensambladores**
+
+   * `gcc`, `clang`: Permiten compilar código en C/C++ y generar **instrucciones ARM64**.
+   * `binutils`: Incluye `as` (ensamblador) y `ld` (linker), piezas clave para convertir el código en binarios ejecutables.
+     👉 *Motivación*: Aquí es donde tus instrucciones Assembly realmente se transforman en programas que corren en el procesador.
+
+2. **Depuración y análisis**
+
+   * `gdb` + **GEF** y `lldb`: Te dejan **detener la ejecución**, inspeccionar registros, memoria y stack frame.
+   * `valgrind`: Detecta fugas de memoria.
+   * `strace`: Te enseña qué **llamadas al sistema** hace tu programa.
+     👉 *Motivación*: Estos son los “rayos X” y “microscopios” para mirar dentro de tu programa, vital para entender cómo se comporta tu Assembly en tiempo real.
+
+3. **Construcción y organización de proyectos**
+
+   * `make`, `cmake`: Sistemas de construcción que automatizan compilación de proyectos grandes.
+     👉 *Motivación*: No pierdes tiempo re-compilando todo manualmente, el sistema lo hace por ti.
+
+4. **Gestión de código y descargas**
+
+   * `git`: Control de versiones, para colaborar y guardar tu progreso.
+   * `curl`, `wget`: Descarga de recursos y librerías desde Internet.
+     👉 *Motivación*: Aquí entras al mundo profesional: proyectos compartidos, open source y colaboración en equipo.
+
+5. **Editores y entornos de trabajo**
+
+   * `vim`, `nano`: Editores ligeros en consola.
+   * `tmux`, `screen`: Permiten trabajar en múltiples sesiones a la vez.
+     👉 *Motivación*: Aquí aprendes a ser eficiente como ingeniero, manejando multitarea en servidores remotos o en Raspberry Pi.
+
+6. **Análisis del sistema**
+
+   * `htop`: Monitoriza CPU y memoria en tiempo real.
+   * `tree`: Muestra estructuras de carpetas.
+   * `file`: Te dice qué tipo de ejecutable o archivo tienes.
+     👉 *Motivación*: Te vuelves un “médico” del sistema: revisas signos vitales y estructura de tu código.
+
+7. **Calidad y estética**
+
+   * `clang-format`: Asegura código limpio y estandarizado.
+   * `figlet`: Puro estilo, para mensajes ASCII gigantes en consola.
+     👉 *Motivación*: Incluso en la terminal, la presentación importa 😎.
+
+8. **Shell y productividad**
+
+   * `zsh` + **Oh My Zsh**: Shell moderno con autocompletado y personalización.
+     👉 *Motivación*: Hace tu experiencia más fluida y divertida al trabajar largas horas en consola.
+
+---
+
+### 🌍 Por qué es importante para un futuro ingeniero
+
+Al final, trabajar en ARM64 no es solo **escribir Assembly**, sino **dominar un ecosistema completo** de herramientas que:
+
+* Traducen tus ideas al lenguaje de la máquina.
+* Te permiten ver y corregir errores de bajo nivel.
+* Te enseñan cómo funciona un sistema operativo por dentro.
+* Te entrenan para trabajar en ambientes reales (servidores, nubes, dispositivos embebidos, IoT).
+
+
