@@ -60,7 +60,7 @@ Al final, trabajar en ARM64 no es solo **escribir Assembly**, sino **dominar un 
 * Te enseñan cómo funciona un sistema operativo por dentro.
 * Te entrenan para trabajar en ambientes reales (servidores, nubes, dispositivos embebidos, IoT).
 
-👉 Así, un estudiante no solo aprende “a programar en ensamblador”, sino a **pensar como ingeniero de sistemas**, con visión de hardware, software y herramientas profesionales.
+
 
 ```bash
 #!/bin/bash
