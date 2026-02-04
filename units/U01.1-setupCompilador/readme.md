@@ -184,13 +184,6 @@ sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/too
 
 ---
 
-### 🌍 Por qué es importante para un futuro ingeniero
-
-Al final, trabajar en ARM64 no es solo **escribir Assembly**, sino **dominar un ecosistema completo** de herramientas que:
-
-* Traducen tus ideas al lenguaje de la máquina.
-* Te permiten ver y corregir errores de bajo nivel.
-* Te enseñan cómo funciona un sistema operativo por dentro.
-* Te entrenan para trabajar en ambientes reales (servidores, nubes, dispositivos embebidos, IoT).
+Esta técnica de compilar desde la terminal, es un forma muy especifica que el docente presenta a el grupo, existen herramientas graficas oficiales por ARM.com la mayoria no son gratis, y el enfoque en diseño de microcontroladores, el curso no lleva ese enfoque por tal podemos se flexibles y ver alternativas interesantes para Uds.
 
 
