@@ -1,42 +1,83 @@
-## 📋 Resumen del Pull Request
-Describe brevemente **qué cambios propones** y **por qué** (contexto del problema o investigación).
+# 🚀 Pull Request – Investigación Individual  
+**Ingeniería en Sistemas Computacionales**  
+**Materia: Lenguaje de Interfaz**
 
 ---
 
-## 🧪 Objetivos de la Contribución
-Explica qué pretende lograr este PR:
-- Objetivos técnicos y/o académicos
-- Qué parte de la investigación/documentación se está entregando
-- Cómo encaja con la rama o proyecto general
+## 👤 Información del Estudiante
+
+- **Nombre completo:**  
+- **Horario (3PM / 4PM / 5PM):**  
+- **Número de investigación asignada:**  
+- **Título del tema:**  
 
 ---
 
-## 📂 Detalles de los Cambios
-Enumera qué archivos o secciones se modifican:
-- [ ] Documento de investigación agregado/actualizado
-- [ ] Código de ejemplo o prueba
-- [ ] Scripts o herramientas
-- [ ] Referencias o enlaces externos
+## 📌 Descripción del Pull Request
 
-Explica brevemente qué hace cada uno y por qué es relevante para el PR.
+Describa brevemente el contenido de este PR.
 
----
+Explique:
+- Qué tema desarrolló.
+- Qué problema o concepto aborda.
+- Cómo se relaciona con Lenguaje de Interfaz.
+- Qué aporta académicamente al repositorio.
 
-## 📌 Checklist de Requisitos
-Por favor marca lo que aplica antes de solicitar revisión:
-
-- [ ] El título del PR está claro y relacionado con el tema
-- [ ] La descripción contiene contexto suficiente para entender los cambios
-- [ ] El documento de investigación sigue la estructura solicitada
-- [ ] Se añaden referencias bibliográficas (si aplica)
-- [ ] El material ha sido revisado internamente por el equipo
-- [ ] La evidencia (asciinema, simulador, etc.) está incluida
-- [ ] Está listo para revisión por pares
+> ⚠️ Este Pull Request debe contener únicamente su investigación individual.
 
 ---
 
-## 📎 Evidencia / Evidencias de Soporte  
-Agrega enlaces a cualquier evidencia relevante:
-- Articulos, blogs especializados, etc
-- Enlace a simuladores usadas  
-- Acceso a datasets o benchmarks utilizados
+## 📁 Estructura de Entrega
+
+Marque con ✅ o ❌ según corresponda:
+
+- [ ] 📂 Carpeta individual con el **nombre del tema** (Ejemplo: `Representacion_del_Conocimiento_G4`)
+- [ ] 📄 Archivo `README.md` usando el template oficial
+- [ ] 🧩 Todas las secciones completas
+- [ ] 🖼 Diagramas / imágenes correctamente integrados (si aplica)
+- [ ] 📚 Referencias académicas en formato adecuado
+- [ ] ✍️ Redacción original (sin copiar contenido)
+
+---
+
+## 🧠 Validación Académica
+
+Confirme que su investigación cumple con los criterios técnicos:
+
+- [ ] Tema alineado al programa de la materia
+- [ ] Fundamentación teórica clara
+- [ ] Desarrollo estructurado y coherente
+- [ ] Análisis técnico propio
+- [ ] Conclusiones bien argumentadas
+- [ ] Aporte claro al aprendizaje de Lenguaje de Interfaz
+
+---
+
+## 🔍 Observaciones para el Maintainer (Docente)
+
+Si desea explicar alguna decisión técnica, dificultad encontrada o punto específico que requiera revisión, indíquelo aquí.
+
+---
+
+## 📝 Declaración de Originalidad
+
+Declaro que este trabajo es **original y de mi autoría**, y que todas las fuentes consultadas han sido citadas correctamente.  
+Entiendo que el plagio total o parcial invalida la entrega.
+
+- **Nombre:**  
+- **Fecha:**  
+
+---
+
+## ✅ Checklist Final antes de Enviar
+
+- [ ] Revisé ortografía y redacción técnica
+- [ ] El PR contiene únicamente mi investigación
+- [ ] El título del PR sigue el formato solicitado por el docente
+- [ ] No modifiqué archivos de otros compañeros
+- [ ] Verifiqué que mi carpeta está nombrada correctamente con el tema asignado
+
+---
+
+### 📎 Formato Obligatorio del Título del PR
+
