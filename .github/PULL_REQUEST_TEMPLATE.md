@@ -55,7 +55,27 @@ Confirme que su investigación cumple con los criterios técnicos:
 
 ## 🔍 Observaciones para el Maintainer (Docente)
 
-Si desea explicar alguna decisión técnica, dificultad encontrada o punto específico que requiera revisión, indíquelo aquí.
+
+---
+
+# 📊 Rúbrica de Evaluación – Pull Request
+
+**Ingeniería en Sistemas Computacionales**
+**Materia: Lenguaje de Interfaz**
+**Valor total: 100 puntos**
+
+| Criterio de Evaluación           | Descripción del Desempeño Esperado                                                    | Valor  |
+| -------------------------------- | ------------------------------------------------------------------------------------- | ------ |
+| 📁 Estructura del Repositorio    | Carpeta nombrada correctamente con el tema asignado. Organización limpia y coherente. | 10 pts |
+| 📄 Uso correcto del Template     | Pull Request completo siguiendo el template oficial sin omisiones.                    | 10 pts |
+| 🧩 Desarrollo del Contenido      | Investigación completa, estructurada y técnicamente fundamentada.                     | 20 pts |
+| 🧠 Fundamentación Teórica        | Uso adecuado de conceptos técnicos propios de Lenguaje de Interfaz.                   | 15 pts |
+| 🔎 Análisis y Aporte Propio      | Reflexión técnica clara, conclusiones bien argumentadas y aporte al aprendizaje.      | 15 pts |
+| 🖼 Recursos Visuales (si aplica) | Diagramas, esquemas o ejemplos correctamente integrados y explicados.                 | 5 pts  |
+| 📚 Referencias Académicas        | Fuentes confiables, correctamente citadas.                                            | 10 pts |
+| ✍️ Redacción Técnica             | Claridad, coherencia, ortografía y uso apropiado de terminología técnica.             | 10 pts |
+| 🔄 Flujo de Contribución         | PR correctamente generado, sin afectar archivos de otros compañeros.                  | 5 pts  |
+
 
 ---
 
