@@ -7,8 +7,7 @@
 ## 👤 Información del Estudiante
 
 - **Nombre completo:**  
-- **Horario (3PM / 4PM / 5PM):**  
-- **Número de investigación asignada:**  
+- **Horario:**  --PM    
 - **Título del tema:**  
 
 ---
@@ -16,12 +15,8 @@
 ## 📌 Descripción del Pull Request
 
 Describa brevemente el contenido de este PR.
-
-Explique:
-- Qué tema desarrolló.
-- Qué problema o concepto aborda.
-- Cómo se relaciona con Lenguaje de Interfaz.
 - Qué aporta académicamente al repositorio.
+
 
 > ⚠️ Este Pull Request debe contener únicamente su investigación individual.
 
@@ -54,10 +49,7 @@ Confirme que su investigación cumple con los criterios técnicos:
 ---
 
 ## 🔍 Observaciones para el Maintainer (Docente)
-
-
 ---
-
 # 📊 Rúbrica de Evaluación – Pull Request
 
 **Ingeniería en Sistemas Computacionales**
@@ -76,7 +68,6 @@ Confirme que su investigación cumple con los criterios técnicos:
 | ✍️ Redacción Técnica             | Claridad, coherencia, ortografía y uso apropiado de terminología técnica.             | 10 pts |
 | 🔄 Flujo de Contribución         | PR correctamente generado, sin afectar archivos de otros compañeros.                  | 5 pts  |
 
-
 ---
 
 ## 📝 Declaración de Originalidad
@@ -94,8 +85,9 @@ Entiendo que el plagio total o parcial invalida la entrega.
 - [ ] Revisé ortografía y redacción técnica
 - [ ] El PR contiene únicamente mi investigación
 - [ ] El título del PR sigue el formato solicitado por el docente
-- [ ] No modifiqué archivos de otros compañeros
+- [ ] No modifiqué archivos de otros compañeros, o estructura de directorios
 - [ ] Verifiqué que mi carpeta está nombrada correctamente con el tema asignado
+- [ ] La investigación esta en el README.md y en directorio del tema otros documentos de apoyo enlazados
 
 ---
 
