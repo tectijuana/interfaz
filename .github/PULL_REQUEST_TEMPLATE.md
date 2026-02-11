@@ -1,42 +1,94 @@
-## 📋 Resumen del Pull Request
-Describe brevemente **qué cambios propones** y **por qué** (contexto del problema o investigación).
+# 🚀 Pull Request – Investigación Individual  
+**Ingeniería en Sistemas Computacionales**  
+**Materia: Lenguaje de Interfaz**
 
 ---
 
-## 🧪 Objetivos de la Contribución
-Explica qué pretende lograr este PR:
-- Objetivos técnicos y/o académicos
-- Qué parte de la investigación/documentación se está entregando
-- Cómo encaja con la rama o proyecto general
+## 👤 Información del Estudiante
+
+- **Nombre completo:**  
+- **Horario:**  --PM    
+- **Título del tema:**  
 
 ---
 
-## 📂 Detalles de los Cambios
-Enumera qué archivos o secciones se modifican:
-- [ ] Documento de investigación agregado/actualizado
-- [ ] Código de ejemplo o prueba
-- [ ] Scripts o herramientas
-- [ ] Referencias o enlaces externos
+## 📌 Descripción del Pull Request
 
-Explica brevemente qué hace cada uno y por qué es relevante para el PR.
+Describa brevemente el contenido de este PR.
+- Qué aporta académicamente al repositorio.
 
----
 
-## 📌 Checklist de Requisitos
-Por favor marca lo que aplica antes de solicitar revisión:
-
-- [ ] El título del PR está claro y relacionado con el tema
-- [ ] La descripción contiene contexto suficiente para entender los cambios
-- [ ] El documento de investigación sigue la estructura solicitada
-- [ ] Se añaden referencias bibliográficas (si aplica)
-- [ ] El material ha sido revisado internamente por el equipo
-- [ ] La evidencia (asciinema, simulador, etc.) está incluida
-- [ ] Está listo para revisión por pares
+> ⚠️ Este Pull Request debe contener únicamente su investigación individual.
 
 ---
 
-## 📎 Evidencia / Evidencias de Soporte  
-Agrega enlaces a cualquier evidencia relevante:
-- Articulos, blogs especializados, etc
-- Enlace a simuladores usadas  
-- Acceso a datasets o benchmarks utilizados
+## 📁 Estructura de Entrega
+
+Marque con ✅ o ❌ según corresponda:
+
+- [ ] 📂 Carpeta individual con el **nombre del tema** (Ejemplo: `Representacion_del_Conocimiento_G4`)
+- [ ] 📄 Archivo `README.md` usando el template oficial
+- [ ] 🧩 Todas las secciones completas
+- [ ] 🖼 Diagramas / imágenes correctamente integrados (si aplica)
+- [ ] 📚 Referencias académicas en formato adecuado
+- [ ] ✍️ Redacción original (sin copiar contenido)
+
+---
+
+## 🧠 Validación Académica
+
+Confirme que su investigación cumple con los criterios técnicos:
+
+- [ ] Tema alineado al programa de la materia
+- [ ] Fundamentación teórica clara
+- [ ] Desarrollo estructurado y coherente
+- [ ] Análisis técnico propio
+- [ ] Conclusiones bien argumentadas
+- [ ] Aporte claro al aprendizaje de Lenguaje de Interfaz
+
+---
+
+## 🔍 Observaciones para el Maintainer (Docente)
+---
+# 📊 Rúbrica de Evaluación – Pull Request
+
+**Ingeniería en Sistemas Computacionales**
+**Materia: Lenguaje de Interfaz**
+**Valor total: 100 puntos**
+
+| Criterio de Evaluación           | Descripción del Desempeño Esperado                                                    | Valor  |
+| -------------------------------- | ------------------------------------------------------------------------------------- | ------ |
+| 📁 Estructura del Repositorio    | Carpeta nombrada correctamente con el tema asignado. Organización limpia y coherente. | 10 pts |
+| 📄 Uso correcto del Template     | Pull Request completo siguiendo el template oficial sin omisiones.                    | 10 pts |
+| 🧩 Desarrollo del Contenido      | Investigación completa, estructurada y técnicamente fundamentada.                     | 20 pts |
+| 🧠 Fundamentación Teórica        | Uso adecuado de conceptos técnicos propios de Lenguaje de Interfaz.                   | 15 pts |
+| 🔎 Análisis y Aporte Propio      | Reflexión técnica clara, conclusiones bien argumentadas y aporte al aprendizaje.      | 15 pts |
+| 🖼 Recursos Visuales (si aplica) | Diagramas, esquemas o ejemplos correctamente integrados y explicados.                 | 5 pts  |
+| 📚 Referencias Académicas        | Fuentes confiables, correctamente citadas.                                            | 10 pts |
+| ✍️ Redacción Técnica             | Claridad, coherencia, ortografía y uso apropiado de terminología técnica.             | 10 pts |
+| 🔄 Flujo de Contribución         | PR correctamente generado, sin afectar archivos de otros compañeros.                  | 5 pts  |
+
+---
+
+## 📝 Declaración de Originalidad
+
+Declaro que este trabajo es **original y de mi autoría**, y que todas las fuentes consultadas han sido citadas correctamente.  
+Entiendo que el plagio total o parcial invalida la entrega.
+
+- **Nombre:**  
+- **Fecha:**  
+
+---
+
+## ✅ Checklist Final antes de Enviar
+
+- [ ] Revisé ortografía y redacción técnica
+- [ ] El PR contiene únicamente mi investigación
+- [ ] El título del PR sigue el formato solicitado por el docente
+- [ ] No modifiqué archivos de otros compañeros, o estructura de directorios
+- [ ] Verifiqué que mi carpeta está nombrada correctamente con el tema asignado
+- [ ] La investigación esta en el README.md y en directorio del tema otros documentos de apoyo enlazados
+
+---
+
+
