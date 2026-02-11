@@ -91,5 +91,4 @@ Entiendo que el plagio total o parcial invalida la entrega.
 
 ---
 
-### 📎 Formato Obligatorio del Título del PR
 
