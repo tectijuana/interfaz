@@ -160,10 +160,10 @@ La arquitectura ARM representa una **solución fundamental** para el procesamien
 
 ## 13. Referencias
 
-- ARM Ltd. *ARM Architecture Reference Manual*
-- Patterson, D. A., & Hennessy, J. L. *Computer Organization and Design*
+- https://www.lenovo.com/us/en/glossary/what-is-arm-architecture/
+- https://www.arm.com/technologies/big-little
 - [https://developer.arm.com](https://developer.arm.com)
-- [https://www.arm.com/architecture](https://www.arm.com/architecture)
+- https://www.ionos.mx/digitalguide/servidores/know-how/arquitectura-arm/
 
 ```text
 Fetch → Decode → Execute → Memory → Write Back
