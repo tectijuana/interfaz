@@ -26,4 +26,9 @@ Aquí se detalla cómo la eficiencia energética impulsa la innovación en ARM
 - **Ecosistema abierto**: La flexibilidad de ARM permite a sus socios personalizar sus SoCs (System on a Chip), optimizando aún más el consumo energético para tareas específicas.
 
 En conclusión, ARM utiliza la eficiencia energética para redefinir el rendimiento en todos los ámbitos, desde el dispositivo más pequeño hasta el centro de datos más potente, haciendo que la 
-"IA en todas partes" sea posible de manera sostenible.
+"IA en todas partes" sea posible de manera sostenible, incluso en infraestructuras que sería imposible de sostener con arquitecturas ineficientes.
+
+### Fuentes bibliograficas
+- Devmx. (2024, 2 septiembre). La Eficiencia Energética: Un Pilar Fundamental para la Innovación Sostenible en la Era Digital. Startup México. https://startupmexico.com/la-eficiencia-energetica-un-pilar-fundamental-para-la-innovacion-sostenible-en-la-era-digital/
+- Arm Ltd. (s. f.). Neoverse N3. Arm | The Architecture For The Digital World. https://www.arm.com/products/silicon-ip-cpu/neoverse/neoverse-n3
+- Arm Ltd. (s. f.-b). Scalable Computing Infrastructure and Networking for AI and Edge. Arm | The Architecture For The Digital World. https://www.arm.com/markets/computing-infrastructure
