@@ -68,7 +68,7 @@ La fabricación de chips tiene huella ecológica masiva. Consumo de agua y energ
 - TSMC: **101 millones de m³ de agua** en 2023; mejoras en reclaimed water (~17% en 2024), pero expansión presiona recursos.
 
 ## Conclusión
-En 2026, la industria de semiconductores vive un superciclo impulsado por IA, pero enfrenta bottlenecks críticos en HBM, CoWoS y sostenibilidad. La transición a angstrom (N2/A16), reshoring y eficiencia energética definirán el liderazgo hacia 2030.
+En 2026, la industria de semiconductores vive un superciclo impulsado por IA, pero enfrenta bottlenecks críticos en HBM, CoWoS y sostenibilidad. El reshoring y eficiencia energética definirán el liderazgo hacia 2030.
 
 ## Fuentes principales
 1. NVIDIA Earnings – Q1 FY2026: https://nvidianews.nvidia.com/news/nvidia-announces-financial-results-for-first-quarter-fiscal-2026  
