@@ -6,8 +6,8 @@
 
 ## 👤 Información del Estudiante
 
-- **Nombre completo:**  
-- **Horario:**  --PM    
+- **Nombre completo: Alejandro Sedano Herrera**  
+- **Horario:**  15:00-16:00    
 - **Título del tema:**  
 
 ---
