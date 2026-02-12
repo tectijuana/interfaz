@@ -6,16 +6,16 @@
 
 ## 👤 Información del Estudiante
 
-- **Nombre completo: Alejandro Sedano Herrera**  
-- **Horario:**  15:00-16:00    
-- **Título del tema:**  
+- **Nombre completo:** Alejandro Sedano Herrera
+- **Horario:** 15:00-16:00    
+- **Título del tema:**  INVESTIGACIÓN
 
 ---
 
 ## 📌 Descripción del Pull Request
 
-Describa brevemente el contenido de este PR.
-- Qué aporta académicamente al repositorio.
+Este PR agrega un análisis académico actualizado (febrero 2026) de las 10 tendencias clave en arquitecturas de semiconductores, cubriendo IA, nodos angstrom, advanced packaging, HBM, reshoring y sostenibilidad, con datos cuantitativos y fuentes confiables.
+Aporta al repositorio un recurso educativo integral y bien estructurado sobre el panorama actual y futuro de la industria de semiconductores.
 
 
 > ⚠️ Este Pull Request debe contener únicamente su investigación individual.
@@ -26,12 +26,12 @@ Describa brevemente el contenido de este PR.
 
 Marque con ✅ o ❌ según corresponda:
 
-- [ ] 📂 Carpeta individual con el **nombre del tema** (Ejemplo: `Representacion_del_Conocimiento_G4`)
-- [ ] 📄 Archivo `README.md` usando el template oficial
-- [ ] 🧩 Todas las secciones completas
-- [ ] 🖼 Diagramas / imágenes correctamente integrados (si aplica)
-- [ ] 📚 Referencias académicas en formato adecuado
-- [ ] ✍️ Redacción original (sin copiar contenido)
+- [✅] 📂 Carpeta individual con el **nombre del tema** (Ejemplo: `Representacion_del_Conocimiento_G4`)
+- [✅] 📄 Archivo `README.md` usando el template oficial
+- [✅] 🧩 Todas las secciones completas
+- [❌] 🖼 Diagramas / imágenes correctamente integrados (si aplica)
+- [✅] 📚 Referencias académicas en formato adecuado
+- [✅] ✍️ Redacción original (sin copiar contenido)
 
 ---
 
@@ -39,12 +39,12 @@ Marque con ✅ o ❌ según corresponda:
 
 Confirme que su investigación cumple con los criterios técnicos:
 
-- [ ] Tema alineado al programa de la materia
-- [ ] Fundamentación teórica clara
-- [ ] Desarrollo estructurado y coherente
-- [ ] Análisis técnico propio
-- [ ] Conclusiones bien argumentadas
-- [ ] Aporte claro al aprendizaje de Lenguaje de Interfaz
+- [✅] Tema alineado al programa de la materia
+- [✅] Fundamentación teórica clara
+- [✅] Desarrollo estructurado y coherente
+- [✅] Análisis técnico propio
+- [✅] Conclusiones bien argumentadas
+- [✅] Aporte claro al aprendizaje de Lenguaje de Interfaz
 
 ---
 
@@ -75,19 +75,19 @@ Confirme que su investigación cumple con los criterios técnicos:
 Declaro que este trabajo es **original y de mi autoría**, y que todas las fuentes consultadas han sido citadas correctamente.  
 Entiendo que el plagio total o parcial invalida la entrega.
 
-- **Nombre:**  
-- **Fecha:**  
+- **Nombre:** Alejandro Sedano Herrera 
+- **Fecha:** 11/02/2026
 
 ---
 
 ## ✅ Checklist Final antes de Enviar
 
-- [ ] Revisé ortografía y redacción técnica
-- [ ] El PR contiene únicamente mi investigación
-- [ ] El título del PR sigue el formato solicitado por el docente
-- [ ] No modifiqué archivos de otros compañeros, o estructura de directorios
-- [ ] Verifiqué que mi carpeta está nombrada correctamente con el tema asignado
-- [ ] La investigación esta en el README.md y en directorio del tema otros documentos de apoyo enlazados
+- [✅] Revisé ortografía y redacción técnica
+- [✅] El PR contiene únicamente mi investigación
+- [✅] El título del PR sigue el formato solicitado por el docente
+- [✅] No modifiqué archivos de otros compañeros, o estructura de directorios
+- [✅] Verifiqué que mi carpeta está nombrada correctamente con el tema asignado
+- [✅] La investigación esta en el README.md y en directorio del tema otros documentos de apoyo enlazados
 
 ---
 
