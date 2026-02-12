@@ -53,6 +53,10 @@ Y otro que estudiantes de esta institucion hayan utilizando seria el **Raspberry
 ![Conoce los beneficios de conectar tu smartphone con tu QLED – Samsung  Newsroom Perú](https://img.global.news.samsung.com/pe/wp-content/uploads/2019/10/smart-tv.png)
 
 
+## Conclusiones
+Esta aquitectura ha sido una de las mas utiles para la creacion de distintos aparatos y dispositivos relativamente pequeños, permitiendo que muchos celulares, televisiones, entre otros dispositivos, sean mas faciles y rapidos de manejar. Ya sea por su potencia, su tamaño o su compatibilidad y utilidades, la arquitectura ARM es uno que ayudara mucho a programadores tanto nuevos como viejos.
+
+
 ## Referencias usados
 
 _What is ARM architecture | ARM Processor Architecture | Lenovo US_. (2023, 28 mayo). https://www.lenovo.com/us/en/glossary/what-is-arm-architecture/?orgRef=https%253A%252F%252Fwww.google.com%252F
