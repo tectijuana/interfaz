@@ -1,4 +1,4 @@
-# 🔋 Nuevas arquitecturas de procesadores orientadas a bajo consumo
+# 🔋 Nuevas arquitecturas de procesadores orientadas a bajo consumo :D
 
 ---
 
