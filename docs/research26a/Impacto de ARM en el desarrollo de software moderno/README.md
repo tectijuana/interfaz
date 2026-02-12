@@ -1,3 +1,8 @@
+# ╭(0▽0)╯
+# |￣U U￣￣￣￣￣￣￣￣￣￣
+# | • Lenguajes de Interfaz en TECNM Campus ITT                                            
+# | • Autor: César Lepe Garcia                                                            
+# | • Fecha: 11 de febrero de 2026                                                         
 
 # El Impacto de ARM en el Desarrollo de Software Moderno
 
