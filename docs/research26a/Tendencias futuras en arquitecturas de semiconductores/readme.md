@@ -70,7 +70,7 @@ La fabricación de chips tiene huella ecológica masiva. Consumo de agua y energ
 ## Conclusión
 En 2026, la industria de semiconductores vive un superciclo impulsado por IA, pero enfrenta bottlenecks críticos en HBM, CoWoS y sostenibilidad. La transición a angstrom (N2/A16), reshoring y eficiencia energética definirán el liderazgo hacia 2030.
 
-## Fuentes principales (actualizadas a febrero 2026)
+## Fuentes principales
 1. NVIDIA Earnings – Q1 FY2026: https://nvidianews.nvidia.com/news/nvidia-announces-financial-results-for-first-quarter-fiscal-2026  
 2. TSMC Technology Roadmap (N2/A16): https://www.tsmc.com/english/dedicatedFoundry/technology/logic/l_2nm  
 3. DigiTimes / TrendForce – CoWoS capacity 2026: https://www.digitimes.com/news/a20260129PD220/tsmc-packaging-fab-cowos-genai.html  
