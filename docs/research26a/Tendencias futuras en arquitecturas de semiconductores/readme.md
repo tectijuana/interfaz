@@ -2,6 +2,8 @@
 
 Este documento describe las tendencias clave que están definiendo el panorama de los semiconductores en 2026 y hacia la segunda mitad de la década. El enfoque abarca desde la manufactura a nivel *IA* hasta la geopolítica de la cadena de suministro, con énfasis en los bottlenecks impulsados por la explosión de IA.
 
+<img width="2560" height="1118" alt="image" src="https://github.com/user-attachments/assets/3358b2cc-a14e-4ac3-a60e-19f8b8a2e047" />
+
 ## 1. Computación de IA y Silicio Personalizado (ASICs)
 El paradigma de cómputo ha cambiado definitivamente: de propósito general a cargas de trabajo específicas de IA. Las limitaciones de energía y suministro impulsan a hiperescaladores (Google, Amazon, Microsoft, Meta) a diseñar sus propios chips (TPUs, Trainium, Inferentia, etc.).
 
@@ -33,7 +35,7 @@ El vehículo moderno es un "centro de datos sobre ruedas". La demanda prioriza r
 **Regulaciones clave:**
 - **UE:** Norma GSR II ya vigente para nuevos modelos.
 - **EE. UU.:** AEB (Frenado de Emergencia Automático) obligatoria desde septiembre 2029.
-
+   
 ## 5. Geopolítica y "Relocalización" (Reshoring)
 La soberanía en semiconductores es prioridad de seguridad nacional. La cadena global se fragmenta hacia hubs regionales (EE.UU., UE, Japón, etc.).
 
@@ -69,6 +71,16 @@ La fabricación de chips tiene huella ecológica masiva. Consumo de agua y energ
 
 ## Conclusión
 En 2026, la industria de semiconductores vive un superciclo impulsado por IA, pero enfrenta bottlenecks críticos en HBM, CoWoS y sostenibilidad. El reshoring y eficiencia energética definirán el liderazgo hacia 2030.
+```mermaid 
+timeline
+    title Principales Tendencias en Semiconductores 2026-2030
+    IA / ASICs     : Dominio NVIDIA + hiperescaladores propios
+    Advanced Packaging : CoWoS sold-out : HBM escasez crítica
+    Nodos Angstrom : N2 ramp TSMC : 18A Intel : A16 HVM
+    Geopolítica    : Reshoring CHIPS Act impacto pleno
+    Edge AI        : Copilot+ PCs >50% mercado : GenAI móviles
+    Sostenibilidad : Agua/energía → principal bottleneck futuro
+```
 
 ## Fuentes principales
 1. NVIDIA Earnings – Q1 FY2026: https://nvidianews.nvidia.com/news/nvidia-announces-financial-results-for-first-quarter-fiscal-2026  
