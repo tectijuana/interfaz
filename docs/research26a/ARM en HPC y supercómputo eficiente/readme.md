@@ -1,5 +1,10 @@
 # ARM en HPC y Supercómputo Eficiente
 
+**Autor:** Ordoñez Marrufo Anthony
+**Matrícula:** 23212033
+**Materia:** Lenguajes de Interfaz
+**Grupo:** 06C 3PM
+
 ## 1. Introducción
 
 El **HPC (High Performance Computing)** o cómputo de alto rendimiento se refiere al uso de supercomputadoras y clústeres para resolver problemas complejos en áreas como simulación científica, inteligencia artificial, modelado climático y bioinformática.
