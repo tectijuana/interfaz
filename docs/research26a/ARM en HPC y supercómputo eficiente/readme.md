@@ -113,3 +113,14 @@ ARM se ha convertido en una alternativa sólida en el mundo del HPC y el superc�
 Aunque x86 sigue siendo dominante, ARM está demostrando que puede competir e incluso superar a las arquitecturas tradicionales en rendimiento y eficiencia.
 
 El futuro del supercómputo probablemente incluirá una coexistencia de arquitecturas, donde ARM jugará un papel cada vez más importante.
+
+---
+
+## Referencias Bibliográficas
+
+1. Dongarra, J., et al. (2020). *TOP500 Supercomputer Sites*. Recuperado de: https://www.top500.org  
+2. Fujitsu Limited. (2020). *Fugaku Supercomputer Overview*. Recuperado de: https://www.fujitsu.com  
+3. ARM Ltd. (2023). *ARM Architecture Reference Manual*. ARM Documentation.  
+4. Amazon Web Services (AWS). (2023). *AWS Graviton Processors*. Recuperado de: https://aws.amazon.com/ec2/graviton/  
+5. Hennessy, J. L., & Patterson, D. A. (2019). *Computer Architecture: A Quantitative Approach* (6th ed.). Morgan Kaufmann.  
+6. Strohmaier, E., Meuer, H. W., Dongarra, J., & Simon, H. D. (2021). *The TOP500 List and Progress in High-Performance Computing*. IEEE Computer Society.
