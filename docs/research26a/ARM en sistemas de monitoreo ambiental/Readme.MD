@@ -5,30 +5,30 @@ Docente: RENE SOLIS REYES
 Trabajo: 1.3 INVESTIGACIÓN: Aporta a el repositorio del curso via PR (Pull Request)
 
 
-# ARM en Sistemas de Monitoreo Ambiental
+ARM en Sistemas de Monitoreo Ambiental
 
 ## Descripción
 Este proyecto presenta una investigación sobre el uso de la arquitectura ARM
 en sistemas de monitoreo ambiental, destacando su eficiencia energética,
 bajo costo y amplia aplicación en sistemas embebidos.
 
-## Objetivo
+Objetivo
 Analizar cómo los procesadores ARM permiten la creación de sistemas
 de monitoreo ambiental eficientes y escalables.
 
-## Tecnologías
+Tecnologías
 - Arquitectura ARM
 - Sensores ambientales
 - Sistemas embebidos
 - IoT
 
-## Aplicaciones
+Aplicaciones
 - Agricultura inteligente
 - Ciudades inteligentes
 - Control ambiental
-# ARM en Sistemas de Monitoreo Ambiental
+ARM en Sistemas de Monitoreo Ambiental
 
-## Introducción
+Introducción
 La arquitectura ARM se ha convertido en una de las más utilizadas en sistemas
 embebidos y dispositivos de bajo consumo energético. Su eficiencia, flexibilidad
 y costo reducido la hacen ideal para aplicaciones de monitoreo ambiental, donde
@@ -41,16 +41,16 @@ ciudades inteligentes.
 
 
 
-## Objetivo
+Objetivo
 Analizar el uso de la arquitectura ARM en sistemas de monitoreo ambiental,
 destacando sus características, funcionamiento y ventajas dentro de los
 sistemas embebidos modernos.
 
 
 
-## Marco Teórico
+Marco Teórico
 
-### Arquitectura ARM
+Arquitectura ARM
 ARM (Advanced RISC Machine) es una arquitectura de tipo RISC diseñada para
 ofrecer alto rendimiento con un consumo energético reducido. Esta arquitectura
 es ampliamente utilizada en microcontroladores y computadoras de placa única,
@@ -64,7 +64,7 @@ Entre sus principales características se encuentran:
 
 
 
-### Sistemas de Monitoreo Ambiental
+Sistemas de Monitoreo Ambiental
 Un sistema de monitoreo ambiental es un conjunto de hardware y software que
 permite medir variables físicas del entorno de manera automática y constante.
 
@@ -80,7 +80,7 @@ y optimizar recursos naturales.
 
 
 
-## Aplicación de ARM en el Monitoreo Ambiental
+Aplicación de ARM en el Monitoreo Ambiental
 Los procesadores ARM funcionan como el núcleo del sistema, encargándose de:
 
 - Leer datos de sensores ambientales
@@ -95,7 +95,7 @@ son comúnmente utilizadas para este tipo de sistemas.
 
 
 
-## Arquitectura del Sistema
+Arquitectura del Sistema
 
 El funcionamiento general de un sistema de monitoreo ambiental basado en ARM es:
 
@@ -111,15 +111,15 @@ Visualización de información
 
 
 
-## Componentes del Sistema
+Componentes del Sistema
 
-### Hardware
+Hardware
 - Microcontrolador o placa ARM
 - Sensores ambientales (temperatura, humedad, gas, presión)
 - Módulos de comunicación (WiFi, Bluetooth, LoRa)
 - Fuente de alimentación
 
-### Software
+Software
 - Sistema operativo o firmware
 - Lenguajes de programación como C o Python
 - Librerías para lectura de sensores
@@ -127,7 +127,7 @@ Visualización de información
 
 
 
-## Ventajas del Uso de ARM
+Ventajas del Uso de ARM
 - Consumo energético reducido
 - Operación continua 24/7
 - Alta confiabilidad
@@ -136,7 +136,7 @@ Visualización de información
 
 
 
-## Casos de Uso
+Casos de Uso
 - Agricultura inteligente
 - Control de contaminación ambiental
 - Monitoreo climático
@@ -145,7 +145,7 @@ Visualización de información
 
 
 
-## Conclusiones
+Conclusiones
 La arquitectura ARM es una solución eficiente y confiable para el desarrollo de
 sistemas de monitoreo ambiental. Gracias a su bajo consumo energético y su alta
 capacidad de procesamiento, permite crear sistemas que operan de manera continua
@@ -154,7 +154,7 @@ basadas en datos reales.
 
 
 
-## Referencias
+Referencias
 - Documentación oficial de ARM
 - Artículos sobre sistemas embebidos
 - Recursos educativos sobre monitoreo ambiental
