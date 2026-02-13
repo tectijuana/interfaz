@@ -43,6 +43,46 @@ La arquitectura **ARM (Advanced RISC Machine)** es un diseño de procesadores ba
 
 ---
 
+```mermaid 
+graph TD
+    %% Nodo Principal
+    ARM["<b>Arquitectura ARM en IoT</b><br/>(Basada en RISC)"] 
+
+    %% Características
+    ARM --> FEAT["<b>Características Clave</b>"]
+    FEAT --> F1["Eficiencia Energética"]
+    FEAT --> F2["Bajo Costo y Escalabilidad"]
+    FEAT --> F3["Seguridad (TrustZone)"]
+
+    %% Familias de Procesadores
+    ARM --> FAM["<b>Familias de Procesadores</b>"]
+    
+    FAM --> CA["<b>Cortex-A</b><br/>(Alto Rendimiento)"]
+    CA --> CA_APP["Raspberry Pi / Linux / Edge AI"]
+    
+    FAM --> CM["<b>Cortex-M</b><br/>(Bajo Consumo)"]
+    CM --> CM_APP["Arduino / Sensores / RTOS"]
+
+    %% Software y Ecosistema
+    ARM --> SW["<b>Ecosistema de Software</b>"]
+    SW --> OS1["Linux (Ubuntu/Debian)"]
+    SW --> OS2["Windows IoT Enterprise"]
+    SW --> OS3["FreeRTOS / Azure RTOS"]
+
+    %% Aplicaciones Finales
+    ARM --> APP["<b>Aplicaciones IoT</b>"]
+    APP --> A1["Domótica y Smart Home"]
+    APP --> A2["Industria 4.0 (NXP/STM32)"]
+    APP --> A3["Salud y Transporte"]
+
+    %% Estilos (Opcional para mejorar visualización)
+    style ARM fill:#2c3e50,color:#fff,stroke:#333,stroke-width:2px
+    style FEAT fill:#e67e22,color:#fff
+    style FAM fill:#2980b9,color:#fff
+    style SW fill:#27ae60,color:#fff
+    style APP fill:#8e44ad,color:#fff
+  ```
+
 ## 🚀 Ventajas de ARM en IoT
 
 **Bajo consumo energético** → mayor autonomía de dispositivos.  
