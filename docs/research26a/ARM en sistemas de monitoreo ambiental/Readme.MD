@@ -39,14 +39,14 @@ la temperatura, humedad, calidad del aire y presión atmosférica, con el fin de
 apoyar la toma de decisiones en áreas como la agricultura, la industria y las
 ciudades inteligentes.
 
----
+
 
 ## Objetivo
 Analizar el uso de la arquitectura ARM en sistemas de monitoreo ambiental,
 destacando sus características, funcionamiento y ventajas dentro de los
 sistemas embebidos modernos.
 
----
+
 
 ## Marco Teórico
 
@@ -62,7 +62,7 @@ Entre sus principales características se encuentran:
 - Tamaño compacto
 - Compatibilidad con múltiples sensores y periféricos
 
----
+
 
 ### Sistemas de Monitoreo Ambiental
 Un sistema de monitoreo ambiental es un conjunto de hardware y software que
@@ -78,7 +78,7 @@ Las variables más comunes que se monitorean son:
 Estos sistemas son utilizados para prevenir riesgos, mejorar la calidad de vida
 y optimizar recursos naturales.
 
----
+
 
 ## Aplicación de ARM en el Monitoreo Ambiental
 Los procesadores ARM funcionan como el núcleo del sistema, encargándose de:
@@ -93,7 +93,7 @@ Plataformas basadas en ARM como :contentReference[oaicite:0]{index=0},
 :contentReference[oaicite:1]{index=1} y placas Arduino con ARM
 son comúnmente utilizadas para este tipo de sistemas.
 
----
+
 
 ## Arquitectura del Sistema
 
@@ -109,7 +109,7 @@ Almacenamiento y transmisión
 ↓  
 Visualización de información  
 
----
+
 
 ## Componentes del Sistema
 
@@ -125,7 +125,7 @@ Visualización de información
 - Librerías para lectura de sensores
 - Plataformas de visualización de datos
 
----
+
 
 ## Ventajas del Uso de ARM
 - Consumo energético reducido
@@ -134,7 +134,7 @@ Visualización de información
 - Bajo costo de implementación
 - Escalabilidad para proyectos IoT
 
----
+
 
 ## Casos de Uso
 - Agricultura inteligente
@@ -143,7 +143,7 @@ Visualización de información
 - Ciudades inteligentes
 - Proyectos educativos y de investigación
 
----
+
 
 ## Conclusiones
 La arquitectura ARM es una solución eficiente y confiable para el desarrollo de
@@ -152,7 +152,7 @@ capacidad de procesamiento, permite crear sistemas que operan de manera continua
 y precisa, contribuyendo al cuidado del medio ambiente y a la toma de decisiones
 basadas en datos reales.
 
----
+
 
 ## Referencias
 - Documentación oficial de ARM
