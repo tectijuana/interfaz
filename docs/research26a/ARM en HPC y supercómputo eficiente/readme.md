@@ -1,9 +1,9 @@
 # ARM en HPC y Supercómputo Eficiente
 
-**Autor:** Ordoñez Marrufo Anthony
-**Matrícula:** 23212033
-**Materia:** Lenguajes de Interfaz
-**Grupo:** 06C 3PM
+**Autor:** Ordoñez Marrufo Anthony  
+**Matrícula:** 23212033  
+**Materia:** Lenguajes de Interfaz  
+**Grupo:** 06C 3PM  
 
 ## 1. Introducción
 
