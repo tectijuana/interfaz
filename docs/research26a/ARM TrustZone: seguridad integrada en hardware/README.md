@@ -1,7 +1,7 @@
 
 ![Microcontroladores Microchip SAM L10 y L11 de 32 bit con seguridad a nivel  de chip y tecnología Arm TrustZone® - Revista Electrónica Convertronic -  Noticias y Actualidad Electrónica](https://convertronic.net/images/stories/CONVERTRONIC161/microcontrolador-32-bit-SAM-L10-11-w.jpg)
 
-# ARM TrustZone: Arquitectura de Aislamiento y Seguridad en el Silicio
+# ARM TrustZone: seguridad integrada en hardware
 
 ## Resumen de la Tecnología de Aislamiento
 La tecnología ARM TrustZone constituye una solución de seguridad a nivel de silicio que particiona los recursos de un sistema en chip en dos estados de ejecución: el Mundo Normal (Normal World) para el software de propósito general y el Mundo Seguro (Secure World) para procesos críticos. A través de este aislamiento, se crea un Entorno de Ejecución de Confianza (TEE) que protege activos sensibles, como datos biométricos y claves criptográficas, frente a ataques que puedan comprometer el sistema operativo principal (Rich OS).
