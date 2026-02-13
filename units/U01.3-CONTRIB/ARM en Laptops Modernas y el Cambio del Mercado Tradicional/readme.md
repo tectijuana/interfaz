@@ -39,6 +39,29 @@ Si bien la compatibilidad aumenta cada vez aun hay algunas aplicaciones que pued
 Es posible que ciertos trabajos estén especializadas para la arquitecturas x86 y aún tengan ventaja, pero con cada nueva generación de procesadores ARM, su ventaja vaya disminuyendo.
 
 ## ARM y el Cambio del mercado
+```mermaid
+timeline
+    title Evolución de ARM y el Cambio del Mercado (1980s → 2026+)
+    1980s : Nacimiento de ARM (Acorn → Apple, 1990)
+          : Enfoque en bajo consumo (RISC)
+    1990s : Primeros éxitos en móviles y embedded
+          : Acuerdo con Nokia y otros
+    2000s : Dominio en móviles
+          : 2005 → ~98% de celulares con ARM
+          : 2010 → 95% smartphones
+    2010s : Explosión smartphones (iPhone, Android)
+          : Miles de millones de chips/año
+          : Inicio en servidores (AWS Graviton, 2018+)
+    2020 : Apple M1 → ARM en Macs (2020)
+          : Windows on ARM madura
+          : Armv9 (2021) → AI + Seguridad
+    2023-2025 : Crecimiento explosivo en Data Centers
+          : AWS, Google, Microsoft, Oracle migran
+          : Qualcomm Snapdragon X → PCs Windows
+    2025+ : ARM desafía x86 en PCs y servidores
+          : Proyección: 20-50% PCs en 5-10 años
+          : Data Center > Smartphones en ingresos ARM
+```
 **Ejemplo:**
 *Arquitectura: ARM (Dominante) vs. RISC-V (Emergente)*
 |Aspecto |ARM| RISC-V |
