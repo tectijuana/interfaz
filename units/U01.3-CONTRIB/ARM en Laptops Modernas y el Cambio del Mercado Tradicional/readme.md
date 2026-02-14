@@ -79,12 +79,8 @@ timeline
 --------------------------
 **Conclusión**
 
-Con lo anterior mostrado puede hacerse una idea de la posición de los ARM, estos siguen consolidados como una arquitectura dominante que sigue en constante crecimiento, con el enfoque en el rendimiento de los dispositivos y la duración de la batería. 
-
-El crecimiento en la popularidad de este tipo de procesador en el mercado de empresas como MediaTek y Samsung Electronics, esta siendo impulsado por los avances en inteligencia artificial y procesadores de aprendizaje automático.
-
-Para retomar lo aprendido los procesadores ARM tienen su origen en sistemas y algunos dispositivos móviles hasta convertirse en los procesador mas usado en el mercado tecnológico actual, gracias a que priorizan la eficiencia energética, el bajo consumo de energía y un buen rendimiento.
-Este procesador ha desafiado el dominio de la arquitectura en el mercado tecnológico hasta utilizarse principalmente en Intel y AMD.
+Para retomar lo aprendido los procesadores ARM tienen su origen en sistemas y algunos celulares, hasta convertirse en los procesador mas usado en el mercado tecnológico actual, gracias a que priorizan la eficiencia energética, el bajo consumo de energía y su buen rendimiento.
+Este procesador ha seguido luchando por el dominio de la arquitectura en el mercado hasta utilizarse principalmente en Intel y AMD.
 
 Algunos de los aparatos tecnológicos donde mas se usan son en smartphones, dispositivos IoT, en servidores y otros mas, esto se debe a que las empresas buscan soluciones ARM personalizadas, impulsadas por la demanda de IA, machine learning y reducción de costos energéticos. los avances en Windows on ARM han permitido que el ARM alcance el mercado de los portátiles, acercándose aun mas a competidores como AMD.
 
