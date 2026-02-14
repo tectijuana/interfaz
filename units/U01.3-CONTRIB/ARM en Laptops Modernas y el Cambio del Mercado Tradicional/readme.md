@@ -93,7 +93,7 @@ Para finalizar siguen habiendo arquitecturas emergentes como  RISC-V, aunque aú
 **Bibliografias:**
 * [Google Cloud. (s. f.). ¿Qué son los procesadores basados en ARM?](https://cloud.google.com/discover/what-are-arm-based-processors?hl=es-419)
 
-* [Universidad de La Laguna. (2023). Análisis de eficiencia energética en procesadores ARM Repositorio Institucional Universidad de La Laguna.](https://riull.ull.es/xmlui/handle/915/33502)
+* [Universidad de La Laguna. (2023). Análisis de eficiencia energética en procesadores ARM Repositorio Institucional Universidad de La Laguna.](https://riull.ull.es/xmlui/handle/915/33502) 
 
 * [Market Research Future. (2026). _Next Generation Processors Market.](https://www.marketresearchfuture.com/es/reports/next-generation-processors-market-38640)
 
