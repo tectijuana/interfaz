@@ -76,9 +76,19 @@ timeline
 |**Atractivo principal**| Ecosistema maduro, confiabilidad y optimización probada| Flexibilidad, bajo costo, innovación rápida y comunidad creciente|
 |**Comunidad y adopción**| Muy grande y consolidada| En rápido crecimiento: universidades, startups, empresas explorando su potencial|
 
+--------------------------
+**Conclusión**
+
 Con lo anterior mostrado puede hacerse una idea de la posición de los ARM, estos siguen consolidados como una arquitectura dominante que sigue en constante crecimiento, con el enfoque en el rendimiento de los dispositivos y la duración de la batería. 
 
 El crecimiento en la popularidad de este tipo de procesador en el mercado de empresas como MediaTek y Samsung Electronics, esta siendo impulsado por los avances en inteligencia artificial y procesadores de aprendizaje automático.
+
+Para retomar lo aprendido los procesadores ARM tienen su origen en sistemas y algunos dispositivos móviles hasta convertirse en los procesador mas usado en el mercado tecnológico actual, gracias a que priorizan la eficiencia energética, el bajo consumo de energía y un buen rendimiento.
+Este procesador ha desafiado el dominio de la arquitectura en el mercado tecnológico hasta utilizarse principalmente en Intel y AMD.
+
+Algunos de los aparatos tecnológicos donde mas se usan son en smartphones, dispositivos IoT, en servidores y otros mas, esto se debe a que las empresas buscan soluciones ARM personalizadas, impulsadas por la demanda de IA, machine learning y reducción de costos energéticos. los avances en Windows on ARM han permitido que el ARM alcance el mercado de los portátiles, acercándose aun mas a competidores como AMD.
+
+Para finalizar siguen habiendo arquitecturas emergentes como  RISC-V, aunque aun el ARM mantiene una ventaja, lo que puede confirmar que el ARM seguirá estando el mercado, buscando la evolución de los dispositivos y sistemas informáticos durante algún tiempo mas.
 
 **Bibliografias:**
 * [Google Cloud. (s. f.). ¿Qué son los procesadores basados en ARM?](https://cloud.google.com/discover/what-are-arm-based-processors?hl=es-419)
