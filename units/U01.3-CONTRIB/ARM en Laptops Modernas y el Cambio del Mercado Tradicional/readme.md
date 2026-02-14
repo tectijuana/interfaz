@@ -1,6 +1,6 @@
 - =====================================
 
-Autor: Estrada Rodriguez Melani
+Autor: Estrada Rodríguez Melani
 
 Materia: Lenguajes de Interfaz 
 
@@ -18,12 +18,12 @@ Los ARM (Avanced RISK Machine) son un tipo de procesador, estos se destacan por 
 Anteriormente estos procesadores eran utilizados en los dispositivos móviles, pero gracias a sus características sus aplicaciones en el rubro tecnológico se fueron expandiendo y ahora son utilizados desde sistemas integrados, dispositivos de IoT, servidores y hasta supercomputadoras. 
 
 ![Arquitecturas Intel X86 y ARM: Evolucion del ARM - Linea Cortex](https://i.blogs.es/0a8ee9/cortex1/1366_2000.png)
->Su gran éxito se debe a que el ARM usa su procesamiento con conjuntos de instrucciones reducidos (RISC), este es el que le permite lograr un rendimiento por vatio, para logar el menor consumo de energía posible. 
+>Su gran éxito se debe a que el ARM usa su procesamiento con conjuntos de instrucciones reducidos (RISC), este es el que le permite lograr un rendimiento por vatio, para lograr el menor consumo de energía posible. 
 
 **Ejemplos aplicados**
 * 2008, Google y Amazon, utilizan el procesador ARM al sentir la necesidad de reducir costos, a través del consumo energético de sus servidores, así como para el reconocimiento y procesamiento de imágenes, debido a su destacada eficiencia y rendimiento en
 dichas aplicaciones. 
-* 2020, Apple presentó su primer ordenador portátil de uso doméstico con ARM, este fue el MacBookAir conprocesador M1, adquiriendo un buen rendimiento y eficiencia energética.
+* 2020, Apple presentó su primer ordenador portátil de uso doméstico con ARM, este fue el MacBookAir con procesador M1, adquiriendo un buen rendimiento y eficiencia energética.
 
 **Beneficios de los procesadores basados en Arm**
 * Mayor eficiencia energética.
@@ -33,10 +33,10 @@ dichas aplicaciones.
 ## Desafíos de los Procesadores Basados en ARM
   
 👾**Compatibilidad con software**
-Si bien la compatibilidad aumenta cada vez aun hay algunas aplicaciones que pueden no estar disponibles para los procesadores o arquitecturas de la ARM.
+Si bien la compatibilidad aumenta cada vez, aún hay algunas aplicaciones que pueden no estar disponibles para los procesadores o arquitecturas de la ARM.
 
 👾**Rendimiento para cargas de trabajo específicas**
-Es posible que ciertos trabajos estén especializadas para la arquitecturas x86 y aún tengan ventaja, pero con cada nueva generación de procesadores ARM, su ventaja vaya disminuyendo.
+Es posible que ciertos trabajos estén especializados para la arquitecturas x86 y aún tengan ventaja, pero con cada nueva generación de procesadores ARM, su ventaja vaya disminuyendo.
 
 ## ARM y el Cambio del mercado
 ```mermaid
@@ -76,15 +76,19 @@ timeline
 |**Atractivo principal**| Ecosistema maduro, confiabilidad y optimización probada| Flexibilidad, bajo costo, innovación rápida y comunidad creciente|
 |**Comunidad y adopción**| Muy grande y consolidada| En rápido crecimiento: universidades, startups, empresas explorando su potencial|
 
+Con lo anterior mostrado, puede hacerse una idea de la posición de los ARM, estos siguen consolidados como una arquitectura dominante que sigue en constante crecimiento, con el enfoque en el rendimiento de los dispositivos y la duración de la batería.
+
+El crecimiento en la popularidad de este tipo de procesador en el mercado de empresas como MediaTek y Samsung Electronics, está siendo impulsado por los avances en inteligencia artificial y procesadores de aprendizaje automático.
+
 --------------------------
 **Conclusión**
 
-Para retomar lo aprendido los procesadores ARM tienen su origen en sistemas y algunos celulares, hasta convertirse en los procesador mas usado en el mercado tecnológico actual, gracias a que priorizan la eficiencia energética, el bajo consumo de energía y su buen rendimiento.
+Para retomar lo aprendido los procesadores ARM tienen su origen en sistemas y algunos celulares, hasta convertirse en los procesadores más usados en el mercado tecnológico actual, gracias a que priorizan la eficiencia energética, el bajo consumo de energía y su buen rendimiento.
 Este procesador ha seguido luchando por el dominio de la arquitectura en el mercado hasta utilizarse principalmente en Intel y AMD.
 
-Algunos de los aparatos tecnológicos donde mas se usan son en smartphones, dispositivos IoT, en servidores y otros mas, esto se debe a que las empresas buscan soluciones ARM personalizadas, impulsadas por la demanda de IA, machine learning y reducción de costos energéticos. los avances en Windows on ARM han permitido que el ARM alcance el mercado de los portátiles, acercándose aun mas a competidores como AMD.
+Algunos de los aparatos tecnológicos donde más se usan son en smartphones, dispositivos IoT, en servidores y otros más, esto se debe a que las empresas buscan soluciones ARM personalizadas, impulsadas por la demanda de IA, machine learning y reducción de costos energéticos. los avances en Windows on ARM han permitido que el ARM alcance el mercado de los portátiles, acercándose aún más a competidores como AMD.
 
-Para finalizar siguen habiendo arquitecturas emergentes como  RISC-V, aunque aun el ARM mantiene una ventaja, lo que puede confirmar que el ARM seguirá estando el mercado, buscando la evolución de los dispositivos y sistemas informáticos durante algún tiempo mas.
+Para finalizar siguen habiendo arquitecturas emergentes como  RISC-V, aunque aún el ARM mantiene una ventaja, lo que puede confirmar que el ARM seguirá estando en el mercado, buscando la evolución de los dispositivos y sistemas informáticos durante algún tiempo más.
 
 **Bibliografias:**
 * [Google Cloud. (s. f.). ¿Qué son los procesadores basados en ARM?](https://cloud.google.com/discover/what-are-arm-based-processors?hl=es-419)
