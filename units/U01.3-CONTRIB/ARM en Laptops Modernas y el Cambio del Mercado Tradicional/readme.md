@@ -15,7 +15,7 @@ Descripción: Investigación de los ARM y el cambio o posición actual en el mer
 
 Los ARM (Avanced RISK Machine) son un tipo de procesador, estos se destacan por su unidad central de procesamiento (CPU), siendo mejores en su eficiencia energética y su rendimiento. 
 
-Anteriormente estos procesadores eran utilizados en los dispositivos móviles, pero gracias a sus características sus aplicaciones en el rubro tecnológico se fueron expandiendo y ahora son utilizados desde sistemas integrados, dispositivos de IoT, servidores y hasta supercomputadoras. 
+Anteriormente estos procesadores eran utilizados en los dispositivos móviles, pero gracias a sus características sus aplicaciones en el rubro tecnológico se fueron expandiendo y ahora son utilizados en sistemas integrados, dispositivos de IoT, servidores y hasta supercomputadoras. 
 
 ![Arquitecturas Intel X86 y ARM: Evolucion del ARM - Linea Cortex](https://i.blogs.es/0a8ee9/cortex1/1366_2000.png)
 >Su gran éxito se debe a que el ARM usa su procesamiento con conjuntos de instrucciones reducidos (RISC), este es el que le permite lograr un rendimiento por vatio, para lograr el menor consumo de energía posible. 
