@@ -1,4 +1,4 @@
-# 🖥️ ARM y la Evolución de Arquitecturas Abiertas y Propietarias
+# 🖥️ ARM y la Evolución de Arquitecturas Abiertas y Propietarias.
 
 ---
 
@@ -205,3 +205,4 @@ Love, R. (2010). *Linux Kernel Development* (3rd ed.). Addison-Wesley Profession
 Patterson, D. A., & Hennessy, J. L. (2021). *Computer Organization and Design RISC-V Edition: The Hardware/Software Interface* (2nd ed.). Morgan Kaufmann.
 
 Waterman, A., & Asanović, K. (2019). *The RISC-V Instruction Set Manual, Volume I: User-Level ISA*. RISC-V Foundation. https://riscv.org/
+
