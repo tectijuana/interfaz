@@ -151,6 +151,17 @@ Un sensor inteligente es un dispositivo que combina:
 - **Autonomía:** Varios meses sin mantenimiento
 
 ---
+```mermaid
+   flowchart TD
+    A[Arquitectura ARM] --> B[Sensores Inteligentes]
+    B --> C[Aplicaciones IoT]
+    B --> D[Wearables]
+    B --> E[Automotriz]
+    B --> F[Industria 4.0]
+    B --> G[Agricultura de Precisión]
+
+```
+---
 
 ## 🛠️ Desarrollo de Aplicaciones: Herramientas y Frameworks
 <img width="1200" height="630" alt="image" src="https://github.com/user-attachments/assets/dcfd7bdf-4051-4658-a1a7-8015b945c4cd" />
