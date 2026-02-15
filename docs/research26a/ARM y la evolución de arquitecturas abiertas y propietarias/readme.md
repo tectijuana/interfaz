@@ -7,6 +7,7 @@
 **Materia:** Lenguajes de Intefaz   
 **Nombre:** Noyola Rivera Carlos Ernesto  
 **Número de control:** 22210327  
+**Horario:** 17:00 - 18:00
 
 ---
 
