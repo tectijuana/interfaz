@@ -14,17 +14,17 @@ Los dispositivos portátiles de nueva generación (laptops, tablets, relojes int
 
 ## Ventajas de los dispositivos portátiles con ARM
 
-- Eficiencia energética y batería: Consumen menos energía, lo cual provoca una mayor duración en la batería, casi todo el día, lo cual es esencial para dispositivos portátiles.
-- Diseño compacto y fino: Se crean chips más pequeños, lo cual es de gran ayuda para el diseño de dispositivos más delgados y ligeros
-- Accesibilidad: Al manejar un diseño simple, facilita la fabricación y ofrece una mayor relación calidad-precio
-- Rendimiento: Se maneja un rendimiento que es capaz de manejar tareas complejas y multitarea sin sobrecalentarse
+Eficiencia energética y batería: Consumen menos energía, lo cual provoca una mayor duración en la batería, casi todo el día, lo cual es esencial para dispositivos portátiles.
+Diseño compacto y fino: Se crean chips más pequeños, lo cual es de gran ayuda para el diseño de dispositivos más delgados y ligeros
+Accesibilidad: Al manejar un diseño simple, facilita la fabricación y ofrece una mayor relación calidad-precio
+Rendimiento: Se maneja un rendimiento que es capaz de manejar tareas complejas y multitarea sin sobrecalentarse
 -------
 
 ## Diferencias contra otras arquitecturas
-- Filosofía (RISC vs. CISC): ARM utiliza instrucciones simples, las cuales se ejecutan en un ciclo, mientras que otras como x86 utilizan instrucciones complejas que pueden requerir múltiples ciclos.
-- Eficiencia energética: ARM ofrece un consumo de energía menor, lo cual se puede traducir en mayor duración de batería, lo cual es de suma importancia para dispositivos portátiles como smartphones y laptops modernas
-- Modelo de negocio: ARM licencia el diseño a fabricantes, lo cual promueve la personalización, mientras que otras arquitecturas como Intel o AMD fabrican sus propios chips.
-- Uso: En el mercado móvil, integrado y portátiles de consumo, domina ARM y, por ejemplo, x86 domina en servidores y escritorio (gaming).
+Filosofía (RISC vs. CISC): ARM utiliza instrucciones simples, las cuales se ejecutan en un ciclo, mientras que otras como x86 utilizan instrucciones complejas que pueden requerir múltiples ciclos.
+Eficiencia energética: ARM ofrece un consumo de energía menor, lo cual se puede traducir en mayor duración de batería, lo cual es de suma importancia para dispositivos portátiles como smartphones y laptops modernas
+Modelo de negocio: ARM licencia el diseño a fabricantes, lo cual promueve la personalización, mientras que otras arquitecturas como Intel o AMD fabrican sus propios chips.
+ Uso: En el mercado móvil, integrado y portátiles de consumo, domina ARM y, por ejemplo, x86 domina en servidores y escritorio (gaming).
 
 --------
 ## Conclusión
@@ -33,7 +33,7 @@ La arquitectura ARM es la base de los dispositivos portátiles de nueva generaci
 --------
 
 Referencias
-- Herget, S. (2025, 10 septiembre). Lumex instead of Cortex: ARM’s new cores for smartphones and tablets. C’t Magazin. https://www.heise.de/en/news/Lumex-instead-of-Cortex-ARM-s-new-cores-for-smartphones-and-tablets-10638468.html#:~:text=ARM%20is%20renewing%20its%20range,3%2DA%20architecture.
-- Peres, A. G. (2026, 16 enero). ARM to Dominate Laptops in 2025 — Here’s Why. Nextage Blog. https://nextage.com.br/blog/en/arm-to-dominate-laptops-in-2025/#:~:text=In%20recent%20years%2C%20ARM%20architecture,to%20stay%20in%20the%20game.
-- Alonso, R. (2025, 20 marzo). Todo lo que necesitas saber sobre los procesadores ARM. HardZone. https://hardzone.es/tutoriales/componentes/procesador-arm/
-- Geek Review. (2025, 13 noviembre). Chips ARM vs x86 – ¿Quién Domina REALMENTE los Procesadores? [Vídeo]. YouTube. https://www.youtube.com/watch?v=XFwo3o7eUkc
+Herget, S. (2025, 10 septiembre). Lumex instead of Cortex: ARM’s new cores for smartphones and tablets. C’t Magazin. https://www.heise.de/en/news/Lumex-instead-of-Cortex-ARM-s-new-cores-for-smartphones-and-tablets-10638468.html#:~:text=ARM%20is%20renewing%20its%20range,3%2DA%20architecture.
+Peres, A. G. (2026, 16 enero). ARM to Dominate Laptops in 2025 — Here’s Why. Nextage Blog. https://nextage.com.br/blog/en/arm-to-dominate-laptops-in-2025/#:~:text=In%20recent%20years%2C%20ARM%20architecture,to%20stay%20in%20the%20game.
+Alonso, R. (2025, 20 marzo). Todo lo que necesitas saber sobre los procesadores ARM. HardZone. https://hardzone.es/tutoriales/componentes/procesador-arm/
+Geek Review. (2025, 13 noviembre). Chips ARM vs x86 – ¿Quién Domina REALMENTE los Procesadores? [Vídeo]. YouTube. https://www.youtube.com/watch?v=XFwo3o7eUkc
