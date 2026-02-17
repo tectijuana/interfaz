@@ -487,10 +487,3 @@ Los nuevos modelos de cómputo también encajan de forma natural con ARM: microV
 > **Declaración de uso de IA:**  
 > Este documento fue elaborado como investigación documental para la materia de Lenguajes de Interfaz. Se utilizó inteligencia artificial (Claude, Anthropic) como herramienta de apoyo para la recopilación y estructuración inicial de información. Posteriormente, la autora revisó, modificó y ajustó el contenido del documento para asegurar la coherencia, relevancia y calidad de la investigación presentada. La selección de fuentes, la verificación de datos y la redacción final son responsabilidad de la estudiante. Este uso se declara conforme a la guía `AI_GUIDANCE.md` del repositorio del curso.
 
----
-
-### Prompt utilizado
-
-> Te comparto lo que me pide el documento, de igual forma te comparto una investigación que realicé. Puedes mezclar ambas, hacerlo más acorde a lo que pide el profe (diagramas y fotos entre ellos, en formato markdown) y las referencias o info preferiría que fueran sacadas o tomadas de páginas de internet, páginas de tecnología, etc. Por ejemplo te dejo algunos links.
->
-> Para los diagramas puedes usar: `mermaid`. De nuevo, asegúrate que la info sea acorde al tema: **Virtualización en ARM y Nuevos Modelos de Cómputo**.
