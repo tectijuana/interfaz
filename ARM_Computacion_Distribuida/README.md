@@ -139,5 +139,3 @@ La computación distribuida continuará creciendo junto con tecnologías como la
 * Hennessy, J. L., & Patterson, D. A. (2019). A new golden age for computer architecture. *Communications of the ACM, 62*(2), 48–60. https://doi.org/10.1145/3282307
 
 * Shi, W., Cao, J., Zhang, Q., Li, Y., & Xu, L. (2016). Edge computing: Vision and challenges. *IEEE Internet of Things Journal, 3*(5), 637–646. https://doi.org/10.1109/JIOT.2016.2579198
-* Documentación oficial de ARM Architecture Reference Manual.
-* Artículos académicos sobre computación distribuida e IoT.
