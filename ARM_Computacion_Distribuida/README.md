@@ -30,6 +30,9 @@ El objetivo de esta investigación es analizar la relación entre la arquitectur
 
 ## Arquitectura ARM
 
+![Arquitectura ARM](../ARM.jpg)
+
+
 ARM (Advanced RISC Machine) es una arquitectura de procesadores basada en el modelo RISC (Reduced Instruction Set Computer). Este modelo se caracteriza por utilizar un conjunto reducido de instrucciones simples que pueden ejecutarse rápidamente, a diferencia de las arquitecturas CISC que utilizan instrucciones más complejas.
 
 Entre sus características principales se encuentran:
