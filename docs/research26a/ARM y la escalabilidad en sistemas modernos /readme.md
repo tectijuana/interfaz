@@ -27,6 +27,10 @@ La escalabilidad horizontal es donde ARM brilla en el entorno **Cloud-Native**. 
     
 2.  **Aislamiento de Recursos:** En arquitecturas ARM, cada núcleo suele ser un núcleo físico completo (sin _hyper-threading_), lo que garantiza un rendimiento predecible y evita el problema del "vecino ruidoso" en entornos compartidos.
     
+## Figura 1. Modelo de escalabilidad vertical y horizontal en sistemas basados en Arm Holdings
+<img width="8192" height="1362" alt="image" src="https://github.com/user-attachments/assets/4c607fa0-a910-488b-a779-23463be078f8" />
+    
+El diagrama muestra cómo la arquitectura ARM permite escalar tanto verticalmente (aumentando capacidad dentro de un servidor) como horizontalmente (añadiendo más nodos al clúster), manteniendo un enfoque en eficiencia energética, lo que explica su adopción en plataformas como Amazon Web Services con procesadores AWS Graviton y servidores de alta densidad como Ampere Altra.
 
 ----------
 
