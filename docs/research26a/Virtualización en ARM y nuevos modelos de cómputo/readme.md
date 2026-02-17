@@ -267,14 +267,11 @@ ARM ya no es ajeno a los centros de datos. Procesadores como **AWS Graviton** (b
 Google Cloud (s.f.) también ofrece instancias ARM, destacando las ventajas en eficiencia energética y costos operativos, especialmente para aplicaciones containerizadas y nativas en la nube.
 
 ![AWS Graviton](https://assets.aboutamazon.com/dims4/default/3efeedc/2147483647/strip/true/crop/1597x900+2+0/resize/1320x744!/quality/90/?url=https%3A%2F%2Famazon-blogs-brightspot.s3.amazonaws.com%2Fa4%2F88%2F0a976a694d4ebd03c1520db97de1%2Faa-jul2024-aws-graviton4-standard-inline-v7-1600x900.jpg)
-*Figura 2. Procesador AWS Graviton4, diseñado por Amazon sobre arquitectura ARM para instancias en la nube (Fuente: Amazon).*
+*Figura 1. Procesador AWS Graviton4, diseñado por Amazon sobre arquitectura ARM para instancias en la nube (Fuente: Amazon).*
 
 ### 6.2 Edge Computing
 
 El **edge computing** consiste en procesar datos lo más cerca posible de donde se generan: sensores, gateways, redes 5G, etc. La idea es reducir la latencia y no depender tanto del ancho de banda hacia la nube. Según Computer Weekly (2026), entre las tendencias clave para 2026 están la inferencia de IA en el borde, la convergencia IT/OT, y el uso de procesadores ARM por su bajo consumo en nodos distribuidos.
-
-![Edge Computing](https://www.akamai.com/site/en/images/article/2024/how-does-edge-computing-work.png)
-*Figura 3. Funcionamiento del edge computing: procesamiento distribuido cerca del origen de los datos (Fuente: Akamai).*
 
 ```mermaid
 flowchart LR
@@ -336,7 +333,7 @@ Como se explicó en la sección 4.3, ARM CCA/RME/Realms lleva el concepto de ais
 Hoy el cómputo ya no es solo CPU. La tendencia es integrar múltiples tipos de procesadores (CPU ARM, GPU, NPU, DPU) en un mismo SoC o conectarlos mediante **chiplets**. ARM permite que las VMs, Realms y aplicaciones accedan a estos aceleradores sin romper el aislamiento. Los diseños de referencia ARM Helios y Atlas (2025) apuntan precisamente a esto: escalabilidad de interconexión para escenarios de IA tanto en edge como en datacenter (Arm, 2024).
 
 ![SoC moderno](https://www.redseguridad.com/wp-content/uploads/sites/2/2023/01/beneficios-de-un-soc-moderno.jpg)
-*Figura 4. Representación de un System on Chip (SoC) moderno con múltiples componentes integrados (Fuente: Red Seguridad).*
+*Figura 2. Representación de un System on Chip (SoC) moderno con múltiples componentes integrados (Fuente: Red Seguridad).*
 
 ```mermaid
 graph TD
