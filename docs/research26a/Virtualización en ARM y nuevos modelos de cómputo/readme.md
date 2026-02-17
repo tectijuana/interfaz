@@ -2,15 +2,15 @@
 
 ---
 
-> **Instituto Tecnológico de Tijuana**
-> 
 > **Materia:** Lenguajes de Interfaz  
 > **Tema:** Virtualización en ARM y nuevos modelos de cómputo  
 > **Nombre:** Stephanie Ariana Medrano Vargas  
 > **No. Control:** 23212013  
-> **Grupo:** ISC-6C (03:00 pm)  
+> **Grupo:** ISC-6C  
 > **Docente:** M.C. René Solis Reyes  
-> **Fecha:** 12/02/2026  
+> **Fecha:** 17/02/2026  
+> **Instituto Tecnológico de Tijuana**
+
 ---
 
 ## Tabla de Contenidos
@@ -31,23 +31,21 @@
 
 ## 1. Introducción
 
-La virtualización es una tecnología que permite crear entornos de ejecución aislados —máquinas virtuales o "VMs"— sobre un mismo hardware físico, con el objetivo de mejorar el aprovechamiento de recursos, facilitar despliegues y aumentar la seguridad mediante aislamiento. En lugar de dedicar una máquina física por cada servicio, se consolidan múltiples sistemas operativos y aplicaciones en un mismo equipo, administrados por una capa de software llamada **hipervisor** (IBM, s.f.).
+Cuando pensamos en virtualización, lo primero que viene a la mente son las máquinas virtuales para probar sistemas operativos o los servidores en la nube. Básicamente, se trata de que un **hipervisor** reparta los recursos de una sola máquina física entre varios sistemas que conviven aislados entre sí (IBM, s.f.; AWS, s.f.).
 
-Según Amazon Web Services (s.f.), la virtualización es una tecnología que permite crear representaciones virtuales de servidores, almacenamiento, redes y otras máquinas físicas, potenciando los servicios de computación en la nube que ayudan a las organizaciones a administrar la infraestructura de manera más eficaz.
+Lo interesante es que ARM ya no es solo "el procesador del celular". Hoy, arquitecturas como ARMv8-A y ARMv9 están en centros de datos, dispositivos de edge computing y hasta vehículos autónomos, así que la virtualización en ARM tiene que ser eficiente, segura y capaz de correr desde Linux hasta microVMs.
 
-En arquitecturas ARM (especialmente ARMv8-A y ARMv9), la virtualización se ha convertido en una pieza clave porque ARM ya no solo vive en dispositivos móviles: también domina escenarios de **cloud computing, edge computing, IoT industrial y sistemas embebidos críticos**. Esto exige aislamiento fuerte, eficiencia energética y soporte de múltiples cargas de trabajo (Linux, Android, RTOS, contenedores, microVMs, entre otros).
-
-Además, están surgiendo nuevos modelos de cómputo donde la unidad de despliegue puede ser más pequeña que una VM tradicional (por ejemplo, WebAssembly) o más rápida de iniciar (microVMs), y donde la seguridad se refuerza con **confidential computing**. Este documento analiza los mecanismos de virtualización integrados en ARM, su evolución mediante extensiones de hardware, y su papel habilitador en los paradigmas de cómputo emergentes.
+Aparte de eso, están apareciendo modelos de cómputo que van más allá de la VM clásica: microVMs que arrancan en milisegundos, WebAssembly como sandbox ultraligero, y **confidential computing** que protege datos incluso del propio hipervisor. En este documento se analiza cómo ARM maneja todo esto a nivel de hardware y por qué resulta clave en estos nuevos paradigmas.
 
 ---
 
 ## 2. Conceptos base: virtualización y tipos de hipervisores
 
-La virtualización consiste en abstraer recursos físicos (CPU, memoria, E/S) para presentarlos como recursos virtuales a uno o varios sistemas invitados (*guest*). Esto lo coordina un **hipervisor**, que puede ser de dos tipos (AWS, s.f.; IBM, s.f.):
+La virtualización, en términos simples, consiste en tomar los recursos físicos de una máquina (CPU, memoria, E/S) y repartirlos entre varios sistemas operativos que corren al mismo tiempo sin enterarse unos de otros. El encargado de hacer esto posible es el **hipervisor**, y existen dos tipos principales (AWS, s.f.; IBM, s.f.):
 
-**Hipervisor Tipo 1 (bare-metal):** Se ejecuta directamente sobre el hardware físico. Ofrece el mejor rendimiento porque interactúa directamente con los recursos. Ejemplos: Xen, KVM, Microsoft Hyper-V.
+**Hipervisor Tipo 1 (bare-metal):** Va directo sobre el hardware, sin un sistema operativo de por medio. Esto le da mejor rendimiento porque no hay capas extra. Ejemplos conocidos: Xen, KVM, Microsoft Hyper-V.
 
-**Hipervisor Tipo 2 (hosted):** Se ejecuta como una aplicación dentro de un sistema operativo host. Es más fácil de configurar, pero agrega una capa adicional de abstracción. Ejemplos: VirtualBox, VMware Workstation.
+**Hipervisor Tipo 2 (hosted):** Corre como una aplicación más dentro de un sistema operativo. Es más fácil de instalar y usar, pero al tener esa capa adicional, pierde algo de rendimiento. Ejemplos: VirtualBox, VMware Workstation.
 
 ```mermaid
 graph TD
@@ -65,7 +63,7 @@ graph TD
     end
 ```
 
-En Linux, el enfoque más utilizado es **KVM (Kernel-based Virtual Machine)**, que integra capacidades de hipervisor dentro del propio kernel Linux y se controla desde espacio de usuario mediante APIs e IOCTLs (kernel.org, s.f.).
+En el mundo Linux, la opción más popular es **KVM (Kernel-based Virtual Machine)**, que básicamente convierte al propio kernel en un hipervisor. Se controla desde espacio de usuario con herramientas como QEMU, usando llamadas `ioctl()` (kernel.org, s.f.).
 
 ---
 
@@ -73,7 +71,7 @@ En Linux, el enfoque más utilizado es **KVM (Kernel-based Virtual Machine)**, q
 
 ### 3.1 Niveles de Excepción (Exception Levels) y el rol de EL2
 
-A diferencia de x86, que utiliza modos root/non-root (VMX) para la virtualización, ARM introduce el concepto de **Exception Levels (EL)** como modelo jerárquico de privilegios. En ARMv8-A AArch64 existen cuatro niveles (Arm Developer, s.f.; openEuler, 2020):
+Mientras que x86 maneja la virtualización con modos root/non-root (VMX), ARM tiene su propio enfoque: los **Exception Levels (EL)**, que funcionan como una jerarquía de privilegios. En ARMv8-A AArch64 hay cuatro niveles, y cada uno tiene un rol bien definido (Arm Developer, s.f.; openEuler, 2020):
 
 ```mermaid
 graph BT
@@ -92,9 +90,9 @@ graph BT
     style EL3 fill:#f8d7da,stroke:#721c24
 ```
 
-La virtualización en ARM se apoya fundamentalmente en **EL2**, donde el hipervisor controla qué operaciones del guest se ejecutan directamente y cuáles deben "trapear" al hipervisor para emulación o control. Cuando una VM ejecuta una instrucción privilegiada que debe ser interceptada, el procesador genera una **excepción síncrona** que transfiere el control de EL1 a EL2 (openEuler, 2020).
+El nivel clave para virtualización es **EL2**: ahí es donde vive el hipervisor y desde donde se decide qué instrucciones del guest se ejecutan directo en hardware y cuáles necesitan ser interceptadas. Cuando una VM intenta hacer algo privilegiado que no le corresponde, el procesador genera una excepción y le pasa el control al hipervisor en EL2 (openEuler, 2020).
 
-Las tres instrucciones de llamada entre niveles son:
+Las instrucciones para moverse entre niveles son estas:
 
 | Instrucción | Transición | Propósito |
 |---|---|---|
@@ -104,7 +102,7 @@ Las tres instrucciones de llamada entre niveles son:
 
 ### 3.2 Traducción de memoria en dos etapas (Stage-2)
 
-Uno de los pilares de la virtualización moderna es el control de memoria. ARM utiliza una **traducción de direcciones en dos etapas** para aislar cada VM (Arm Developer, s.f.):
+Otro pilar fundamental es el manejo de memoria. Para que cada VM esté realmente aislada, ARM usa una **traducción de direcciones en dos etapas** (Arm Developer, s.f.):
 
 ```mermaid
 flowchart LR
@@ -120,13 +118,13 @@ flowchart LR
     style PA fill:#d4edda,stroke:#155724
 ```
 
-Este esquema es comparable a las Extended Page Tables (EPT) de Intel o las Nested Page Tables (NPT) de AMD. El guest "cree" que tiene acceso a cierta dirección física, pero Stage-2 puede bloquearla o remapearla, garantizando aislamiento total entre VMs.
+¿Qué significa esto en la práctica? El guest hace su propia traducción de direcciones virtuales a "físicas", pero esas direcciones "físicas" en realidad son intermedias (IPA). Después, el hipervisor en EL2 aplica otra traducción para llegar a la dirección física real. Así, aunque el guest crea que tiene acceso a cierta memoria, Stage-2 puede bloquearla o redirigirla. Es un mecanismo comparable a las Extended Page Tables (EPT) de Intel o las Nested Page Tables (NPT) de AMD.
 
-Cada VM recibe un **VMID (Virtual Machine Identifier)** que etiqueta las entradas del TLB, permitiendo que traducciones de múltiples VMs coexistan en la caché sin colisiones (Arm Developer, s.f.).
+Para evitar conflictos, cada VM recibe un **VMID (Virtual Machine Identifier)** que etiqueta las entradas del TLB, lo que permite que traducciones de varias VMs convivan en la caché sin pisarse unas a otras (Arm Developer, s.f.).
 
 ### 3.3 Virtualización de interrupciones (GIC)
 
-No basta con virtualizar CPU y memoria: también hay que virtualizar interrupciones. ARM usa el **Generic Interrupt Controller (GIC)** con extensiones para reducir las salidas del guest (*VM exits*) al manejar IRQs, mejorando el rendimiento. En Linux/KVM se implementa el controlador virtual (**vGIC**) para presentar interrupciones virtuales al guest, incluyendo vIRQs, vFIQs y vSErrors (Arm Developer, s.f.).
+No basta con virtualizar CPU y memoria, también hay que encargarse de las interrupciones. ARM utiliza el **Generic Interrupt Controller (GIC)**, que tiene extensiones para reducir la cantidad de veces que el guest tiene que "salir" hacia el hipervisor al manejar IRQs. En Linux/KVM se implementa un controlador virtual llamado **vGIC** que presenta interrupciones virtuales al guest (vIRQs, vFIQs y vSErrors), lo cual mejora bastante el rendimiento (Arm Developer, s.f.).
 
 ---
 
@@ -134,9 +132,9 @@ No basta con virtualizar CPU y memoria: también hay que virtualizar interrupcio
 
 ### 4.1 Virtualization Host Extensions (VHE) – ARMv8.1-A
 
-En ARMv8.0, EL2 fue diseñado para hipervisores Tipo 1 ligeros (como Xen). Sin embargo, hipervisores de Tipo 2 como **KVM** se ejecutan dentro del kernel Linux en EL1, lo que causaba una sobrecarga significativa en cada transición VM↔hipervisor, al requerir cambio completo de contexto entre EL1 y EL2.
+En la primera versión de ARMv8.0, EL2 estaba pensado para hipervisores Tipo 1 pequeños como Xen. El problema surgió con hipervisores Tipo 2 como **KVM**, que corren dentro del kernel Linux en EL1: cada vez que había una transición entre la VM y el hipervisor, tocaba hacer un cambio completo de contexto entre EL1 y EL2, lo cual era bastante costoso.
 
-Las **Virtualization Host Extensions (VHE)**, introducidas en ARMv8.1-A, resuelven este problema permitiendo que el kernel del host se ejecute directamente en EL2 (Arm Community, 2014; Dall et al., 2017):
+Las **Virtualization Host Extensions (VHE)**, que llegaron con ARMv8.1-A, resuelven esto de una forma elegante: permiten que el kernel del host corra directamente en EL2 (Arm Community, 2014; Dall et al., 2017):
 
 ```mermaid
 graph TD
@@ -160,18 +158,18 @@ graph TD
     style C_EL2 fill:#d4edda,stroke:#155724
 ```
 
-Con VHE, se activan dos bits en el registro `HCR_EL2`:
+Para activar VHE se configuran dos bits en el registro `HCR_EL2`:
 
-- **`E2H = 1`**: Redirige accesos a registros de EL1 hacia sus equivalentes de EL2 en hardware.
-- **`TGE = 1`**: Redirige excepciones de EL0 directamente a EL2.
+- **`E2H = 1`**: Redirige los accesos a registros de EL1 hacia sus equivalentes en EL2 a nivel de hardware.
+- **`TGE = 1`**: Redirige las excepciones de EL0 directamente a EL2.
 
-Las mediciones demuestran que VHE reduce la sobrecarga de virtualización de KVM en ARM a niveles comparables con KVM en x86, especialmente en cargas intensivas en I/O (Dall et al., 2017).
+En las mediciones realizadas, VHE logra reducir la sobrecarga de virtualización de KVM en ARM hasta dejarla en niveles comparables con KVM en x86, sobre todo en cargas con mucho I/O (Dall et al., 2017).
 
 ### 4.2 Virtualización Anidada – ARMv8.3-A
 
-ARMv8.3-A introduce soporte para **virtualización anidada**: ejecutar un hipervisor dentro de una VM. Sin este soporte, las instrucciones de hipervisor ejecutadas en EL1 causaban excepciones fatales en lugar de traps hacia EL2.
+A veces se necesita correr un hipervisor dentro de una VM (sí, virtualización dentro de virtualización). ARMv8.3-A agregó soporte para esto, porque antes las instrucciones de hipervisor ejecutadas desde EL1 simplemente causaban excepciones fatales en vez de redirigirse a EL2.
 
-El proyecto **NEVE** (Nested Virtualization Extensions) demostró que, sin optimización, la virtualización anidada en ARM puede ser hasta 155x más lenta que una VM simple, pero con sus técnicas de reducción de traps se logran sobrecargas aceptables (Mi et al., 2017).
+El proyecto **NEVE** (Nested Virtualization Extensions) mostró que sin optimización, la virtualización anidada en ARM podía ser hasta 155 veces más lenta que una VM normal. Sin embargo, con técnicas de reducción de traps lograron llevarla a niveles aceptables (Mi et al., 2017).
 
 ```mermaid
 flowchart TD
@@ -191,7 +189,7 @@ flowchart TD
 
 ### 4.3 ARM Confidential Compute Architecture (CCA) – ARMv9-A
 
-La **Realm Management Extension (RME)** de ARMv9-A extiende el modelo de seguridad de dos mundos (Normal + Secure/TrustZone) a **cuatro mundos** (Arm, s.f.; Linux Kernel Documentation, s.f.):
+Con ARMv9-A llegó un cambio importante en seguridad. La **Realm Management Extension (RME)** amplió el modelo que antes solo tenía dos mundos (Normal y Secure/TrustZone) a **cuatro mundos** completos (Arm, s.f.; Linux Kernel Documentation, s.f.):
 
 ```mermaid
 graph TD
@@ -227,11 +225,11 @@ graph TD
     style RW_EL0 fill:#d4edda,stroke:#155724
 ```
 
-Los **Realms** protegen el código y los datos de una VM incluso del hipervisor que la administra. El hipervisor conserva la capacidad de gestionar recursos (CPU, memoria), pero no puede leer ni modificar el contenido del Realm. Esto se implementa mediante:
+Lo interesante de los **Realms** es que protegen el código y los datos de una VM incluso del hipervisor que la administra. El hipervisor sigue pudiendo gestionar recursos como CPU y memoria, pero no puede leer ni modificar lo que hay dentro del Realm. Esto funciona gracias a tres componentes:
 
-- **Realm Management Monitor (RMM):** Firmware en Realm world que gestiona el ciclo de vida de los Realms.
-- **Granule Protection Tables (GPT):** Tablas en Root world que determinan a qué mundo pertenece cada página de memoria.
-- **Attestation remota:** Tokens criptográficos firmados que permiten verificar la integridad del Realm y la plataforma.
+- **Realm Management Monitor (RMM):** Un firmware dentro del Realm world que gestiona el ciclo de vida de cada Realm.
+- **Granule Protection Tables (GPT):** Tablas controladas desde el Root world que definen a qué mundo pertenece cada página de memoria.
+- **Attestation remota:** Tokens criptográficos firmados que sirven para verificar que el Realm y la plataforma no han sido alterados.
 
 ---
 
@@ -239,9 +237,9 @@ Los **Realms** protegen el código y los datos de una VM incluso del hipervisor 
 
 ### 5.1 KVM en ARM
 
-**KVM** es la solución de virtualización integrada al kernel Linux. Expone una API basada en `ioctl()` para crear VMs, vCPUs, asignar memoria virtual y configurar dispositivos virtuales, con control desde espacio de usuario a través de **QEMU** (kernel.org, s.f.).
+**KVM** es la solución de virtualización que viene integrada directamente en el kernel Linux. Funciona exponiendo una API basada en `ioctl()` con la que se pueden crear VMs, asignar vCPUs, configurar memoria y dispositivos virtuales. Desde espacio de usuario, normalmente se controla con **QEMU** (kernel.org, s.f.).
 
-En ARM/arm64, KVM aprovecha EL2 para interceptar operaciones privilegiadas del guest. Con VHE, el kernel Linux completo (incluyendo KVM) opera en EL2, dejando EL1 exclusivamente para los guests. Esto simplifica enormemente la arquitectura y mejora el rendimiento.
+En ARM/arm64, KVM usa EL2 para interceptar las operaciones privilegiadas del guest. Con VHE habilitado, todo el kernel Linux (incluyendo KVM) corre en EL2, y EL1 queda exclusivamente para los guests. Esto simplifica bastante la arquitectura y se nota en el rendimiento.
 
 ```mermaid
 flowchart LR
@@ -256,7 +254,7 @@ flowchart LR
 
 ### 5.2 Xen en ARM
 
-**Xen** es un hipervisor Tipo 1 ampliamente utilizado en la industria (incluyendo embebidos y automotriz) por su enfoque en aislamiento estricto y diseño de dominios (Dom0/DomU). En ARM, Xen aprovecha las extensiones de virtualización del hardware desde ARMv7-A y ARMv8-A. Su diseño permite transiciones VM→hipervisor más rápidas que KVM en ARMv8.0 (sin VHE), aunque KVM con VHE cierra esta brecha significativamente (Xen Project, s.f.; Dall et al., 2017).
+**Xen** es un hipervisor Tipo 1 que se usa mucho en la industria, incluyendo sistemas embebidos y automotriz, por su enfoque en aislamiento estricto con dominios (Dom0/DomU). En ARM, aprovecha las extensiones de virtualización del hardware desde ARMv7-A y ARMv8-A. Antes de VHE, Xen tenía ventaja sobre KVM en ARM porque su diseño como hipervisor bare-metal le permitía transiciones más rápidas. Con la llegada de VHE, KVM cerró esa brecha de rendimiento de forma significativa (Xen Project, s.f.; Dall et al., 2017).
 
 ---
 
@@ -264,13 +262,19 @@ flowchart LR
 
 ### 6.1 Cloud sobre ARM
 
-ARM se ha consolidado en centros de datos con procesadores diseñados para eficiencia y relación costo/rendimiento. **AWS Graviton** (basado en ARM Neoverse) ofrece instancias EC2 con hasta un 40% mejor relación precio-rendimiento que las equivalentes x86 (AWS, s.f.). Otros procesadores como **Ampere Altra**, **NVIDIA Grace** y **Huawei Kunpeng** compiten directamente en el mercado de servidores.
+ARM ya no es ajeno a los centros de datos. Procesadores como **AWS Graviton** (basado en ARM Neoverse) ofrecen instancias EC2 con hasta un 40% mejor relación precio-rendimiento comparado con las equivalentes en x86 (AWS, s.f.). No son los únicos: **Ampere Altra**, **NVIDIA Grace** y **Huawei Kunpeng** también compiten fuerte en el mercado de servidores.
 
-Según Google Cloud (s.f.), las instancias ARM en la nube permiten ejecutar cargas de trabajo con arquitectura nativa Arm64, ofreciendo ventajas en eficiencia energética y costos operativos para aplicaciones containerizadas y nativas en la nube.
+Google Cloud (s.f.) también ofrece instancias ARM, destacando las ventajas en eficiencia energética y costos operativos, especialmente para aplicaciones containerizadas y nativas en la nube.
+
+![AWS Graviton](https://assets.aboutamazon.com/dims4/default/3efeedc/2147483647/strip/true/crop/1597x900+2+0/resize/1320x744!/quality/90/?url=https%3A%2F%2Famazon-blogs-brightspot.s3.amazonaws.com%2Fa4%2F88%2F0a976a694d4ebd03c1520db97de1%2Faa-jul2024-aws-graviton4-standard-inline-v7-1600x900.jpg)
+*Figura 2. Procesador AWS Graviton4, diseñado por Amazon sobre arquitectura ARM para instancias en la nube (Fuente: Amazon).*
 
 ### 6.2 Edge Computing
 
-En **edge computing**, se procesan datos cerca de donde se generan (sensores, gateways, redes 5G) para reducir latencia y ancho de banda. Según Computer Weekly (2026), entre las tendencias clave para 2026 y más allá están la inferencia de IA en el borde, la convergencia IT/OT, y el uso de procesadores ARM por su bajo consumo para nodos de edge distribuidos.
+El **edge computing** consiste en procesar datos lo más cerca posible de donde se generan: sensores, gateways, redes 5G, etc. La idea es reducir la latencia y no depender tanto del ancho de banda hacia la nube. Según Computer Weekly (2026), entre las tendencias clave para 2026 están la inferencia de IA en el borde, la convergencia IT/OT, y el uso de procesadores ARM por su bajo consumo en nodos distribuidos.
+
+![Edge Computing](https://www.akamai.com/site/en/images/article/2024/how-does-edge-computing-work.png)
+*Figura 3. Funcionamiento del edge computing: procesamiento distribuido cerca del origen de los datos (Fuente: Akamai).*
 
 ```mermaid
 flowchart LR
@@ -283,17 +287,17 @@ flowchart LR
     style CLOUD fill:#cce5ff,stroke:#004085
 ```
 
-ARM es la arquitectura dominante en estos nodos, donde se ejecutan contenedores y microservicios con aislamiento mediante virtualización ligera. Aplicaciones típicas incluyen ciudades inteligentes, manufactura industrial predictiva, vehículos autónomos y agricultura de precisión (IBM Developer, 2025).
+ARM domina en estos escenarios porque permite correr contenedores y microservicios con aislamiento mediante virtualización ligera, sin el consumo energético de un procesador x86. Las aplicaciones van desde ciudades inteligentes y manufactura predictiva hasta vehículos autónomos y agricultura de precisión (IBM Developer, 2025).
 
 ---
 
 ## 7. Nuevos modelos de cómputo
 
-Más allá de la VM clásica, la industria está migrando hacia unidades de cómputo más pequeñas, rápidas, portables y seguras (Computing.es, 2024):
+La industria ya no se limita a la VM tradicional. Están surgiendo unidades de cómputo más pequeñas, más rápidas de iniciar, más portables y con mejor seguridad (Computing.es, 2024):
 
 ### 7.1 MicroVMs y Serverless
 
-**Firecracker** (open source, creado por AWS) fue diseñado para cargas serverless y multi-tenant: ofrece aislamiento de VM pero con arranques del orden de **~125 milisegundos** y la capacidad de ejecutar miles de microVMs en un solo host (AWS, 2018).
+**Firecracker** (open source, creado por AWS) nació para resolver un problema específico: dar el aislamiento de una VM pero con la velocidad de un contenedor. El resultado son microVMs que arrancan en **~125 milisegundos**, ocupan apenas unos MB de RAM y permiten correr miles de instancias en un solo servidor (AWS, 2018).
 
 ```mermaid
 graph LR
@@ -321,15 +325,18 @@ graph LR
 
 ### 7.2 WebAssembly (Wasm)
 
-WebAssembly propone un entorno de ejecución **memory-safe** y **sandboxed**, donde módulos no obtienen acceso al sistema a menos que se les otorgue explícitamente (*capabilities*). Wasm no reemplaza la virtualización tradicional, pero se está volviendo un modelo alterno para ejecutar componentes pequeños con aislamiento fuerte y portabilidad, incluyendo ARM (WebAssembly.org, s.f.).
+WebAssembly ofrece un entorno de ejecución **memory-safe** y **sandboxed**: los módulos no tienen acceso al sistema salvo que se les otorgue explícitamente mediante *capabilities*. No viene a reemplazar la virtualización tradicional, pero sí se está posicionando como una alternativa ligera para ejecutar componentes pequeños con aislamiento fuerte y portabilidad entre plataformas, incluyendo ARM (WebAssembly.org, s.f.).
 
 ### 7.3 Confidential Computing con ARM CCA
 
-Como se describió en la sección 4.3, ARM CCA/RME/Realms representa el futuro de la computación confidencial: proteger datos incluso frente a un host comprometido. Esto es especialmente relevante para la **protección de modelos de IA** y datos sensibles en centros de datos de terceros (Arm, 2023).
+Como se explicó en la sección 4.3, ARM CCA/RME/Realms lleva el concepto de aislamiento un paso más allá: protege los datos incluso si el hipervisor del host está comprometido. Esto resulta especialmente relevante cuando se trabaja con **modelos de IA** o datos sensibles en centros de datos de terceros donde no se tiene control total del host (Arm, 2023).
 
 ### 7.4 Cómputo heterogéneo: CPU + aceleradores
 
-La tendencia actual integra múltiples tipos de procesadores (CPU ARM, GPU, NPU, DPU) en un mismo SoC o interconectados mediante **chiplets**. ARM permite que VMs, Realms y aplicaciones utilicen aceleradores sin romper el aislamiento. Los diseños de referencia ARM Helios y Atlas (2025) se enfocan en escalabilidad de interconexión para escenarios de IA en edge y datacenter (Arm, 2024).
+Hoy el cómputo ya no es solo CPU. La tendencia es integrar múltiples tipos de procesadores (CPU ARM, GPU, NPU, DPU) en un mismo SoC o conectarlos mediante **chiplets**. ARM permite que las VMs, Realms y aplicaciones accedan a estos aceleradores sin romper el aislamiento. Los diseños de referencia ARM Helios y Atlas (2025) apuntan precisamente a esto: escalabilidad de interconexión para escenarios de IA tanto en edge como en datacenter (Arm, 2024).
+
+![SoC moderno](https://www.redseguridad.com/wp-content/uploads/sites/2/2023/01/beneficios-de-un-soc-moderno.jpg)
+*Figura 4. Representación de un System on Chip (SoC) moderno con múltiples componentes integrados (Fuente: Red Seguridad).*
 
 ```mermaid
 graph TD
@@ -355,7 +362,7 @@ graph TD
 
 ## 8. Ejemplo práctico en ensamblador AArch64
 
-El siguiente fragmento de ensamblador ARMv8 (AArch64) muestra cómo el kernel Linux verifica la presencia de VHE durante el arranque y configura `HCR_EL2` para activarla. Este código es representativo de cómo la arquitectura se configura a nivel de instrucciones:
+El siguiente fragmento de ensamblador ARMv8 (AArch64) muestra cómo el kernel Linux verifica si el procesador soporta VHE durante el arranque y, de ser así, la activa configurando `HCR_EL2`. Es un buen ejemplo de cómo se interactúa con la arquitectura a nivel de instrucciones:
 
 ```asm
 // ============================================================
@@ -422,13 +429,11 @@ continuar_boot:
 
 ## 10. Conclusiones
 
-La virtualización en ARM ha evolucionado desde un soporte básico en ARMv8.0 hasta un ecosistema maduro que incluye hipervisores tipo 2 eficientes (VHE en ARMv8.1), virtualización anidada (ARMv8.3), y computación confidencial con aislamiento criptográfico (CCA/Realms en ARMv9). Estas extensiones posicionan a ARM como una alternativa competitiva frente a x86 en centros de datos y plataformas cloud.
+La virtualización en ARM ha recorrido un camino largo: desde un soporte básico en ARMv8.0 hasta contar con VHE para hipervisores eficientes, virtualización anidada en ARMv8.3, y computación confidencial con CCA/Realms en ARMv9. Ya no se trata de una tecnología exclusiva de x86.
 
-En software, **KVM y Xen** son los pilares del ecosistema ARM para virtualización en Linux, habilitando desde laboratorios de desarrollo hasta despliegues industriales a gran escala. La adopción masiva en servicios como AWS Graviton demuestra que ARM en la nube es una realidad consolidada.
+En el lado del software, **KVM y Xen** hacen posible todo esto dentro de Linux, y el éxito de servicios como AWS Graviton demuestra que ARM en la nube es una realidad consolidada, no solo una promesa.
 
-Los nuevos modelos de cómputo — microVMs (serverless con Firecracker), WebAssembly (sandboxes portables), confidential computing (ARM CCA) y cómputo heterogéneo (CPU+GPU+NPU) — encuentran en ARM una base natural por su eficiencia energética, flexibilidad arquitectónica y soporte robusto de virtualización.
-
-La dirección general es clara: ejecutar más cargas, en más lugares (cloud + edge), con mejores garantías de aislamiento y menor costo, manteniendo ARM como plataforma dominante de la próxima generación de infraestructura computacional.
+Los nuevos modelos de cómputo también encajan de forma natural con ARM: microVMs como Firecracker que arrancan en milisegundos, WebAssembly como alternativa ligera y portable, y ARM CCA que protege datos incluso frente a un hipervisor comprometido. Todo indica que ARM seguirá expandiéndose tanto en cloud como en edge, permitiendo ejecutar más cargas con mejor aislamiento, menor costo y mayor eficiencia energética.
 
 ---
 
@@ -483,12 +488,12 @@ La dirección general es clara: ejecutar más cargas, en más lugares (cloud + e
 ---
 
 > **Declaración de uso de IA:**  
-> Este documento fue elaborado como investigación documental para la materia de Lenguajes de Interfaz. Se utilizó inteligencia artificial (Claude, Anthropic) como herramienta de apoyo para la recopilación y estructuración inicial de información. Posteriormente, el alumno revisó, modificó y ajustó el contenido del documento para asegurar la coherencia, relevancia y calidad de la investigación presentada. La selección de fuentes, la verificación de datos y la redacción final son responsabilidad de la estudiante. Este uso se declara conforme a la guía `AI_GUIDANCE.md` del repositorio del curso.
+> Este documento fue elaborado como investigación documental para la materia de Lenguajes de Interfaz. Se utilizó inteligencia artificial (Claude, Anthropic) como herramienta de apoyo para la recopilación y estructuración inicial de información. Posteriormente, la autora revisó, modificó y ajustó el contenido del documento para asegurar la coherencia, relevancia y calidad de la investigación presentada. La selección de fuentes, la verificación de datos y la redacción final son responsabilidad de la estudiante. Este uso se declara conforme a la guía `AI_GUIDANCE.md` del repositorio del curso.
 
 ---
 
 ### Prompt utilizado
 
-> Te comparto lo que me pide el documento, de igual forma te comparto una investigación que realicé. Puedes mezclar ambas, hacerlo más acorde a lo que pide el profe (diagramas y fotos entre ellos, en formato markdown) y las referencias preferiría que fueran tomadas de páginas de tecnologia, te dejo algunas de las páginas que estoy utilizanod.
+> Te comparto lo que me pide el documento, de igual forma te comparto una investigación que realicé. Puedes mezclar ambas, hacerlo más acorde a lo que pide el profe (diagramas y fotos entre ellos, en formato markdown) y las referencias o info preferiría que fueran sacadas o tomadas de páginas de internet, páginas de tecnología, etc. Por ejemplo te dejo algunos links.
 >
 > Para los diagramas puedes usar: `mermaid`. De nuevo, asegúrate que la info sea acorde al tema: **Virtualización en ARM y Nuevos Modelos de Cómputo**.
