@@ -162,15 +162,13 @@ flowchart TD
 ```
 
 ---
+
 ## Referencias Bibliográficas
 
-- Arm Developer. (2026). *Introduction to the Arm Architecture*.  
-  Recuperado de: [https://developer.arm.com/documentation/](https://developer.arm.com/documentation/)
-
-- STMicroelectronics. (2025). *STM32 Microcontrollers in Smart Home Applications*.  
-  Recuperado de: [https://www.st.com](https://www.st.com)
-
-- Zigbee Alliance. (2024). *Standards for Smart Home Interoperability on ARM chips*.  
-  Recuperado de: [https://csa-iot.org/](https://csa-iot.org/)
+* **Arquitectura ARM: descubre los procesadores ARM.** (2025, 8 de abril). *IONOS Digital Guide*. [https://www.ionos.mx/digitalguide/servidores/know-how/arquitectura-arm/](https://www.ionos.mx/digitalguide/servidores/know-how/arquitectura-arm/)
+  
+* **Materials.** (2023, 4 de diciembre). *¿Qué es la domótica en la arquitectura?* ArchDaily México. [https://www.archdaily.mx/mx/903363/que-es-la-domotica-y-cual-es-el-impacto-de-la-automatizacion-en-la-arquitectura](https://www.archdaily.mx/mx/903363/que-es-la-domotica-y-cual-es-el-impacto-de-la-automatizacion-en-la-arquitectura)
+  
+* **Deusto Formación.** (2025, 26 de septiembre). *¿Qué es la arquitectura domótica?* Deusto. [https://www.deustoformacion.com/blog/diseno-arquitectonico/que-es-arquitectura-domotica](https://www.deustoformacion.com/blog/diseno-arquitectonico/que-es-arquitectura-domotica)
 
 ---
