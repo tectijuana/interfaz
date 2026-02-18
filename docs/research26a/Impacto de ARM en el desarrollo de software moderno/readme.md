@@ -224,6 +224,71 @@ Casos reales de portabilidad muestran viabilidad con planificación adecuada ([C
 
 ---
 
+```mermaid
+flowchart LR
+
+%% Nodo central
+ARM([🚀 Arquitectura ARM])
+
+%% Bloque Paradigma
+subgraph P1[🧠 Paradigma de Arquitectura]
+B1[RISC]
+B2[Eficiencia Energética]
+B3[Alto Paralelismo]
+end
+
+%% Bloque Cloud
+subgraph P2[☁ Infraestructura Cloud]
+C1[AWS Graviton]
+C2[Centros de Datos]
+C3[Microservicios]
+end
+
+%% Bloque Software
+subgraph P3[💻 Desarrollo de Software]
+D1[Compilación Cruzada]
+D2[Go / Rust / Zig]
+D3[Modelo de Memoria Débil]
+end
+
+%% Bloque IA
+subgraph P4[🤖 IA y HPC]
+E1[SVE]
+E2[SME]
+E3[Aceleradores IA]
+end
+
+%% Bloque DevOps
+subgraph P5[🐳 Contenedores]
+F1[Docker Multi-Arch]
+F2[Kubernetes]
+F3[CI/CD Multi-Plataforma]
+end
+
+%% Bloque Futuro
+subgraph P6[🧩 Futuro Hardware]
+G1[Chiplets]
+G2[XPUs]
+G3[Silicio Personalizado]
+end
+
+%% Bloque Sostenibilidad
+subgraph P7[🌱 Sostenibilidad]
+H1[Menor Consumo Energético]
+H2[Menor Huella de Carbono]
+H3[Optimización de Costos]
+end
+
+%% Conexiones
+ARM --> P1
+ARM --> P2
+ARM --> P3
+ARM --> P4
+ARM --> P5
+ARM --> P6
+ARM --> P7
+```
+
 # 🏁 Conclusión
 
 ARM ha transformado:
