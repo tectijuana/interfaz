@@ -41,3 +41,11 @@ D --> F[Salida en Altavoces]
 Las arquitecturas ARM han demostrado ser un pilar fundamental en el desarrollo de sistemas multimedia modernos. Su diseño les permite ofrecer un equilibrio optimo entre rendimiento y eficiencia energética, lo que puede resultar en algo importante en dispositivos móviles, Smart TVs, consolas portátiles y sistemas embebidos.
 
 Para finalizar, ARM ha transformado de un modo la forma en que interactuamos con contenido multimedia y aparte de eso ha marcado un rumbo con sistemas más eficientes, accesibles y adaptables, llegando a ser a futuro una prometedora arquitectura de la computación multimedia.
+
+## Referencias
+- _What is ARM architecture | ARM Processor Architecture | Lenovo US_. (2023, 28 mayo). https://www.lenovo.com/us/en/glossary/what-is-arm-architecture/?orgRef=https%253A%252F%252Fwww.google.com%252F
+- *Wikipedia contributors. (2026, 4 febrero). _ARM architecture family_. Wikipedia.* https://en.wikipedia.org/wiki/ARM_architecture_family?utm_source=copilot.com
+- *Author. (2025, 11 agosto). _Exploring the NXP i.MX6: An ARM-Based SoC for Multimedia Applications_. Diverse Daily.* https://diversedaily.com/exploring-the-nxp-i-mx6-an-arm-based-soc-for-multimedia-applications/?utm_source=copilot.com
+- *ARM vs x86 (2026 Complete Architecture Comparison Guide)_. (2025, 14 octubre). Of Zen And Computing.* https://www.ofzenandcomputing.com/arm-vs-x86/?utm_source=copilot.com
+- *List of products using ARM processors_. (s. f.). Grokipedia.* https://grokipedia.com/page/List_of_products_using_ARM_processors?utm_source=copilot.com
+- *Wikipedia contributors. (2025, 24 noviembre). _List of products using ARM processors_. Wikipedia.* https://en.wikipedia.org/wiki/List_of_products_using_ARM_processors?utm_source=copilot.com
