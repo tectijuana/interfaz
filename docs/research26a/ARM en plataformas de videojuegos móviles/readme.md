@@ -195,17 +195,17 @@ Los juegos modernos dividen su trabajo en varios hilos de ejecución, práctica 
 
 - Otro de la inteligencia artificial.
 
-Al contar con múltiples núcleos, la arquitectura ARM facilita que estas tareas se ejecuten en paralelo. Esto reduce tiempos de espera y ayuda a mantener una tasa de FPS más estable, siempre que el juego esté bien optimizado.
+Al contar con múltiples núcleos, la arquitectura ARM facilita que estas tareas se ejecuten en paralelo. Lo que reduce el tiempo de espera y ayuda a mantener una tasa de FPS mucho más estable siempre y cuando el juego esté bien optimizado.
 
 - ### IPC (Instrucciones por ciclo)
 
-El IPC indica cuántas instrucciones puede ejecutar un núcleo en cada ciclo de reloj. A diferencia de la frecuencia, esta métrica refleja mejor la eficiencia real del procesador.
+El IPC indica cuántas instrucciones puede ejecutar un núcleo en cada ciclo del reloj reflejando mejor la eficacia del procesador.
 
-Dos CPUs pueden operar a la misma frecuencia, pero si una ejecuta más instrucciones por ciclo, ofrecerá mejor rendimiento en tareas complejas. En videojuegos móviles, un IPC alto permite manejar cálculos constantes sin necesidad de aumentar demasiado la frecuencia, lo que también contribuye al ahorro energético.
+Dos CPUs pueden operar a la misma frecuencia, pero si una puede ejecutar más instrucciones por ciclo entonces ofrecerá mejor rendimiento en tareas complejas. En los videojuegos móviles un IPC alto significa que puede manejar cálculos constantes sin la necesidad de aumentar demasiado la frecuencia beneficiando también contribuye al ahorro energético.
 
 ### GPU en ARM para videojuegos
 
-En un juego móvil, la GPU es la responsable de generar los gráficos que aparecen en pantalla. Mientras la CPU gestiona la lógica y las decisiones internas, la GPU procesa texturas, sombras, iluminación y efectos visuales.
+En un juego móvil la GPU se encarga de generar los gráficos que aparecen en pantalla mientrás que la CPU dedica a gestionar la lógica así como las decisiones internas también la GPU procesa a las texturas, sombras, iluminación y efectos visuales.
 
 - ### Mali vs Adreno vs Apple GPU
 
@@ -219,19 +219,19 @@ Cada una presenta diferencias en rendimiento y eficiencia energética. Algunas p
 
 - ### Soporte para Vulkan y OpenGL ES
 
-Las APIs gráficas actúan como intermediarias entre el juego y el hardware. Son el medio mediante el cual el software envía instrucciones a la GPU.
+Las APIs gráficas actúan como intermediarias entre el juego y el hardware, son el medio por el cual el software envía instrucciones a la GPU.
 
 En dispositivos ARM móviles, las más utilizadas son OpenGL ES y Vulkan.
 
 **OpenGL ES**
 
-Es el estándar tradicional en videojuegos móviles. Destaca por su amplia compatibilidad y facilidad de implementación.
+Es el estándar tradicional en videojuegos móviles se destaca por su amplia compatibilidad y facilidad de implementación.
 
-No obstante, parte de la gestión de recursos se realiza automáticamente, lo que puede generar mayor carga en la CPU. En juegos exigentes, esto puede traducirse en mayor consumo energético.
+Sin embargo parte de la gestión de recursos se realiza automáticamente lo que puede generar mayor carga en la CPU. Por ejemplo en juegos exigentes, esto puede traducirse en mayor consumo energético.
 
 **Vulkan**
 
-Vulkan es una API más moderna y de bajo nivel. Su objetivo principal es ofrecer mayor control directo sobre el hardware y reducir la sobrecarga del procesador.
+Vulkan es una API más moderna y de bajo nivel, tiene como objetivo principal ofrecer un mayor control sobre el hardware y reducir la sobrecarga del procesador.
 
 En arquitectura ARM, sus ventajas incluyen:
 
@@ -243,8 +243,8 @@ En arquitectura ARM, sus ventajas incluyen:
 
 4. Reducción de latencia en el renderizado.
 
-También permite que varios núcleos trabajen en paralelo para preparar comandos gráficos, aprovechando de mejor manera la arquitectura multinúcleo típica de los procesadores ARM modernos.
-Lo que en los videojuegos exigentes permite obtener FPS más estables, mayor rendimiento sostenido, menor generación de calor y una mayor duración de batería en comparación con APIs más antiguas.
+También permite que varios núcleos trabajen en paralelo para preparar comandos gráficos para aprovechar de mejor manera la arquitectura multinúcleo típica de los procesadores ARM modernos.
+Esto ayuda en videojuegos exigentes ya que permite obtener FPS más estables, mayor rendimiento sostenido, menor generación de calor y una mayor duración de batería en comparación con APIs más antiguas.
 
 Debido a que la arquitectura ARM está diseñada para eficiencia energética y procesamiento multinúcleo, se ve beneficiada del uso de Vulkan. Ya que reduce la intervención innecesaria de la CPU, el sistema dispone de más recursos para tareas críticas del juego y mantener mejor equilibrio térmico.
 
