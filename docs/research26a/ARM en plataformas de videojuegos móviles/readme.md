@@ -1,4 +1,4 @@
-## Arquitectura ARM y su impacto en videojuegos móviles.
+## ARM en plataformas de videojuegos móviles
 
 <p align="center">
   <img src="https://www.tijuana.tecnm.mx//wp-content/uploads/2022/11/Banderin-TECNM-ITT-2022-ver-Final-scaled-e1668192523487-1568x948.jpg" width="100%">
