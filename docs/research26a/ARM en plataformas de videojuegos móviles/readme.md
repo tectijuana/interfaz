@@ -407,11 +407,11 @@ Se usan los datos del benchmark 3DMark Wild Life / Wild Life Extreme diseñado p
 
 - Cada uno de los procesadores supera los 20 FPS en una prueba gráfica muy exigente.
 - Snapdragon 8 Gen 2 y A17 Pro muestran rendimiento similar en carga extrema.
-- Dimensity 9200 queda ligeramente por debajo, pero competitivo.
+- Dimensity 9200 queda ligeramente por debajo, pero es competitivo.
 
 **Interpretación**
 
-Estos resultados muestran que los tres SoC basados en arquitectura ARM pueden ejecutar juegos pesados en configuraciones altas con tasas de cuadros estables. Aunque el benchmark muestra FPS cercanos a 25 en pruebas extremas, en juegos reales optimizados como los juegos AAA móviles, pueden alcanzar configuraciones cercanas a 60 FPS, dependiendo del motor gráfico y del sistema de refrigeración del dispositivo.
+Estos resultados muestran que los tres SoC basados en arquitectura ARM son capaces de ejecutar juegos pesados en configuraciones altas con tasas de cuadros estables. Aunque el benchmark muestra FPS cercanos a 25 en pruebas extremas, en juegos reales que estén optimizados como los juegos AAA móviles pueden alcanzar configuraciones cercanas a 60 FPS, dependiendo del motor gráfico y del sistema de refrigeración del dispositivo.
 
 **Rendimiento de CPU**
 
@@ -426,7 +426,7 @@ Para complementar el análisis gráfico, también se consideran también resulta
 
 **Interpretación**
 
-El Apple A17 Pro posee una ventaja significativa en la parte del rendimiento por núcleo, lo que se traduce en más instrucciones por ciclo, así como una implementación altamente optimizada de la arquitectura ARM.
+El Apple A17 Pro posee una ventaja significativa en la parte del rendimiento por núcleo, lo que se traduce en más instrucciones por ciclo y también una implementación altamente optimizada de la arquitectura ARM.
 
 También Snapdragon 8 Gen 2 y Dimensity 9200 usan configuraciones híbridas, lo que significa que usan núcleos de alto rendimiento y núcleos de eficiencia, de manera que permiten equilibrar potencia y consumo energético. Debido a este diseño, la carga puede distribuirse entre múltiples hilos gracias a APIs modernas como Vulkan, lo que la vuelve ideal para juegos móviles.
 
@@ -450,7 +450,7 @@ Por ejemplo:
 
 Si un chip al inicio obtiene 4000 puntos y después de 20 minutos obtiene 3600, la estabilidad sería 90%.
 
-Estos datos son importantes, ya que en videojuegos largos, el fenómeno de thermal throttling puede provocar caídas de FPS si el procesador reduce su frecuencia para controlar la temperatura.
+Estos datos son importantes, ya que en videojuegos largos el fenómeno de thermal throttling puede provocar caídas de FPS si el procesador reduce su frecuencia para controlar la temperatura.
 
 En esta tabla se puede ver que el Apple A17 Pro muestra la mayor estabilidad, mientras que Snapdragon mantiene un equilibrio sólido entre potencia y control térmico y Dimensity 9200 puede presentar una reducción más notable bajo carga prolongada.
 
@@ -465,7 +465,9 @@ En esta tabla se puede ver que el Apple A17 Pro muestra la mayor estabilidad, mi
 
 **Interpretación**
 
-La arquitectura ARM está caracterizada por su enfoque en eficiencia energética gracias a su diseño RISC y a la combinación de núcleos de alto rendimiento y eficiencia. Bajo este contexto: 
+La arquitectura ARM se caracteriza por su enfoque en eficacia energética debido a su diseño RISC y a la combinación de núcleos de alto rendimiento y eficiencia. 
+
+Bajo este contexto:
 
 - Apple se destaca por su alto rendimiento por watt.
 
@@ -473,13 +475,13 @@ La arquitectura ARM está caracterizada por su enfoque en eficiencia energética
 
 - Mientrás que Dimensity prioriza eficiencia, aunque puede presentar mayor variación térmica bajo carga extrema.
 
-Este equilibrio es fundamental en videojuegos móviles, debido a que a un mayor consumo energético implica mayor generación de calor y posible reducción de rendimiento en sesiones prolongadas.
+Este equilibrio es esencial en videojuegos móviles ya que un mayor consumo energético implica mayor generación de calor y la posible reducción de rendimiento en sesiones prolongadas.
 
 **Análisis general**
 
-Los anteriores resultados muestran que los procesadores con arquitectura ARM mantienen la eficiencia energética, así como un rendimiento competitivo en cargas gráficas exigentes. 
+Los anteriores resultados muestran que los procesadores con arquitectura ARM mantienen eficiencia energética así como un rendimiento competitivo en cargas gráficas exigentes. 
 
-Esto se debe a que un diseño multinúcleo, alto IPC en implementaciones personalizadas, GPUs integradas avanzadas y soporte para APIs modernas como Vulkan permiten que los dispositivos móviles ejecuten videojuegos complejos con estabilidad y eficiencia.
+Gracias a un diseño multinúcleo, alto IPC en implementaciones personalizadas, GPUs integradas avanzadas y soporte para APIs modernas como Vulkan permiten que los dispositivos móviles ejecuten videojuegos complejos con estabilidad y eficiencia.
 
 Esto confirma que la arquitectura ARM no está limitada a tareas básicas o de bajo consumo, sino que es capaz de soportar entornos de alto rendimiento como el gaming móvil moderno.
 
