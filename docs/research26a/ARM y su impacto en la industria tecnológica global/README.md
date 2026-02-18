@@ -94,5 +94,5 @@ El impacto de ARM en la industria global es irreversible. Al separar el diseño 
 4.  **Microsoft Learn.** *Windows en ARM: Documentación técnica.*
     * (https://learn.microsoft.com/es-es/windows/arm/)
   
-5.  **Mefics.org** *Qué es la arquitectura RISC y CISC con sus ventajas y desventajas*
+5.  **Mefics.org.** *Qué es la arquitectura RISC y CISC con sus ventajas y desventajas*
     * (https://mefics.org/es/qué-es-la-arquitectura-risc-y-cisc-con-sus-ventajas-y-desventajas/)
