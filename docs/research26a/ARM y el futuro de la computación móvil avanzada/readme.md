@@ -1,6 +1,12 @@
 ![Arm en computacion movil](https://images.cooltext.com/5752135.png)
 
+** Ingeniería en sistemas computacionales **
+** Materia: Lenguaje de interfaz **
+----------------------------------------------------------------------------------------------------------------------------
 
+Camarillo Molina Cristian
+5pm
+** Arm y el futuro de la computacion movil avanzada **
 
 ## Introducción
 La computación móvil ha evolucionado rápidamente en las últimas décadas, y uno de los actores más importantes en esta transformación es Arm. Su arquitectura de procesadores se ha convertido en la base tecnológica de la mayoría de los dispositivos móviles modernos.
