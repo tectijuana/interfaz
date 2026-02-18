@@ -1,9 +1,38 @@
-![Arquitecturas ARM](titulo.png)
-## Introduccion
-
+---  
+Gomez Cuevas Carlos	#23210592
+## Introducción
 ### ¿Qué es la arquitectura ARM?
 ARM (Advanced RISC Machine) es una arquitectura de procesador basada en un modelo de computación por conjunto reducido de instrucciones (RISC). Enfatiza la eficiencia ejecutando instrucciones más sencillas, lo que resulta en un menor consumo de energía y menos generación de calor. Los chips ARM se utilizan ampliamente en dispositivos móviles, tabletas y portátiles con IA debido a su diseño compacto, escalabilidad y alta relación rendimiento por vatio.
 
 ### ¿Cuál es su diferencia contra la arquitectura x86?
 Los procesadores ARM usan RISC, lo que significa que ejecutan menos instrucciones y más simples por ciclo, mientras que x86 utiliza un conjunto de instrucciones complejo (CISC). Este diseño proporciona a los procesadores ARM una eficiencia energética superior, un espacio más reducido y una menor salida térmica, lo que los hace ideales para dispositivos ligeros y portátiles. En cambio, los chips x86 suelen ofrecer un rendimiento bruto superior para escritorios y servidores.
 
+### Características
+- Eficiencia energética: ideal para dispositivos móviles y sistemas embebidos.
+- Estabilidad: desde microcontroladores hasta procesadores de alto rendimiento.
+- Extensiones multimedia como Neon para procesamiento de gráficos y señales.
+
+### ARM en sistemas multimedia
+- Procesadores como los NXP i.MX6 y i.MX8 están diseñados para aplicaciones multimedia: video HD, audio avanzado y gráficos complejos, lo que lo hace ideal para sistemas embebidos como reproductores multimedia, camaras digitales y dispositivos portátiles.
+- ARM también ofrece GPU Mali e Immortalis, usadas en smartphones y Smart TVs para gráficos inmersivos y vision por computadora 
+
+### Ejemplos de dispositivos multimedia con ARM
+- Smartphones: iPhone (chips Apple A-series), Android (Snapdragon, Exynos).
+- Consolas portátiles: Nintendo DS, Game boy Advance.
+- Automotriz y sistemas embebidos: ARM se aplica en pantallas de infoentretenimiento, camaras de asistencia y sistemas de vision artificial.
+- Smart TVs y camaras digitales.
+- Raspberry PI y otros SBC para proyectos multimedia.
+<p align="center">
+<img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTDnUEbKUI92X1QkmJgfLNep5JmreGnxSGp9w&s" width = 
+"200">
+</p>
+
+```mermaid
+graph TD
+A[Entrada Multimedia] --> B[Procesador ARM]
+B --> C[Decodificacion de Video]
+B --> D[Procesamiento de Audio]
+C --> E[Salida en Pantalla]
+D --> F[Salida en Altavoces]
+```
+## En conclusi
