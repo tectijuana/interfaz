@@ -55,6 +55,7 @@ Es muy utilizada en investigación, IoT y sistemas de ultra bajo consumo.
 
 ![enter image description here](https://internetdelascosas.xyz/img/20230313164402121_s.jpg)
 #
+![Descripción de la imagen](https://raw.githubusercontent.com/ConstantinoAlto/Imagenes/main/x86.png)
 
 Empresas tradicionales como **Intel** y **Advanced Micro Devices** han adaptado la arquitectura x86 para mejorar su eficiencia energética mediante diseños híbridos.
 
