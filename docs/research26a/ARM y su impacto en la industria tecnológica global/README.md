@@ -53,10 +53,10 @@ Este diagrama ilustra cómo fluye la propiedad intelectual de ARM hacia los dife
 graph TD
     A["ARM Holdings<br/>(Dueño de la IP)"] -->|Vende Licencia de Diseño| B(Fabricantes de Chips)
     
-    subgraph Socios Clave
-    B --> C["Apple<br/>Serie M / A"]
-    B --> D["Qualcomm<br/>Snapdragon"]
-    B --> E["AWS / Ampere<br/>Servidores Cloud"]
+    subgraph Socios_Clave [Socios Clave]
+        B --> C["Apple<br/>Serie M / A"]
+        B --> D["Qualcomm<br/>Snapdragon"]
+        B --> E["AWS / Ampere<br/>Servidores Cloud"]
     end
     
     C --> F{Dispositivos Finales}
