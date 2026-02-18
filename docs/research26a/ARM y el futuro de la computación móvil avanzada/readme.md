@@ -89,8 +89,13 @@ graph TD
     P --> S[Edge Computing]
 ```
 
+## Conclusión 
+El liderazgo de Arm en la computación móvil avanzada no es casualidad. Su enfoque en la eficiencia energética, desde el diseño mismo de su arquitectura, le permitió adaptarse perfectamente a las necesidades de los dispositivos móviles. En un entorno donde la duración de batería y el rendimiento equilibrado son fundamentales, esta ventaja ha sido decisiva.
+
+Además, su modelo de licencias ha fomentado la innovación, permitiendo que distintos fabricantes desarrollen soluciones personalizadas sin abandonar la misma base tecnológica. Con la creciente integración de inteligencia artificial y el avance hacia dispositivos más potentes y eficientes, todo indica que Arm seguirá siendo un pilar clave en el futuro de la computación móvil.
+
 ### Fuentes
-[Arm y su arquitectura](https://dredu.mx/principal/intereses/aficiones/computadoras-y-dispositivos-de-procesamiento-de-datos/arquitecturas-de-computo/arquitecturas-arm/?utm_source=chatgpt.com)
+[Arm y su arquitectura](https://dredu.mx/principal/intereses/aficiones/computadoras-y-dispositivos-de-procesamiento-de-datos/arquitecturas-de-computo/arquitecturas-arm)
 
 [Arm en dispositivos móviles y rendimiento](https://www.arm.com/markets/mobile-computing)
 
