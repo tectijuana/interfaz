@@ -7,6 +7,8 @@ ARM (Advanced RISC Machine) es una arquitectura de procesador basada en un model
 ### ¿Cuál es su diferencia contra la arquitectura x86?
 Los procesadores ARM usan RISC, lo que significa que ejecutan menos instrucciones y más simples por ciclo, mientras que x86 utiliza un conjunto de instrucciones complejo (CISC). Este diseño proporciona a los procesadores ARM una eficiencia energética superior, un espacio más reducido y una menor salida térmica, lo que los hace ideales para dispositivos ligeros y portátiles. En cambio, los chips x86 suelen ofrecer un rendimiento bruto superior para escritorios y servidores.
 
+<table border="1" align="center" width="80%">  <tr>  <th>Aspecto</th>  <th>ARM (RISC)</th>  <th>x86 (CISC)</th>  </tr>  <tr>  <td>Filosofía</td>  <td>RISC: instrucciones simples y rápidas</td>  <td>CISC: instrucciones complejas</td>  </tr>  <tr>  <td>Consumo de energía</td>  <td>Bajo, ideal para móviles y embebidos</td>  <td>Alto, más común en PCs y servidores</td>  </tr>  <tr>  <td>Rendimiento</td>  <td>Optimizado para eficiencia</td>  <td>Optimizado para potencia bruta</td>  </tr>  <tr>  <td>Escalabilidad</td>  <td>Desde microcontroladores hasta SoCs</td>  <td>Principalmente PCs y servidores</td>  </tr>  <tr>  <td>Aplicaciones típicas</td>  <td>Smartphones, tablets, IoT, multimedia</td>  <td>Computadoras de escritorio, laptops</td>  </tr>  <tr>  <td>Licenciamiento</td>  <td>ARM licencia su arquitectura a terceros</td>  <td>Intel/AMD diseñan y fabrican x86</td>  </tr>  <tr>  <td>Compatibilidad</td>  <td>Gran soporte en móviles y sistemas embebidos</td>  <td>Amplio soporte en software de PC</td>  </tr>  </table>
+
 ### Características
 - Eficiencia energética: ideal para dispositivos móviles y sistemas embebidos.
 - Estabilidad: desde microcontroladores hasta procesadores de alto rendimiento.
@@ -35,4 +37,7 @@ B --> D[Procesamiento de Audio]
 C --> E[Salida en Pantalla]
 D --> F[Salida en Altavoces]
 ```
-## En conclusi
+## En conclusión
+Las arquitecturas ARM han demostrado ser un pilar fundamental en el desarrollo de sistemas multimedia modernos. Su diseño les permite ofrecer un equilibrio optimo entre rendimiento y eficiencia energética, lo que puede resultar en algo importante en dispositivos móviles, Smart TVs, consolas portátiles y sistemas embebidos.
+
+Para finalizar, ARM ha transformado de un modo la forma en que interactuamos con contenido multimedia y aparte de eso ha marcado un rumbo con sistemas más eficientes, accesibles y adaptables, llegando a ser a futuro una prometedora arquitectura de la computación multimedia.
