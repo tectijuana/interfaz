@@ -1,11 +1,14 @@
 ![Arm en computacion movil](https://images.cooltext.com/5752135.png)
 
-** Ingeniería en sistemas computacionales **
-** Materia: Lenguaje de interfaz **
-----------------------------------------------------------------------------------------------------------------------------
+** Ingeniería en sistemas computacionales**
 
-Camarillo Molina Cristian
-5pm
+** Materia: Lenguaje de interfaz **
+
+
+** Camarillo Molina Cristian **
+
+** Horario: 5pm **
+
 ** Arm y el futuro de la computacion movil avanzada **
 
 ## Introducción
@@ -84,7 +87,11 @@ graph TD
     M --> Q[Futuro: IA en el dispositivo]
     O --> R[Computación móvil avanzada]
     P --> S[Edge Computing]
+```
 
+### Fuentes
+[Arm y su arquitectura](https://dredu.mx/principal/intereses/aficiones/computadoras-y-dispositivos-de-procesamiento-de-datos/arquitecturas-de-computo/arquitecturas-arm/?utm_source=chatgpt.com)
 
+[Arm en dispositivos móviles y rendimiento](https://www.arm.com/markets/mobile-computing)
 
-
+[Chips Arm](https://www.aeanet.org/what-is-an-arm-chip)
