@@ -1,5 +1,7 @@
 ![Arm en computacion movil](https://images.cooltext.com/5752135.png)
 
+
+
 ## Introducción
 La computación móvil ha evolucionado rápidamente en las últimas décadas, y uno de los actores más importantes en esta transformación es Arm. Su arquitectura de procesadores se ha convertido en la base tecnológica de la mayoría de los dispositivos móviles modernos.
 
