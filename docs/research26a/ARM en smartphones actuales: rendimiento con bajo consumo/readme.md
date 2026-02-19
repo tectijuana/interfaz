@@ -5,6 +5,7 @@
 
 ## 👤 Información del Estudiante
 **Nombre:** Bautista Bautista Itzel
+
 **Matrícula:** 23212800
 
 -----
