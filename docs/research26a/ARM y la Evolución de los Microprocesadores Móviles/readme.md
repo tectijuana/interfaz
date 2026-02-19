@@ -1,61 +1,79 @@
-=====================================
-
-Autor: Lopez Mendoza Alejandro
-
-Materia: Lenguajes de Interfaz
-
-Grupo: SC6C
-
-Fecha:16/02/26
-
-Descripción: Investigación sobre la arquitectura ARM y la evolución de los microprocesadores móviles, así como su posición actual en el mercado tecnológico.
-
-=====================================
-
 # ARM y la Evolución de los Microprocesadores Móviles
 
-La arquitectura ARM (Advanced RISC Machine) es un diseño de microprocesador basado en el paradigma RISC (Conjunto Reducido de Instrucciones). Su objetivo principal es maximizar el rendimiento por vatio, lo que la hace ideal para dispositivos portátiles y sistemas embebidos.
+**Autor:** Lopez Mendoza Alejandro - **Grupo:** SC6C
+
+---
+
+## 1. Introducción
+
+La arquitectura ARM (Advanced RISC Machine) es un diseño de microprocesador basado en el paradigma RISC (Conjunto Reducido de Instrucciones). Su objetivo principal es maximizar el **rendimiento por vatio**, lo que la hace ideal para dispositivos portátiles y sistemas embebidos.
 
 A diferencia de otros fabricantes tradicionales, ARM diseña la arquitectura y la licencia a distintas empresas para que fabriquen sus propios sistemas en chip (SoC). Este modelo ha permitido una expansión rápida y una innovación constante en el mercado de dispositivos móviles.
 
 Inicialmente los procesadores ARM se utilizaron en teléfonos móviles básicos y dispositivos portátiles. Con el tiempo, su uso se expandió a smartphones, tablets, dispositivos IoT, servidores eficientes y computadoras personales.
 
-## Historia y Contexto
+## 2. Fundamentos Técnicos de ARM
 
-El desarrollo de la arquitectura ARM empezó en la década de 1980, con el equipo liderado por Roger Wilson y Steve Furber, que presentó el primer prototipo, ARM1, para computadoras personales.
+### Arquitectura RISC y Eficiencia Energética
+La filosofía de diseño RISC permite que los procesadores ARM simplifiquen el hardware al ejecutar instrucciones que requieren, en su mayoría, un solo ciclo de reloj. Esta simplicidad reduce el número de transistores necesarios, lo que se traduce en un consumo eléctrico mínimo y una baja disipación de calor.
 
-La arquitectura ARM se popularizó por su simplicidad y bajo consumo de energía, lo que la hizo ideal para teléfonos móviles y dispositivos portátiles. Para 2005, alrededor del 98 % de los teléfonos móviles vendidos utilizaban al menos un procesador basado en ARM.
+- Alto rendimiento por vatio: Ideal para dispositivos alimentados por batería.
+- Diseño orientado a la movilidad: Minimiza la necesidad de sistemas de enfriamiento activos.
 
-## ¿Qué es ARM y para qué se usa?
+### El concepto de System on Chip (SoC)
+ARM integra la CPU junto con otros componentes críticos en una sola pieza de silicio para optimizar la velocidad y el espacio.
 
-ARM es una arquitectura de procesadores que se integra en sistemas en chip (SoC) junto con otros componentes como GPU, controladores y módems. Su diseño eficiente permite un bajo consumo de energía sin sacrificar rendimiento, lo que lo convierte en una opción dominante en smartphones, tablets y muchos dispositivos conectados.
+```mermaid
+graph TD
+    subgraph SoC [System on Chip - Estructura General]
+        CPU[ARM Cortex CPU] 
+         
+        %% Conexiones en nivel inferior
+        CPU --- GPU[Unidad de Gráficos]
+        CPU --- NPU[Acelerador de IA]
+        CPU --- RAM[Controlador de Memoria]
+        CPU --- Modem[Modem 5G/Wi-Fi]
+    end
 
-Además de dispositivos móviles, ARM ha empezado a incursionar en centros de datos y servicios en la nube, ofreciendo escalabilidad de núcleos y rendimiento eficiente para cargas de trabajo modernas.
-<img width="600" height="451" alt="image" src="https://github.com/user-attachments/assets/6c87e832-9beb-4841-946c-462b99219d4b" />
+    %% Ajuste de diseño
+    classDef default font-family:Arial,font-size:14px;
+```
 
----
+### Familias principales de núcleos
+- Cortex-A: Diseñados para aplicaciones de alto rendimiento (smartphones, laptops).
+- Cortex-R: Optimizados para sistemas que requieren procesamiento en tiempo real.
+- Cortex-M: Especializados para microcontroladores en dispositivos embebidos e IoT.
 
-## Fundamentos técnicos de ARM
 
-- Arquitectura RISC optimizada para eficiencia energética  
-- Integración de múltiples componentes en un solo chip (SoC)  
-- Alto rendimiento por vatio  
-- Diseño orientado a dispositivos alimentados por batería  
-- Escalabilidad para diferentes niveles de potencia  
+## 3. Historia y Contexto
 
-Familias principales de núcleos:
+El desarrollo de la arquitectura ARM comenzó en la década de 1980 bajo el liderazgo de Roger Wilson y Steve Furber, quienes presentaron el ARM1, el primer prototipo diseñado para computadoras personales. Esta arquitectura se distingue por ser un "contrato" estricto que define la interacción entre el hardware y el software. Gracias a su simplicidad y bajo consumo de energía, se convirtió en la tecnología ideal para la revolución de los dispositivos portátiles; para el año 2005, aproximadamente el 98% de los teléfonos móviles en el mundo integraban al menos un procesador basado en ARM.
 
-- Cortex-A → alto rendimiento  
-- Cortex-R → sistemas en tiempo real  
-- Cortex-M → microcontroladores embebidos  
+```mermaid
+timeline
+    title Evolución Histórica de la Arquitectura ARM
+    1983 - 1985 : Nacimiento de ARM <br> Roger Wilson y Steve Furber inician el proyecto en Acorn Computers. <br> Lanzamiento del ARM1: Primer prototipo funcional.
+    1990 : Independencia <br> Se funda Advanced RISC Machines Ltd. (ARM) como una colaboración entre Acorn, Apple y VLSI Technology.
+    2001 - 2005 : Dominio Móvil <br> Lanzamiento de la arquitectura ARMv6. <br> Para 2005, el 98% de los teléfonos móviles utilizan tecnología ARM.
+    2011 : El Salto a 64 Bits <br> Presentación de ARMv8-A (AArch64), permitiendo el uso de ARM en servidores y cómputo de alto rendimiento.
+    2020 : Revolución en la Computación Personal <br> Apple lanza el chip M1 basado en ARM, superando en eficiencia a procesadores x86 tradicionales.
+    2023 - 2026 : Era de la IA y la Nube <br> Consolidación de AWS Graviton en centros de datos. <br> Más de 325 mil millones de chips ARM distribuidos globalmente.
+```
 
----
+### ¿Qué es ARM y para qué se usa?
 
-## Evolución de los microprocesadores móviles
+Hoy en día, ARM es una arquitectura de procesadores que no se presenta de forma aislada, sino que se integra en Sistemas en Chip (SoC). Este diseño combina la CPU con componentes críticos como GPUs, controladores de memoria y módems en una sola pieza de silicio. Su capacidad para ofrecer un alto rendimiento sin sacrificar la eficiencia energética la ha consolidado como la opción dominante en smartphones, tablets y dispositivos del Internet de las Cosas (IoT).
+
+Más allá del sector móvil, la arquitectura ha evolucionado hacia el ecosistema AArch64 (64 bits), lo que ha permitido su incursión en centros de datos y servicios en la nube. Actualmente, ofrece una escalabilidad de núcleos y una eficiencia térmica que la hacen competitiva para cargas de trabajo modernas, como el aprendizaje automático y la gestión de servidores de alto rendimiento como AWS Graviton.
+
+<img width="600" height="451" alt="Estructura de capas ARM" src="https://github.com/user-attachments/assets/6c87e832-9beb-4841-946c-462b99219d4b" />
+
+
+## 4. Evolución del SoC y Procesadores
+
+### Evolución histórica 
 
 La evolución de los procesadores móviles se caracteriza por el aumento de integración, eficiencia energética y especialización funcional.
-
-### Evolución histórica
 
 | Periodo | Características técnicas | Innovaciones | Impacto |
 |--------|------------------------|-------------|--------|
@@ -64,9 +82,7 @@ La evolución de los procesadores móviles se caracteriza por el aumento de inte
 | 2012–2019 | Procesamiento multinúcleo | Arquitectura heterogénea (big.LITTLE) | Mejor rendimiento y batería |
 | 2020–Actualidad | Diseños personalizados y IA integrada | Aceleradores neuronales | Expansión a laptops y servidores |
 
----
-
-## Evolución de componentes dentro del SoC
+### Especialización de Componentes Internos
 
 | Componente | Generaciones iniciales | Generaciones actuales |
 |-----------|----------------------|----------------------|
@@ -78,7 +94,7 @@ La evolución de los procesadores móviles se caracteriza por el aumento de inte
 
 ---
 
-## ARM y su posición en el mercado
+## 5. ARM vs. RISC-V: El Panorama del Mercado
 
 La arquitectura ARM domina el mercado de dispositivos móviles y sistemas embebidos debido a su eficiencia energética, escalabilidad e integración funcional.
 
@@ -96,27 +112,15 @@ Su principal competencia emergente es RISC-V, una arquitectura abierta que busca
 
 ---
 
-## Importancia tecnológica actual
+## 6. Importancia Tecnológica Actual y Conclusión
 
-La evolución de los procesadores ARM está impulsada por:
+La arquitectura ARM se ha consolidado como la base de la computación móvil moderna gracias a su enfoque en la eficiencia energética y la integración funcional. Su capacidad para adaptarse desde el sensor más pequeño de IoT hasta servidores de alto rendimiento en la nube (como AWS Graviton) demuestra una escalabilidad sin precedentes.
 
-- Inteligencia artificial integrada en hardware  
-- Computación en el borde (edge computing)  
-- Dispositivos móviles de alto rendimiento  
-- Reducción del consumo energético  
-- Integración de múltiples funciones en un solo chip  
+En conclusión, la evolución hacia diseños que integran Inteligencia Artificial y computación en el borde asegura que ARM seguirá siendo la arquitectura clave para el desarrollo tecnológico contemporáneo, permitiendo una interacción más fluida y eficiente entre los usuarios y sus dispositivos digitales.
 
 ---
 
-## Conclusión
-
-La arquitectura ARM ha evolucionado desde procesadores simples para dispositivos portátiles hasta convertirse en la base dominante de la computación móvil moderna. Su enfoque en eficiencia energética, integración funcional y escalabilidad ha permitido su expansión hacia múltiples sectores tecnológicos.
-
-Los microprocesadores móviles continúan evolucionando mediante integración de inteligencia artificial, optimización energética avanzada y diseños heterogéneos, consolidando a ARM como una arquitectura clave en el desarrollo tecnológico contemporáneo.
-
----
-
-## Bibliografía 
+## 7. Bibliografía 
 
 Arquitectura ARM — Wikipedia  
 https://es.wikipedia.org/wiki/Arquitectura_ARM
