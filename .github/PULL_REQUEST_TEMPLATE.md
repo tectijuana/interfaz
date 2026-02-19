@@ -1,4 +1,7 @@
-# 🚀 Pull Request – Investigación Individual  
+<img width="497" height="87" alt="image" src="https://github.com/user-attachments/assets/ff7bdf44-db18-4c01-9534-158bb67f838b" />
+
+
+# Investigación Individual  
 **Ingeniería en Sistemas Computacionales**  
 **Materia: Lenguaje de Interfaz**
 
@@ -90,5 +93,18 @@ Entiendo que el plagio total o parcial invalida la entrega.
 - [ ] La investigación esta en el README.md y en directorio del tema otros documentos de apoyo enlazados
 
 ---
+
+<img width="619" height="109" alt="image" src="https://github.com/user-attachments/assets/e688a197-c94c-4ef7-8135-430c25cc6462" />
+
+Nombre del autor para AUDITAR: ______
+
+Gracias por su aportación para validar diagramas mermaid, formato markdown extenso, imagenes, tablas markdown
+
+Su auditoria permie apoyar a la comunidad de LENG. de INTERFAZ puede una fuente de calidad para nuestros visitantes que nos indexen.
+
+Suerte y éxito académico
+
+RSR
+
 
 
