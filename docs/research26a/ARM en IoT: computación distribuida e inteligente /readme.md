@@ -3,6 +3,7 @@
 # El Rol de ARM en la Revolución del IoT y la Computación Distribuida
 
 ## 1. Análisis de Fundamentos
+<img width="314" height="326" alt="image" src="https://github.com/user-attachments/assets/4e340124-cb17-4e59-a095-13119e5d9188" />
 
 Para entender el impacto de ARM, primero debemos contextualizar el **IoT** según las fuentes líderes:
 
@@ -26,6 +27,7 @@ La computación distribuida permite que el procesamiento ocurra cerca de la fuen
 * **Reducción de Latencia:** Decisiones críticas en milisegundos (ej. drones o maquinaria industrial) sin esperar el viaje de ida y vuelta al servidor.
 * **Optimización de Banda:** Se procesa la información localmente y solo se envía lo relevante (metadatos) a la nube, en lugar de flujos de datos crudos.
 * **Privacidad Local:** Los datos sensibles se analizan en el chip, cumpliendo con normativas de seguridad sin exponer información privada en la red.
+<img width="592" height="352" alt="image" src="https://github.com/user-attachments/assets/180c8090-0179-4ca4-9d45-81f5f0d582a7" />
 
 ---
 
