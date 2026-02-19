@@ -31,7 +31,23 @@ El modelo **RISC (Computadora con Conjunto de Instrucciones Reducido)** es un di
 -   Un diseño optimizado para ejecutar una instrucción por ciclo de reloj
     
 -   Arquitectura basada en registros
+
+    ### Diagrama comparativo RISC vs CISC
     
+    ```mermaid
+    flowchart LR
+    A[Programa] --> B{Tipo de Arquitectura}
+
+    B -->|RISC| C[Instrucciones simples]
+    C --> D[Tamaño fijo]
+    D --> E[Pipeline eficiente]
+    E --> F[Menor consumo energético]
+
+    B -->|CISC| G[Instrucciones complejas]
+    G --> H[Tamaño variable]
+    H --> I[Hardware más complejo]
+    I --> J[Mayor compatibilidad histórica]
+
 
 ### Características principales de RISC:
 
