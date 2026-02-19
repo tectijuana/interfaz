@@ -1,4 +1,13 @@
+**Ingeniería en Sistemas Computacionales**  
+**Materia: Lenguaje de Interfaz**
 
+----------
+
+## 👤 Información del Estudiante
+**Nombre:** Bautista Bautista Itzel
+**Matrícula:** 23212800
+
+-----
 # ARM en Smartphones Actuale: Rendimiento con Bajo Consumo
 
 ## Resumen
@@ -23,7 +32,6 @@ En este contexto, la arquitectura desarrollada por Arm Ltd. se ha convertido en 
 El propósito de esta investigación es analizar cómo ARM logra ofrecer alto rendimiento con bajo consumo en los smartphones actuales.
 
 ![Diagrama general de arquitectura ARM](https://www.watelectronics.com/wp-content/uploads/ARM-Architecture.jpg)
-
 *Figura 1. Arquitectura general basada en ARM.*
 
 
@@ -72,7 +80,6 @@ La eficiencia energética está estrechamente ligada a la evolución de los nodo
 | 2024 | 3 nm|
 
 ![Evolución de nodos tecnológicos](https://www.adslzone.net/app/uploads-adslzone.net/2016/06/evolucion-chips-715x196.jpg)
-
 *Figura 2. Evolución del tamaño de fabricación de semiconductores.*
 
 La reducción del tamaño del transistor permite:
@@ -103,7 +110,6 @@ Ejemplos de SoC modernos:
 -   Exynos 2400
 
 ![Diagrama de un SoC móvil](https://i.blogs.es/30f873/qualcomm-snapdragon-801-diagram/450_1000.jpg)
-
 *Figura 3. Componentes principales de un SoC moderno. Fuente: Qualcomm.*
 
 Estos chips combinan alto rendimiento con optimización energética avanzada.
@@ -120,7 +126,6 @@ Consiste en:
 -   Núcleos de alta eficiencia (LITTLE)
     
 ![Arquitectura big.LITTLE](https://www.profesionalreview.com/wp-content/uploads/2021/03/Nucleos-big-LITTLE-Snapdragon-888.jpg)
-
 *Figura 4. Distribución de núcleos de alto rendimiento y eficiencia.*
 
 El sistema operativo asigna tareas ligeras a núcleos eficientes y tareas pesadas a núcleos potentes.
@@ -150,7 +155,6 @@ ARM logra optimización mediante:
 Comparado con arquitecturas tradicionales como x86, ARM ofrece menor consumo eléctrico en cargas equivalentes dentro del entorno móvil.
 
 ![Comparación rendimiento por watt](https://external-preview.redd.it/WxSWwiXJom2PJZrtp9S5O_NAX73gg1_1pWoVWJeKxCs.png?auto=webp&s=19b430311e59e65ad59ac15390a910fa0db61efe)
-
 *Figura 5. Comparación de rendimiento por watt entre arquitecturas.*
 
 ----------
