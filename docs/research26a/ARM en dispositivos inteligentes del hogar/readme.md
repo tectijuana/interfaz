@@ -6,13 +6,13 @@ Materia: Lenguajes de Interfaz.
 
 Profesor: Rene Solis Reyes.
 
-Unidad: 1
+Unidad: 1.
 
 Alumno: Gonzalez Cristobal Omar.
 
 Actividad: 1.3 Investigación.
 
-Título: ARM en dispositivos inteligentes del hogar
+Título: ARM en dispositivos inteligentes del hogar.
 
 Fecha: Martes 17 de febrero de 2026.
 
