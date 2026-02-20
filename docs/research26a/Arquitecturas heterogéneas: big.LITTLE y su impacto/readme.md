@@ -134,6 +134,12 @@ Con la evolución hacia **DynamIQ**, ARM ha permitido configuraciones aún más 
 -  **Computación de escritorio / servidores:** Aunque menos común, se utiliza en servidores ARM y plataformas de cloud computing para optimizar cargas mixtas.  
 
 ---
+##IMAGEN 
+
+![GITimagen](https://github.com/user-attachments/assets/24adb769-07b1-43d5-ae75-6ab60d7da72f)
+
+
+---
 
 # 6. Impacto y Beneficios
 
@@ -161,13 +167,35 @@ Mejor experiencia de usuario (fluidez sin sacrificar batería)
 
 Ampliamente usado en smartphones Android, combina núcleos big y LITTLE para ofrecer alto rendimiento gráfico y eficiencia energética.
 
+---
+
+##IMAGEN 
+
+![Snapdragon](https://github.com/user-attachments/assets/11a26d8d-8416-4d32-b288-dc1bec500aed)
+
+---
+
 ## Ejemplo 2: Samsung Exynos
 
 Integra big.LITTLE en sus SoCs para balancear multitarea y autonomía de batería.
+---
+
+##IMAGEN 
+
+![exynos](https://github.com/user-attachments/assets/5b204a04-90e1-4675-bf05-0d5112e8b888)
+
+---
 
 ## Ejemplo 3: Arm Neoverse (Cloud/Server)
 
 Aplicado en servidores como Amazon AWS Graviton, optimiza cargas de trabajo en la nube con un enfoque en eficiencia energética.
+---
+
+##IMAGEN 
+
+![armneoverse](https://github.com/user-attachments/assets/8aeba620-85ab-4890-8d91-cc38a31add58)
+
+---
 
 # 8. Tendencias Futuras
 

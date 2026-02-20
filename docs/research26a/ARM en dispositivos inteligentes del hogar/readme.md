@@ -6,13 +6,13 @@ Materia: Lenguajes de Interfaz.
 
 Profesor: Rene Solis Reyes.
 
-Unidad: 1
+Unidad: 1.
 
 Alumno: Gonzalez Cristobal Omar.
 
 Actividad: 1.3 Investigación.
 
-Título: ARM en dispositivos inteligentes del hogar
+Título: ARM en dispositivos inteligentes del hogar.
 
 Fecha: Martes 17 de febrero de 2026.
 
@@ -29,7 +29,7 @@ Equipos como televisores inteligentes, cámaras, bombillas, asistentes de voz y 
 
 ### Introducción
 
-En los últimos años, el avance de la tecnología ha permitido la integración de dispositivos inteligentes en el hogar, facilitando tareas cotidianas y mejorando la comodidad, la seguridad y la conectividad. Estos dispositivos, que forman parte del llamado hogar inteligente o Internet de las Cosas (IoT), requieren procesadores eficientes que les permitan funcionar de manera continua sin un alto consumo energético.
+En los últimos años, el avance de la tecnología ha permitido la integración de dispositivos inteligentes en el hogar, facilitando tareas cotidianas y mejorando la comodidad, la seguridad y la conectividad. Estos dispositivos, que forman parte del llamado hogar inteligente o Internet de las cosas (IoT), requieren procesadores eficientes que les permitan funcionar de manera continua sin un alto consumo energético.
 
 En este contexto, la arquitectura ARM ha adquirido un papel fundamental debido a su diseño eficiente, su bajo consumo de energía y su capacidad de adaptarse a distintos niveles de complejidad. Gracias a estas características, ARM se ha convertido en una de las principales bases tecnológicas de dispositivos como televisores inteligentes, cámaras de seguridad y asistentes de voz.
 
@@ -40,6 +40,8 @@ La presente investigación analiza qué es la arquitectura ARM, su importancia e
 ### ¿Qué es la arquitectura ARM?
 
 La arquitectura ARM es un diseño de procesadores basado en el modelo RISC, lo que significa que utiliza un conjunto reducido de instrucciones para trabajar de forma más eficiente. Puede funcionar en sistemas de 32 y 64 bits y fue desarrollada por ARM Holdings a finales de los años 80.
+
+**Ciclo básico de ejecución en arquitectura ARM**
 
 ```mermaid
 flowchart TB
@@ -59,9 +61,15 @@ flowchart TB
     style DM fill:#2962FF,color:#FFFFFF
 ```
 
+*Figura 1. Representación simplificada del ciclo de ejecución en una arquitectura basada en el modelo RISC.*
+
+*El diagrama muestra el proceso básico mediante el cual el procesador obtiene una instrucción de la memoria, la decodifica a través de la unidad de control y finalmente la ejecuta en la ruta de datos.*
+
 Con el tiempo, ARM se convirtió en una de las arquitecturas más utilizadas en dispositivos electrónicos debido a su bajo consumo de energía y su tamaño reducido. Gracias a estas características, se usa en microprocesadores presentes en muchos dispositivos de uso cotidiano que no requieren un alto nivel de procesamiento.
 
 <img width="1280" height="720" alt="image" src="https://github.com/user-attachments/assets/c36750db-ac70-4c32-86dd-a5de39f3ed67" />
+
+*Figura 2. Procesador ARM en placa de desarrollo.*
 
 ---
 
@@ -84,6 +92,18 @@ Además del ahorro energético, ARM destaca por su tamaño reducido y su facilid
 
 5. Refrigeradores inteligentes: Integran procesadores ARM para controlar pantallas digitales, sensores internos y conectividad a internet. Esto permite la automatización de funciones y el monitoreo remoto con un consumo energético optimizado.
 
+### Núcleos ARM en dispositivos inteligentes del hogar
+
+Dependiendo de la complejidad y funciones de cada dispositivo, ARM utiliza distintos tipos de núcleos. La tabla siguiente resume los núcleos más comunes por dispositivo:
+
+| Dispositivo | Función del procesador ARM | Tipo de núcleo común |
+|-------------|---------------------------|----------------------|
+| Televisor inteligente | Ejecuta sistema operativo y aplicaciones | **Cortex-A** |
+| Bombilla inteligente | Controla conexión inalámbrica y sensores | **Cortex-M** |
+| Cámara de seguridad | Procesamiento de video y cifrado | **Cortex-A / Cortex-R** |
+| Asistente de voz | Procesamiento de comandos | **Cortex-A** |
+| Refrigerador inteligente | Gestión de sensores y pantalla | **Cortex-A** |
+
 ---
 
 ### Seguridad
@@ -93,6 +113,8 @@ Los procesadores ARM incorporan distintas funciones de seguridad diseñadas para
 Además de TrustZone, los chips ARM pueden incluir arranque seguro, lo que garantiza que el dispositivo solo ejecute software autorizado desde el momento en que se enciende. También cuentan con funciones de criptografía, tanto mediante software como mediante hardware dedicado, y mecanismos de almacenamiento seguro de claves, lo que protege la información y las comunicaciones del sistema.
 
 <img width="700" height="358" alt="image" src="https://github.com/user-attachments/assets/9bf9d515-eb07-4182-9ce2-ce13c6ffc4d2" />
+
+*Figura 3. Arquitectura ARM TrustZone.*
 
 ---
 
@@ -124,6 +146,19 @@ Además de TrustZone, los chips ARM pueden incluir arranque seguro, lo que garan
 
 ---
 
+### Cuadro comparativo: Ventajas y desventajas
+
+| Criterio | Ventajas | Desventajas |
+|----------|------------|-------------|
+| Eficiencia energética | Bajo consumo, ideal para dispositivos IoT y del hogar | En dispositivos complejos puede requerir gestión térmica |
+| Arquitectura | Diseño RISC optimizado | Requiere software adaptado |
+| Seguridad | Integración de TrustZone y cifrado por hardware | Actualizaciones constantes debido a que son necesarias |
+| Compatibilidad | Amplio ecosistema y soporte de desarrollo | Fragmentación entre fabricantes |
+| Versionado | Soporte para 32 y 64 bits | Compatibilidad variable entre versiones |
+| Costo | Solución rentable para fabricantes | Dependencia del diseño y licencia de terceros |
+
+
+---
 ### Conclusión
 
 Después de analizar la arquitectura ARM en el contexto del hogar inteligente, se puede concluir que su éxito se debe principalmente a su eficiencia energética y a su alto rendimiento por vatio, lo que permite que los dispositivos funcionen de manera continua sin un consumo excesivo de energía.
@@ -151,3 +186,5 @@ admin@Cranes Varsity. (2025, 22 julio). Top 5 Features That Make ARM Architectur
 Shelley, D. (2024, 26 agosto). Careful - Arm Processors present problems - BVA Technology Services. Bva Technology Services. https://www.bvainc.com/2024/08/26/careful-arm-processors-present-problems/
 
 GeeksforGeeks. (2025, julio 15). Advantages and Disadvantages of ARM processor. GeeksforGeeks. https://www.geeksforgeeks.org/computer-organization-architecture/advantages-and-disadvantages-of-arm-processor/
+
+Your Guide to Arm® Cortex® Technology | Infineon Technologies. (s. f.). https://www.infineon.com/technology/arm-cortex?utm_source=chatgpt.com
