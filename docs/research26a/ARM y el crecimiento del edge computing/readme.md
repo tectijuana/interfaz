@@ -55,6 +55,14 @@ A diferencia del modelo tradicional donde todo se envía a centros de datos remo
 
 ![Imagen representativa del funcionamiento del EdgeComputing](https://www.muycomputerpro.com/wp-content/uploads/2019/06/Edge-Computing-e1560178873365.png)
 
+---
+
+## DRIAGRAMA 
+
+<img width="1348" height="710" alt="Screenshot 2026-02-09 084128" src="https://github.com/user-attachments/assets/8016c120-8e4c-4655-8a52-7d1a16176821" />
+
+---
+
 ## La relación entre ARM y el crecimiento con el Edge Computing
 
 La arquitectura ARM ha adquirido un papel estratégico en edge computing por varias razones, tales como:
