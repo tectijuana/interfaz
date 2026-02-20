@@ -182,7 +182,7 @@ El *Cortex-M55* con el coprocesador *Ethos-U55* de ARM permite ejecutar modelos 
 
 ## Diagrama: Gestión de Energía en un Sistema ARM Cortex-M
 
-mermaid
+```mermaid
 flowchart TD
     subgraph Entradas
         S[Sensor / Interrupción]
@@ -225,7 +225,7 @@ flowchart TD
     A --> CG
     A --> PG
     A --> DVFS
-
+```
 
 ---
 
