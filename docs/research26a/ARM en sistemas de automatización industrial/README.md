@@ -52,7 +52,16 @@ ARM clasifica sus núcleos en diferentes series según la aplicación:
 - **Robótica y Visión Artificial:** La integración de procesadores ARM con FPGAs (como Xilinx Zynq) permite una alta capacidad de computación para visión artificial en líneas de producción.
 
 ---
+---
+### 📊 Tabla Comparativa: Familias ARM en Automatización Industrial
 
+| **Familia ARM** | **Características principales** | **Aplicaciones en Automatización Industrial** |
+|-----------------|---------------------------------|-----------------------------------------------|
+| **Cortex-M (Microcontroladores)** | - Bajo consumo energético<br>- Diseño compacto<br>- Rendimiento suficiente para tareas de control básico | - Sensores y actuadores<br>- Control de señales<br>- Adquisición de datos<br>- Control de motores |
+| **Cortex-R (Tiempo Real)** | - Respuesta determinista inmediata<br>- Alta fiabilidad en entornos críticos<br>- Optimizado para seguridad | - Robótica colaborativa<br>- Control crítico de maquinaria<br>- Sistemas de seguridad industrial |
+| **Cortex-A (Aplicaciones)** | - Alto rendimiento<br>- Soporte para sistemas operativos (Linux, Android)<br>- Integración con Edge AI y NPU | - Interfaces Hombre-Máquina (HMI)<br>- Gateways industriales<br>- Edge Computing<br>- Visión artificial y análisis en el borde |
+
+---
 ## 📊 Diagrama: Familias ARM y su Rol en la Automatización Industrial
 
 El siguiente diagrama muestra cómo las diferentes familias de procesadores ARM se integran en los niveles de un sistema de automatización industrial típico.
