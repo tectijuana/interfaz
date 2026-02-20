@@ -94,6 +94,8 @@ Entiendo que el plagio total o parcial invalida la entrega.
 
 ---
 
+# SOLO SI ES UN PEER-REVIEW LLENE ESTE FORMATO ABAJO, DE LO CONTRARIO FAVOR DE SALTARLO
+
 <img width="619" height="109" alt="image" src="https://github.com/user-attachments/assets/e688a197-c94c-4ef7-8135-430c25cc6462" />
 
 Nombre del autor para auditar: ______________________
