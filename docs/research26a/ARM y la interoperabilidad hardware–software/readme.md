@@ -81,6 +81,12 @@ La Arquitectura de Cómputo Confidencial (CCA) de ARM aprovecha tanto hardware c
 Realm Management Extension (RME), que crea un mundo computacional separado en el dispositivo para ejecutar y proteger aplicaciones y datos. El uso de un realm 
 previene ataques de software que se ejecuta en niveles de privilegio más altos.
 
+| Característica | Computación Tradicional | Cómputo Confidencial (CCA) |
+|----------------|-------------------------|----------------------------|
+| **Enfoque** | Confianza en el Sistema Operativo y el Hipervisor | Entorno computacional separado (Realm) en el dispositivo |
+| **Aislamiento** | Basado en niveles de privilegio de software convencionales | Realm Management Extension (RME) a partir de Armv9.1-A |
+| **Protección** | Vulnerable si el software de mayor privilegio es comprometido | Previene ataques de software que se ejecuta en niveles más altos |
+
 ### Extensión de Etiquetado de Memoria (MTE)
 
 Las extensiones de 2023 y 2024 incluyen características de seguridad avanzadas como Checked Pointer Arithmetic, que se basa en el soporte existente para 
