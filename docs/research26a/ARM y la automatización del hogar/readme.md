@@ -160,8 +160,15 @@ flowchart TD
     N --> A2
     N --> A3
 ```
+---
+
+## Tabla Comparativa
+
+<img width="632" height="704" alt="Screenshot 2026-02-19 164613" src="https://github.com/user-attachments/assets/1f2fb7b7-3454-483d-8cb6-87d3733c5b07" />
 
 ---
+---
+
 
 ## Referencias Bibliográficas
 
