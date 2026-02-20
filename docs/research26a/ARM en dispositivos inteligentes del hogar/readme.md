@@ -29,7 +29,7 @@ Equipos como televisores inteligentes, cámaras, bombillas, asistentes de voz y 
 
 ### Introducción
 
-En los últimos años, el avance de la tecnología ha permitido la integración de dispositivos inteligentes en el hogar, facilitando tareas cotidianas y mejorando la comodidad, la seguridad y la conectividad. Estos dispositivos, que forman parte del llamado hogar inteligente o Internet de las Cosas (IoT), requieren procesadores eficientes que les permitan funcionar de manera continua sin un alto consumo energético.
+En los últimos años, el avance de la tecnología ha permitido la integración de dispositivos inteligentes en el hogar, facilitando tareas cotidianas y mejorando la comodidad, la seguridad y la conectividad. Estos dispositivos, que forman parte del llamado hogar inteligente o Internet de las cosas (IoT), requieren procesadores eficientes que les permitan funcionar de manera continua sin un alto consumo energético.
 
 En este contexto, la arquitectura ARM ha adquirido un papel fundamental debido a su diseño eficiente, su bajo consumo de energía y su capacidad de adaptarse a distintos niveles de complejidad. Gracias a estas características, ARM se ha convertido en una de las principales bases tecnológicas de dispositivos como televisores inteligentes, cámaras de seguridad y asistentes de voz.
 
@@ -94,7 +94,7 @@ Además del ahorro energético, ARM destaca por su tamaño reducido y su facilid
 
 ### Núcleos ARM en dispositivos inteligentes del hogar
 
-Dependiendo la complejidad y funciones de cada dispositivo, ARM utiliza distintos tipos de núcleos. La tabla siguiente resume los núcleos más comunes por dispositivo:
+Dependiendo de la complejidad y funciones de cada dispositivo, ARM utiliza distintos tipos de núcleos. La tabla siguiente resume los núcleos más comunes por dispositivo:
 
 | Dispositivo | Función del procesador ARM | Tipo de núcleo común |
 |-------------|---------------------------|----------------------|
