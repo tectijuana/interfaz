@@ -48,7 +48,14 @@ El modelo tradicional de TrustZone asume que el hipervisor o el kernel del siste
 
 Un Realm es una región de ejecución que está aislada no solo de otras aplicaciones, sino también del propio sistema operativo y del hipervisor que la gestionan. El hardware garantiza que los datos dentro de un Realm sean invisibles e inaccesibles para el software privilegiado. Esto permite ejecutar cargas de trabajo sensibles en la nube pública garantizando que ni el administrador del sistema ni el proveedor de la nube puedan acceder a los datos en uso, logrando un aislamiento total basado en hardware.
 
-
+| Característica | TrustZone (Modelo Tradicional) | ARM CCA / Realms |
+| :--- | :--- | :--- |
+| **Aislamiento** | SO normal vs. Mundo Seguro | Realm aislado del SO, hipervisor y hardware externo |
+| **Confianza en el hipervisor** | El hipervisor es una entidad de confianza | El hipervisor no necesita ser de confianza |
+| **Caso de uso principal** | Dispositivos móviles y embebidos | Cargas de trabajo en la nube pública |
+| **Protección de datos en uso** | Parcial (depende del TEE) | Total, garantizada por hardware |
+| **Visibilidad del proveedor** | El admin puede acceder a datos | El proveedor de nube no puede acceder a los datos |
+| **Introducida en** | ARMv6 | ARMv9 |
 
 ## Arquitectura Hardware
 
