@@ -43,6 +43,176 @@ Estas características la han impulsado a ser adoptada masivamente en smartphone
 
 La arquitectura ARM se encuentra fundamentada en el paradigma RISC (Reduced Instruction Set Computing), está arquitectura es caracterizada por usar un conjunto reducido y simplificado de instrucciones. Gracias a esto se puede hacer una ejecución mucho más rápida y eficiente, con el menor consumo de energía, así como también una mayor facilidad de implementación si lo comparamos con arquitecturas más complejas como CISC. Es debido a estás características que la arquitectura ARM se ha vuelto la base en la mayoría de los procesadores móviles actuales.
 
+**Evolución de la arquitectura ARM en el gaming móvil**
+
+La evolución de la arquitectura ARM ha sido un factor clave en el crecimiento del rendimiento en videojuegos móviles. No solo se ha incrementado la potencia, sino que también se han añadido mejoras estructurales en seguridad, paralelismo y procesamiento multimedia.
+
+**ARMv7 (32 bits)**
+
+- Presente en generaciones anteriores de smartphones.
+- Limitado a direccionamiento de memoria menor a 4GB.
+- Suficiente para juegos móviles básicos.
+
+**Jerarquía de Memoria y Flujo de Traducción de Direcciones (MMU/TLB) en ARMv7.**
+
+```mermaid
+---
+config:
+  layout: dagre
+---
+flowchart LR
+ subgraph S1["Translation Lookaside Buffer"]
+        TLB["virtually-<br>addressed <br> cache"]
+  end
+ subgraph S2["Intermediate Cache to Page Tables<br>"]
+        IC["virtually-<br>addressed <br> cache"]
+  end
+ subgraph S3["L1 Cache Structure"]
+        L1["physically-<br>addressed <br> cache"]
+  end
+ subgraph S4["L2 Cache Structures"]
+        L2["physically-<br>addressed <br> cache"]
+  end
+    P["from <br> processo"] --> TLB
+    TLB <--> IC
+    TLB -.-> L1
+    IC <--> L1
+    L1 <--> L2
+    L2 <--> MM["Main <br> Memory <br><br> page tables"]
+    S2 --> MM
+
+    style TLB fill:#fff,stroke:#333,stroke-width:2px,color:#000000
+    style IC fill:#fff,stroke:#333,stroke-width:2px,color:#000000
+    style L1 fill:#fff,stroke:#333,stroke-width:2px,color:#000000
+    style L2 fill:#fff,stroke:#333,stroke-width:2px,color:#000000
+    style P fill:#fff,stroke:#333,stroke-width:2px,color:#000000
+    style MM fill:#fff,stroke:#333,stroke-width:2px,color:#000000
+    style S2 color:#FFFFFF
+    style S1 color:#FFFFFF
+    linkStyle 2 stroke:none,fill:none
+    linkStyle 6 stroke:none,fill:none
+```
+
+**ARMv8 (64 bits)**
+
+- Introduce soporte completo de 64 bits.
+- Mayor capacidad de memoria.
+- Mejor rendimiento en cálculos complejos.
+- Mejora del IPC.
+- Incorporación formal de extensiones SIMD (NEON).
+
+**Arquitectura Multinúcleo, Jerarquía de Caché L1/L2/L3 y Coherencia de Datos en ARMv8.**
+
+```mermaid
+---
+config:
+  layout: dagre
+---
+flowchart TB
+ subgraph Module1["Module"]
+        L1D2["L1D<br>32KB"]
+        L1D1["L1D<br>32KB"]
+        ARM2["ARM<br>CPU"]
+        ARM1["ARM<br>CPU"]
+        L21["L2 256KB"]
+  end
+ subgraph Module2["Module"]
+        L1D4["L1D<br>32KB"]
+        L1D3["L1D<br>32KB"]
+        ARM4["ARM<br>CPU"]
+        ARM3["ARM<br>CPU"]
+        L22["L2 256KB"]
+  end
+ subgraph Module3["Module"]
+        L1D6["L1D<br>32KB"]
+        L1D5["L1D<br>32KB"]
+        ARM6["ARM<br>CPU"]
+        ARM5["ARM<br>CPU"]
+        L23["L2 256KB"]
+  end
+ subgraph Module4["Module"]
+        L1D8["L1D<br>32KB"]
+        L1D7["L1D<br>32KB"]
+        ARM8["ARM<br>CPU"]
+        ARM7["ARM<br>CPU"]
+        L24["L2 256KB"]
+  end
+ subgraph Interconnect["Fabric"]
+  end
+ subgraph MemBridge1["Memory<br>Bridge"]
+  end
+ subgraph L3Cache["L3<br>8MB"]
+  end
+ subgraph IOBridge["I/O<br>Bridge"]
+  end
+ subgraph MemBridge2["Memory<br>Bridge"]
+  end
+    Module1 --> Interconnect
+    Module2 --> Interconnect
+    Module3 --> Interconnect
+    Module4 --> Interconnect
+    Interconnect --> MemBridge1 & L3Cache & IOBridge & MemBridge2
+```
+
+**ARMv9**
+
+- Mejora en seguridad (Confidential Compute Architecture).
+- Mejoras en rendimiento de IA.
+- Mayor optimización para cargas multinúcleo.
+- Preparación para ray tracing móvil.
+
+**Modelo de Seguridad Arm CCA (Confidential Compute Architecture) y Aislamiento de Realms en Armv9.**
+
+```mermaid
+flowchart TB
+ subgraph Realm["Realm"]
+        RealmManager["Realm Manager"]
+        WindowsVM["Windows Virtual Machine"]
+        LinuxVM1["Linux Virtual Machine"]
+  end
+ subgraph NonSecure["NonSecure"]
+        Hypervisor["Hypervisor"]
+        WindowsVM2["Windows Virtual Machine"]
+        LinuxVM2["Linux Virtual Machine"]
+  end
+ subgraph Secure["Secure"]
+        SecurePartitionManager["Secure Partition Manager"]
+        OS2["OS"]
+        Apps2["Apps"]
+        OS1["OS"]
+        Apps1["Apps"]
+  end
+    LinuxVM1 --> RealmManager
+    WindowsVM --> RealmManager
+    LinuxVM2 --> Hypervisor
+    WindowsVM2 --> Hypervisor
+    Apps1 --> OS1
+    Apps2 --> OS2
+    OS1 --> SecurePartitionManager
+    OS2 --> SecurePartitionManager
+    SecurePartitionManager --> SecureMonitor["Secure Monitor"]
+    Hypervisor --> SecureMonitor
+    RealmManager --> SecureMonitor
+
+     LinuxVM1:::vm
+     WindowsVM:::vm
+     RealmManager:::realm
+     LinuxVM2:::nonsecure
+     WindowsVM2:::nonsecure
+     Hypervisor:::nonsecure
+     Apps1:::secure
+     OS1:::secure
+     Apps2:::secure
+     OS2:::secure
+     SecurePartitionManager:::secure
+     SecureMonitor:::monitor
+    classDef realm fill:#007b96,stroke:#007b96,color:#fff
+    classDef nonsecure fill:#2596be,stroke:#2596be,color:#fff
+    classDef secure fill:#19647e,stroke:#19647e,color:#fff
+    classDef monitor fill:#075e79,stroke:#075e79,color:#fff
+    classDef vm fill:#009eb3,stroke:#009eb3,color:#fff
+```
+
 **Comparativa ARM vs. x86 en videojuegos móviles**
 
 Para comprender las diferencias claves entre ARM frente a otras arquitecturas como la x86 (que es usada principalmente por fabricantes como Intel y AMD), se deben comparar las características técnicas claves.
@@ -120,6 +290,115 @@ Gracias a esta variedad en los núcleos,  los fabricantes como Qualcomm, Apple I
 La arquitectura big.LITTLE combina núcleos de alto rendimiento con otros de bajo consumo dentro del mismo procesador. Según la exigencia de la tarea, el sistema activa unos u otros para equilibrar potencia y gasto energético.
 
 En videojuegos móviles esto resulta clave: cuando el juego exige más rendimiento, entran en acción los núcleos potentes; en tareas ligeras, se prioriza el ahorro de batería sin afectar demasiado la experiencia.
+
+**Jerarquía de memoria y su impacto en videojuegos móviles**
+
+Los procesadores ARM modernos incorporan varios niveles de memoria caché organizados de forma jerárquica. La caché L1 es la más rápida y se encuentra directamente asociada a cada núcleo; almacena datos e instrucciones que se utilizan con mayor frecuencia. La caché L2, ligeramente más grande y un poco más lenta, actúa como intermediaria entre la L1 y niveles superiores. Finalmente, muchos SoCs incluyen una caché L3 compartida entre los núcleos de alto rendimiento, lo que facilita el intercambio eficiente de datos en cargas multinúcleo.
+
+En videojuegos móviles, esta organización permite reducir considerablemente la latencia al acceder a información crítica como:
+
+- Datos de físicas y detección de colisiones.
+- Estados de inteligencia artificial.
+- Variables de renderizado y sincronización de cuadros.
+
+Cuando estos datos permanecen en caché y no necesitan solicitarse constantemente desde la memoria RAM (que es más lenta), se logra una ejecución más estable y se reduce la probabilidad de caídas abruptas en la tasa de FPS. Esto es especialmente importante en títulos exigentes, donde múltiples sistemas del juego se ejecutan de forma simultánea.
+
+**Pipeline y ejecución paralela en núcleos ARM**
+
+Otro componente clave del rendimiento es el pipeline interno del procesador. Los núcleos ARM modernos utilizan arquitecturas superescalares con múltiples etapas de ejecución. Esto significa que una instrucción no se ejecuta de principio a fin en un solo paso, sino que se divide en varias fases (como búsqueda, decodificación y ejecución), permitiendo que diferentes instrucciones se encuentren en distintas etapas al mismo tiempo.
+
+Este diseño incrementa el rendimiento sin necesidad de elevar excesivamente la frecuencia del reloj, lo cual sería perjudicial para el consumo energético y la temperatura. En el contexto del gaming móvil, el pipeline eficiente permite procesar cálculos constantes —como físicas, animaciones y lógica de juego— de manera continua y fluida.
+
+Además, los procesadores ARM actuales incorporan técnicas como ejecución fuera de orden (out-of-order execution), que reorganiza dinámicamente las instrucciones para aprovechar mejor los recursos del núcleo. Esto mejora el IPC (instrucciones por ciclo), lo cual es crucial cuando se busca mantener rendimiento sostenido bajo carga prolongada.
+
+**Algoritmo del Ciclo de Instrucción en el Pipeline ARM**
+
+```mermaid
+flowchart TB
+ subgraph FetchStage["Fetch<span style=background-color:>⠀</span><span style=background-color:>⠀</span><span style=background-color:>⠀</span><span style=background-color:>⠀</span><span style=background-color:>⠀</span><span style=background-color:>⠀</span>Stage"]
+        Step4["Instruction in MDR copied<br>to the CIR"]
+        Step3["Instruction found at address<br>described by MAR copied<br>to the MDR"]
+        Step2@{ label: "PC incremented to 'point' to<br>the next instruction" }
+        Step1["Address in PC copied to MAR"]
+  end
+ subgraph DecodeStage["Decode<span style=background-color:>⠀</span><span style=background-color:>⠀</span><span style=background-color:>⠀</span><span style=background-color:>⠀</span><span style=background-color:>⠀</span>Stage"]
+        Step5["CU decodes the contents<br>of the CIR"]
+  end
+ subgraph ExecuteStage["Execute<span style=background-color:>⠀</span><span style=background-color:>⠀</span><span style=background-color:>⠀</span><span style=background-color:>⠀</span><span style=background-color:>⠀</span>Stage"]
+        Step6["CU sends signals to relevant<br>components e.g. ALU"]
+  end
+    Step1 --> Step2
+    Step2 --> Step3
+    Step3 --> Step4
+    Start(["START OF CYCLE"]) --> Step1
+    Step4 --> Step5
+    Step5 --> Step6
+    Step6 --> End(["END OF CYCLE"])
+
+    Step2@{ shape: rect}
+```
+
+**Extensiones NEON y procesamiento SIMD en videojuegos**
+
+Un aspecto fundamental pero a menudo poco mencionado es el uso de extensiones SIMD como NEON en procesadores ARM. SIMD (Single Instruction, Multiple Data) permite que una sola instrucción procese múltiples datos en paralelo, lo que resulta extremadamente útil en operaciones matemáticas repetitivas.
+
+En videojuegos móviles, NEON se utiliza ampliamente para:
+
+- Cálculos vectoriales en motores 3D.
+- Transformaciones geométricas.
+- Procesamiento de audio.
+- Sistemas de partículas.
+- Animaciones complejas.
+
+Gracias a estas extensiones, un solo núcleo puede ejecutar múltiples operaciones simultáneamente sin requerir mayor frecuencia de reloj. Esto contribuye a un mejor rendimiento por watt y reduce la necesidad de incrementar la carga térmica del dispositivo.
+
+**Arquitectura de procesamiento paralelo SIMD (Single Instruction, Multiple Data).**
+
+```mermaid
+---
+config:
+  layout: dagre
+---
+flowchart LR
+ subgraph VectorUnit["<span id=docs-internal-guid-d499bf9c-7fff-90ec-80c8-78a7842cf80f><span style=font-size:><br></span><span style=font-family:>⠀</span><span style=font-family:>⠀</span><span style=font-size:>⠀
+</span></span><span style=font-family:>⠀
+</span><span style=font-family:>⠀</span><br>Vector unit"]
+    direction TB
+        PU4["PU"]
+        PU3["PU"]
+        PU2["PU"]
+        PU1["PU"]
+  end
+ subgraph Main[" "]
+    direction LR
+        DataPool["Data pool"]
+        VectorUnit
+  end
+ subgraph SIMD["SIMD"]
+        InstructionPool["Instruction pool"]
+        Main
+  end
+    InstructionPool -.-> PU1 & PU2 & PU3 & PU4
+    DataPool --> PU1 & PU2 & PU3 & PU4
+
+    style PU1 fill:#fdbcb4,stroke:#000,stroke-width:1px,color:#000000
+    style PU2 fill:#fdbcb4,stroke:#000,stroke-width:1px,color:#000000
+    style PU3 fill:#fdbcb4,stroke:#000,stroke-width:1px,color:#000000
+    style PU4 fill:#fdbcb4,stroke:#000,stroke-width:1px,color:#000000
+    style VectorUnit fill:#6366f1,stroke:#000,stroke-width:1px,color:#000000
+    style DataPool fill:#e6d5f0,stroke:#000,stroke-width:1px,color:#000000
+    style Main fill:#FFFFFF
+    style InstructionPool fill:#C8E6C9,stroke:#000,stroke-width:1px,color:#000000
+    style SIMD fill:#e1e1ff,stroke:#000,stroke-width:1px,color:#000000
+    linkStyle 0 stroke:#000000,fill:none
+    linkStyle 1 stroke:#000000,fill:none
+    linkStyle 2 stroke:#000000,fill:none
+    linkStyle 3 stroke:#000000,fill:none
+    linkStyle 4 stroke:#000000,fill:none
+    linkStyle 5 stroke:#000000,fill:none
+    linkStyle 6 stroke:#000000,fill:none
+    linkStyle 7 stroke:#000000,fill:none
+```
 
 **SoC y GPU integrada**
 
@@ -535,6 +814,15 @@ Es por estos motivos que ARM domina el mercado móvil gracias a que su enfoque q
 
 [17] K. Hinum, “Apple A17 Pro Processor - Benchmarks and Specs,” Notebookcheck, Sep. 27, 2023. [En línea]. Disponible: https://www.notebookcheck.net/Apple-A17-Pro-Processor-Benchmarks-and-Specs.756287.0.html
 
+[18] IIES, “ARMv8 Architecture Explained: A Beginner's Guide,” [En línea]. Disponible: https://iies.in/blog/introduction-to-armv8/. [Accedido: 20-feb-2026]
+
+[19] IIES, “ARMv7 vs ARMv8: 32-bit vs 64-bit ARM Architectures Explained,” [En línea]. Disponible: https://iies.in/blog/differences-between-armv7-vs-armv8/. [Accedido: 20-feb-2026]
+
+[20] Equipo editorial de IONOS, “Armv9: arquitectura de CPU adecuada para IA,” abr. 09, 2025. [En línea]. Disponible: https://www.ionos.mx/digitalguide/servidores/know-how/armv9/. [Accedido: 20-feb-2026]
+
+[21] Isaac, “¿Qué es la pipeline?,” ene. 20, 2025. [En línea]. Disponible: https://www.profesionalreview.com/2025/01/20/que-es-la-pipeline/. [Accedido: 20-feb-2026]
+
+[22] J. A. Castillo, “Qué es la memoria caché L1, L2 y L3 y cómo funciona,” mayo 02, 2019. [En línea]. Disponible: https://www.profesionalreview.com/2019/05/02/memoria-cache-l1-l2-y-l3/. [Accedido: 20-feb-2026]
 
 ---
 
