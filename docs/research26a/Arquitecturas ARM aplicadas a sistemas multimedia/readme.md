@@ -1,11 +1,17 @@
 ---  
 Gomez Cuevas Carlos	#23210592
+
+![Arquitecturas Arm](https://images.cooltext.com/5752280.png)
 ## Introducción
 ### ¿Qué es la arquitectura ARM?
 ARM (Advanced RISC Machine) es una arquitectura de procesador basada en un modelo de computación por conjunto reducido de instrucciones (RISC). Enfatiza la eficiencia ejecutando instrucciones más sencillas, lo que resulta en un menor consumo de energía y menos generación de calor. Los chips ARM se utilizan ampliamente en dispositivos móviles, tabletas y portátiles con IA debido a su diseño compacto, escalabilidad y alta relación rendimiento por vatio.
 
 ### ¿Cuál es su diferencia contra la arquitectura x86?
 Los procesadores ARM usan RISC, lo que significa que ejecutan menos instrucciones y más simples por ciclo, mientras que x86 utiliza un conjunto de instrucciones complejo (CISC). Este diseño proporciona a los procesadores ARM una eficiencia energética superior, un espacio más reducido y una menor salida térmica, lo que los hace ideales para dispositivos ligeros y portátiles. En cambio, los chips x86 suelen ofrecer un rendimiento bruto superior para escritorios y servidores.
+<p align="center">
+<img src="https://tecnobits.com/wp-content/uploads/2025/05/2_7259d6ea-ddc1-4076-9818-b415c65de85b.webp" width = 
+"400">
+</p>
 
 <table border="1" align="center" width="80%">  <tr>  <th>Aspecto</th>  <th>ARM (RISC)</th>  <th>x86 (CISC)</th>  </tr>  <tr>  <td>Filosofía</td>  <td>RISC: instrucciones simples y rápidas</td>  <td>CISC: instrucciones complejas</td>  </tr>  <tr>  <td>Consumo de energía</td>  <td>Bajo, ideal para móviles y embebidos</td>  <td>Alto, más común en PCs y servidores</td>  </tr>  <tr>  <td>Rendimiento</td>  <td>Optimizado para eficiencia</td>  <td>Optimizado para potencia bruta</td>  </tr>  <tr>  <td>Escalabilidad</td>  <td>Desde microcontroladores hasta SoCs</td>  <td>Principalmente PCs y servidores</td>  </tr>  <tr>  <td>Aplicaciones típicas</td>  <td>Smartphones, tablets, IoT, multimedia</td>  <td>Computadoras de escritorio, laptops</td>  </tr>  <tr>  <td>Licenciamiento</td>  <td>ARM licencia su arquitectura a terceros</td>  <td>Intel/AMD diseñan y fabrican x86</td>  </tr>  <tr>  <td>Compatibilidad</td>  <td>Gran soporte en móviles y sistemas embebidos</td>  <td>Amplio soporte en software de PC</td>  </tr>  </table>
 
@@ -16,6 +22,7 @@ Los procesadores ARM usan RISC, lo que significa que ejecutan menos instruccione
 
 ### ARM en sistemas multimedia
 - Procesadores como los NXP i.MX6 y i.MX8 están diseñados para aplicaciones multimedia: video HD, audio avanzado y gráficos complejos, lo que lo hace ideal para sistemas embebidos como reproductores multimedia, camaras digitales y dispositivos portátiles.
+  
 - ARM también ofrece GPU Mali e Immortalis, usadas en smartphones y Smart TVs para gráficos inmersivos y vision por computadora 
 
 ### Ejemplos de dispositivos multimedia con ARM
@@ -25,8 +32,8 @@ Los procesadores ARM usan RISC, lo que significa que ejecutan menos instruccione
 - Smart TVs y camaras digitales.
 - Raspberry PI y otros SBC para proyectos multimedia.
 <p align="center">
-<img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTDnUEbKUI92X1QkmJgfLNep5JmreGnxSGp9w&s" width = 
-"200">
+<img src="https://webipedia.es/wp-content/uploads/2016/12/03_ARM2-1024x578.jpg" width = 
+"400">
 </p>
 
 ```mermaid
