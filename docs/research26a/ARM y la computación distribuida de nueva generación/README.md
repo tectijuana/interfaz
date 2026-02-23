@@ -10,6 +10,8 @@ La arquitectura ARM (Advanced RISC Machine) es una familia de diseños de proces
 
 Esta evolución ha convertido a ARM en un elemento clave dentro de la computación distribuida de nueva generación, caracterizada por infraestructuras escalables, nodos heterogéneos y cargas de trabajo intensivas como inteligencia artificial (IA), análisis de grandes datos y servicios en tiempo real.
 
+<img width="1000" height="500" alt="image" src="https://github.com/user-attachments/assets/e4fd293b-96af-4891-9ac0-9b5e0de53f9b" />
+
 ---
 
 ## 2. Fundamentos de la Arquitectura ARM
@@ -50,6 +52,8 @@ En los últimos años, proveedores como AWS, Microsoft Azure y Google Cloud han 
 ARM también ha ingresado al ámbito de la supercomputación. Un ejemplo destacado es la supercomputadora Fugaku en Japón, basada en procesadores ARM A64FX, que alcanzó el primer lugar en el ranking TOP500 en 2020.
 
 La combinación de eficiencia energética y alto paralelismo permite que ARM sea competitivo en entornos HPC distribuidos.
+
+<img width="769" height="383" alt="image" src="https://github.com/user-attachments/assets/d57d3871-9b1a-4fbf-a425-2c5c6e56f9c9" />
 
 ---
 
@@ -150,4 +154,33 @@ graph TD
     H1 --> L[Mejor Rendimiento por Costo]
     I1 --> M[Alto Paralelismo]
     J1 --> N[Menor Latencia]
+```
+
+## Diagrama Infraestructura distribuida moderna
+
+```mermaid
+graph TD
+    A[Dispositivos móviles ARM]
+    B[IoT ARM]
+    C[Servidores Edge ARM]
+    D[Centros de datos ARM]
+
+    A --> C
+    B --> C
+    C --> D
+```
+
+## Diagrama: Componentes de ARM en la Computación Distribuida
+```mermaid
+flowchart TB
+
+    A["IoT ARM<br/>Función: Recolección de datos<br/>Ventaja: Bajo consumo<br/>Ejemplo: Sensores"]
+    B["Edge ARM<br/>Función: Procesamiento local<br/>Ventaja: Baja latencia<br/>Ejemplo: Cámaras IA"]
+    C["Servidores ARM<br/>Función: Procesamiento distribuido<br/>Ventaja: Alto rendimiento/W<br/>Ejemplo: Data centers"]
+    D["Cloud ARM<br/>Función: Infraestructura nube<br/>Ventaja: Costos reducidos<br/>Ejemplo: AWS Graviton"]
+    E["HPC ARM<br/>Función: Cómputo alto desempeño<br/>Ventaja: Paralelismo masivo<br/>Ejemplo: Fugaku"]
+    F["IA en ARM<br/>Función: Análisis tiempo real<br/>Ventaja: Eficiencia energética<br/>Ejemplo: Reconocimiento"]
+
+    A --> B --> C --> D --> E --> F
+
 ```
