@@ -66,6 +66,10 @@ flowchart TB
 
 Gracias a estas características, ARM64 logra mantener un equilibrio entre potencia y eficiencia, lo que resulta esencial en dispositivos modernos donde el consumo energético es un factor crítico.
 
+
+<img width="275" height="183" alt="image" src="https://github.com/user-attachments/assets/3b99064b-fa73-49fa-b792-3819fabd05b5" />
+
+
 ---
 
 ## 4. Comparación con x86/x64
@@ -128,6 +132,9 @@ Empresas tecnológicas han adoptado arquitecturas ARM64 en soluciones de alto re
 - En la nube, instancias basadas en ARM pueden reducir costos entre **20 % y 40 %** dependiendo de la carga de trabajo.
 - ARM64 es clave en el desarrollo de soluciones de inteligencia artificial debido a sus extensiones vectoriales.
 - Su eficiencia energética contribuye a reducir el impacto ambiental en centros de datos.
+
+  <img width="1280" height="720" alt="image" src="https://github.com/user-attachments/assets/d2c07d31-2c9c-44b6-b7ae-df0d13756cef" />
+
 
 ```mermaid
 flowchart LR
