@@ -4,10 +4,12 @@
 -   **Horario**: **4:00 PM**
 -   **Título del tema:** **Chips ARM y su papel en la computación sostenible**
 
-
 El documento presenta una investigación individual sobre cómo los chips basados en arquitectura ARM contribuyen a la computación sostenible. Se explica su eficiencia energética, su impacto en centros de datos, su diseño modular y su relevancia en edge computing e inteligencia artificial eficiente. El propósito del trabajo se expone de manera clara desde el inicio.
 
 La investigación se sitúa dentro del marco de la sostenibilidad tecnológica y la arquitectura de computadoras. Se justifica el estudio debido al creciente consumo energético global asociado al cómputo moderno y la necesidad de arquitecturas más eficientes. ARM se analiza como una alternativa relevante frente a x86 por su diseño RISC y su orientación a bajo consumo.
+
+<img width="1024" height="1024" alt="image" src="https://github.com/user-attachments/assets/15518889-b4f4-4a35-a0ff-9bd11a758bd0" />
+
 # ¿Por qué ARM es clave para la sostenibilidad?
 ### 1. **Eficiencia energética como principio de diseño**
 
@@ -48,6 +50,7 @@ El objetivo:
 -   Mejorar la sostenibilidad del sector de semiconductores
 
 **Este enfoque reduce el desperdicio electrónico y mejora la eficiencia global del sistema.**
+<img width="1024" height="1024" alt="image" src="https://github.com/user-attachments/assets/cf19650f-c2d8-48d1-bba3-ae076cbc8559" />
 
 ## Expansión más allá del móvil
 
@@ -82,6 +85,7 @@ La arquitectura ARM se basa en un conjunto reducido de instrucciones (RISC). Est
 La sostenibilidad en computación no se mide solo en emisiones, sino en:
 
 -   **Consumo energético total (TDP y consumo real)**
+-   <img width="8192" height="604" alt="Untitled diagram-2026-02-24-004710" src="https://github.com/user-attachments/assets/cc02fd4d-a58a-413b-8b7a-5e8f5051a47d" />
 
 ## **ARM en centros de datos**
 Los centros de datos consumen aproximadamente entre el 1% y el 2% de la electricidad mundial. Cualquier mejora en eficiencia tiene un impacto global.
@@ -105,6 +109,17 @@ En dispositivos móviles ARM es dominante desde hace años, pero su papel en sos
 -   Menor calor → menos degradación de componentes.
     
 -   Menor consumo → dispositivos más pequeños y ligeros.
+
+| Aspecto | Característica de ARM | Impacto en sostenibilidad | Beneficio práctico |
+|----------|----------------------|----------------------------|--------------------|
+| Batería | Mayor eficiencia energética | Menos ciclos de carga | Mayor vida útil del dispositivo |
+| Temperatura | Menor generación de calor | Reduce degradación de componentes | Hardware más duradero |
+| Consumo energético | Bajo consumo eléctrico | Menor demanda de energía | Dispositivos más pequeños y ligeros |
+| Diseño | Arquitectura optimizada para movilidad | Mejor relación rendimiento/vatio | Mayor autonomía en dispositivos edge |
+| Ciclo de vida | Menor desgaste energético y térmico | Extiende la longevidad del hardware | Reducción de residuos electrónicos |
+
+**Conclusión:**  
+La sostenibilidad en ARM no solo se relaciona con el ahorro energético inmediato, sino con la prolongación de la vida útil del hardware, lo que reduce costos y el impacto ambiental.
     
 
 La sostenibilidad no es solo energía: es **longevidad del hardware**, y ARM contribuye directamente a ello.
