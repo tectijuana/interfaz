@@ -120,6 +120,18 @@ Aunque x86 sigue siendo dominante, ARM está demostrando que puede competir e in
 El futuro del supercómputo probablemente incluirá una coexistencia de arquitecturas, donde ARM jugará un papel cada vez más importante.
 
 ---
+## 9. aportacion 
+
+|-----------|---------|
+| **HPC** | Uso de supercomputadoras para resolver problemas complejos como IA, simulaciones científicas y modelado climático. |
+| **Arquitectura ARM** | Basada en RISC, con bajo consumo energético y alta eficiencia por núcleo. |
+| **Eficiencia energética** | ARM ofrece mejor rendimiento por watt, reduciendo costos de energía y enfriamiento. |
+| **Escalabilidad** | Permite sistemas con muchos núcleos y arquitecturas personalizadas, ideales para HPC. |
+| **Casos reales** | Fugaku y AWS Graviton demuestran que ARM es viable y competitiva en supercómputo. |
+| **ARM vs x86** | ARM destaca en eficiencia y personalización; x86 mantiene un ecosistema HPC más maduro. |
+| **Exascale** | ARM es adecuada para computación exascale por su eficiencia y paralelismo. |
+| **Retos** | Compatibilidad de software y migración desde x86. |
+| **Conclusión** | ARM es una alternativa sólida y en crecimiento en HPC, coexistiendo con x86. |
 
 ## Referencias Bibliográficas
 
