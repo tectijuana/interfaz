@@ -50,4 +50,41 @@ La evolución hacia el **TinyML** permite ejecutar modelos de Machine Learning e
 1. **Eficiencia (Performance per Watt):** Vital para dispositivos que dependen de baterías o *energy harvesting* (recolección de energía ambiental).
 2. **Escalabilidad:** Un ecosistema unificado que abarca desde un sensor de temperatura (M0) hasta una estación base 5G (Cortex-A).
 3. **Modelo de Licenciamiento:** Al no fabricar chips, sino licenciar el diseño, ARM permite que empresas (Apple, Samsung, NXP) personalicen soluciones para nichos específicos (médico, automotriz, agrícola).
+ Diagrama:
+```mermaid
+graph TD
+%% Estilos personalizados
+classDef title fill:#f39c12,stroke:#e67e22,stroke-width:4px,color:#fff,font-size:18px,font-weight:bold,rx:15px,ry:15px;
+classDef families fill:#3498db,stroke:#2980b9,stroke-width:2px,color:#fff,rx:8px,ry:8px;
+classDef edge fill:#2ecc71,stroke:#27ae60,stroke-width:2px,color:#fff,rx:8px,ry:8px;
+classDef ai fill:#9b59b6,stroke:#8e44ad,stroke-width:2px,color:#fff,rx:8px,ry:8px;
+classDef pillars fill:#e74c3c,stroke:#c0392b,stroke-width:2px,color:#fff,rx:8px,ry:8px;
+classDef nodeBase fill:#ecf0f1,stroke:#bdc3c7,stroke-width:2px,color:#2c3e50,font-weight:bold;
+
+Core["🧠 ARM en la Revolución del IoT<br/>y Computación Distribuida"]:::title
+
+Core --> Fam["1️⃣ Familias de Procesadores"]:::nodeBase
+Core --> Edg["2️⃣ Edge Computing"]:::nodeBase
+Core --> AIML["3️⃣ IA en el Silicio"]:::nodeBase
+Core --> Pil["4️⃣ Pilares del Dominio"]:::nodeBase
+
+%% Familias
+Fam --> M["<b>Cortex-M</b><br/>🔋 Ultra bajo consumo<br/><i>Ej: Wearables, Sensores</i>"]:::families
+Fam --> R["<b>Cortex-R</b><br/>⏱️ Tiempo Real<br/><i>Ej: Frenos ABS, Motores</i>"]:::families
+Fam --> A["<b>Cortex-A</b><br/>💻 Sistemas Complejos<br/><i>Ej: Gateways, SO completos</i>"]:::families
+
+%% Edge
+Edg --> Lat["⚡ <b>Reducción de Latencia</b><br/>Decisiones en milisegundos"]:::edge
+Edg --> Band["🌐 <b>Optimización de Banda</b><br/>Solo se envían metadatos"]:::edge
+Edg --> Priv["🔒 <b>Privacidad Local</b><br/>Análisis seguro en el chip"]:::edge
+
+%% IA
+AIML --> Hel["🚀 <b>Helium y Neon</b><br/>Aceleración DSP para IA"]:::ai
+AIML --> NPU["🤖 <b>NPUs Ethos</b><br/>Redes neuronales dedicadas"]:::ai
+
+%% Pilares
+Pil --> Eff["⚡ <b>Eficiencia</b><br/>Performance per Watt"]:::pillars
+Pil --> Sca["📈 <b>Escalabilidad</b><br/>Desde Sensores hasta 5G"]:::pillars
+Pil --> Lic["📜 <b>Licenciamiento</b><br/>Diseños a medida (Apple, NXP)"]:::pillars
+```
 
