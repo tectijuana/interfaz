@@ -49,18 +49,31 @@ La virtualización, en términos simples, consiste en tomar los recursos físico
 
 ```mermaid
 graph TD
-    subgraph "Hipervisor Tipo 1 (Bare-metal)"
-        A1["VM 1<br/>Guest OS"] --> H1["Hipervisor"]
-        A2["VM 2<br/>Guest OS"] --> H1
-        H1 --> HW1["Hardware Físico"]
+    subgraph T1["Hipervisor Tipo 1 — Bare-metal"]
+        direction TB
+        HW1["💻 Hardware Físico"]
+        H1["Hipervisor (ej. KVM, Xen)"]
+        A1["VM 1 — Guest OS"]
+        A2["VM 2 — Guest OS"]
+        HW1 --> H1 --> A1
+        H1 --> A2
     end
 
-    subgraph "Hipervisor Tipo 2 (Hosted)"
-        B1["VM 1<br/>Guest OS"] --> H2["Hipervisor"]
-        B2["VM 2<br/>Guest OS"] --> H2
-        H2 --> OS2["Sistema Operativo Host"]
-        OS2 --> HW2["Hardware Físico"]
+    subgraph T2["Hipervisor Tipo 2 — Hosted"]
+        direction TB
+        HW2["💻 Hardware Físico"]
+        OS2["Sistema Operativo Host"]
+        H2["Hipervisor (ej. VirtualBox, VMware)"]
+        B1["VM 1 — Guest OS"]
+        B2["VM 2 — Guest OS"]
+        HW2 --> OS2 --> H2 --> B1
+        H2 --> B2
     end
+
+    style H1 fill:#cce5ff,stroke:#004085
+    style H2 fill:#fff3cd,stroke:#856404
+    style HW1 fill:#f8d7da,stroke:#721c24
+    style HW2 fill:#f8d7da,stroke:#721c24
 ```
 
 En el mundo Linux, la opción más popular es **KVM (Kernel-based Virtual Machine)**, que básicamente convierte al propio kernel en un hipervisor. Se controla desde espacio de usuario con herramientas como QEMU, usando llamadas `ioctl()` (kernel.org, s.f.).
@@ -74,15 +87,19 @@ En el mundo Linux, la opción más popular es **KVM (Kernel-based Virtual Machin
 Mientras que x86 maneja la virtualización con modos root/non-root (VMX), ARM tiene su propio enfoque: los **Exception Levels (EL)**, que funcionan como una jerarquía de privilegios. En ARMv8-A AArch64 hay cuatro niveles, y cada uno tiene un rol bien definido (Arm Developer, s.f.; openEuler, 2020):
 
 ```mermaid
-graph BT
-    EL0["🟢 EL0 — Aplicaciones de usuario<br/>(Sin instrucciones privilegiadas)"]
-    EL1["🔵 EL1 — Kernel del SO<br/>Instrucción: SVC (Supervisor Call)"]
-    EL2["🟠 EL2 — Hipervisor<br/>Instrucción: HVC (Hypervisor Call)"]
-    EL3["🔴 EL3 — Monitor Seguro / TrustZone<br/>Instrucción: SMC (Secure Monitor Call)"]
+flowchart TB
+    EL3["🔴 EL3 — Monitor Seguro / TrustZone\nInstrucción: SMC (Secure Monitor Call)"]
+    EL2["🟠 EL2 — Hipervisor\nInstrucción: HVC (Hypervisor Call)"]
+    EL1["🔵 EL1 — Kernel del SO\nInstrucción: SVC (Supervisor Call)"]
+    EL0["🟢 EL0 — Aplicaciones de usuario\n(Sin instrucciones privilegiadas)"]
 
-    EL0 -->|"SVC"| EL1
-    EL1 -->|"HVC"| EL2
-    EL2 -->|"SMC"| EL3
+    EL3 -->|"mayor privilegio"| EL2
+    EL2 --> EL1
+    EL1 --> EL0
+
+    EL0 -.->|"SVC → EL1"| EL1
+    EL1 -.->|"HVC → EL2"| EL2
+    EL2 -.->|"SMC → EL3"| EL3
 
     style EL0 fill:#d4edda,stroke:#155724
     style EL1 fill:#cce5ff,stroke:#004085
@@ -137,25 +154,30 @@ En la primera versión de ARMv8.0, EL2 estaba pensado para hipervisores Tipo 1 p
 Las **Virtualization Host Extensions (VHE)**, que llegaron con ARMv8.1-A, resuelven esto de una forma elegante: permiten que el kernel del host corra directamente en EL2 (Arm Community, 2014; Dall et al., 2017):
 
 ```mermaid
-graph TD
-    subgraph "SIN VHE — ARMv8.0"
-        S_EL0A["Apps Host (EL0)"]
-        S_EL1["Linux Host (EL1)"]
+graph TB
+    subgraph SIN["SIN VHE — ARMv8.0"]
+        direction TB
         S_EL2["KVM / HYP pequeño (EL2)"]
-        S_EL0A --> S_EL1
-        S_EL1 -->|"⚠️ Cambio de contexto<br/>costoso en cada<br/>transición VM↔Host"| S_EL2
+        S_EL1["Linux Host (EL1)"]
+        S_EL0A["Apps Host (EL0)"]
+        S_EL2 --> S_EL1 --> S_EL0A
+        S_EL1 -->|"⚠️ Cambio de contexto\ncostoso en cada\ntransición VM↔Host"| S_EL2
     end
 
-    subgraph "CON VHE — ARMv8.1+"
-        C_EL0A["Apps Host (EL0)"]
-        C_EL1["Solo Guest Kernels (EL1)"]
+    subgraph CON["CON VHE — ARMv8.1+"]
+        direction TB
         C_EL2["Linux Host + KVM completo (EL2)"]
-        C_EL0A --> C_EL2
-        C_EL1 -->|"✅ EL1 reservado<br/>solo para guests"| C_EL2
+        C_EL1["Solo Guest Kernels (EL1)"]
+        C_EL0A["Apps Host (EL0)"]
+        C_EL2 --> C_EL1
+        C_EL2 --> C_EL0A
+        C_EL1 -.->|"✅ EL1 reservado\nsolo para guests"| C_EL2
     end
 
     style S_EL2 fill:#f8d7da,stroke:#721c24
     style C_EL2 fill:#d4edda,stroke:#155724
+    style S_EL1 fill:#fff3cd,stroke:#856404
+    style C_EL1 fill:#cce5ff,stroke:#004085
 ```
 
 Para activar VHE se configuran dos bits en el registro `HCR_EL2`:
@@ -297,27 +319,31 @@ La industria ya no se limita a la VM tradicional. Están surgiendo unidades de c
 **Firecracker** (open source, creado por AWS) nació para resolver un problema específico: dar el aislamiento de una VM pero con la velocidad de un contenedor. El resultado son microVMs que arrancan en **~125 milisegundos**, ocupan apenas unos MB de RAM y permiten correr miles de instancias en un solo servidor (AWS, 2018).
 
 ```mermaid
-graph LR
-    subgraph "VM Tradicional"
+graph TB
+    subgraph VM["VM Tradicional"]
         T_APP["Aplicación + Libs"]
         T_OS["Guest OS completo"]
         T_HYP["Hipervisor pesado"]
         T_APP --> T_OS --> T_HYP
     end
 
-    subgraph "MicroVM (Firecracker)"
+    subgraph FC["MicroVM — Firecracker"]
         F_APP["Aplicación + Libs"]
         F_OS["Kernel mínimo"]
         F_HYP["Firecracker VMM ligero"]
         F_APP --> F_OS --> F_HYP
     end
 
-    T_HYP -.-|"⏱️ Boot: ~30 seg<br/>💾 RAM: ~512 MB+<br/>📦 ~50 VMs/host"| COMP[" "]
-    F_HYP -.-|"⏱️ Boot: ~125 ms<br/>💾 RAM: ~5 MB mín<br/>📦 ~4000+ VMs/host"| COMP
+    NOTE_VM["⏱️ Boot: ~30 seg\n💾 RAM: ~512 MB+\n📦 ~50 VMs/host"]
+    NOTE_FC["⏱️ Boot: ~125 ms\n💾 RAM: ~5 MB mín\n📦 ~4000+ VMs/host"]
+
+    T_HYP --- NOTE_VM
+    F_HYP --- NOTE_FC
 
     style T_HYP fill:#f8d7da,stroke:#721c24
     style F_HYP fill:#d4edda,stroke:#155724
-    style COMP fill:#ffffff,stroke:#ffffff
+    style NOTE_VM fill:#fefefe,stroke:#aaa,color:#555
+    style NOTE_FC fill:#fefefe,stroke:#aaa,color:#555
 ```
 
 ### 7.2 WebAssembly (Wasm)
@@ -337,22 +363,25 @@ Hoy el cómputo ya no es solo CPU. La tendencia es integrar múltiples tipos de 
 
 ```mermaid
 graph TD
-    SoC["System on Chip (SoC) ARM"]
-    CPU["CPU ARM<br/>Neoverse / Cortex"]
-    GPU["GPU<br/>Acelerador gráfico"]
-    NPU["NPU<br/>IA / ML"]
-    DPU["DPU<br/>Procesamiento de datos"]
+    VM["VM / Realm\n(acceso aislado vía SMMU + Stage-2)"]
 
+    SoC["System on Chip — SoC ARM"]
+    CPU["CPU ARM\nNeoverse / Cortex"]
+    GPU["GPU\nAcelerador gráfico"]
+    NPU["NPU\nIA / ML"]
+    DPU["DPU\nProcesamiento de datos"]
+
+    VM -->|"acceso aislado"| SoC
     SoC --> CPU
     SoC --> GPU
     SoC --> NPU
     SoC --> DPU
 
-    VM["VM / Realm"] -->|"Acceso aislado<br/>vía SMMU + Stage-2"| SoC
-
-    style SoC fill:#fff3cd,stroke:#856404
     style VM fill:#d4edda,stroke:#155724
+    style SoC fill:#fff3cd,stroke:#856404
     style NPU fill:#e2d9f3,stroke:#6f42c1
+    style GPU fill:#cce5ff,stroke:#004085
+    style DPU fill:#fde8d8,stroke:#a0522d
 ```
 
 ---

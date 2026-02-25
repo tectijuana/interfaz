@@ -2,7 +2,7 @@
 <div align="center">
 
 #  Microarquitectura ARM  
-##  Caché y Memoria para Alto Rendimiento
+##  Caché, TLB y Memoria para Alto Rendimiento
 ![ARM presenta las microarquitecturas Cortex-A78 – Cortex-X1 y GPU Mali-G78 |  MKFET_Labs](https://i0.wp.com/mkfetlabs.com/wp-content/uploads/2021/05/arm.jpg?resize=710%2C210&ssl=1)
 
 </div>
@@ -11,7 +11,7 @@
 
 #  Introducción: Por qué la memoria define el rendimiento
 
-En procesadores ARM modernos, especialmente desde **ARMv8 en adelante**, el rendimiento real del sistema no está determinado principalmente por la capacidad de las unidades aritméticas, sino por la eficiencia del **subsistema de memoria**.
+En procesadores ARM modernos, especialmente desde **ARMv8 en adelante**, el rendimiento real del sistema no está determinado únicamente por la capacidad de las unidades aritméticas, sino por la eficiencia del **subsistema de memoria**.
 
 La latencia de acceso a memoria principal es órdenes de magnitud mayor que la latencia de ejecución de una instrucción aritmética simple. Por esta razón, el diseño de:
 
@@ -34,6 +34,7 @@ ARM nació con un enfoque en **eficiencia energética**, pero en implementacione
 | Suma entera | 1 ciclo | Muy baja |
 | Acceso L1 | 3–4 ciclos | Baja |
 | Acceso L2 | 10–20 ciclos | Media |
+| Acceso L3 | 30–50 ciclos | Alta |
 | Acceso DRAM | 100+ ciclos | Muy alta |
 
 > 🔎 Incluso con ejecución fuera de orden, el procesador no puede ocultar completamente latencias profundas si el patrón de acceso es impredecible o altamente disperso.
@@ -51,7 +52,7 @@ En el nivel L1 existen dos cachés separadas:
 - 📘 L1I → Instrucciones  
 - 📗 L1D → Datos  
 
-Esto permite realizar **fetch de instrucciones y acceso a datos en paralelo**, evitando conflictos estructurales.
+Esto permite realizar **fetch de instrucciones y acceso a datos en paralelo**, reduciendo cuellos de botella estructurales en el pipeline.
 
 ```mermaid
 flowchart TD
@@ -85,6 +86,13 @@ graph LR
 La diferencia de latencia implica que el rendimiento está fuertemente condicionado por la **tasa de fallos de caché**.
 
 ---
+#  Comparativa de penalización por fallo de caché
+| Tipo de Miss | Consecuencia     | Impacto en Rendimiento |
+| ------------ | ---------------- | ---------------------- |
+| Miss en L1   | Acceso a L2      | Moderado               |
+| Miss en L2   | Acceso a L3/DRAM | Alto                   |
+| Miss en TLB  | Page Walk        | Muy alto               |
+| Miss en L3   | Acceso a DRAM    | Crítico                |
 
 #  Diseño y Funcionamiento de la Caché
 

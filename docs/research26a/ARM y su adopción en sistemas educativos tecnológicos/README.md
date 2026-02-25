@@ -70,6 +70,20 @@ graph TD
         R4 --> R5(Acceso a Datos Acelerado y Altamente Eficiente):::risc
     end
 ```
+**Tabla comparativa: ARM vs x86 en entornos educativos y de desarrollo**
+
+| Característica               | ARM (RISC)                                    | x86 (CISC)                     |
+| ---------------------------- | --------------------------------------------- | ------------------------------ |
+| Filosofía de diseño          | Instrucciones simples y fijas                 | Instrucciones complejas        |
+| Consumo energético           | Muy bajo                                      | Alto                           |
+| Generación de calor          | Mínima, usualmente sin refrigeración activa   | Elevada, requiere enfriamiento |
+| Portabilidad                 | Alta (SBC y móviles)                          | Limitada a PCs/servidores      |
+| Costo de hardware            | Bajo (SBC accesibles)                         | Medio–alto                     |
+| Ecosistema educativo         | Amplio (placas y kits didácticos)             | Tradicional en laboratorios    |
+| Uso en la nube               | Instancias ARM modernas (ej. AWS Graviton)    | Estándar histórico             |
+| Soporte industrial           | Licencias de Arm Ltd. y fabricantes asociados | Intel/AMD                      |
+| Dispositivos representativos | SBC como Raspberry Pi Foundation              | PCs y servidores clásicos      |
+
 
 **Eficiencia Energética y Térmica**
 
@@ -118,12 +132,19 @@ graph TD
 **Laptops y Dispositivos Móviles**
 
 La penetración de ARM en el cómputo personal ha redefinido las herramientas de desarrollo profesional y educativo, demostrando que ya no es exclusivo de teléfonos móviles. Por un lado, las Chromebooks ofrecen una puerta de entrada económica y basada en la nube para estudiantes, mientras que la transición hacia Apple Silicon (procesadores M1, M2 y M3) ha revolucionado las estaciones de trabajo de alto rendimiento. Para un desarrollador, utilizar el sistema operativo macOS sobre esta arquitectura RISC garantiza compilar proyectos masivos o ejecutar entornos locales de manera fluida y silenciosa. Este ecosistema nativo facilita la creación de aplicaciones modernas con una eficiencia térmica que x86 difícilmente puede igualar.
+<p align="center">
+  <img width="600" height="347" alt="image" src="https://github.com/user-attachments/assets/17ebf422-2d68-489f-8817-05b7062d6f72" />
+</p>
+
 
 **Sistemas Embebidos y Robótica**
 
 En el campo de la automatización y la electrónica educativa, la familia de microcontroladores ARM Cortex-M se ha consolidado como el estándar absoluto de la industria para la enseñanza de sistemas embebidos. A diferencia de los procesadores de aplicación general, estos chips están diseñados para el control en tiempo real, operando con un consumo ultra bajo y ofreciendo respuestas inmediatas a eventos físicos.
 
 Su integración en placas de desarrollo accesibles permite a los estudiantes interactuar directamente con sensores, actuadores y protocolos de comunicación a bajo nivel de hardware. Dominar esta rama específica de la arquitectura dota al futuro ingeniero de las bases analíticas necesarias para desarrollar soluciones sólidas en el creciente ecosistema del Internet de las Cosas (IoT).
+<p align="center">
+  <img width="700" height="768" alt="image" src="https://github.com/user-attachments/assets/9d9dd9e9-1f87-48fa-9956-417376fe0453" />
+</p>
 
 ### IV. Software y Herramientas de Desarrollo sobre ARM
 
