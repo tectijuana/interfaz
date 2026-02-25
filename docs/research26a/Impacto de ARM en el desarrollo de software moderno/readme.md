@@ -8,6 +8,8 @@
 
 > ⚡ **Resumen Ejecutivo**
 > La arquitectura ARM ha evolucionado de su dominio en dispositivos móviles para convertirse en un estándar en centros de datos, inteligencia artificial y computación de alto rendimiento ([Arm Cloud Computing](https://www.arm.com/markets/computing-infrastructure/cloud-computing), [Google Cloud ARM](https://cloud.google.com/discover/what-are-arm-based-processors?hl=es-419)). Este cambio representa una transformación estructural en la forma de diseñar software moderno.
+> <img width="900" height="600" alt="image" src="https://github.com/user-attachments/assets/a7b80a30-f2a4-4e4e-a760-c55c9394f6cc" />
+
 
 ---
 

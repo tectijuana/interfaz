@@ -1,4 +1,3 @@
-
 # Android sobre ARM: Optimización Software–Hardware
 
 ## Introducción
@@ -30,6 +29,8 @@ La arquitectura ARM proporciona una base sólida para Android gracias a su dise�
 
 ![ARM en procesadores: qué es y cómo funciona esta arquitectura](https://tse3.mm.bing.net/th/id/OIP._5kz4xjK1E-PXg8wc0q72gHaEK?rs=1&pid=ImgDetMain&o=7&rm=3)
 
+### Integración ARM–Android
+
 ## 2. Optimización en el Kernel Linux para ARM
 
 
@@ -60,7 +61,19 @@ El kernel de Android incorpora optimizaciones específicas para ARM que permiten
 -   F2FS optimizado para memorias flash.
     
 -   Planificadores CFQ/BFQ para mejorar latencia.
-    
+
+## Este diagrama representa cómo el kernel administra dinámicamente los recursos. Cuando el usuario interactúa con una aplicación, el kernel decide qué núcleo usar (big o little) según la carga de trabajo. Luego ajusta la frecuencia del CPU mediante DVFS para equilibrar rendimiento y consumo energético.  
+
+```mermaid
+sequenceDiagram
+    Usuario->>App: Interacción
+    App->>Kernel: Solicita CPU
+    Kernel->>Scheduler: Selección de núcleo
+    Scheduler->>BigCore: Tarea pesada
+    Scheduler->>LittleCore: Tarea ligera
+    Kernel->>CPUFreq: Ajuste de frecuencia (DVFS)
+```
+ 
 
 ## 3. HAL y Drivers: la capa crítica
 
@@ -99,6 +112,17 @@ ART combina compilación AOT, JIT y optimización guiada por perfiles para mejor
     
 -   Uso de NEON para multimedia e IA ligera.
 
+## El diagrama muestra el flujo de ejecución de una aplicación en Android. El código Java/Kotlin se convierte en DEX, luego ART aplica AOT o JIT para generar código nativo optimizado para ARM, el cual finalmente se ejecuta directamente en el CPU, mejorando rendimiento y reduciendo latencia.
+
+```mermaid
+flowchart LR
+    Java[Kotlin/Java] --> DEX
+    DEX --> AOT
+    DEX --> JIT
+    AOT --> CodigoARM
+    JIT --> CodigoOptimizado
+    CodigoARM --> CPU
+```
 ## 5. Aceleración de IA en ARM
 
 
