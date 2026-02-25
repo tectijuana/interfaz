@@ -164,6 +164,44 @@ Esto permite:
 
 ---
 
+# Diagramas 
+Arquitectura General de un Microcontrolador ARM
+```mermaid
+flowchart TD
+    A[Microcontrolador ARM] --> B[CPU]
+    A --> C[Memoria Flash]
+    A --> D[Memoria RAM]
+    A --> E[Periféricos]
+    A --> F[Interfaces de Comunicación]
+
+    B --> B1[Cortex-M]
+    B --> B2[Cortex-A]
+    B --> B3[Cortex-R]
+
+    E --> E1[ADC]
+    E --> E2[Temporizadores]
+    E --> E3[GPIO]
+
+    F --> F1[UART]
+    F --> F2[SPI]
+    F --> F3[I2C]
+    F --> F4[USB]
+```
+Estructura de un Sistema Inteligente con ARM
+``` mermaid
+flowchart LR
+
+    A[Sensores] --> B[Microcontrolador ARM]
+    B --> C[Procesamiento de Datos]
+    C --> D[Algoritmos de Control / IA]
+    D --> E[Actuadores]
+    E --> F[Entorno]
+
+    B --> G[Comunicación IoT]
+    G --> H[Red / Nube]
+```
+
+
 # 10. Conclusión
 
 Los microcontroladores ARM representan una tecnología clave en el desarrollo de sistemas inteligentes. Su arquitectura eficiente, bajo consumo energético y capacidad de procesamiento los convierten en la mejor opción para aplicaciones modernas como IoT, robótica y sistemas automotrices.
