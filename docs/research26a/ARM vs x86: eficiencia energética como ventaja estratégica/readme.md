@@ -104,6 +104,40 @@ Esto significa que la ventaja de ARM **no es absoluta**, sino que depende del di
 | Uso típico | Móviles, IoT, servidores eficientes | PCs, servidores tradicionales |
 
 ---
+## ⚙️ 7. Aplicaciones en ARM vs x86
+
+#### 1. **Cloud Computing y Hyperscale Data Centers**
+
+-   **ARM gana aquí**: su consumo energético es  menos que x86.
+-   **Ejemplo de Aplicaciones**:
+    -   Servicios web, APIs, microservicios y contenedores, un ejemplo es Netflix, que ahorra millones al año migrando encoding a Graviton.
+    -   Inferencia de IA o ML a escala, como Google Axion que da mejor eficiencia energética que x86 en MLPerf.
+    -   Serverless y cargas bursty, tiene cold starts más rápidos y de menor costo por operación.
+
+#### 2. **vehículos autónomos / SDV**
+
+-   **ARM gana aquí**: Bajo TDP (significa que provoca menor calor + batería), aislamiento en la vía virtualización y mejor eficiencia en inferencia de AI local.
+-   **Ejemplo de Aplicaciones**:
+    -   Vehículos con consolidación de ECUs en un solo SoC ARM, lo que reduce el peso, consumo y su complejidad.
+    -   Edge AI en retail, logística, puertos, que es la inferencia en cámaras, sensores de 24/7 con menos energía que los x86 mini-servers.
+    -   Dispositivos edge industriales (IoT gateways) con batería o energía limitada.
+
+#### 3. **Laptops, Tablets y PCs Copilot**
+
+-   **ARM gana aquí**: 18-25+ horas de batería, sus diseños silenciosos y NPUs eficientes para IA.
+-   **Ejemplo de Aplicaciones**:
+    -   Las aplicaciones profesionales móviles, lo que podría lograr todo el día sin cargador, como los Snapdragon Plus o futuros X2, ya que dan 20-22 horas vs Intel/AMD.
+    -   Estudiantes y trabajo remoto: web, Teams, Office + IA, entre otros.
+    -   Entornos corporativos que buscan menos reemplazos de batería, y menor huella energética.
+
+#### 4. **Sostenibilidad y Cumplimiento Regulatorio / ESG**
+
+-   **Por qué es estratégico**: La AI está cada vez en más aumento lo que puede provocar daño al ambiente, pero gracias a ARM se reduce la huella de carbono.
+-   **Aplicaciones concretas**:
+    -   Empresas con metas Net Zero, que reportan menos emisiones.
+    -   Regiones con costos eléctricos altos o restricciones energéticas.
+    -   Green AI: Para entrenar o tener modelos con menor impacto ambiental.
+---
 
 # 📌 Conclusión
 
