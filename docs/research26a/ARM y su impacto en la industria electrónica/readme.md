@@ -109,9 +109,25 @@ Gracias a estas ventajas, ARM se ha convertido en una tecnología fundamental pa
 La arquitectura ARM ha revolucionado la industria electrónica gracias a su eficiencia energética y su capacidad de ofrecer alto rendimiento en dispositivos de bajo consumo. Su diseño basado en el paradigma RISC permite optimizar el funcionamiento de dispositivos electrónicos modernos, desde smartphones hasta sistemas embebidos e IoT.
 
 Debido a estas características, ARM se ha convertido en una tecnología fundamental en el desarrollo de nuevos dispositivos electrónicos, contribuyendo al avance de la industria tecnológica y facilitando la creación de sistemas más eficientes y compactos.
+ Microcontroladores
 
+###🧠 Diagrama — Familias Cortex
 ---
-
+### 📊 Diagrama — Filosofía RISC
+```mermaid
+flowchart TD
+ARM --> A[Cortex A]
+ARM --> R[Cortex R]
+ARM --> M[Cortex M]
+```
+---
+```mermaid
+flowchart LR
+A[Instrucciones simples] --> B[Menos ciclos de reloj]
+B --> C[Menor consumo de energia]
+C --> D[Mayor eficiencia]
+```
+---
 ## Referencias
 
 - https://es.wikipedia.org/wiki/Arquitectura_ARM  
