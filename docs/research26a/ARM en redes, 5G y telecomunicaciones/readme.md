@@ -37,7 +37,6 @@ graph TD
     G --> I
     H --> J[Smartphones, tablets]
     I --> K[Redes 5G, data centers]
-
 ```
 
 La filosofía de ARM se basa en la simplicidad. Sus procesadores siguen el principio **RISC (Reduced Instruction Set Computing)**, que significa que ejecutan instrucciones simples pero muy eficientemente. Es como usar una navaja suiza perfectamente diseñada en lugar de una caja de herramientas completa: hace menos cosas, pero las hace extremadamente bien.
@@ -82,7 +81,6 @@ timeline
          : Reducción 72% consumo energético
     2026 : Presente
          : ARM en toda la infraestructura 5G
-
 ```
 
 ![enter image description here](https://www.servethehome.com/wp-content/uploads/2019/02/Arm-Neoverse-N1-SoC-Dawn-Ares-Platform-7nm.jpg)
@@ -184,7 +182,6 @@ graph TB
     style D fill:#e1f5ff
     style E fill:#e1f5ff
     style F fill:#e1f5ff
-
 ```
 
 ### 5.1. En las Antenas y Estaciones Base
@@ -227,7 +224,6 @@ graph LR
     
     style B fill:#90EE90
     style C fill:#FFB6C1
-
 ```
 
 Para el edge computing, la eficiencia energética es crucial porque estos pequeños centros de procesamiento pueden estar en lugares donde el espacio y la energía son limitados. ARM, con su bajo consumo, es una opción natural para estos escenarios.
@@ -270,7 +266,6 @@ graph TD
     
     style A5 fill:#FFB6C1
     style B8 fill:#90EE90
-
 ```
 
 **Open RAN** (Red de Acceso Radio Abierta) está cambiando este modelo. La idea es simple pero poderosa: **separar el hardware del software** y usar estándares abiertos que permitan mezclar y combinar equipos de diferentes fabricantes.
@@ -318,7 +313,6 @@ graph LR
     
     style D fill:#90EE90
     style F fill:#90EE90
-
 ```
 
 En una industria donde millones de dispositivos funcionan 24/7, esto se traduce en:
@@ -336,26 +330,6 @@ Operadores de telecomunicaciones en todo el mundo están bajo presión para redu
 |  **Reducción consumo**  | 60-72% menos electricidad |
 |  **Ahorro CO₂**  | 15-20 millones toneladas/año (proyección 2030) |
 |  **Refrigeración**  | 30-50% menos infraestructura HVAC |
-
-### 7.2. Costos Más Accesibles
-
-Los servidores basados en ARM generalmente cuestan menos que sus equivalentes x86. Además, como ARM no fabrica los chips directamente, hay múltiples proveedores compitiendo (Amazon, Ampere, Marvell, Qualcomm, etc.), lo que mantiene los precios competitivos.
-
-#### Análisis de TCO (Total Cost of Ownership)
-
-```mermaid
-pie title Reducción de Costos con ARM (5 años)
-    "CAPEX Hardware" : 20
-    "OPEX Energía" : 50
-    "OPEX Refrigeración" : 15
-    "Mantenimiento" : 10
-    "Software/Licencias" : 5
-
-```
-
-Esto es especialmente importante para operadores más pequeños o en mercados emergentes, que ahora pueden acceder a tecnología de punta sin inversiones prohibitivas.
-
-
 
 ### 7.2. Costos Más Accesibles
 
@@ -402,19 +376,19 @@ No estamos hablando de teoría o experimentos de laboratorio. ARM ya está funci
 %%{init: {"theme": "base"}}%%
 graph TB
     subgraph "Asia"
-        A1[China Mobile700,000+ estaciones base ARM]
-        A2[NTT DOCOMO Japón72% reducción energética]
-        A3[Rakuten Mobile JapónRed 100% virtualizada]
+        A1[China Mobile<br/>700,000+ estaciones base ARM]
+        A2[NTT DOCOMO Japón<br/>72% reducción energética]
+        A3[Rakuten Mobile Japón<br/>Red 100% virtualizada]
     end
     
     subgraph "Europa"
-        B1[VodafonePilotos Open RAN ARM]
-        B2[Deutsche TelekomEvaluación ARM]
+        B1[Vodafone<br/>Pilotos Open RAN ARM]
+        B2[Deutsche Telekom<br/>Evaluación ARM]
     end
     
     subgraph "América"
-        C1[Dish Network USARed cloud-native ARM]
-        C2[Verizon USAPruebas Open RAN]
+        C1[Dish Network USA<br/>Red cloud-native ARM]
+        C2[Verizon USA<br/>Pruebas Open RAN]
     end
     
     style A1 fill:#90EE90
@@ -622,11 +596,20 @@ Cada nueva generación de procesadores ARM es más eficiente, algo crucial consi
 **Proyección de Mejoras:**
 
 ```mermaid
-xychart-beta
-    title "Eficiencia Energética ARM (Operaciones/Watt)"
-    x-axis [2020, 2022, 2024, 2026, 2028, 2030]
-    y-axis "Eficiencia Relativa" 0 --> 10
-    line [1, 2, 3.5, 5, 7, 10]
+%%{init: {"theme": "base"}}%%
+graph LR
+    A[2020<br/>Eficiencia: 1x] --> B[2022<br/>2x]
+    B --> C[2024<br/>3.5x]
+    C --> D[2026<br/>5x]
+    D --> E[2028<br/>7x]
+    E --> F[2030<br/>10x]
+
+    style A fill:#e1f5ff
+    style B fill:#c8edfd
+    style C fill:#a8d8f0
+    style D fill:#80c4e8
+    style E fill:#55aede
+    style F fill:#2196d4
 ```
 
 #### 🌐 Ecosistema en Expansión
