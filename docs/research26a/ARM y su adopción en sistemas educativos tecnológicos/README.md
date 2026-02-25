@@ -146,6 +146,9 @@ Su integración en placas de desarrollo accesibles permite a los estudiantes int
   <img width="700" height="768" alt="image" src="https://github.com/user-attachments/assets/9d9dd9e9-1f87-48fa-9956-417376fe0453" />
 </p>
 
+<img width="300" height="168" alt="image" src="https://github.com/user-attachments/assets/0bc3fa48-67c5-4dd4-9456-0f074f4af09a" />
+
+
 ### IV. Software y Herramientas de Desarrollo sobre ARM
 
 **Sistemas Operativos**
@@ -156,11 +159,16 @@ La consolidación de la arquitectura ARM en el ámbito de los servidores y el de
 
 El estudio de la programación a bajo nivel en lenguaje ensamblador ARM64 es una competencia técnica invaluable en la formación académica de cualquier ingeniero. La filosofía RISC, al utilizar instrucciones de tamaño fijo y una estructura lógica simplificada, permite a los estudiantes comprender directamente la gestión de registros y el ciclo de ejecución del procesador. Dominar el ensamblador no solo es fundamental para desarrollar compiladores u optimizar rutinas críticas, sino que establece las bases para áreas avanzadas como la ingeniería inversa y la ciberseguridad. Entender cómo interactúa el silicio con el software otorga al futuro desarrollador una ventaja analítica innegable al depurar código complejo.
 
+<img width="275" height="183" alt="image" src="https://github.com/user-attachments/assets/af5ae145-d451-4e6c-a28d-5264553ce207" />
+
+
 **Virtualización y Contenedores**
 
 El auge del desarrollo local sobre hardware ARM ha traído consigo nuevos desafíos en la virtualización, especialmente al intentar interactuar con imágenes o binarios diseñados históricamente para la arquitectura x86. Afortunadamente, herramientas de contenerización como Docker han integrado soporte multiplataforma (multi-arch), permitiendo a los desarrolladores construir y desplegar microservicios que corren de manera nativa y ligera en procesadores ARM.
 
 Cuando es estrictamente necesario ejecutar sistemas operativos o software heredado de otras arquitecturas, hipervisores y emuladores como UTM (muy popular en macOS) o QEMU logran traducir las instrucciones al vuelo mediante software. Dominar estas tecnologías puente es hoy un requisito indispensable para garantizar que el código escrito en un equipo con Apple Silicon o una placa educativa funcione perfectamente en cualquier servidor de producción.
+<img width="800" height="667" alt="image" src="https://github.com/user-attachments/assets/2fbfaf5e-dd32-49d1-b957-87fc02c3d947" />
+
 
 ```mermaid
 graph TD
