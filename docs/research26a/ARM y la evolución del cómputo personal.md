@@ -170,8 +170,8 @@ La evolución del cómputo personal demuestra un cambio claro:
 
 ARM no solo compite en el mercado actual…  
 está ayudando a definir el futuro del cómputo.
-
 ---
+
 
 <div align="center">
 
