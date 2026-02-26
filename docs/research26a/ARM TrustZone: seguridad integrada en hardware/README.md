@@ -3,8 +3,14 @@
 
 # ARM TrustZone: seguridad integrada en hardware
 
+## Introducción
+
+En la actualidad, los dispositivos móviles, sistemas embebidos e infraestructuras críticas requieren mecanismos de seguridad que no dependan exclusivamente del software. La tecnología **ARM TrustZone**, desarrollada por :contentReference[oaicite:0]{index=0}, surge como una arquitectura de aislamiento basada en hardware que permite crear entornos de ejecución seguros dentro de un mismo procesador físico, reduciendo la superficie de ataque y fortaleciendo la protección de datos sensibles.
+
+---
+
 ## Resumen de la Tecnología de Aislamiento
-La tecnología ARM TrustZone constituye una solución de seguridad a nivel de silicio que particiona los recursos de un sistema en chip en dos estados de ejecución: el Mundo Normal (Normal World) para el software de propósito general y el Mundo Seguro (Secure World) para procesos críticos. A través de este aislamiento, se crea un Entorno de Ejecución de Confianza (TEE) que protege activos sensibles, como datos biométricos y claves criptográficas, frente a ataques que puedan comprometer el sistema operativo principal (Rich OS).
+La tecnología ARM TrustZone, desarrollada por Arm Ltd., constituye una solución de seguridad integrada a nivel de silicio que divide los recursos de un sistema en chip en dos estados de ejecución claramente diferenciados: el Mundo Normal (Normal World), destinado al software de propósito general, y el Mundo Seguro (Secure World), reservado para operaciones y datos críticos. Mediante este esquema de aislamiento controlado por hardware, se establece un Entorno de Ejecución de Confianza (TEE) capaz de resguardar activos sensibles —como datos biométricos y claves criptográficas— frente a amenazas que puedan comprometer el sistema operativo principal (Rich OS), garantizando así una separación estricta y verificable entre ambos dominios.
 
 ---
 
@@ -65,6 +71,28 @@ Para demostrar la eficacia del sistema, se presenta el flujo de trabajo durante 
 
 ---
 
+## Flujo TrustZone – Autenticación Biométrica
+El siguiente diagrama representa el proceso de transición entre el Mundo Normal y el Mundo Seguro durante una operación crítica de autenticación biométrica. Se muestra cómo el sistema utiliza la instrucción Secure Monitor Call (SMC) para cambiar al nivel de excepción EL3, activar el estado seguro (NS = 0), ejecutar la validación dentro del Trusted Execution Environment (TEE) y posteriormente restaurar el contexto original regresando al Mundo Normal (NS = 1).
+```mermaid
+graph TD
+
+A[App Android<br>Normal World] --> B[Kernel Rich OS]
+B -->|SMC Secure Monitor Call| C[Secure Monitor EL3]
+
+C --> D{Cambio de Estado<br>NS = 0}
+D --> E[Trusted OS<br>Secure World]
+
+E --> F[Acceso a Hardware Seguro<br>Sensor Huella / Crypto Engine]
+
+F --> G[Validación Biométrica]
+
+G --> H{Resultado}
+H -->|Éxito / Fallo| I[Secure Monitor EL3]
+I -->|Restaura contexto<br>NS = 1| J[Normal World]
+```
+
+---
+
 ## Diferencias de Implementación por Perfil de Procesador
 No todos los procesadores ARM implementan TrustZone de la misma manera. Dependiendo del uso del dispositivo (móvil vs. industrial), la arquitectura varía:
 
@@ -77,13 +105,25 @@ No todos los procesadores ARM implementan TrustZone de la misma manera. Dependie
 | **Latencia** | Mayor (Debido al cambio de contexto del Monitor). | Mínima (Casi despreciable). |
 
 ---
+## Casos Reales de Uso
 
+- Pagos móviles
+- DRM (contenido protegido)
+- Protección biométrica
+- IoT industrial seguro
+- Almacenamiento de claves criptográficas
+
+---
 ## Vectores de Ataque y Límites de la Seguridad
 A pesar de su robustez, TrustZone ha sido objeto de investigaciones para encontrar vulnerabilidades. Los ataques más avanzados incluyen:
 
 * **Side-Channel Attacks:** Ataques que analizan el consumo de energía o el tiempo de respuesta de la caché para deducir claves criptográficas.
 * **SMC Fuzzing:** Enviar llamadas malformadas al Secure Monitor para intentar causar un desbordamiento de búfer en el nivel EL3.
 * **Rowhammer:** Explotar fugas eléctricas en la memoria RAM para alterar bits en la zona segura desde la zona insegura mediante martilleo de filas.
+
+---
+
+ARM TrustZone representa una evolución en los modelos modernos de seguridad al trasladar la confianza del software al hardware. Aunque no es invulnerable, reduce significativamente la superficie de ataque y se ha convertido en un estándar en dispositivos móviles y sistemas embebidos críticos.
 
 ---
 

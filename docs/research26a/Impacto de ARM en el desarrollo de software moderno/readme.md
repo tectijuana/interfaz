@@ -8,6 +8,8 @@
 
 > ⚡ **Resumen Ejecutivo**
 > La arquitectura ARM ha evolucionado de su dominio en dispositivos móviles para convertirse en un estándar en centros de datos, inteligencia artificial y computación de alto rendimiento ([Arm Cloud Computing](https://www.arm.com/markets/computing-infrastructure/cloud-computing), [Google Cloud ARM](https://cloud.google.com/discover/what-are-arm-based-processors?hl=es-419)). Este cambio representa una transformación estructural en la forma de diseñar software moderno.
+> <img width="900" height="600" alt="image" src="https://github.com/user-attachments/assets/a7b80a30-f2a4-4e4e-a760-c55c9394f6cc" />
+
 
 ---
 
@@ -223,6 +225,71 @@ El desarrollador interactuará con múltiples aceleradores integrados en silicio
 Casos reales de portabilidad muestran viabilidad con planificación adecuada ([CERN EOS Port](https://indico.cern.ch/event/948465/contributions/4323992/attachments/2245023/3835816/Porting%20the%20EOS%20from%20X86%20%28Intel%29%20to%20aarch64%20%28ARM%29%20architecture.pdf)).
 
 ---
+
+```mermaid
+flowchart LR
+
+%% Nodo central
+ARM([🚀 Arquitectura ARM])
+
+%% Bloque Paradigma
+subgraph P1[🧠 Paradigma de Arquitectura]
+B1[RISC]
+B2[Eficiencia Energética]
+B3[Alto Paralelismo]
+end
+
+%% Bloque Cloud
+subgraph P2[☁ Infraestructura Cloud]
+C1[AWS Graviton]
+C2[Centros de Datos]
+C3[Microservicios]
+end
+
+%% Bloque Software
+subgraph P3[💻 Desarrollo de Software]
+D1[Compilación Cruzada]
+D2[Go / Rust / Zig]
+D3[Modelo de Memoria Débil]
+end
+
+%% Bloque IA
+subgraph P4[🤖 IA y HPC]
+E1[SVE]
+E2[SME]
+E3[Aceleradores IA]
+end
+
+%% Bloque DevOps
+subgraph P5[🐳 Contenedores]
+F1[Docker Multi-Arch]
+F2[Kubernetes]
+F3[CI/CD Multi-Plataforma]
+end
+
+%% Bloque Futuro
+subgraph P6[🧩 Futuro Hardware]
+G1[Chiplets]
+G2[XPUs]
+G3[Silicio Personalizado]
+end
+
+%% Bloque Sostenibilidad
+subgraph P7[🌱 Sostenibilidad]
+H1[Menor Consumo Energético]
+H2[Menor Huella de Carbono]
+H3[Optimización de Costos]
+end
+
+%% Conexiones
+ARM --> P1
+ARM --> P2
+ARM --> P3
+ARM --> P4
+ARM --> P5
+ARM --> P6
+ARM --> P7
+```
 
 # 🏁 Conclusión
 

@@ -111,6 +111,30 @@ La sostenibilidad tecnológica requiere un enfoque integral que combine eficienc
 | Estrategia corporativa | Metas de reducción de emisiones | Apoyo a prácticas empresariales sostenibles |
 | Limitaciones | Efecto rebote | Necesidad de gobernanza tecnológica |
 
+
+##Aportacion
+## 6. Análisis de ciclo de vida (LCA) y compensación ambiental
+
+La sostenibilidad de ARM no puede evaluarse solo en la fase de uso. Es necesario considerar el ciclo de vida completo del semiconductor:
+
+### Fases clave
+
+#### 1. Extracción y materiales
+- Minerales raros y silicio de alta pureza.
+
+#### 2. Fabricación
+- Alto consumo energético industrial.
+- Uso intensivo de agua ultrapura.
+- Emisiones de gases fluorados (alto potencial de calentamiento global).
+
+#### 3. Transporte e integración
+- Distribución global y ensamblaje en dispositivos.
+
+#### 4. Uso operativo
+- Consumo eléctrico durante años de funcionamiento.
+
+#### 5. Fin de vida
+- Residuos electrónicos y reciclaje limitado.
 ---
 
 ## Conclusiones
