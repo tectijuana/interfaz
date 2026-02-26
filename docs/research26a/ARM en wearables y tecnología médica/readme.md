@@ -1,8 +1,12 @@
+# ARM en wearables y tecnología médica #
+
+## Introducción ##
 
 # ARM en Wearables y Tecnología Médica
 
 ## Introducción
 
+## Desarrollo ##
 La arquitectura ARM (Advanced RISC Machine) constituye una de las plataformas de procesamiento más relevantes en sistemas embebidos, dispositivos móviles y tecnologías portátiles. Basada en el paradigma RISC (Reduced Instruction Set Computer), prioriza eficiencia energética, simplicidad estructural y alto rendimiento por vatio consumido.
 
 Desde su origen en la década de 1980 como proyecto de Acorn Computers en el Reino Unido, ARM evolucionó hacia un modelo de licenciamiento global adoptado por fabricantes como Qualcomm, Apple, STMicroelectronics, NXP y Texas Instruments. Actualmente es la arquitectura predominante en dispositivos alimentados por batería, especialmente en wearables y equipos médicos portátiles.
@@ -11,6 +15,78 @@ Este documento analiza la arquitectura ARM desde una perspectiva técnica y exam
 
 ![Apps de salud y wearable computing.](https://www.engenerico.com/wp-content/uploads/2015/06/wereables-apps-salud.jpg)
 
+Comparacion directa: 
+| Característica            | Cortex-A (Application)                         | Cortex-M (Microcontroller)                    |
+|---------------------------|------------------------------------------------|-----------------------------------------------|
+| Propósito principal       | Aplicaciones complejas y de alto nivel         | Control, sensores y tiempo real               |
+| Tipo de dispositivo       | Smartwatches avanzados, gateways médicos       | Wearables médicos, sensores biométricos       |
+| Consumo energético        | Medio a alto                                   | Muy bajo                                      |
+| Rendimiento               | Alto                                           | Bajo a medio                                  |
+| Sistema operativo         | Linux, Android                                 | RTOS o bare-metal                             |
+| Gestión de memoria        | MMU (Memory Management Unit)                   | MPU (Memory Protection Unit)                  |
+| Tiempo real               | No determinista                                | Determinista                                  |
+| Arranque                  | Lento (segundos)                               | Instantáneo (milisegundos)                    |
+| Complejidad del SoC       | Alta                                           | Baja                                          |
+| Tamaño del silicio        | Mayor                                          | Muy reducido                                  |
+| Multinúcleo               | Sí                                             | Generalmente no                               |
+| Procesamiento de IA       | IA avanzada en el borde                        | IA ligera (TinyML)                            |
+| Ejemplos de tareas        | Interfaces gráficas, análisis de datos         | ECG, PPG, SpO₂, control de sensores           |
+| Uso en tecnología médica  | Análisis complejo y conectividad               | Monitoreo continuo y adquisición de señales   |
+
+```mermaid 
+graph LR
+    B[Batería] --> PM[Gestión de energía]
+
+    subgraph Sensores biomédicos
+        ECG[ECG]
+        PPG[PPG]
+        SPO2[SpO2]
+    end
+
+    ECG --> CM[Cortex-M]
+    PPG --> CM
+    SPO2 --> CM
+
+    CM -->|Datos procesados| CA[Cortex-A]
+
+    CA --> UI[Interfaz de usuario]
+    CA --> AI[Procesamiento avanzado / IA]
+    CA --> COM[BLE / Wi-Fi]
+
+    COM --> CLOUD[Nube médica]
+```
+> Arquitectura heterogénea basada en ARM para wearables médicos, donde núcleos Cortex-M gestionan sensores en tiempo real y núcleos Cortex-A realizan procesamiento avanzado e interacción con el usuario.
+
+Además, extensiones como ARM TrustZone permiten implementar entornos de ejecución seguros, fundamentales en dispositivos médicos donde la integridad y confidencialidad de los datos clínicos son requisitos regulatorios.
+```mermaid
+graph LR
+    subgraph Secure_World[Mundo Seguro]
+        KEY[Claves criptográficas]
+        FW[Firmware seguro]
+        DATA[Datos clínicos protegidos]
+    end
+
+    subgraph Normal_World[Mundo Normal]
+        APP[Aplicaciones]
+        OS[Sistema operativo]
+        UI[Interfaz de usuario]
+    end
+
+    OS -->|Acceso controlado| DATA
+    KEY --> DATA
+    FW --> OS
+
+```
+> Separación de entornos mediante ARM TrustZone, garantizando la integridad del firmware y la confidencialidad de los datos médicos.
+
+
+Los wearables modernos —como smartwatches, bandas de actividad y dispositivos de monitoreo continuo— dependen de arquitecturas ARM para integrar múltiples funciones en un solo sistema en chip (SoC). Estos dispositivos combinan sensores biométricos, conectividad inalámbrica (Bluetooth Low Energy, Wi-Fi), procesamiento local y almacenamiento de datos.
+Empresas como Apple, Qualcomm y Nordic Semiconductor desarrollan SoCs basados en ARM que permiten:
+- Procesamiento en tiempo real de frecuencia cardíaca y variabilidad del pulso.
+
+- Implementación de algoritmos de detección de arritmias.
+
+- Monitoreo de oxigenación sanguínea.
 ---
 
 ## Fundamentos Técnicos de ARM
@@ -19,6 +95,30 @@ La arquitectura ARM se basa en el modelo RISC, que reduce la complejidad del con
 
 ### Comparación RISC vs CISC
 
+Un ejemplo industrial relevante es el Apple Watch, cuyo procesador está basado en arquitectura ARM personalizada. Este dispositivo puede realizar electrocardiogramas y detectar ritmos cardíacos irregulares, demostrando cómo la eficiencia energética y capacidad de cómputo de ARM permiten aplicaciones médicas avanzadas en formatos portátiles.
+Asimismo, investigaciones académicas han demostrado la implementación de redes neuronales optimizadas sobre microcontroladores ARM Cortex-M para el análisis de señales biomédicas en tiempo real, lo que reduce la dependencia de la nube y disminuye la latencia en diagnósticos preventivos.
+```mermaid
+graph TD
+    S[Sensor biomédico] --> A[Adquisición de señal]
+    A --> F[Filtrado digital]
+    F --> C[Extracción de características]
+    C --> ML[Inferencia de IA en el borde]
+    ML --> D[Detección de anomalías]
+    D --> V[Visualización / Alerta]
+    D -->|Opcional| N[Envío a la nube]
+```
+> Flujo de procesamiento local de señales biomédicas en dispositivos ARM, permitiendo análisis en tiempo real y reducción de latencia mediante edge computing.
+
+En el ámbito médico, los dispositivos portátiles y sistemas embebidos requieren alta confiabilidad, seguridad funcional y cumplimiento normativo. La arquitectura ARM es ampliamente utilizada en:
+- Monitores portátiles de signos vitales.
+
+- Bombas de infusión inteligentes.
+
+- Dispositivos de monitoreo continuo de glucosa.
+
+- Equipos de diagnóstico portátil.
+
+- Sistemas implantables con control digital.
 | Característica | RISC (ARM) | CISC |
 |---------------|------------|------|
 | Tamaño de instrucciones | Fijo | Variable |
@@ -42,6 +142,7 @@ Estas características permiten a ARM operar con menor disipación térmica, asp
 | Uso típico | Sensores biométricos | Interfaces gráficas y SO embebidos |
 | Ejemplos | ECG, PPG, SpO₂ | Smartwatches avanzados |
 
+## Conclusión ##
 - **Cortex-M**: Ideal para procesamiento en tiempo real de señales biomédicas.
 - **Cortex-A**: Utilizado en dispositivos con sistemas operativos como Linux embebido o Android.
 
