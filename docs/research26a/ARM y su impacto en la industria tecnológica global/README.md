@@ -80,7 +80,39 @@ El próximo gran impacto de ARM está en los Vehículos Definidos por Software (
 ## 6. Conclusión
 El impacto de ARM en la industria global es irreversible. Al separar el diseño de la arquitectura de la fabricación física, ARM permitió la explosión del IoT y la computación móvil. Hoy, con la integración de Inteligencia Artificial (NPU) directamente en los chips, ARM está lista para definir la próxima década tecnológica, desplazando a arquitecturas antiguas en casi todos los frentes.
 
-## 7. Referencias Bibliográficas
+---
+
+## 8. ARM y la Inteligencia Artificial Integrada (Edge AI)
+
+Uno de los factores más determinantes del crecimiento reciente de ARM es su integración directa con aceleradores de Inteligencia Artificial (IA) en dispositivos finales. A diferencia del modelo tradicional donde el procesamiento de IA dependía de la nube, ARM ha impulsado el concepto de **Edge Computing**, permitiendo que los dispositivos procesen datos localmente.
+
+### ¿Por qué es importante?
+
+- 🔹 Reduce latencia (respuestas casi instantáneas).
+- 🔹 Mejora la privacidad (los datos no siempre viajan a la nube).
+- 🔹 Reduce consumo energético en centros de datos.
+- 🔹 Permite IA en tiempo real en dispositivos pequeños.
+
+Empresas como **Apple (Neural Engine en chips M y A)**, **Qualcomm (Hexagon NPU)** y **Samsung (Exynos AI Engine)** integran unidades de procesamiento neuronal (NPU) basadas en arquitectura ARM para tareas como:
+
+- Reconocimiento facial  
+- Procesamiento de lenguaje natural  
+- Fotografía computacional avanzada  
+- Traducción en tiempo real  
+- Asistentes virtuales  
+
+### Impacto Estratégico
+
+La combinación de **arquitectura ARM + IA en el borde (Edge AI)** está redefiniendo industrias completas como:
+
+- Salud digital (wearables con monitoreo inteligente)
+- Seguridad (cámaras con análisis en tiempo real)
+- Industria 4.0 (sensores autónomos)
+- Automotriz (vehículos autónomos con procesamiento local)
+
+Esta evolución posiciona a ARM no solo como una arquitectura eficiente, sino como la base estructural de la próxima generación de dispositivos inteligentes conectados.
+
+## 8. Referencias Bibliográficas
 
 1.  **Rodrigo Alonso (Hardzone.es).** *Todo lo que necesitas saber sobre los procesadores ARM*
     * (https://hardzone.es/tutoriales/componentes/procesador-arm/)
@@ -95,4 +127,3 @@ El impacto de ARM en la industria global es irreversible. Al separar el diseño 
     * (https://learn.microsoft.com/es-es/windows/arm/)
   
 5.  **Mefics.org.** *Qué es la arquitectura RISC y CISC con sus ventajas y desventajas*
-    * (https://mefics.org/es/qué-es-la-arquitectura-risc-y-cisc-con-sus-ventajas-y-desventajas/)

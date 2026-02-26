@@ -1,4 +1,4 @@
-`# Evolución de ARM64 y su Impacto en la Computación Moderna
+## Evolución de ARM64 y su Impacto en la Computación Moderna
 
 ![ARM: la evolución más allá de los móviles - Revista Cloud](https://revistacloud.com/wp-content/uploads/2023/08/arm-cpu-ai-1024x614.jpg)
 
@@ -102,6 +102,20 @@ Figura 1.1 Evolocuion de transistores
 
 ARM64 es una arquitectura de conjunto de instrucciones de 64 bits basada en el modelo RISC (Reduced Instruction Set Computing). Su diseño se centra en la eficiencia energética y la simplicidad de ejecución.
 
+Línea de tiempo histórica de ARM 
+```mermaid
+timeline
+    title Historia de la arquitectura ARM
+    1985 : ARM1 - Primer procesador (3 µm, Acorn)
+    1995 : ARMv4 - Adopción en PDAs y sistemas embebidos
+    2004 : ARMv6 - Integración en iPod y primeros móviles
+    2011 : ARMv8 / ARM64 - Soporte completo de 64 bits
+    2016 : ARMv8.2 - Extensiones para Machine Learning
+    2020 : Apple M1 - Revolución ARM64 en computadoras personales
+    2023 : ARMv9.2 - Seguridad avanzada e IA embebida
+    2024 : ARM64 en supercomputadoras y centros de datos globales
+```
+
 ### Características técnicas
 
 | Propiedad | Descripción |
@@ -112,6 +126,16 @@ ARM64 es una arquitectura de conjunto de instrucciones de 64 bits basada en el m
 | Pipeline | Profundo y optimizado |
 | Consumo energético | Bajo |
 | Escalabilidad | Alta |
+
+| SoC | Fabricante | Nodo tecnológico | NPU integrada | Uso principal |
+|-----|-----------|-----------------|---------------|---------------|
+| Apple M4 | Apple / TSMC | 3 nm | Sí | PC / Mac / iPad |
+| Snapdragon 8 Gen 3 | Qualcomm / TSMC | 4 nm | Sí | Smartphones |
+| AWS Graviton 4 | Amazon / TSMC | 4 nm | No | Servidores cloud |
+| Neoverse V2 | ARM / TSMC | 5 nm | Sí | HPC / Data centers |
+| Dimensity 9300 | MediaTek / TSMC | 4 nm | Sí | Smartphones |
+| Fujitsu A64FX | Fujitsu | 7 nm | No | Supercomputación |
+
 
 ---
 
@@ -152,6 +176,16 @@ Un SoC integra múltiples componentes en un solo chip físico.
 | Controladores | Periféricos |
 | Memoria caché | Acceso rápido |
 
+Jerarquía de memoria en un SoC ARM64
+```mermaid
+graph TD
+    CPU[ CPU Cores\nARM64 - hasta 16 cores] --> L1[Caché L1\n64 KB por core\nlatencia ~1 ns]
+    L1 --> L2[Caché L2\n512 KB compartida\nlatencia ~5 ns]
+    L2 --> L3[Caché L3\n8–32 MB\nlatencia ~20 ns]
+    L3 --> RAM[RAM LPDDR5\n latencia ~80 ns]
+    RAM --> STORAGE[Almacenamiento NVMe\nlatencia ~100 µs]
+```
+
 ---
 
 ### Diagrama SoC
@@ -169,13 +203,24 @@ BUS --> IO[Interfaces externas]
 
 ## Aplicaciones actuales de ARM64
 
-| Sector | Uso |
-|------|-----|
-| Dispositivos móviles | Smartphones |
-| Centros de datos | Servidores cloud |
-| Computadoras personales | Chips Apple Silicon |
-| Automotriz | Sistemas autónomos |
-| IoT | Sensores inteligentes |
+| Arquitectura | Procesador referencia | TDP típico (servidor) | Rendimiento/watt | Año |
+|---|---|---|---|---|
+| ARM64 | AWS Graviton 4 | ~75 W | Alto | 2024 |
+| x86 | Intel Xeon Platinum 8592+ | ~350 W | Medio | 2024 |
+| x86 | AMD EPYC 9654 | ~280 W | Medio-alto | 2024 |
+| RISC-V | SiFive P670 | ~25 W | Medio | 2024 |
+
+| Criterio | ARM64 | x86-64 | RISC-V |
+|---|---|---|---|
+| Tipo ISA | RISC | CISC | RISC |
+| Bits | 64 | 64 | 32/64 |
+| Licencia | Propietaria (royalties) | Propietaria | Abierta y libre |
+| Consumo energético | Bajo | Alto | Muy bajo |
+| Ecosistema de software | Maduro | Muy maduro | En desarrollo |
+| Uso principal | Móvil, PC, servidor, HPC | PC, servidores legacy | IoT, investigación |
+| Virtualización | Sí (nativa) | Sí (VT-x) | Parcial |
+| Extensiones IA | Sí (NPU, SVE2) | Sí (AVX-512) | Limitadas |
+| Adopción en HPC | Creciente (Fugaku) | Dominante histórico | Emergente |
 
 ---
 
