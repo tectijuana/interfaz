@@ -169,16 +169,35 @@ Linux facilita:
 
 ---
 
-# ☁️ Impacto en la Computación en la Nube
+# ☁️ Impacto Profundo en la Computación en la Nube
 
-La adopción de ARM en la nube ha permitido:
+La adopción de ARM en la nube ha provocado un cambio de paradigma, permitiendo una competencia real frente a los modelos tradicionales x86 (Intel y AMD). El ejemplo más claro es **AWS Graviton** de Amazon Web Services.
 
-- 📉 Reducción de costos energéticos  
-- ⚡ Mayor eficiencia en centros de datos  
-- 🏢 Competencia frente a Intel y AMD  
-- 🚀 Impulso a nuevas arquitecturas abiertas  
+**Comparativa de rendimiento en servidores (AWS Graviton vs x86):**
+- 💰 **Ahorro de Costos:** Los procesadores ARM ofrecen entre un **20% y un 40% de ahorro** en costos frente a instancias x86 equivalentes.
+- ⚡ **Eficiencia de Arquitectura (vCPU):** Mientras que x86 utiliza *Hyperthreading* (dividiendo un núcleo físico en varios hilos), los chips ARM en AWS (Graviton) utilizan una relación **1:1 de vCPU por núcleo físico**. Esto asegura un rendimiento más predecible y sin cuellos de botella.
+- 📉 **Sostenibilidad:** Menor uso de energía general en los centros de datos, lo que se traduce en operaciones más ecológicas.
 
-El futuro apunta a la coexistencia de modelos abiertos, licenciados y propietarios.
+El futuro apunta a la coexistencia de modelos abiertos, licenciados y propietarios, donde arquitecturas como ARM dominan las cargas de trabajo de microservicios y aplicaciones web, mientras x86 se mantiene en bases de datos analíticas de alto impacto.
+
+---
+
+# 🤖 ARM y la Inteligencia Artificial Integrada (Edge AI)
+
+Uno de los factores más determinantes del crecimiento reciente de ARM es su integración directa con aceleradores de Inteligencia Artificial (IA) en dispositivos finales. A diferencia del modelo tradicional que dependía de la nube, ARM ha impulsado el concepto de **Edge Computing** (IA en el borde), permitiendo que los dispositivos procesen datos localmente.
+
+**Beneficios clave del Edge AI en ARM:**
+- ⏱️ **Reduce la latencia:** Respuestas casi instantáneas al no depender de internet.
+- 🔒 **Mejora la privacidad:** Los datos confidenciales no siempre viajan a la nube.
+- 🔋 **Eficiencia energética:** Reduce drásticamente el consumo en centros de datos.
+- ⚙️ **Tiempo real:** Permite procesamiento IA en dispositivos pequeños y portátiles.
+
+**Ejemplos de Unidades de Procesamiento Neuronal (NPU) basadas en ARM:**
+- 🍎 **Apple:** Neural Engine (Chips A y M)
+- 🐉 **Qualcomm:** Hexagon
+- 📱 **Samsung:** Exynos AI Engine
+
+Esta combinación está redefiniendo industrias completas, aplicándose en salud digital (monitoreo inteligente), seguridad (análisis de cámaras en tiempo real), Industria 4.0 y la industria automotriz (vehículos autónomos).
 
 ---
 
