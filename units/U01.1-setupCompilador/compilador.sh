@@ -15,7 +15,7 @@
 #    Solo que clientes macOS y Linux deben de poner permisos a la llave con $ chmod 400 llavesita.pem
 # Corrida:
 #    $ wget https://raw.githubusercontent.com/tectijuana/interfaz/refs/heads/main/units/U01.1-setupCompilador/compilador.sh
-#    $ chmod +x setup64.sh
+#    $ chmod +x compilador.sh
 #    $ ./setup64.sh
 
 
