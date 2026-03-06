@@ -16,7 +16,7 @@
 # Corrida:
 #    $ wget https://raw.githubusercontent.com/tectijuana/interfaz/refs/heads/main/units/U01.1-setupCompilador/compilador.sh
 #    $ chmod +x compilador.sh
-#    $ ./setup64.sh
+#    $ ./compilador.sh
 
 
 # =======================================================================
