@@ -25,8 +25,9 @@ Dicho simple: **un Bash script te facilita la vida y te evita trabajo repetitivo
 #  Y como configurar el VSCode https://www.loom.com/share/08169eca9baf4a97bc0c8ed983bd10b9?sid=d2d3bb39-362d-47d7-a136-992da2921cb6
 #    Solo que clientes macOS y Linux deben de poner permisos a la llave con $ chmod 400 llavesita.pem
 # Corrida:
-#    ver fuente
-#    $ ./setup64.sh
+#    $ wget https://raw.githubusercontent.com/tectijuana/interfaz/refs/heads/main/units/U01.1-setupCompilador/compilador.sh
+#    $ chmod +x compilador.sh
+#    $ ./compilador.sh
 
 
 # =======================================================================
@@ -124,6 +125,8 @@ sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/too
 ###############################################################
 # Fin del script
 ###############################################################
+
+
 
 
 ```
