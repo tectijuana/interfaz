@@ -47,6 +47,7 @@ CloudShell es como tener un **terminal Linux listo y conectado a AWS**, accesibl
 
 ----
 
+<img width="1242" height="569" alt="image" src="https://github.com/user-attachments/assets/0d9d6171-0b7f-4d95-8a53-5e3aecae4b81" />
 
 
 # ✔️ 1. Listar máquinas virtuales (EC2)
