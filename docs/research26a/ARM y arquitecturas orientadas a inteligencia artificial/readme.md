@@ -23,7 +23,55 @@
 11. [Referencias bibliográficas](#11-referencias-bibliográficas)
 
 ---
+# Tabla Resumen de la Investigación
 
+| Tema | Descripción | Tecnologías Relacionadas |
+|---|---|---|
+| Arquitectura ARM | Arquitectura RISC eficiente y de bajo consumo | ARMv8, ARMv9 |
+| Modelo de negocio ARM | Licenciamiento de diseños a otras empresas | Apple, Qualcomm, NVIDIA |
+| Extensiones IA | Mejoras para acelerar inteligencia artificial | SVE2, SME, SME2 |
+| Hardware especializado | Integración de componentes para tareas específicas | GPU, NPU, DSP |
+| NPUs | Aceleradores dedicados para redes neuronales | Ethos-U85 |
+| Chips destacados | Procesadores ARM modernos orientados a IA | Apple M4, Snapdragon X Elite |
+| ARM vs x86 | ARM ofrece mejor eficiencia energética | Graviton 4, Xeon |
+| ARM vs RISC-V | ARM tiene ecosistema más maduro | IoT, Edge AI |
+| Aplicaciones | Uso en móviles, nube, IoT y PCs | Copilot+, Apple Intelligence |
+| Tendencias futuras | IA local y chips modulares | Chiplets, IA generativa |
+
+---
+
+# Diagrama General de la Investigación
+
+```text
+                    ┌──────────────────────┐
+                    │   Arquitectura ARM   │
+                    └──────────┬───────────┘
+                               │
+                ┌──────────────┴──────────────┐
+                │                             │
+        ┌───────▼────────┐          ┌────────▼────────┐
+        │ Arquitectura   │          │ Hardware        │
+        │ RISC           │          │ Especializado   │
+        └───────┬────────┘          └────────┬────────┘
+                │                             │
+        ┌───────▼────────┐      ┌────────────▼────────────┐
+        │ Bajo consumo   │      │ GPU │ NPU │ DSP │ SME2 │
+        │ energético     │      └────────────┬────────────┘
+        └───────┬────────┘                   │
+                │                   ┌────────▼────────┐
+                │                   │ Aceleración IA │
+                │                   └────────┬────────┘
+                │                            │
+      ┌─────────▼─────────┐        ┌────────▼─────────┐
+      │ Chips ARM Modernos│        │ Aplicaciones IA │
+      └─────────┬─────────┘        └────────┬────────┘
+                │                            │
+   ┌────────────▼────────────┐    ┌─────────▼─────────┐
+   │ Apple M4 / Snapdragon X │    │ IoT │ Cloud │ PCs │
+   │ AWS Graviton │ Jetson   │    │ Smartphones │ Edge│
+   └─────────────────────────┘    └───────────────────┘
+```
+---
 ## 1. Introducción
 
 Durante décadas, la conversación sobre procesadores para inteligencia artificial giró casi exclusivamente en torno a GPUs y unidades especializadas de alto consumo energético. Sin embargo, los últimos años han mostrado un giro visible, la arquitectura ARM se ha convertido en uno de los pilares del cómputo de IA, tanto en dispositivos de bolsillo como en servidores de nube a gran escala.
