@@ -20,7 +20,7 @@ jobs:
       - name: Instalar toolchain cruzado y QEMU
         run: |
           sudo apt-get update
-          sudo apt-get install -y binutils-aarch64-linux-gnu qemu-user make
+          sudo apt-get install -y binutils-aarch64-linux-gnu g++-aarch64-linux-gnu qemu-user make
 
       - name: Ejecutar make test en cada práctica
         run: |
