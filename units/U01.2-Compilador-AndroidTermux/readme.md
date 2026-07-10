@@ -1,25 +1,11 @@
-```python
-# ╔══════════════════════════════════════════════════════════════════════╗
-# ║ 🤖📱 TERMINAL GALÁCTICO: TERMUX EN SAMSUNG GALAXY                     ║
-# ╚══════════════════════════════════════════════════════════════════════╝
-# 📘 Asignatura: Lenguajes de Interfaz en TECNM Campus ITT
-# 👤 Autor(a): Axel Tron-X
-# 📅 Fecha: 2025/09/15
-# 📱 Dispositivo: Samsung Galaxy S21 Ultra - Modo Desarrollador Activado
-# 🛠️ Descripción: Script de automatización para tareas avanzadas 
-#    dentro del entorno Termux en Android. Optimizado para Galaxy.
-# 🌐 Simulación Wokwi: https://wokwi.com/projects/samsung-galaxy-terminal
-#
-# ╭────────────────────────────────────────────────────────────╮
-# │ SYSTEM BOOT... ☄️                                           │
-# │ Terminal Fusion Activa: SAMSUNG x TERMUX 🔗                 │
-# │ Carga de utilidades: nano, python, pkg, ssh...             │
-# │ Bienvenido, comandante del código.                         │
-# ╰────────────────────────────────────────────────────────────╯
-#
-# 💬 FRASE MOTIVADORA: “No usas tu teléfono. Lo hackeas.”
-# 🎮 MÓDULO: “ANDROID CYBERCORE – DOMINA TU GALAXY”
-```
+# 📱 Entorno de compilación ARM64 en Android con Termux
+
+**Asignatura:** Lenguajes de Interfaz — TECNM Campus ITT
+
+Alternativa de entorno para estudiantes sin laptop o sin acceso a AWS: un teléfono
+Android moderno tiene CPU ARM64 nativa, por lo que `clang`, `binutils` y `gdb` corren
+directamente en el dispositivo con [Termux](https://termux.dev) (instalar desde F-Droid;
+la versión de Play Store está desactualizada).
 
 ```bash
 $ pkg update && pkg upgrade -y && pkg install -y \

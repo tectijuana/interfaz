@@ -44,4 +44,11 @@ De acuerdo al temario, en esta unidad se estudiarán los siguientes aspectos:
 
 ---
 
-> 📌 **Nota:** Esta introducción sirve como punto de partida. Las actividades prácticas y códigos de ejemplo estarán disponibles en esta carpeta bajo `examples/` y `labs/`.
+> 📌 **Nota:** Esta introducción sirve como punto de partida. Los capítulos teóricos están en `lecturas/`, la lección de ARM Virtual Hardware en `labs/`, y las prácticas verificables de esta unidad en `../../practicas/`.
+
+## 🧪 Actividades prácticas de la unidad
+| Subtema | Actividad |
+|---|---|
+| 1.4–1.5 Interrupciones y syscalls | `lab-interrupciones-gdb.md` (sesión guiada GDB+GEF + strace) |
+| 1.6 Modos de direccionamiento | `../../practicas/P02-modos-direccionamiento/` (verificable, con variante por alumno) |
+| 1.7–1.8 Ensamblado, ligado y mensajes | `../../practicas/P01-hola-arm64/` (piloto `make test`) |
