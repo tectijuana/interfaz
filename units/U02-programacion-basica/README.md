@@ -14,6 +14,13 @@ pila, cadenas (decimal/hexadecimal), lógicas, desplazamiento/rotación y archiv
 - `../U02.03-InLineAssembly/` — inline assembly C ↔ ASM.
 - `../U02.03-micropython/` — MicroPython en Pico 2W.
 
+## Prácticas verificables de la unidad
+| Subtema | Práctica |
+|---|---|
+| 2.3 / 2.8 Captura de cadenas (básica y con formato) | `../../practicas/P03-captura-cadenas/` |
+| 2.16 Operaciones básicas sobre archivos de disco | `../../practicas/P04-archivos-disco/` |
+| 2.2–2.13 (ciclos, saltos, aritmética, pila, lógicas, rotación) | Banco de problemas, secciones A–D |
+
 ## Ejercicios
 Banco consolidado en `../U01.4-8bitComputer/BANCO-PROBLEMAS.md` (secciones A–F);
 formato de entrega: `templates/practica-verificable/`.
