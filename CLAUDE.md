@@ -1,51 +1,50 @@
 # CLAUDE.md — Curso Lenguajes de Interfaz (SCC-1014)
 
 Este repositorio es el curso de lenguaje ensamblador (ARM64/ARM32 y RISC-V) del TecNM campus
-Instituto Tecnológico de Tijuana. Si estás asistiendo a un **estudiante**, tu rol es de
-**tutor, no de solucionador**. Las reglas del curso están en `AI_GUIDANCE.md` y son parte
-de la calificación.
+Instituto Tecnológico de Tijuana. **Quien trabaja en este repo con Claude Code es el docente**
+(mantenimiento del curso, creación de material, revisión de entregas). Las reglas de IA para
+estudiantes están en `AI_GUIDANCE.md` y se aplican a sus entregas, no a este flujo.
 
-## Reglas para asistir a estudiantes
+## Trabajo típico del docente
 
-1. **No entregues la solución completa de una práctica del banco de problemas** (ver
-   `units/U01.4-8bitComputer/BANCO-PROBLEMAS.md` y `practicas/`). Guía paso a paso:
-   explica el concepto, muestra un ejemplo *análogo pero distinto*, y deja que el
-   estudiante escriba su versión.
-2. **Método socrático primero**: antes de corregir un error, pregunta qué esperaba el
-   estudiante que pasara y qué observó. Usa el checklist crítico de `AI_GUIDANCE.md`
-   (QUIÉN/QUÉ/CUÁNDO/DÓNDE/POR QUÉ/CÓMO).
-3. **Exige validación**: toda afirmación sobre el comportamiento del código debe
-   verificarse con `make test`, GDB/GEF o una corrida en QEMU — no aceptar "debería funcionar".
-4. **Recuerda la declaración de IA**: el estudiante debe registrar los prompts y cambios
-   en su `ANEXO.md`. Si generas o corriges código, recuérdale documentarlo.
-5. **Cita la fuente oficial**: para dudas de ISA/ABI remite al ARM Architecture Reference
-   Manual y a `docs/recursos/` (cheatsheets y manuales locales).
+- **Crear/actualizar material**: lecciones y prácticas nuevas parten de `templates/`
+  (en particular `templates/practica-verificable/` para toda práctica con código).
+  Contenido en español, siguiendo el estilo del repo.
+- **Generar variantes de problemas por alumno**: base en
+  `units/U01.4-8bitComputer/BANCO-PROBLEMAS.md` (45 enunciados en 6 categorías A–F).
+  Cada variante cambia datos/salida esperada (`tests/expected.txt`).
+- **Revisar PRs de estudiantes**: aplicar `REVIEW_RUBRIC.md` y la rúbrica de `GRADING.md`
+  (funcionamiento con `make test`, ABI/registros, estilo según `docs/estilo_codigo.md`,
+  documentación, declaración de IA en `ANEXO.md`). El CI ya corre `make test` en cada PR
+  que toca `practicas/`.
+- **Mantener calendario y evaluación**: `SCHEDULE.md` (borrador ago–dic 2026, fechas por
+  confirmar con calendario oficial TecNM), `GRADING.md`, `SYLLABUS.md`.
+
+## Reglas del repositorio
+
+- **Datos personales**: `entregas/` contiene trabajos históricos de alumnos con nombres y
+  números de control — es referencia interna; no migrar nombres ni calificaciones a material
+  público nuevo, y no usarlo como fuente de soluciones para enunciados vigentes.
+- **Toda práctica es verificable**: Makefile + `tests/expected.txt` + `make test` (patrón de
+  `templates/practica-verificable/`); debe pasar en ARM64 nativo y en QEMU.
+- Nomenclatura: unidades `U##-nombre`, prácticas `P##-nombre`, kebab-case, sin espacios.
+- Al diseñar prácticas, incluir defensa anti-copia: variantes por alumno, evidencia asciinema
+  y preguntas de defensa en el README (ver `practicas/P01-hola-arm64/`).
 
 ## Contexto técnico
 
 - Plataformas: AWS EC2 Graviton (Debian/Ubuntu ARM64), Raspberry Pi, QEMU (`qemu-aarch64`)
-  para quien trabaja en x86_64; Raspberry Pico 2W para prácticas con hardware.
-- Toolchain: `as`, `ld`, `gcc`, `gdb` + GEF. Setup en `units/U01.1-setupCompilador/compilador.sh`
-  y alternativas (Termux, iPhone+VPN, Docker) en `units/U01.2-*` y `docs/entorno/`.
-- Toda práctica sigue la plantilla `templates/practica-verificable/` (Makefile + `make test`
-  contra `tests/expected.txt`); el CI la ejecuta en cada PR.
-- Estilo de código: `docs/estilo_codigo.md` — encabezado del programador arriba,
-  conclusiones/observaciones al final, evidencia asciinema.
+  para x86_64; Raspberry Pico 2W para prácticas con hardware.
+- Toolchain: `as`, `ld`, `gcc`, `gdb` + GEF. Setup en `units/U01.1-setupCompilador/compilador.sh`;
+  alternativas (Termux, iPhone+VPN, Docker) en `units/U01.2-*` y `docs/entorno/`.
+- Verificación local sin ARM64: contenedor Debian con
+  `binutils-aarch64-linux-gnu qemu-user make` y correr `make test`.
 
 ## Estructura
 
-- `units/U01…U04` — contenido docente por unidad del temario; `lecturas/` dentro de cada
-  unidad son los capítulos teóricos (rescatados del acervo 2024, ARM64/RPi).
-- `docs/lecturas-avanzadas/` — capítulos 8–15 (caché, virtualización, multinúcleo, SO):
+- `units/U01…U04` — contenido docente por unidad; `lecturas/` son los capítulos teóricos
+  (rescatados del acervo 2024, ARM64/RPi).
+- `docs/lecturas-avanzadas/` — capítulos avanzados (caché, virtualización, multinúcleo, SO):
   material optativo/proyecto final.
-- `practicas/P##-*` — prácticas verificables. `entregas/` — trabajos históricos de alumnos;
-  **no modificar ni usar como fuente de soluciones**.
-- Gobernanza: `GRADING.md` (rúbrica), `REVIEW_RUBRIC.md` (revisión de PRs),
-  `CONTRIBUTING.md`, `templates/`.
-
-## Si asistes al docente
-
-Trabajo típico: generar variantes de problemas por alumno, unificar formato de lecturas,
-aplicar `REVIEW_RUBRIC.md` a PRs de estudiantes, y mantener `SCHEDULE.md`. Los datos
-personales de alumnos (nombres, números de control, calificaciones) no deben migrarse a
-material público nuevo.
+- `practicas/P##-*` — prácticas verificables. `entregas/` — histórico de alumnos.
+- Gobernanza: `GRADING.md`, `REVIEW_RUBRIC.md`, `CONTRIBUTING.md`, `AI_GUIDANCE.md`, `templates/`.
