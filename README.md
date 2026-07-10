@@ -16,15 +16,17 @@ Repositorio oficial del curso **Lenguajes de Interfaz**. Aquí encontrarás mate
 ## 🗂 Estructura del repositorio
 ```plaintext
 interfaz/
-├── README.md ← Presentación del curso
-├── AI_GUIDANCE.md ← Uso responsable de IA en el curso
-├── CONTRIBUTING.md ← Guía para colaborar
-├── LICENSE ← Licencia de uso
-├── docs/ ← Documentación extendida
-├── ejemplos/ ← Códigos en ARM y RISC‑V
-├── practicas/ ← Actividades de laboratorio
-├── proyecto_final/ ← Proyecto integrador
-└── recursos/ ← Manuales, datasheets y plantillas
+├── README.md            ← Presentación del curso
+├── SYLLABUS.md / SCHEDULE.md / GRADING.md ← Programa, calendario y evaluación
+├── AI_GUIDANCE.md       ← Uso responsable de IA en el curso
+├── CLAUDE.md            ← Instrucciones para agentes (tutor, no solucionador)
+├── CONTRIBUTING.md      ← Guía para colaborar (entrega por Pull Request)
+├── docs/                ← Entorno, herramientas (gdb/GEF, tmux), recursos PDF,
+│                          lecturas avanzadas (caché, virtualización, SO)
+├── units/               ← Unidades U01–U04 del temario, con lecturas y sesiones
+├── practicas/           ← Prácticas verificables (Makefile + make test + CI)
+├── templates/           ← Plantillas de práctica, rúbricas y formatos
+└── entregas/            ← Entregas históricas de alumnos (referencia interna)
 ```
 
 

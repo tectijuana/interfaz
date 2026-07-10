@@ -6,7 +6,7 @@ Este documento describe cómo proponer cambios y mantener un repositorio organiz
 ## Cómo contribuir
 1. **Fork** del repositorio.
 2. Crear una rama con un nombre descriptivo:  
-   `git checkout -b mejora/U02-leccion-css-grid`
+   `git checkout -b mejora/U02-practica-ciclos-arm64`
 3. Realizar los cambios siguiendo las normas de estilo.
 4. Incluir documentación y ejemplos cuando sea necesario.
 5. Abrir un **Pull Request** (PR) describiendo claramente el cambio.
@@ -21,8 +21,9 @@ Este documento describe cómo proponer cambios y mantener un repositorio organiz
 
 ## Buenas prácticas
 - Revisar ortografía y claridad del texto.
-- Seguir las guías de accesibilidad (ej. WCAG 2.2 AA).
-- Validar enlaces y formato con las herramientas incluidas (`tools/`).
+- Código ensamblador con encabezado del programador y conclusiones al final (ver `docs/estilo_codigo.md`).
+- Verificar que los ejemplos ensamblan y corren (`make test` cuando la práctica lo incluya).
+- Validar enlaces y formato antes de abrir el PR.
 
 ## Revisión de PRs
 - Los PRs serán revisados por docentes y asistentes de curso.

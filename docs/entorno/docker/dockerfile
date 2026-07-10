@@ -1,0 +1,95 @@
+# 888888888888                888888888888  88  88                                                    
+#     88                          88       ""  ""                                                    
+#     88                          88                                                                 
+#     88   ,adPPYba,   ,adPPYba,  88       88  88  88       88  ,adPPYYba,  8b,dPPYba,   ,adPPYYba,  
+#     88  a8P_____88  a8"     ""  88       88  88  88       88  ""     `Y8  88P'   `"8a  ""     `Y8  
+#     88  8PP"""""""  8b          88       88  88  88       88  ,adPPPPP88  88       88  ,adPPPPP88  
+#     88  "8b,   ,aa  "8a,   ,aa  88       88  88  "8a,   ,a88  88,    ,88  88       88  88,    ,88  
+#     88   `"Ybbd8"'   `"Ybbd8"'  88       88  88   `"YbbdP'Y8  `"8bbdP"Y8  88       88  `"8bbdP"Y8  
+#                                             ,88                                                    
+#                                           888P"                                                    
+#
+# Cada instrucción en este archivo genera una nueva capa que se envía a su caché de imágenes local
+# Las líneas precedidas por # se consideran comentarios y se ignoran
+
+#
+# Generar la imagen y visualizar los recursos de su PC
+#      docker build --platform linux/arm64 -t compilador_arm64:latest .   (si un PUNTO al final)
+#      docker images
+
+# Correr y borrar al SALIR
+#      docker run --platform linux/arm64 -it --rm compilador_arm64:latest
+
+#
+# Borrado de imagenes
+#      docker  rm Mi_Contenedor        — Borrar una o varios contenedores.
+#      docker  rm $(docker ps -a -q)   — Borra TODO los contenedores que no estan corriendo en procesos.
+#      docker  kill $(docker ps -q)    — Parar todos los contenedores corriendo en memoria.
+#      docker system prune             — Borra todos los contenedores, redes sin usar y imagenes trabadas.
+#      docker system prune -a          - ELIMINACION A RESET TOTAL DESDE CER Y RECLAMO DE SU ESPACIO EN DISCO DURO.
+
+#---------------------------------------------------------------------
+# Imagen Oficial
+#---------------------------------------------------------------------
+#
+# Deposito original para ensamblador 64 bits, basada en ALPINE Linux (ligero)
+FROM arm64v8/alpine:latest
+LABEL maintainer="Rene Solis"
+
+ENV TERM=xterm
+WORKDIR /root
+
+# Actualiza el sistema e instala las herramientas esenciales
+RUN apk update && apk upgrade && \
+    apk add --no-cache \
+      build-base \
+      binutils \
+      gdb \
+      lldb \
+      cmake \
+      git \
+      curl \
+      wget \
+      clang \
+      valgrind \
+      strace \
+      vim \
+      nano \
+      tmux \
+      screen \
+      htop \
+      tree \
+      file \
+      unzip \
+      zip \
+      python3 \
+      py3-pip \
+      python3-dev \
+      jq \
+      figlet \
+      mc \
+      zsh \
+      asciinema \
+      bash
+
+# Instala GEF (GDB Enhanced Features) y verifica su instalación
+RUN figlet "Instalando GEF" && \
+    bash -c "$(curl -fsSL https://gef.blah.cat/sh)" && \
+    figlet "Verificando GEF" && \
+    gdb -ex "gef help" -ex quit
+
+# Instala Oh My Zsh de forma no interactiva
+RUN figlet "Instalando Oh My Zsh" && \
+    sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" --unattended
+
+# Cambia el shell por defecto de root a zsh
+RUN sed -i 's/\/bin\/ash/\/bin\/zsh/' /etc/passwd
+
+
+#
+# TIPS PARA LAS IMAGENES
+# https://hub.docker.com/r/arm64v8/alpine
+# https://pythonspeed.com/docker/
+# https://towardsdatascience.com/15-docker-commands-you-should-know-970ea5203421
+# https://dzone.com/articles/clone-code-into-containers-how
+

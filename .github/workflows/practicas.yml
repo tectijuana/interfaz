@@ -1,0 +1,40 @@
+name: Prácticas ARM64 (make test)
+
+on:
+  pull_request:
+    paths:
+      - 'practicas/**'
+      - 'templates/practica-verificable/**'
+  push:
+    branches: [main, renovacion-2026]
+    paths:
+      - 'practicas/**'
+      - 'templates/practica-verificable/**'
+
+jobs:
+  test-practicas:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Instalar toolchain cruzado y QEMU
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y binutils-aarch64-linux-gnu qemu-user make
+
+      - name: Ejecutar make test en cada práctica
+        run: |
+          set -e
+          fail=0
+          for dir in practicas/*/ templates/practica-verificable/; do
+            [ -f "$dir/Makefile" ] || continue
+            echo "::group::$dir"
+            if make -C "$dir" test; then
+              echo "✅ $dir"
+            else
+              echo "❌ $dir"
+              fail=1
+            fi
+            echo "::endgroup::"
+          done
+          exit $fail
