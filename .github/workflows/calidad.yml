@@ -1,0 +1,34 @@
+name: Calidad del repositorio
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+
+jobs:
+  colision-mayusculas:
+    name: Rutas duplicadas solo por mayúsculas
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Detectar colisiones (rompen clones en macOS/Windows)
+        run: |
+          DUPS=$(git ls-files | sort -f | uniq -Di || true)
+          if [ -n "$DUPS" ]; then
+            echo "::error::Rutas que difieren solo en mayúsculas/minúsculas:"
+            echo "$DUPS"
+            exit 1
+          fi
+          echo "✅ Sin colisiones de mayúsculas"
+
+  enlaces-locales:
+    name: Enlaces internos de Markdown
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Verificar enlaces relativos (solo locales, sin red)
+        uses: lycheeverse/lychee-action@v2
+        with:
+          args: --offline --no-progress "**/*.md"
+          # Solo advertencia: el material histórico tiene enlaces legados
+          fail: false

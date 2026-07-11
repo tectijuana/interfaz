@@ -11,7 +11,7 @@ estudiantes están en `AI_GUIDANCE.md` y se aplican a sus entregas, no a este fl
   (en particular `templates/practica-verificable/` para toda práctica con código).
   Contenido en español, siguiendo el estilo del repo.
 - **Generar variantes de problemas por alumno**: base en
-  `units/U01.4-8bitComputer/BANCO-PROBLEMAS.md` (45 enunciados en 6 categorías A–F).
+  `practicas/BANCO-PROBLEMAS.md` (45 enunciados en 6 categorías A–F).
   Cada variante cambia datos/salida esperada (`tests/expected.txt`).
 - **Revisar PRs de estudiantes**: aplicar `REVIEW_RUBRIC.md` y la rúbrica de `GRADING.md`
   (funcionamiento con `make test`, ABI/registros, estilo según `docs/estilo_codigo.md`,

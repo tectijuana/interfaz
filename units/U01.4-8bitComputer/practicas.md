@@ -9,6 +9,6 @@
 * `birotate.asm`: Rotar bits en el registro Rc.
 * `binarydec.asm` y `binary.asm`: Convertir número binario a decimal en display.
 
-El banco completo de enunciados (con variantes por alumno) está en `BANCO-PROBLEMAS.md`.
+El banco completo de enunciados (con variantes por alumno) está en `../../practicas/BANCO-PROBLEMAS.md`.
 La asignación nominal por alumno se administra fuera del contenido público del curso
 (histórico 2025 en `entregas/2025/8bitComputer/asignaciones-2025.md`).

@@ -22,5 +22,5 @@ pila, cadenas (decimal/hexadecimal), lógicas, desplazamiento/rotación y archiv
 | 2.2–2.13 (ciclos, saltos, aritmética, pila, lógicas, rotación) | Banco de problemas, secciones A–D |
 
 ## Ejercicios
-Banco consolidado en `../U01.4-8bitComputer/BANCO-PROBLEMAS.md` (secciones A–F);
+Banco consolidado en `../../practicas/BANCO-PROBLEMAS.md` (secciones A–F);
 formato de entrega: `templates/practica-verificable/`.
