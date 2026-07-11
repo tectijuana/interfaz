@@ -49,49 +49,48 @@ Cada estudiante deberá:
   * Reflexionar sobre cómo ayudó o limitó su trabajo, todo esto en el anexo.md.
 
 ---
-
-| NombreAlumno                        | Tema de Investigación                                            |
-|:------------------------------------|:-----------------------------------------------------------------|
-| ALONSO SANCHEZ OSCAR FRANCISCO      | Comparación de buses SPI e I2C en microcontroladores ARM         |
-| ALVAREZ ESTRADA AXEL                | Implementación de UART en sistemas embebidos con Linux           |
-| ANGEL MONTOYA CESAR GREGORIO        | Programación de periféricos GPIO en Raspberry Pi                 |
-| ANGULO MARENTES ANGEL GABRIEL       | Timers y PWM en microcontroladores ARM Cortex-A                  |
-| AVILEZ JR  ROGELIO                  | Protocolos de comunicación en tiempo real: CAN y LIN             |
-| BEDOY ALVAREZ JONATHAN              | Uso de FPGAs para procesamiento de señales en sistemas embebidos |
-| CARMONA VALDEZ JUAN                 | Introducción a Verilog: primeros pasos en diseño digital         |
-| CASIMIRO MORALES ALEXANDRA DANIELA  | FPGAs y Machine Learning: casos de uso reales                    |
-| CASTRO CASTELLANOS GUALBERTO        | Diferencias entre VHDL y Verilog en el desarrollo para FPGAs     |
-| CONTRERAS HERNANDEZ JONATHAN RAMIRO | Integración de sensores con microcontroladores usando I2C        |
-| CORTES AGUILAR JAVIER ULISES        | Avances recientes en litografía para semiconductores (EUV)       |
-| CRUZ CARDENAS LUIS ANGEL            | El rol de TSMC en la evolución de la industria de chips          |
-| DIAZ CHAVELAS ANGEL ABRAHAM         | Samsung vs Intel: estrategias en el diseño de FABS               |
-| ELIZONDO ROMERO JOSE EDUARDO        | Sistemas operativos en tiempo real (RTOS) para ARM64             |
-| ESQUEDA CARDENAS ESTEPHANIA         | Desarrollo con Yocto Project para plataformas ARM                |
-| FERNANDEZ CORTEZ JAVIER             | Uso de PlatformIO como entorno para proyectos embebidos          |
-| GARCIA HERNANDEZ ANA GABRIELA       | Lenguajes de programación más usados en diseño de hardware       |
-| GARRIDO SALAS ANDRE LUIZ            | Interfaces de alto nivel: USB-C y su evolución técnica           |
-| GAYOSSO PEREZ KARLA YURAY           | Contribución de ARM al mundo de microprocesadores embebidos      |
-| HERNANDEZ BOJORQUEZ ULISES          | Emulación de hardware con QEMU para plataformas ARM              |
-| HERRERA MIRANDA MARVIN JAVIER       | Impacto de los LLMs en el desarrollo de firmware embebido        |
-| JIMENEZ DELGADO LEONARDO SEBASTIAN  | Integración de ChatGPT para generación de documentación técnica  |
-| JIMENEZ GUERRERO VICTOR GAEL        | Evaluación de herramientas de IA para diseño hardware-asistido   |
-| LAVENANT BALDENEBRO GILBERTO        | Reflexión ética sobre el uso de LLMs en educación técnica        |
-| LEON GASCA MARIO                    | Plataformas de desarrollo de hardware open source                |
-| LOPEZ GARIBAY MIGUEL ANGEL          | Evolución de los compiladores para arquitecturas ARM             |
-| LOPEZ PRUDENCIO JAVIER N.           | ARMv8-A vs ARMv9: cambios clave en arquitectura                  |
-| MARTINEZ GUZMAN LEONARDO RAFAEL     | Optimización de código ensamblador para Raspberry Pi 5           |
-| MOJICA FAJARDO JOSE ANGEL           | Técnicas modernas de verificación de hardware con simuladores    |
-| NOLASCO VAZQUEZ JOSE ANTONIO        | Revisión de sistemas de depuración JTAG y SWD                    |
-| NOVELO ASTORGA KAIN ALEJANDRO       | Diseño de sistemas heterogéneos: CPU+FPGA en un mismo chip       |
-| ORTIZ MORENO KEYLA DENISSE          | Diseño de sistemas embebidos basados en RISC-V vs ARM            |
-| OSUNA  JOSE MANUEL                  | Aplicaciones de FPGAs en procesamiento de video en tiempo real   |
-| RICO SANCHEZ SEBASTIAN EMILIANO     | Comparativa entre plataformas Raspberry Pi y BeagleBone          |
-| RODRIGUEZ RAMIREZ JOSE URIEL        | Automatización industrial con microcontroladores STM32           |
-| ROGEL ARZATE MANUEL                 | Estado actual de las FABS en Europa: retos y oportunidades       |
-| RUVALCABA FERNANDEZ ALBERTO CARLOS  | Interfaz hombre-máquina (HMI) en sistemas embebidos              |
-| SANTOS DUARTE IRVING ALEJANDRO      | Sistemas embebidos en automóviles eléctricos                     |
-| SERNA SAUCEDA JOSE ENRIQUE          | Lenguajes HDL emergentes: Chisel y SpinalHDL                     |
-| VAZQUEZ GONZALEZ BLESSING OSCIEL    | Desarrollo de firmware seguro para IoT con ARM TrustZone         |
+| Tema de Investigación                                            |
+|:-----------------------------------------------------------------|
+| Comparación de buses SPI e I2C en microcontroladores ARM         |
+| Implementación de UART en sistemas embebidos con Linux           |
+| Programación de periféricos GPIO en Raspberry Pi                 |
+| Timers y PWM en microcontroladores ARM Cortex-A                  |
+| Protocolos de comunicación en tiempo real: CAN y LIN             |
+| Uso de FPGAs para procesamiento de señales en sistemas embebidos |
+| Introducción a Verilog: primeros pasos en diseño digital         |
+| FPGAs y Machine Learning: casos de uso reales                    |
+| Diferencias entre VHDL y Verilog en el desarrollo para FPGAs     |
+| Integración de sensores con microcontroladores usando I2C        |
+| Avances recientes en litografía para semiconductores (EUV)       |
+| El rol de TSMC en la evolución de la industria de chips          |
+| Samsung vs Intel: estrategias en el diseño de FABS               |
+| Sistemas operativos en tiempo real (RTOS) para ARM64             |
+| Desarrollo con Yocto Project para plataformas ARM                |
+| Uso de PlatformIO como entorno para proyectos embebidos          |
+| Lenguajes de programación más usados en diseño de hardware       |
+| Interfaces de alto nivel: USB-C y su evolución técnica           |
+| Contribución de ARM al mundo de microprocesadores embebidos      |
+| Emulación de hardware con QEMU para plataformas ARM              |
+| Impacto de los LLMs en el desarrollo de firmware embebido        |
+| Integración de ChatGPT para generación de documentación técnica  |
+| Evaluación de herramientas de IA para diseño hardware-asistido   |
+| Reflexión ética sobre el uso de LLMs en educación técnica        |
+| Plataformas de desarrollo de hardware open source                |
+| Evolución de los compiladores para arquitecturas ARM             |
+| ARMv8-A vs ARMv9: cambios clave en arquitectura                  |
+| Optimización de código ensamblador para Raspberry Pi 5           |
+| Técnicas modernas de verificación de hardware con simuladores    |
+| Revisión de sistemas de depuración JTAG y SWD                    |
+| Diseño de sistemas heterogéneos: CPU+FPGA en un mismo chip       |
+| Diseño de sistemas embebidos basados en RISC-V vs ARM            |
+| Aplicaciones de FPGAs en procesamiento de video en tiempo real   |
+| Comparativa entre plataformas Raspberry Pi y BeagleBone          |
+| Automatización industrial con microcontroladores STM32           |
+| Estado actual de las FABS en Europa: retos y oportunidades       |
+| Interfaz hombre-máquina (HMI) en sistemas embebidos              |
+| Sistemas embebidos en automóviles eléctricos                     |
+| Lenguajes HDL emergentes: Chisel y SpinalHDL                     |
+| Desarrollo de firmware seguro para IoT con ARM TrustZone         |
 
 
 | Criterio de Evaluación                                     | Puntos | Descripción                                                                                  |
