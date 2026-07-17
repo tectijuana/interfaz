@@ -1,7 +1,9 @@
 # Planeación didáctica — Lenguajes de Interfaz (SCC-1014) · Agosto–Diciembre 2026
 
-> ⚠️ **Borrador**: fechas estimadas sobre el patrón del ciclo anterior; confirmar contra el
-> calendario oficial TecNM 2026-2027 antes de publicar a los alumnos.
+> ✅ **Fechas confirmadas** contra el calendario escolar TecNM agosto–diciembre 2026
+> ([referencia: IT Morelia, ITMORELIA-IT-AC-002-01 Rev. 2](https://morelia.tecnm.mx/comunicacion/media/sliders/doctos/ITMORELIA-IT-AC-002-01_CALENDARIO_ESCOLAR_AGOSTO-DICIEMBRE_2026.pdf)):
+> inicio de clases 24/ago, último día de clases 11/dic, suspensión 16/sep (Independencia) y
+> 16/nov (Revolución, "por confirmar" en el calendario). Cotejar con el calendario del ITT cuando se publique.
 
 Basada en:
 * 📄 Temario de 4 unidades (ensamblador, programación básica, modularización, dispositivos).
@@ -16,7 +18,7 @@ Basada en:
 * **Inicio de clases**: 24 de agosto de 2026
 * **Fin de clases**: 11 de diciembre de 2026
 * **Duración efectiva**: ~16 semanas
-* **Días no laborables (estimados)**: miércoles 16 de septiembre; lunes 16 de noviembre
+* **Días no laborables**: miércoles 16 de septiembre; lunes 16 de noviembre (por confirmar)
 
 ---
 
@@ -45,8 +47,12 @@ Basada en:
 
 ### 🧩 Evaluaciones sugeridas
 
-| Evaluación           | Fecha (estimada)          | Unidad(es) | Descripción                                             |
+| Evaluación           | Fecha                     | Unidad(es) | Descripción                                             |
 | -------------------- | ------------------------- | ---------- | ------------------------------------------------------- |
 | **Parcial 1**        | Jueves **8/oct/2026**     | U1–U2      | Examen práctico + entrega de programas básicos          |
 | **Parcial 2**        | Jueves **12/nov/2026**    | U2–U3      | Proyecto modular con procedimientos y macros            |
 | **Final (Proyecto)** | Jueves **10/dic/2026**    | U4         | Aplicación funcional con interacción hardware/simulador |
+
+> 📌 Fechas institucionales de cierre (calendario TecNM ago–dic 2026): captura de calificaciones
+> del 11 al 17 de diciembre; segundas oportunidades del 14 al 17 de diciembre; cierre semestral
+> del sistema el 18 de diciembre de 2026.

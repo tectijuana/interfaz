@@ -1,1 +1,12 @@
+# macOS
 .DS_Store
+._*
+
+# Repositorio anidado (clon independiente)
+units/pdd/
+
+# Artefactos de compilación (ensamblador/C)
+*.o
+*.out
+a.out
+*.elf
