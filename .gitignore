@@ -2,6 +2,10 @@
 .DS_Store
 ._*
 
+# Claude Code
+CLAUDE.md
+.claude/
+
 # Repositorio anidado (clon independiente)
 units/pdd/
 
