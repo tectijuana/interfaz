@@ -26,6 +26,7 @@ interfaz/
 ├── units/               ← Unidades U01–U04 del temario, con lecturas y sesiones
 ├── practicas/           ← Prácticas verificables (Makefile + make test en tu entorno)
 ├── templates/           ← Plantillas de práctica, rúbricas y formatos
+├── herramientas/        ← Utilerías del docente (recolector de Gists para calificar)
 └── entregas/            ← Entregas históricas de alumnos (referencia interna)
 ```
 
