@@ -15,7 +15,7 @@ Dicho simple: **un Bash script te facilita la vida y te evita trabajo repetitivo
 # Script: Configuración rápida entorno desarrollo ARM64
 # Propósito: Instala herramientas esenciales de desarrollo,
 #            GEF y Oh My Zsh en sistemas ARM64 (Raspberry Pi).
-# Autor: CHATGTP
+# Autor: ChatGPT (revisado por el docente)
 # Fecha: 25 DE MARZO DEL 2025
 ###############################################################
 
@@ -70,6 +70,7 @@ sudo apt-get install -y \
   python3-pip \
   python3-dev \
   software-properties-common \
+  zsh \
   jq \
   figlet \
   mc
@@ -99,7 +100,7 @@ sudo apt-get install -y \
 # zsh: Shell avanzado alternativo a bash.
 # jq: Procesamiento de JSON desde consola.
 # figlet: Solo banners y avisos para el asciinema
-# mc: midnight commandes es un file manager en consoka
+# mc: Midnight Commander, un administrador de archivos en consola
 
 echo "🎉 Instalando depurador extension GEF"
 
@@ -121,7 +122,12 @@ echo "🎉 ¡Herramientas instaladas exitosamente!"
 figlet "Instalando Oh My Zsh"
 
 # Instalación automatizada de Oh My Zsh (framework para Zsh)
-sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+# RUNZSH=no y CHSH=no evitan que el instalador pregunte y cambie de shell a media
+# ejecución (sin ellas el script "se queda colgado" dentro de zsh y nunca termina).
+# Para hacer zsh tu shell por defecto después:  chsh -s $(which zsh)
+RUNZSH=no CHSH=no sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+
+echo "✅ Listo. Cierra sesión y vuelve a entrar, o ejecuta 'zsh' para probar Oh My Zsh."
 ###############################################################
 # Fin del script
 ###############################################################

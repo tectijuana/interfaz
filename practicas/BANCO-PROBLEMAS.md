@@ -63,4 +63,3 @@ es obligatoria. Formato de entrega: `templates/README-practica.md` + declaració
 
 > Nota docente: los problemas A–F aplican tanto al emulador 8 bits (Troy's Breadboard Computer)
 > como a ARM64 en AWS/QEMU; ajustar el dispositivo de salida según la plataforma.
-> Las soluciones históricas de alumnos quedaron en `entregas/2025/` como referencia interna.

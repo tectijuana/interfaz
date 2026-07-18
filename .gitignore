@@ -14,3 +14,5 @@ units/pdd/
 *.out
 a.out
 *.elf
+*.so
+prog

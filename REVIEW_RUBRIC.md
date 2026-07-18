@@ -1,7 +1,12 @@
 # Rúbrica de Revisión – Evaluación de Pull Request
 
+> **Ámbito:** esta rúbrica aplica a PRs de **documentos** (investigaciones, sesiones,
+> mejoras al material). Los PRs de **prácticas de código** se evalúan con la rúbrica de
+> [`GRADING.md`](./GRADING.md) (funcionamiento con `make test`, ABI/registros, estilo,
+> documentación y ANEXO de IA), no con esta.
+
 **Instrucciones:**  
-Esta rúbrica se usa como guía para evaluar cada PR durante las dos revisiones obligatorias (interna y profesional). Marca un puntaje para cada criterio de 1 a 5 (5 = excelente, 1 = insuficiente).
+Esta rúbrica se usa como guía para evaluar cada PR durante las dos revisiones obligatorias: la **revisión interna** (peer-review entre compañeros, cuenta para Participación en `GRADING.md`) y la **revisión profesional** (docente). Marca un puntaje para cada criterio de 1 a 5 (5 = excelente, 1 = insuficiente).
 
 ---
 

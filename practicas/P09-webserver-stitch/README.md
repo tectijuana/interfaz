@@ -18,6 +18,10 @@ sirve una **interfaz hombre-máquina** (dashboard web) que controla y monitorea 
    con al menos temperatura actual, estado del LED y un botón de encendido/apagado.
    Exporta el HTML/CSS y adáptalo para servirse desde el Pico (¡pesa poco!: sin
    frameworks, una sola página).
+   *Plan B (misma calificación): si Stitch no está disponible o no quieres cuenta
+   Google, usa otra herramienta de diseño (Figma, Penpot) o escribe el HTML/CSS a
+   mano; el requisito es el mismo dashboard de una página y documentar el proceso
+   diseño → adaptación.*
 3. Endpoints mínimos: `GET /` (dashboard), `GET /api/temp` (JSON), `POST /led`
    (toggle). El dashboard consume `/api/temp` con `fetch()` cada 2 s.
 4. **Toque de ensamblador**: la conversión ADC→décimas de °C se hace en una función

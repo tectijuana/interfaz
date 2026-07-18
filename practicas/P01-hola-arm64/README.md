@@ -12,8 +12,9 @@ de Linux (`write`, `exit`), y validar la salida con `make test`.
 5. Llena `ANEXO.md` con tu declaración de IA (obligatoria, ver `AI_GUIDANCE.md`).
 
 ## Entrega
-Pull Request con la carpeta completa. El CI corre `make test` automáticamente;
-la rúbrica completa está en `GRADING.md`.
+Pull Request con la carpeta completa **al repositorio de entregas del semestre**
+(ver "Entrega de prácticas (estudiantes)" en `CONTRIBUTING.md`). El CI corre
+`make test` automáticamente; la rúbrica completa está en `GRADING.md`.
 
 ## Preguntas de defensa (respóndelas en tus conclusiones)
 - ¿Qué hace `svc #0` y por qué `x8` lleva el número de syscall?

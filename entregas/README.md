@@ -11,5 +11,6 @@ docente (`units/`, `practicas/`) de las soluciones de estudiantes.
 
 **Política**: este material es referencia interna del docente. No se acepta como fuente
 para nuevas entregas (los enunciados con variantes están en
-`practicas/BANCO-PROBLEMAS.md`). Las entregas del semestre en curso se
-reciben por Pull Request según `CONTRIBUTING.md`.
+`practicas/BANCO-PROBLEMAS.md`). Las entregas del semestre en curso se reciben por
+Pull Request en el **repositorio de entregas del semestre** (ver sección
+"Entrega de prácticas (estudiantes)" de `CONTRIBUTING.md`), no en este repositorio.

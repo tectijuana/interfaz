@@ -16,6 +16,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
 
       - name: Instalar toolchain cruzado y QEMU
         run: |
@@ -25,9 +27,19 @@ jobs:
       - name: Ejecutar make test en cada práctica
         run: |
           set -e
+          if [ "${{ github.event_name }}" = "pull_request" ]; then
+            # Solo las prácticas tocadas por el PR: un fallo ajeno no debe marcar ❌ al autor
+            DIRS=$(git diff --name-only "origin/${{ github.base_ref }}...HEAD" \
+              | grep -oE '^(practicas/[^/]+|templates/practica-verificable)/' | sort -u)
+          else
+            DIRS=$(ls -d practicas/*/ templates/practica-verificable/)
+          fi
           fail=0
-          for dir in practicas/*/ templates/practica-verificable/; do
-            [ -f "$dir/Makefile" ] || continue
+          for dir in $DIRS; do
+            if [ ! -f "$dir/Makefile" ]; then
+              echo "⏭️  $dir sin Makefile — verificación por evidencia (ver rubrica.md de la práctica)"
+              continue
+            fi
             echo "::group::$dir"
             if make -C "$dir" test; then
               echo "✅ $dir"
