@@ -12,9 +12,11 @@ de Linux (`write`, `exit`), y validar la salida con `make test`.
 5. Llena `ANEXO.md` con tu declaración de IA (obligatoria, ver `AI_GUIDANCE.md`).
 
 ## Entrega
-Pull Request con la carpeta completa **al repositorio de entregas del semestre**
-(ver "Entrega de prácticas (estudiantes)" en `CONTRIBUTING.md`). Corre `make test`
-en tu entorno y adjunta la evidencia asciinema; la rúbrica completa está en `GRADING.md`.
+Publica un **Gist** en tu cuenta de GitHub con la práctica completa (`main.s`,
+`Makefile`, `expected.txt`, este README con tus respuestas y `ANEXO.md`) y reporta
+la URL en **iDoceo Connect o Google Classroom** (ver "Entrega de prácticas
+(estudiantes)" en `CONTRIBUTING.md`). Corre `make test` en tu entorno y adjunta la
+evidencia asciinema; la rúbrica completa está en `GRADING.md`.
 
 ## Preguntas de defensa (respóndelas en tus conclusiones)
 - ¿Qué hace `svc #0` y por qué `x8` lleva el número de syscall?

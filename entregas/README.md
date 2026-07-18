@@ -11,6 +11,8 @@ docente (`units/`, `practicas/`) de las soluciones de estudiantes.
 
 **Política**: este material es referencia interna del docente. No se acepta como fuente
 para nuevas entregas (los enunciados con variantes están en
-`practicas/BANCO-PROBLEMAS.md`). Las entregas del semestre en curso se reciben por
-Pull Request en el **repositorio de entregas del semestre** (ver sección
-"Entrega de prácticas (estudiantes)" de `CONTRIBUTING.md`), no en este repositorio.
+`practicas/BANCO-PROBLEMAS.md`). Las prácticas del semestre en curso se entregan como
+**Gist** reportado en iDoceo Connect o Google Classroom; a este repositorio solo llega
+por Pull Request la **investigación de la Unidad 1**, que al aprobarse se integra en
+`entregas/<ciclo>/research/` (ver "Entrega de prácticas (estudiantes)" en
+`CONTRIBUTING.md`).

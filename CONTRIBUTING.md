@@ -5,34 +5,41 @@ Este documento describe cómo proponer cambios y mantener un repositorio organiz
 
 > **¿Vienes a entregar una práctica del curso?** Ve directo a
 > [Entrega de prácticas (estudiantes)](#entrega-de-prácticas-estudiantes) —
-> las entregas **no** se hacen en este repositorio.
+> las prácticas se entregan por **Gist + iDoceo Connect/Google Classroom**, no por PR
+> (solo la investigación de la Unidad 1 va por PR a este repositorio).
 
 ## Entrega de prácticas (estudiantes)
 
-Las prácticas se entregan por **Pull Request al repositorio de entregas del semestre**
-(uno por ciclo, p. ej. `tectijuana/interfaz-entregas-2026b` — el enlace exacto se publica
-en la primera semana de clase). Este repositorio (`interfaz`) es solo material del curso;
-un PR con una entrega aquí será cerrado con la indicación de moverlo.
+Las prácticas **no se entregan en este repositorio**: cada alumno publica su trabajo en
+su propia cuenta de GitHub como **Gist** y reporta la URL donde indique el docente
+(**iDoceo Connect** — connect.idoceo.net — o **Google Classroom**). Tú eres el
+responsable de tu contenido y de conservar tu evidencia.
 
-Flujo de entrega:
+Este repositorio es el **material del curso**: en Google Classroom el docente publica
+los temas del día con enlaces a las unidades y prácticas de aquí, junto con otros
+complementos; en la misma asignación de Classroom (o en iDoceo Connect) reportas la
+URL de tu Gist.
 
-1. **Fork** del repositorio de entregas del semestre.
-2. Crea tu carpeta siguiendo la convención:
-   `<numero-de-control>/P##-nombre/` (p. ej. `22211539/P01-hola-arm64/`).
-3. Copia dentro la estructura completa de la práctica (desde `practicas/P##-*/` de este
-   repo): `src/`, `Makefile`, `tests/`, `README.md` con tus respuestas de defensa y el
-   enlace asciinema, y `ANEXO.md` con tu declaración de IA.
-4. Verifica localmente que `make test` pasa (nativo ARM64 o QEMU).
-5. Abre el PR con título `P## — <Nombre Apellido> <numero-de-control>`; una rama por
-   práctica (`p01-entrega`, `p02-entrega`, …).
-6. Tu constancia de funcionamiento es la corrida en **tu** entorno: el `make test` en
-   verde grabado con asciinema (no hay CI que lo corra por ti — los errores y su
-   depuración son parte de lo que se evalúa y de lo que aprendes). La revisión docente
-   aplica la rúbrica de [`GRADING.md`](./GRADING.md); atiende los comentarios en el mismo
-   PR. Una vez calificado, el PR se mergea y queda como constancia de tu entrega.
+Flujo de entrega de cada práctica:
 
-Lo que sigue en este documento aplica a **mejoras al material del curso**
-(correcciones, nuevas lecciones, erratas), no a entregas.
+1. Trabaja la práctica en tu entorno (PC, VM o AWS Academy) hasta que `make test` pase
+   en verde — no hay CI que lo corra por ti; los errores y su depuración son parte de
+   lo que se evalúa y de lo que aprendes.
+2. Publica un **Gist** con la práctica completa: `src/main.s` (encabezado y
+   conclusiones), `Makefile`, `tests/expected.txt`, `README.md` con tus respuestas de
+   defensa, y `ANEXO.md` con tu declaración de IA.
+3. Incluye la **evidencia**: enlace asciinema de la corrida de `make test` (o video/
+   captura en prácticas de hardware, según el `rubrica.md` de la práctica).
+4. Reporta la **URL del Gist** en iDoceo Connect o Google Classroom antes de la fecha
+   límite. La revisión docente aplica la rúbrica de [`GRADING.md`](./GRADING.md).
+
+**Excepción — Unidad 1**: la investigación de la U1 sí se entrega por **Pull Request a
+este repositorio** (fork → rama → PR, como se describe abajo), porque el objetivo de esa
+unidad es precisamente aprender a contribuir a un repositorio colaborativo. Esos PRs se
+revisan con `REVIEW_RUBRIC.md` y al aprobarse se integran en `entregas/<ciclo>/research/`.
+
+Lo que sigue en este documento aplica a los PRs: la investigación de U1 y las
+**mejoras al material del curso** (correcciones, nuevas lecciones, erratas).
 
 ## Cómo contribuir
 1. **Fork** del repositorio.
