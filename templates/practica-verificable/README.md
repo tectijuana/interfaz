@@ -1,7 +1,9 @@
 # Plantilla: Práctica Verificable (ARM64)
 
 Estructura estándar de toda práctica del curso a partir de 2026: el código se **valida
-automáticamente** comparando su salida con la esperada, en tu máquina, en QEMU o en CI.
+automáticamente** comparando su salida con la esperada, en tu propio entorno
+(PC, VM, AWS Academy — nativo ARM64 o QEMU). La validación es local a propósito:
+el objetivo es que tú veas y depures tus propios fallos.
 
 ```
 P##-nombre/
@@ -30,4 +32,5 @@ evalúa ABI/registros, estilo, documentación y tu declaración de IA. La eviden
 
 ## Para el docente
 - Cambia `tests/expected.txt` (y si aplica, argumentos en el Makefile) por variante de alumno.
-- El workflow `.github/workflows/practicas.yml` corre `make test` en cada PR que toque `practicas/`.
+- La verificación es responsabilidad del alumno en su entorno (no hay CI de prácticas):
+  la evidencia asciinema de `make test` es la constancia de la corrida.

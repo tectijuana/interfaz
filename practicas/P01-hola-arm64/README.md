@@ -13,8 +13,8 @@ de Linux (`write`, `exit`), y validar la salida con `make test`.
 
 ## Entrega
 Pull Request con la carpeta completa **al repositorio de entregas del semestre**
-(ver "Entrega de prácticas (estudiantes)" en `CONTRIBUTING.md`). El CI corre
-`make test` automáticamente; la rúbrica completa está en `GRADING.md`.
+(ver "Entrega de prácticas (estudiantes)" en `CONTRIBUTING.md`). Corre `make test`
+en tu entorno y adjunta la evidencia asciinema; la rúbrica completa está en `GRADING.md`.
 
 ## Preguntas de defensa (respóndelas en tus conclusiones)
 - ¿Qué hace `svc #0` y por qué `x8` lleva el número de syscall?

@@ -24,7 +24,7 @@ interfaz/
 ├── docs/                ← Entorno, herramientas (gdb/GEF, tmux), recursos PDF,
 │                          lecturas avanzadas (caché, virtualización, SO)
 ├── units/               ← Unidades U01–U04 del temario, con lecturas y sesiones
-├── practicas/           ← Prácticas verificables (Makefile + make test + CI)
+├── practicas/           ← Prácticas verificables (Makefile + make test en tu entorno)
 ├── templates/           ← Plantillas de práctica, rúbricas y formatos
 └── entregas/            ← Entregas históricas de alumnos (referencia interna)
 ```

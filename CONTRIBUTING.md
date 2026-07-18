@@ -25,7 +25,9 @@ Flujo de entrega:
 4. Verifica localmente que `make test` pasa (nativo ARM64 o QEMU).
 5. Abre el PR con título `P## — <Nombre Apellido> <numero-de-control>`; una rama por
    práctica (`p01-entrega`, `p02-entrega`, …).
-6. El CI del repo de entregas corre `make test` sobre tu carpeta. La revisión docente
+6. Tu constancia de funcionamiento es la corrida en **tu** entorno: el `make test` en
+   verde grabado con asciinema (no hay CI que lo corra por ti — los errores y su
+   depuración son parte de lo que se evalúa y de lo que aprendes). La revisión docente
    aplica la rúbrica de [`GRADING.md`](./GRADING.md); atiende los comentarios en el mismo
    PR. Una vez calificado, el PR se mergea y queda como constancia de tu entrega.
 
