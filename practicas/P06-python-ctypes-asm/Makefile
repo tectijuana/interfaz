@@ -4,6 +4,10 @@
 # ARM64, `make test` se marca como SKIP.
 
 LIB := libops.so
+# Funciona con la estructura del repo (src/, tests/) y con la plana de un Gist
+SRC   := $(if $(wildcard src/ops.s),src/ops.s,ops.s)
+MAIN  := $(if $(wildcard src/main.py),src/main.py,main.py)
+TESTS := $(if $(wildcard tests/run_tests.sh),tests/run_tests.sh,run_tests.sh)
 
 ARCH := $(shell uname -m)
 ifeq ($(ARCH),aarch64)
@@ -16,7 +20,7 @@ endif
 
 all: test
 
-ops.o: src/ops.s
+ops.o: $(SRC)
 	$(AS) -o $@ $<
 
 $(LIB): ops.o
@@ -25,10 +29,10 @@ $(LIB): ops.o
 build: $(LIB)
 
 run: build
-	python3 src/main.py
+	python3 $(MAIN)
 
 test: build
-	bash tests/run_tests.sh
+	bash $(TESTS)
 
 clean:
 	rm -f $(LIB) ops.o

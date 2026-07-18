@@ -4,6 +4,7 @@ set -euo pipefail
 
 RUN_CMD="${1:-./prog}"
 EXPECTED_FILE="tests/expected.txt"
+[ -f "$EXPECTED_FILE" ] || EXPECTED_FILE="expected.txt"   # estructura plana (Gist)
 
 OUT="$($RUN_CMD)"
 EXP="$(cat "$EXPECTED_FILE")"

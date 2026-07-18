@@ -3,6 +3,9 @@
 set -euo pipefail
 
 EXPECTED_FILE="tests/expected.txt"
+[ -f "$EXPECTED_FILE" ] || EXPECTED_FILE="expected.txt"   # estructura plana (Gist)
+MAIN_PY="src/main.py"
+[ -f "$MAIN_PY" ] || MAIN_PY="main.py"
 
 if [ "$(uname -m)" != "aarch64" ]; then
   echo "⚠️  SKIP: esta práctica requiere Python ARM64 nativo"
@@ -11,7 +14,7 @@ if [ "$(uname -m)" != "aarch64" ]; then
   exit 0
 fi
 
-OUT="$(python3 src/main.py)"
+OUT="$(python3 "$MAIN_PY")"
 EXP="$(cat "$EXPECTED_FILE")"
 
 echo "Salida real:"

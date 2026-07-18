@@ -25,13 +25,30 @@ Flujo de entrega de cada práctica:
 1. Trabaja la práctica en tu entorno (PC, VM o AWS Academy) hasta que `make test` pase
    en verde — no hay CI que lo corra por ti; los errores y su depuración son parte de
    lo que se evalúa y de lo que aprendes.
-2. Publica un **Gist** con la práctica completa: `src/main.s` (encabezado y
-   conclusiones), `Makefile`, `tests/expected.txt`, `README.md` con tus respuestas de
-   defensa, y `ANEXO.md` con tu declaración de IA.
+2. Publica un **Gist** con la práctica completa siguiendo la convención de abajo.
 3. Incluye la **evidencia**: enlace asciinema de la corrida de `make test` (o video/
    captura en prácticas de hardware, según el `rubrica.md` de la práctica).
 4. Reporta la **URL del Gist** en iDoceo Connect o Google Classroom antes de la fecha
    límite. La revisión docente aplica la rúbrica de [`GRADING.md`](./GRADING.md).
+
+### Convención del Gist
+
+- **Descripción del Gist**: `SCC-1014 P## — Nombre Apellido — No. de control`
+  (así el docente identifica tu entrega sin abrirla).
+- **Archivos planos**: los Gists no admiten carpetas, así que sube los archivos
+  sueltos con estos nombres exactos: `main.s` (con encabezado y conclusiones),
+  `Makefile`, `expected.txt`, `run_tests.sh`, `README.md` (respuestas de defensa +
+  enlace asciinema) y `ANEXO.md`. En prácticas con más fuentes se agregan igual de
+  planos (`macros.s`, `main.cpp`, `ops.s`, `main.py`, `input.txt`).
+- **Debe poder correrse tal cual**: los Makefiles del curso detectan ambas
+  estructuras (carpetas del repo o plana del Gist), así que quien clone tu Gist
+  puede verificarlo sin ajustar nada:
+  ```bash
+  git clone https://gist.github.com/<id-de-tu-gist>.git p01 && cd p01
+  make test
+  ```
+- **Un Gist por práctica**; si corriges, actualiza el mismo Gist (las revisiones
+  quedan en su historial — no crees uno nuevo, la URL reportada debe seguir viva).
 
 **Excepción — Unidad 1**: la investigación de la U1 sí se entrega por **Pull Request a
 este repositorio** (fork → rama → PR, como se describe abajo), porque el objetivo de esa
@@ -55,6 +72,10 @@ Lo que sigue en este documento aplica a los PRs: la investigación de U1 y las
 - **Prácticas** → `P##-nombre/`  
 - **Evaluaciones** → `E##-nombre/`  
 - Nombres en **kebab-case** (minúsculas, con guiones).
+- **Rutas congeladas**: no renombrar ni mover las carpetas existentes de `units/` y
+  `practicas/` aunque no cumplan la nomenclatura — las asignaciones históricas de
+  Google Classroom enlazan directo a esas rutas y un rename las rompería. La
+  nomenclatura aplica solo a carpetas **nuevas**.
 - Markdown limpio, títulos con `#`, listas claras y ejemplos con bloque de código.
 
 ## Buenas prácticas

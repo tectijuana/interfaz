@@ -30,6 +30,11 @@ make test    # ensambla, ejecuta y compara la salida
 evalúa ABI/registros, estilo, documentación y tu declaración de IA. La evidencia de ejecución
 (asciinema) sigue siendo obligatoria.
 
+## Cómo entregar
+Sube los archivos **planos** (sin carpetas) a un Gist y reporta la URL en iDoceo
+Connect o Google Classroom — ver "Convención del Gist" en `CONTRIBUTING.md`. El
+Makefile detecta ambas estructuras, así que tu Gist clonado corre `make test` tal cual.
+
 ## Para el docente
 - Cambia `tests/expected.txt` (y si aplica, argumentos en el Makefile) por variante de alumno.
 - La verificación es responsabilidad del alumno en su entorno (no hay CI de prácticas):

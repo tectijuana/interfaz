@@ -9,7 +9,9 @@
 # En x86_64 instala: binutils-aarch64-linux-gnu qemu-user
 
 TARGET  := prog
-SRC     := src/main.s
+# Funciona con la estructura del repo (src/, tests/) y con la plana de un Gist
+SRC     := $(if $(wildcard src/main.s),src/main.s,main.s)
+TESTS   := $(if $(wildcard tests/run_tests.sh),tests/run_tests.sh,run_tests.sh)
 
 ARCH    := $(shell uname -m)
 ifeq ($(ARCH),aarch64)
@@ -34,7 +36,7 @@ run: build
 	$(RUN)
 
 test: build
-	bash tests/run_tests.sh "$(RUN)"
+	bash $(TESTS) "$(RUN)"
 
 clean:
 	rm -f $(TARGET) $(TARGET).o datos.txt
