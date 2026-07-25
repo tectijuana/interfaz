@@ -46,6 +46,12 @@ micro (Cortex-M33, Thumb-2) — Python y ASM en el mismo archivo `.py`, sin tool
 - **Wokwi** (https://wokwi.com): vía oficial sin hardware; material previo en el acervo.
 - `wokwi-cli` permite correr la simulación en GitHub Actions — el patrón `make test`
   del curso extendido a hardware simulado.
+- **Snakie** (https://snakie.com): IDE MicroPython robotics-first (editor Monaco + LLM
+  integrado) para cuando sí hay Pico físico — sync en vivo editor↔hardware, pestaña de
+  instrumentos en vivo (IMU, rangefinder, ADC como multímetro), generador automático de
+  esquemático/breadboard y detección de componentes por I²C. Complementa a Wokwi: éste
+  simula sin hardware, Snakie acelera el ciclo edición-depuración una vez que el Pico
+  está conectado. Video introductorio: https://www.youtube.com/watch?v=qfT_Ndq-tJI
 
 ## Lecturas de la unidad
 - `lecturas/lecture07.md` — Excepciones y llamadas al sistema.
