@@ -1,5 +1,5 @@
 ---
-title: "Proyecto de Investigación --- Lenguajes de Interfaz 2026 \"A\""
+title: "Proyecto de Investigación --- Lenguajes de Interfaz 2026 \"B\""
 subtitle: "40 temas selectos y rúbrica de evaluación (5 categorías)"
 author: "TecNM Campus Tijuana --- Ingeniería en Sistemas Computacionales (SCC-1014)"
 date: "Agosto 2026"
@@ -22,7 +22,7 @@ un tema ya trabajado; el docente asigna o confirma el tema por Google Classroom.
 
 ## Entrega esperada
 
-Carpeta personal dentro de `entregas/2026a/research/<nombre-del-tema>/` con:
+Carpeta personal dentro de `entregas/2026b/research/<nombre-del-tema>/` con:
 
 - **`README.md`** --- título, introducción, desarrollo técnico (mínimo 500
   palabras), conclusiones y bibliografía en formato **IEEE**.
@@ -39,7 +39,7 @@ Carpeta personal dentro de `entregas/2026a/research/<nombre-del-tema>/` con:
 
 \newpage
 
-# Los 40 temas (2026 "A")
+# Los 40 temas (2026 "B")
 
 ## Programación en ensamblador ARM64 y bajo nivel
 
@@ -136,4 +136,4 @@ Carpeta personal dentro de `entregas/2026a/research/<nombre-del-tema>/` con:
 ---
 
 *Documento generado para el curso Lenguajes de Interfaz (SCC-1014), semestre
-2026 "A". Referencias del curso: `SYLLABUS.md`, `GRADING.md`, `AI_GUIDANCE.md`.*
+2026 "B". Referencias del curso: `SYLLABUS.md`, `GRADING.md`, `AI_GUIDANCE.md`.*
