@@ -1,5 +1,9 @@
 # Sentencias switch/case mediante tablas de saltos en ARM64
 
+**Autor:** Joel Junior Canales Calderón
+**Tema:** #8 — Grupo B (17:00)
+**Curso:** Lenguajes de Interfaz (SCC-1014), 2026 "B"
+
 ## Introducción
 
 En lenguajes de alto nivel como C, la sentencia `switch/case` permite seleccionar
