@@ -1,7 +1,8 @@
 # Documentación del uso de IA
 
-## Prompt 1
-> ```text
+## Consulta 1
+### Prompt
+```text
 # Role
 You're a senior software engineer specialized on computer science research, arm architecture, and low level code
 
@@ -21,23 +22,29 @@ At the end add a couple of recommendations you suggest me to research the topic 
 ```
 
 ### Respuesta
-```
+```markdown
 TL;DR:
 A linker script acts as the blueprint that bridges compiled object files (.o) and the physical memory of an ARM microcontroller. It dictates exactly where the linker must place executable code (Flash) and variables (SRAM), defining the memory boundaries, initialization values, and the startup vector table so the microcontroller knows how to boot and execute the firmware.
 Critical Assessment of Your Plan
+
 Before you begin writing, you need to re-evaluate your premise. A "short research paper" strictly on "Linker scripts para microcontroladores ARM" is fundamentally flawed if your goal is an academic or scientific publication. Linker scripts are a configuration tool, not a research field. If you just write about how they work, you are writing a tutorial or a documentation translation, not a research paper.
 Blind spot: You are confusing a development mechanism with a research topic.
 Correction: To make this viable for research, you must pivot the focus towards why manipulating the memory map matters. Frame it around Embedded Systems Security (e.g., isolating memory regions, stack overflow protection using MPU, secure bootloaders) or Performance Optimization (e.g., placing critical DSP routines in Tightly Coupled Memory - TCM).
+
 If you just need a technical report for an engineering class, the current scope is fine. Here is the structured roadmap you need.
 Recommended Subtopics (Ordered for Progression)
+
 1. El proceso de compilación y el archivo ELF
 You cannot explain a linker script without explaining what it is linking. This section must cover how compilers (like GCC) generate object files containing symbols, and how the linker resolves these symbols into a single Executable and Linkable Format (ELF) file.
+
 2. Mapa de memoria físico del ARM Cortex-M
 Before writing a script, the reader must understand the physical constraints. This covers the Harvard architecture in ARM Cortex-M, separating the instruction bus (Flash/ROM, typically starting at 0x08000000 in ST chips) and data bus (SRAM, typically at 0x20000000).
+
 3. Direcciones de Memoria: VMA vs. LMA
 This is the most critical conceptual hurdle in embedded systems.
  * LMA (Load Memory Address): Where the data is permanently stored while the device is powered off (Flash/ROM).
  * VMA (Virtual Memory Address): Where the data needs to be during execution (SRAM).
+
 4. Las Secciones Estándar (.text, .rodata, .data, .bss)
 Break down the standard GNU ld conventions:
  * .text: Executable code.
@@ -46,8 +53,10 @@ Break down the standard GNU ld conventions:
  * .bss: Uninitialized global/static variables (zeroed out).
 5. El proceso de arranque (Startup Code) y la Tabla de Vectores
 The linker script is useless without the startup code. Explain how the script places the Vector Table (specifically the Initial Stack Pointer and the Reset Handler) at the very beginning of the Flash memory.
+
 6. Inicialización en tiempo de ejecución (El gran malentendido)
 Address the fact that the linker does not copy variables from Flash to RAM. The linker merely exports symbols (like _sdata, _edata, _sbss, _ebss). The C Startup routine (written in Assembly or bare C) uses these symbols to physically copy .data from LMA to VMA and zero out .bss before calling main().
+
 7. Secciones Avanzadas: Stack, Heap y Mapeos Personalizados
 Cover how the script defines the boundaries of the Stack (growing downwards) and the Heap (growing upwards). Discuss custom sections, like forcing a DMA buffer into a specific SRAM bank using __attribute__((section(".my_ram"))).
 Recommendations for Research
