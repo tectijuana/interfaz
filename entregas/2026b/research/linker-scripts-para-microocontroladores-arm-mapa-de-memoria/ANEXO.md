@@ -1,7 +1,8 @@
 # Documentación del uso de IA
 
 ## Prompt 1
-> ```# Role
+> ```text
+# Role
 You're a senior software engineer specialized on computer science research, arm architecture, and low level code
 
 # Goal
@@ -16,7 +17,8 @@ I need to make a short research paper on the topic:
 First give me a brief summary of the topic so i can grasp an idea of what im searching for, then create a list of subtopics that i can include in the research
 Make sure that the order of the topics is ordered in such way that i can be eased into the concepts with each new topic
 I want summaries for each subtopic
-At the end add a couple of recommendations you suggest me to research the topic more easily and an explanation of problems or troubles i might find while doing this research```
+At the end add a couple of recommendations you suggest me to research the topic more easily and an explanation of problems or troubles i might find while doing this research
+```
 
 ### Respuesta
 ```
@@ -34,14 +36,14 @@ You cannot explain a linker script without explaining what it is linking. This s
 Before writing a script, the reader must understand the physical constraints. This covers the Harvard architecture in ARM Cortex-M, separating the instruction bus (Flash/ROM, typically starting at 0x08000000 in ST chips) and data bus (SRAM, typically at 0x20000000).
 3. Direcciones de Memoria: VMA vs. LMA
 This is the most critical conceptual hurdle in embedded systems.
-LMA (Load Memory Address): Where the data is permanently stored while the device is powered off (Flash/ROM).
-VMA (Virtual Memory Address): Where the data needs to be during execution (SRAM).
+ * LMA (Load Memory Address): Where the data is permanently stored while the device is powered off (Flash/ROM).
+ * VMA (Virtual Memory Address): Where the data needs to be during execution (SRAM).
 4. Las Secciones Estándar (.text, .rodata, .data, .bss)
 Break down the standard GNU ld conventions:
-.text: Executable code.
-.rodata: Read-only data (constants, strings).
-.data: Initialized global/static variables.
-.bss: Uninitialized global/static variables (zeroed out).
+ * .text: Executable code.
+ * .rodata: Read-only data (constants, strings).
+ * .data: Initialized global/static variables.
+ * .bss: Uninitialized global/static variables (zeroed out).
 5. El proceso de arranque (Startup Code) y la Tabla de Vectores
 The linker script is useless without the startup code. Explain how the script places the Vector Table (specifically the Initial Stack Pointer and the Reset Handler) at the very beginning of the Flash memory.
 6. Inicialización en tiempo de ejecución (El gran malentendido)
@@ -49,11 +51,11 @@ Address the fact that the linker does not copy variables from Flash to RAM. The 
 7. Secciones Avanzadas: Stack, Heap y Mapeos Personalizados
 Cover how the script defines the boundaries of the Stack (growing downwards) and the Heap (growing upwards). Discuss custom sections, like forcing a DMA buffer into a specific SRAM bank using __attribute__((section(".my_ram"))).
 Recommendations for Research
-Go directly to the GNU ld manual. Do not rely on random medium articles or forums. Search for "GNU ld manual Linker Scripts". It is the definitive source for the syntax (e.g., MEMORY, SECTIONS, ALIGN()).
-Read ARM's Architecture Reference Manuals. Specifically look at the memory map specifications for the Cortex-M processor you are targeting (e.g., Cortex-M4 or M33).  
-Study standard vendor scripts. Open a toolchain like STM32CubeIDE or MCUXpresso and read the .ld files they auto-generate. Reverse engineer them.
+ * Go directly to the GNU ld manual. Do not rely on random medium articles or forums. Search for "GNU ld manual Linker Scripts". It is the definitive source for the syntax (e.g., MEMORY, SECTIONS, ALIGN()).
+ * Read ARM's Architecture Reference Manuals. Specifically look at the memory map specifications for the Cortex-M processor you are targeting (e.g., Cortex-M4 or M33).
+ * Study standard vendor scripts. Open a toolchain like STM32CubeIDE or MCUXpresso and read the .ld files they auto-generate. Reverse engineer them.
 Pitfalls and Troubles You Will Face
-Syntax Obscurity: The GNU linker script language is archaic. Tracking the current location counter (.) and understanding alignment (ALIGN(4)) will frustrate you. If you misalign a section, the ARM processor will trigger a HardFault on memory access.
-The "LMA to VMA" Blind Spot: Many developers assume the linker automatically puts .data in RAM. It doesn't. If you fail to clearly distinguish the linker's job (assigning addresses) from the startup code's job (moving bytes based on those addresses), your paper will be factually incorrect.
-Stack/Heap Collisions: Linker scripts often do not dynamically prevent the stack and heap from colliding. You need to understand how linker symbols act as "guardrails" that the software must respect, but the hardware will not enforce unless you configure a Memory Protection Unit (MPU).
+ * Syntax Obscurity: The GNU linker script language is archaic. Tracking the current location counter (.) and understanding alignment (ALIGN(4)) will frustrate you. If you misalign a section, the ARM processor will trigger a HardFault on memory access.
+ * The "LMA to VMA" Blind Spot: Many developers assume the linker automatically puts .data in RAM. It doesn't. If you fail to clearly distinguish the linker's job (assigning addresses) from the startup code's job (moving bytes based on those addresses), your paper will be factually incorrect.
+ * Stack/Heap Collisions: Linker scripts often do not dynamically prevent the stack and heap from colliding. You need to understand how linker symbols act as "guardrails" that the software must respect, but the hardware will not enforce unless you configure a Memory Protection Unit (MPU).
 ```
