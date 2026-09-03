@@ -60,7 +60,7 @@ A continuación se presenta el núcleo optimizado en ensamblador para la iteraci
 section .text
 global crc32_lut_asm
 
-; Parámetros (Convenión de llamada System V AMD64):
+; Parámetros (Convención de llamada System V AMD64):
 ; rdi = puntero al búfer de datos (const uint8_t *data)
 ; rsi = longitud del búfer en bytes (size_t length)
 ; rdx = puntero a la tabla LUT de 256 dwords (const uint32_t *lut)
@@ -86,3 +86,24 @@ crc32_lut_asm:
 .done:
     not     eax                     ; XOR final con 0xFFFFFFFF
     ret                             ; Retornar CRC-32 en EAX
+
+```
+### Análisis del Rendimiento y Gestión de Registros
+
+La rutina en ensamblador aprovecha directamente la arquitectura del procesador:
+
+* **Uso de Registros:** Se emplean registros de 64 bits (`rdi`, `rsi`, `rdx`) para el manejo de punteros y contadores, y registros de 32 bits (`eax`, `r8d`, `r9d`) para las operaciones lógicas de CRC-32, evitando totalmente los accesos a la pila dentro del bucle crítico.
+* **Instrucciones Eficientes:** La instrucción `movzx` elimina extensiones de signo innecesarias, y la dirección indexada `[rdx + r8*4]` realiza la escala y desplazamiento en la tabla LUT en un único ciclo de instrucción.
+
+## Conclusiones
+
+* La implementación de algoritmos CRC en ensamblador permite maximizar la eficiencia del procesador al reducir el conteo de instrucciones por byte a menos de 8 ciclos de reloj en el enfoque por tabla de búsqueda.
+* El algoritmo basado en tabla (LUT) ofrece un incremento de rendimiento superior a 6x en comparación con la técnica bit a bit, a costa de ocupar 512 bytes de memoria (para CRC-16) o 1024 bytes (para CRC-32), lo cual representa un balance ideal para la mayoría de sistemas embebidos modernos.
+* La optimización a nivel de ensamblador garantiza un tiempo de ejecución determinista, aspecto fundamental para el cumplimiento de restricciones temporales fijas (*deadlines*) en protocolos de comunicación industrial de tiempo real.
+
+## Bibliografía
+
+* [1] W. H. Press, S. A. Teukolsky, W. T. Vetterling, and B. P. Flannery, *Numerical Recipes in C: The Art of Scientific Computing*, 2nd ed. Cambridge, UK: Cambridge Univ. Press, 1992.
+* [2] R. N. Williams, "A Painless Guide to CRC Error Detection Algorithms," Rocksoft Pty Ltd., Hobart, Australia, Tech. Rep., Aug. 1993.
+* [3] IEEE Standard for Ethernet, IEEE Std 802.3-2018, Aug. 2018.
+* [4] Intel Corporation, *Intel® 64 and IA-32 Architectures Software Developer's Manual*, Vol. 2A: Instruction Set Reference, A-L, Dec. 2023.
