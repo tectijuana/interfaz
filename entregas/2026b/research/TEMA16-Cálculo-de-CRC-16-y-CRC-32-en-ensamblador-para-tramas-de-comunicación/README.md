@@ -50,7 +50,7 @@ Para aplicaciones que exigen alto rendimiento (*throughput*), se implementa el a
 
 La ecuación de actualización del estado del CRC para un byte entrante $B$ se define como:
 
-$$\text{CRC}_{n+1} = (\text{CRC}_n \gg 8) \oplus \text{LUT}\left[(\text{CRC}_n \oplus B) \text{ \& } \text{0xFF}\right]$$
+$$\text{CRC}_{n+1} = (\text{CRC}_n \gg 8) \oplus \text{LUT}\left[(\text{CRC}_n \oplus B) \mathbin{\text{AND}} \text{0xFF}\right]$$
 
 ### Fragmento de Código Optimizado (Ensamblador x86-64 para CRC-32 por Tabla)
 
