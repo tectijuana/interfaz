@@ -15,7 +15,7 @@
 #    Solo que clientes macOS y Linux deben de poner permisos a la llave con $ chmod 400 llavesita.pem
 # Corrida:
 #    $ wget https://raw.githubusercontent.com/tectijuana/interfaz/refs/heads/main/docs/entorno/setup64-2025a.sh
-#    $ chmod +x setup64.sh
+#    $ chmod +x setup64-2025a.sh
 #    $ ./setup64-2025a.sh
 
 
