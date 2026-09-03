@@ -1,9 +1,3 @@
-**Autor:** Grande Ortega Maximiliano Alberto  
-**Fecha:** 01 de Septiembre de 2026  
-**Documento:** Implementación de CRC-16 y CRC-32 en Ensamblador  
----
-
-
 # Implementación Optimizada de Algoritmos CRC-16 y CRC-32 en Ensamblador para la Verificación de Integridad en Tramas de Comunicación
 
 ## Introducción
@@ -113,3 +107,8 @@ La rutina en ensamblador aprovecha directamente la arquitectura del procesador:
 * [2] R. N. Williams, "A Painless Guide to CRC Error Detection Algorithms," Rocksoft Pty Ltd., Hobart, Australia, Tech. Rep., Aug. 1993.
 * [3] IEEE Standard for Ethernet, IEEE Std 802.3-2018, Aug. 2018.
 * [4] Intel Corporation, *Intel® 64 and IA-32 Architectures Software Developer's Manual*, Vol. 2A: Instruction Set Reference, A-L, Dec. 2023.
+---
+**Autor:** Grande Ortega Maximiliano Alberto  
+**Fecha:** 01 de Septiembre de 2026  
+**Documento:** Implementación de CRC-16 y CRC-32 en Ensamblador  
+---
