@@ -1,3 +1,9 @@
+**Autor:** Grande Ortega Maximiliano Alberto  
+**Fecha:** 01 de Septiembre de 2026  
+**Documento:** Implementación de CRC-16 y CRC-32 en Ensamblador  
+---
+
+
 # Implementación Optimizada de Algoritmos CRC-16 y CRC-32 en Ensamblador para la Verificación de Integridad en Tramas de Comunicación
 
 ## Introducción
