@@ -16,7 +16,7 @@
 # Corrida:
 #    $ wget https://raw.githubusercontent.com/tectijuana/interfaz/refs/heads/main/docs/entorno/setup64-2025a.sh
 #    $ chmod +x setup64.sh
-#    $ ./setup64.sh
+#    $ ./setup64-2025a.sh
 
 
 # =======================================================================
