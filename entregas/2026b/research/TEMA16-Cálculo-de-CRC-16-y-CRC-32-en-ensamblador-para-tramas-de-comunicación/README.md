@@ -1,114 +1,175 @@
-# Implementación Optimizada de Algoritmos CRC-16 y CRC-32 en Ensamblador para la Verificación de Integridad en Tramas de Comunicación
+# Análisis Estructural del Formato ELF y Disposición de Secciones (.text, .data, .bss) en Arquitecturas ARM
+
+---
 
 ## Introducción
 
-En los sistemas de comunicación digital e industrial, la integridad de los datos transmitidos a través de canales ruidosos constituye un pilar crítico. Los errores aleatorios inducidos por interferencias electromagnéticas, ruidos de conmutación o atenuación del canal pueden alterar la secuencia de bits enviada, comprometiendo la operación de los sistemas receptores. Para detectar estas alteraciones de manera eficiente, se emplean códigos de redundancia cíclica (CRC, *Cyclic Redundancy Check*).
+El formato **ELF** (*Executable and Linkable Format*) constituye el estándar para la representación de archivos ejecutables, código objeto relocalizable, bibliotecas compartidas y volcados de memoria (*core dumps*) en la mayoría de los sistemas operativos tipo Unix, incluidos Linux y variados entornos empotrados (*embedded systems*). En arquitecturas de procesadores **ARM** (como ARMv7-A/R/M y ARMv8-A AArch32/AArch64), la comprensión de la estructura ELF es esencial para optimizar la gestión de memoria, analizar la seguridad de binarios y programar firmware en entornos bare-metal o bajo kernel Linux.
 
-A diferencia de las sumas de comprobación simples (*checksums*), los algoritmos CRC se basan en la aritmética de polinomios sobre el cuerpo finito $\mathbb{GF}(2)$, lo que les confiere una capacidad superior para detectar errores en ráfaga (*burst errors*). Aunque la implementación de CRC-16 y CRC-32 suele realizarse en lenguajes de alto nivel como C o Python, las aplicaciones empotradas con restricciones estrictas de tiempo real y bajo consumo de recursos exigen un nivel superior de optimización. El desarrollo de estas rutinas directamente en lenguaje ensamblador (*Assembly*) permite gestionar de forma precisa los registros del procesador, minimizar el número de ciclos de reloj por byte procesado y eliminar la sobrecarga impuesta por las abstracciones de los compiladores.
+El objetivo de este documento es proporcionar un análisis exhaustivo del formato ELF con especial foco en la microarquitectura ARM. Se abordan sus encabezados fundamentales, las tablas de control, el comportamiento detallado de las secciones principales (`.text`, `.data`, `.bss`), y los mecanismos de mapeo en memoria virtual y física.
+
+---
 
 ## Desarrollo Técnico
 
-### Fundamentos Matemáticos del CRC
+---
 
-Un código CRC trata un bloque de datos binarios como un polinomio $M(x)$, cuyos coeficientes pertenecen al conjunto $\{0, 1\}$. Para calcular el código de verificación, se utiliza un polinomio generador prefijado $G(x)$ de grado $k$ (donde $k=16$ para CRC-16 y $k=32$ para CRC-32). El cálculo del resto $R(x)$ se define algebraicamente mediante la división polinómica:
+### 1. Visión General del Formato ELF
 
-$$M(x) \cdot x^k = Q(x) \cdot G(x) \oplus R(x)$$
+El estándar ELF organiza la información binaria de manera flexible y extensible. Para lograr esto, el formato adopta una **doble vista** (*Dual View*) en función de la etapa del ciclo de vida del software:
 
-Donde $\oplus$ representa la adición en $\mathbb{GF}(2)$, equivalente a la función lógica XOR a nivel de bits. Dado que la resta y la suma son identidades en este cuerpo finito, la división se reduce a una secuencia repetida de desplazamientos de bits (*shifts*) y operaciones XOR condicionales según el bit más significativo (MSB).
+| Etapa | Componente de Control | Unidad de Trabajo |
+| :--- | :--- | :--- |
+| **Enlazado** (*Linking View*) | Tabla de Cabeceras de Sección (*Section Header Table*) | Secciones (*Sections*) |
+| **Ejecución** (*Execution View*) | Tabla de Cabeceras de Programa (*Program Header Table*) | Segmentos (*Segments*) |
 
-### Polinomios Estándar Empleados
 
-En este proyecto se implementaron dos variaciones estandarizadas utilizadas ampliamente en protocolos de red y buses industriales:
+VISTA DE ENLAZADO (Linking View)             VISTA DE EJECUCIÓN (Execution View)
 
-1. **CRC-16-CCITT:**
-   * **Polinomio:** $G(x) = x^{16} + x^{12} + x^5 + 1$ (Representación hexadecimal: `0x1021`, o `0x8408` en formato reflejado).
-   * **Valor Inicial:** `0xFFFF`.
-   * **Uso:** Modbus, XMODEM, Bluetooth.
-2. **CRC-32 (IEEE 802.3):**
-   * **Polinomio:** $G(x) = x^{32} + x^{26} + x^{23} + x^{22} + x^{16} + x^{12} + x^{11} + x^{10} + x^8 + x^7 + x^5 + x^4 + x^2 + x + 1$ (Hexadecimal reflejado: `0xEDB88320`).
-   * **Valor Inicial:** `0xFFFFFFFF`, con XOR final de `0xFFFFFFFF`.
-   * **Uso:** Tramas Ethernet, archivos ZIP, PNG.
 
-### Estrategias de Implementación en Ensamblador
++-------------------------------------+      +-------------------------------------+
 
-Se diseñaron dos enfoques en ensamblador (arquitectura x86-64 / ARM según el perfil del objetivo):
+|             ELF Header              |      |             ELF Header              |
 
-#### 1. Enfoque Bit a Bit (Bajo Consumo de Memoria)
++-------------------------------------+      +-------------------------------------+
 
-Ideal para microcontroladores con recursos de memoria extremadamente reducidos. Examina cada bit del byte de entrada individualmente.
+|     Program Header Table (Opcional) |      |        Program Header Table         |
 
-El bucle principal para cada byte de la trama sigue el flujo:
-1. Combinar el byte entrante con el registro acumulador de CRC mediante XOR.
-2. Iterar 8 veces (una por cada bit):
-   * Desplazar el registro de CRC un bit hacia la derecha (o izquierda según el reflejo).
-   * Si el bit desplazado es 1, realizar `XOR` con la máscara del polinomio generador.
-   * Si es 0, continuar al siguiente bit.
++-------------------------------------+      +-------------------------------------+
 
-#### 2. Enfoque Basado en Tablas de Búsqueda (*Look-Up Table* - LUT)
+|              .text                  |      |                                     |
 
-Para aplicaciones que exigen alto rendimiento (*throughput*), se implementa el algoritmo por bytes mediante una tabla precalculada de 256 entradas. Esta técnica procesa 8 bits por iteración en lugar de evaluar bit a bit.
++-------------------------------------+      |         Segmento de Código          |
 
-La ecuación de actualización del estado del CRC para un byte entrante $B$ se define como:
+|              .rodata                |      |            (Read / Execute)         |
 
-$$\text{CRC}_{n+1} = (\text{CRC}_n \gg 8) \oplus \text{LUT}\left[(\text{CRC}_n \oplus B) \mathbin{\text{AND}} \text{0xFF}\right]$$
++-------------------------------------+      |                                     |
 
-### Fragmento de Código Optimizado (Ensamblador x86-64 para CRC-32 por Tabla)
+|              .data                  |      +-------------------------------------+
 
-A continuación se presenta el núcleo optimizado en ensamblador para la iteración sobre el búfer de comunicación:
++-------------------------------------+      |                                     |
 
-```assembly
-section .text
-global crc32_lut_asm
+|              .bss                   |      |          Segmento de Datos          |
 
-; Parámetros (Convención de llamada System V AMD64):
-; rdi = puntero al búfer de datos (const uint8_t *data)
-; rsi = longitud del búfer en bytes (size_t length)
-; rdx = puntero a la tabla LUT de 256 dwords (const uint32_t *lut)
++-------------------------------------+      |            (Read / Write)           |
 
-crc32_lut_asm:
-    mov     eax, 0xFFFFFFFF         ; Cargar valor inicial del CRC
-    test    rsi, rsi                ; Comprobar si la longitud es 0
-    jz      .done
+|     Section Header Table            |      |                                     |
 
-.loop:
-    movzx   r8d, byte [rdi]         ; Cargar el byte actual de la trama
-    mov     r9d, eax                ; Copiar CRC actual
-    xor     r8b, r9b                ; Índice = (CRC ^ data) & 0xFF
-    movzx   r8, r8b                 ; Extender con ceros para direccionamiento
++-------------------------------------+      +-------------------------------------+
 
-    shr     eax, 8                  ; CRC >> 8
-    xor     eax, dword [rdx + r8*4] ; CRC = (CRC >> 8) ^ LUT[índice]
 
-    inc     rdi                     ; Avanzar puntero de datos
-    dec     rsi                     ; Decrementar contador de longitud
-    jnz     .loop                   ; Repetir mientras queden bytes
+---
 
-.done:
-    not     eax                     ; XOR final con 0xFFFFFFFF
-    ret                             ; Retornar CRC-32 en EAX
+### 2. Estructura Interna y Encabezados ELF
 
+#### A. Encabezado Principal (ELF Header)
+Contiene la "firma" (*magic bytes*: `0x7F 'E' 'L' 'F'`) y la metainformación global del archivo. Define si el binario es de 32 bits (`ELFCLASS32`) o 64 bits (`ELFCLASS64`), el endianness (Little Endian en la mayoría de configuraciones ARM), el punto de entrada (*Entry Point*) y el tipo de arquitectura objetivo (`EM_ARM` / `0x28` para ARM 32-bit o `EM_AARCH64` / `0xB7` para 64-bit).
+
+#### B. Tabla de Cabeceras de Programa (Program Header Table)
+Es vital para el cargador del sistema operativo (*loader*). Describe los **Segmentos** (como `PT_LOAD`) que deben cargarse en memoria virtual. Mapea regiones continuas del archivo binario a direcciones de memoria con permisos estrictos de acceso (lectura `R`, escritura `W`, ejecución `X`).
+
+#### C. Tabla de Cabeceras de Sección (Section Header Table)
+Proporciona la lista completa de **Secciones**, sus nombres, tipos (`SHT_PROGBITS`, `SHT_NOBITS`), alineación y atributos (*flags* como `SHF_ALLOC`, `SHF_EXECINSTR`, `SHF_WRITE`).
+
+---
+
+### 3. Las Secciones Fundamentales en ARM
+
+
+        Direcciones Altas de Memoria
+        +---------------------------+
+        |        Stack (Pila)       |  v Crece hacia abajo
+        +---------------------------+
+        |                           |
+        |        Heap (Montículo)   |  ^ Crece hacia arriba
+        +---------------------------+
+        | .bss (Var. No Inic. = 0)  |  (Solo ocupa espacio en RAM)
+        +---------------------------+
+        | .data (Var. Inicializadas)|  (Ocupa Flash/Disco y RAM)
+        +---------------------------+
+        | .text (Código Ejecutable) |  (Solo Lectura / Ejecución)
+        +---------------------------+
+        Direcciones Bajas de Memoria
+
+
+---
+
+#### Sección A: La Sección `.text` (Código de Instrucciones)
+* **Propósito:** Almacena el código de máquina traducido por el compilador para el procesador ARM, junto con las constantes de solo lectura (`.rodata`) o los *literal pools*.
+* **Permisos:** Lectura y Ejecución (`R-X`). No posee permisos de escritura por motivos de seguridad (*W^X: Write XOR Execute*).
+* **Particularidad en Arquitecturas ARM:**
+  * En ARM de 32 bits (AArch32), la sección `.text` almacena instrucciones con alineación fija a 32 bits (4 bytes) o instrucciones comprimidas del conjunto **Thumb/Thumb-2** alineadas a 16 bits (2 bytes).
+  * Contiene los llamados **Literal Pools** (pozas de literales): constantes o direcciones de 32/64 bits embebidas directamente dentro de la sección de código porque la arquitectura ARM no permite cargar literales de 32 bits mediante una sola instrucción de tipo *Immediate*.
+  * En microcontroladores ARM Cortex-M, esta sección reside directamente en la memoria **Flash ROM**.
+
+#### Sección B: La Sección `.data` (Datos Inicializados)
+* **Propósito:** Contiene todas las variables globales y estáticas que han sido explícitamente inicializadas con un valor distinto de cero en el código fuente.
+* **Permisos:** Lectura y Escritura (`RW-`).
+* **Ubicación y Manejo de Memoria:**
+  * En sistemas con S.O. (ej. Linux en ARM), el cargador mapea las copias iniciales desde el archivo ELF del almacenamiento a las páginas de RAM dedicadas al proceso.
+  * En sistemas embebidos *bare-metal* (Cortex-M), los valores iniciales residen en la Flash (*LMA - Load Memory Address*) y el código de arranque (*startup script*) debe copiarlos a la memoria SRAM (*VMA - Virtual Memory Address*) antes de llamar a la función `main()`.
+
+#### Sección C: La Sección `.bss` (Block Started by Symbol)
+* **Propósito:** Guarda variables globales y estáticas no inicializadas o inicializadas explícitamente a cero.
+* **Permisos:** Lectura y Escritura (`RW-`).
+* **Optimización de Espacio:** 
+  * A diferencia de `.data`, la sección `.bss` **no ocupa espacio físico en la imagen del ejecutable** en disco o Flash. En la cabecera de la sección se especifica su tipo como `SHT_NOBITS`.
+  * La cabecera ELF solo declara la dirección inicial y el tamaño total requerido (`sh_size`).
+  * Durante la carga del binario, el kernel o el *startup code* asigna el bloque de memoria RAM indicado y llena todos sus bytes con ceros (`0x00`). Esto reduce radicalmente el tamaño del archivo ejecutable.
+
+---
+
+### 4. Tabla Comparativa de Secciones
+
+| Propiedad | Sección `.text` | Sección `.data` | Sección `.bss` |
+| :--- | :--- | :--- | :--- |
+| **Contenido** | Código de máquina ARM / Thumb / Literales | Variables globales/estáticas inicializadas | Variables globales/estáticas sin inicializar (o a cero) |
+| **Tipo ELF** | `SHT_PROGBITS` | `SHT_PROGBITS` | `SHT_NOBITS` |
+| **Ocupa espacio en archivo** | Sí | Sí | No |
+| **Ocupa espacio en RAM** | Sí (o ejecutable desde Flash) | Sí | Sí |
+| **Permisos típicos** | Read / Execute (`R-X`) | Read / Write (`RW-`) | Read / Write (`RW-`) |
+| **Atributos (Flags)** | `SHF_ALLOC` + `SHF_EXECINSTR` | `SHF_ALLOC` + `SHF_WRITE` | `SHF_ALLOC` + `SHF_WRITE` |
+
+---
+
+### 5. Análisis Práctico con Herramientas GNU Toolchain para ARM
+
+Para examinar la estructura ELF en binarios ARM de manera práctica, se utiliza la suite de herramientas **GNU Binary Utilities (`binutils`)**:
+
+1. **Lectura de encabezados de programa y secciones:**
+```bash
+arm-none-eabi-readelf -a ejecutable.elf
+
+
+Inspección detallada de las secciones de un archivo objeto:
+
+arm-none-eabi-objdump -h ejecutable.elf
+
+3. **Mapeo de tamaños fijos de secciones (`.text`,** **`.data`****,** **`.bss`****):**
+
+
+
+
+```bash
+arm-none-eabi-size ejecutable.elf
 ```
-### Análisis del Rendimiento y Gestión de Registros
-
-La rutina en ensamblador aprovecha directamente la arquitectura del procesador:
-
-* **Uso de Registros:** Se emplean registros de 64 bits (`rdi`, `rsi`, `rdx`) para el manejo de punteros y contadores, y registros de 32 bits (`eax`, `r8d`, `r9d`) para las operaciones lógicas de CRC-32, evitando totalmente los accesos a la pila dentro del bucle crítico.
-* **Instrucciones Eficientes:** La instrucción `movzx` elimina extensiones de signo innecesarias, y la dirección indexada `[rdx + r8*4]` realiza la escala y desplazamiento en la tabla LUT en un único ciclo de instrucción.
 
 ## Conclusiones
 
-* La implementación de algoritmos CRC en ensamblador permite maximizar la eficiencia del procesador al reducir el conteo de instrucciones por byte a menos de 8 ciclos de reloj en el enfoque por tabla de búsqueda.
-* El algoritmo basado en tabla (LUT) ofrece un incremento de rendimiento superior a 6x en comparación con la técnica bit a bit, a costa de ocupar 512 bytes de memoria (para CRC-16) o 1024 bytes (para CRC-32), lo cual representa un balance ideal para la mayoría de sistemas embebidos modernos.
-* La optimización a nivel de ensamblador garantiza un tiempo de ejecución determinista, aspecto fundamental para el cumplimiento de restricciones temporales fijas (*deadlines*) en protocolos de comunicación industrial de tiempo real.
+1. **Estructuración eficiente:** El formato ELF divide limpiamente las responsabilidades mediante la arquitectura de doble vista (*Linking View* vs *Execution View*), permitiendo que los compiladores y los cargadores del sistema operativo procesen el binario de forma independiente y óptima.
+
+2. **Optimización de recursos en ARM:** La distinción estricta entre `.data` y `.bss` previene el desperdicio de almacenamiento no volátil (Flash o Disco), reservando almacenamiento físico en archivo solo para aquellos datos que requieren un valor inicial definido.
+
+3. **Seguridad y ejecución:** La separación lógica de las secciones `.text` (ejecutable, no escribible) y `.data`/`.bss` (no ejecutable, escribible) permite aplicar mecanismos hardware de protección de memoria (como el bit *NX/XN - Never Execute*) en la Unidad de Manejo de Memoria (**MMU**) o de Protección de Memoria (**MPU**) de los procesadores ARM.
 
 ## Bibliografía
 
-* [1] W. H. Press, S. A. Teukolsky, W. T. Vetterling, and B. P. Flannery, *Numerical Recipes in C: The Art of Scientific Computing*, 2nd ed. Cambridge, UK: Cambridge Univ. Press, 1992.
-* [2] R. N. Williams, "A Painless Guide to CRC Error Detection Algorithms," Rocksoft Pty Ltd., Hobart, Australia, Tech. Rep., Aug. 1993.
-* [3] IEEE Standard for Ethernet, IEEE Std 802.3-2018, Aug. 2018.
-* [4] Intel Corporation, *Intel® 64 and IA-32 Architectures Software Developer's Manual*, Vol. 2A: Instruction Set Reference, A-L, Dec. 2023.
----
-**Autor:** Grande Ortega Maximiliano Alberto  
-**Fecha:** 01 de Septiembre de 2026  
-**Documento:** Implementación de CRC-16 y CRC-32 en Ensamblador  
----
+1. ARM Architecture Reference Manual ARMv8, *for ARMv8-A architecture profile*, ARM Ltd., Doc. ARM DDI 0487, 2021.
+
+2. Tool Interface Standard (TIS), *Executable and Linking Format (ELF) Specification*, Version 1.2, *Relocatable Object Module Format*, 1995.
+
+3. J. S. Joseph, *ARM Assembly Language: Fundamentals and Techniques*, 2nd ed. Boca Raton, FL, USA: CRC Press, 2015.
+
+4. R. Linux Software Building, *System V Application Binary Interface: ELF (Executable and Linking Format)*, SCO OpenServer Architecture, 2010.
+
+5. S. Furber, *ARM System-on-Chip Architecture*, 2nd ed. Boston, MA, USA: Addison-Wesley, 2000.
