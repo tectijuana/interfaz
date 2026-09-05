@@ -1,5 +1,3 @@
-# Archivo 1: `README.md`
-
 # Análisis Estructural del Formato ELF y Disposición de Secciones (.text, .data, .bss) en Arquitecturas ARM
 
 ---
