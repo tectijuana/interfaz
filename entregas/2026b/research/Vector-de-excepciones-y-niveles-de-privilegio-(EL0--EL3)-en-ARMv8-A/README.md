@@ -2,24 +2,6 @@
 
 Guía de referencia sobre el modelo de privilegios y el manejo de excepciones en la arquitectura **ARMv8-A**: los cuatro niveles de ejecución (*Exception Levels*, EL0–EL3), cómo y cuándo se transita entre ellos, y la estructura de la **tabla de vectores de excepción** que el procesador consulta cada vez que ocurre una excepción.
 
-## Tabla de contenidos
-
-- [1. Introducción](#1-introducción)
-- [2. Niveles de privilegio (Exception Levels)](#2-niveles-de-privilegio-exception-levels)
-  - [2.1 EL0 — Aplicación de usuario](#21-el0--aplicación-de-usuario)
-  - [2.2 EL1 — Kernel del sistema operativo](#22-el1--kernel-del-sistema-operativo)
-  - [2.3 EL2 — Hipervisor](#23-el2--hipervisor)
-  - [2.4 EL3 — Monitor seguro / Firmware](#24-el3--monitor-seguro--firmware)
-- [3. Estados de seguridad: Secure vs Non-secure](#3-estados-de-seguridad-secure-vs-non-secure)
-- [4. Tipos de excepción](#4-tipos-de-excepción)
-- [5. La tabla de vectores de excepción](#5-la-tabla-de-vectores-de-excepción)
-  - [5.1 Registros base (VBAR_ELx)](#51-registros-base-vbar_elx)
-  - [5.2 Las 16 entradas de la tabla](#52-las-16-entradas-de-la-tabla)
-- [6. Ciclo de vida de una excepción](#6-ciclo-de-vida-de-una-excepción)
-- [7. Registros clave por nivel](#7-registros-clave-por-nivel)
-- [8. Reglas de transición entre niveles](#8-reglas-de-transición-entre-niveles)
-- [9. Referencias](#9-referencias)
-
 ## 1. Introducción
 
 ARMv8-A organiza la ejecución del software en **niveles de privilegio jerárquicos**, llamados *Exception Levels* (EL). Cuanto mayor es el número, mayor es el privilegio:
