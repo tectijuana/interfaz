@@ -85,7 +85,7 @@ print(f"CRC-32 en hexadecimal: {crc_valor:08X}")
 
 El CRC se considera como un mecanismo esencial para garantizar la integridad de los datos en cualquier trama de comunicación, gracias a su capacidad de detectar errores mediante operaciones matemáticas simples pero muy efectivas basadas en división polinomial, por lo que es la solucion mas empleada en el mundo digital cuando se trata de transmitir informacion de una punto a otro conectado en la misma red.
 
-## Referencias
+## Bibliografia
 
 [1] EverpureData, "What is a Cyclic Redundancy Check (CRC) in Networking?," *EverpureData*, 2023. [En linea]. Disponible: https://www.everpuredata.com/la/knowledge/cyclic-redundancy-check.html. [Accedido: 10-sep-2026].
 
