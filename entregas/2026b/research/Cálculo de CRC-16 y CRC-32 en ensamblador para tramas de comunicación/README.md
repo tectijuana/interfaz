@@ -11,23 +11,19 @@
 
 ## ¿Qué es el CRC?
 
-CRC es un algoritmo que se utiliza para detectar errores en la transmisión de datos. Este algoritmo genera una suma de comprobación, un valor de tamaño fijo derivado de los datos que se están transmitiendo. 
-
-Dicha suma de comprobación se agrega a los datos y se envía junto con ellos. Cuando los datos llegan al receptor, este realiza el mismo algoritmo CRC y compara la suma de comprobación calculada con la recibida. Si coinciden, los datos se han transmitido correctamente. Si no, indica que ocurrieron errores durante la transmisión.
+El método CRC trata la información a enviar como si fueran expresiones polinómicas. Tanto el dispositivo que envía como el que recibe deben ponerse de acuerdo previamente en un polinomio divisor, conocido como polinomio generador. A la información original se le añade un código de verificación, que corresponde al residuo obtenido al dividir dicha información entre el polinomio generador.
 
 ![CRC 16 / CRC 32 Checksum Generator (Modbus) Technical Diagram](https://cdn.shopify.com/s/files/1/0615/2193/articles/crc-16-crc-32-checksum-generator-modbus-diagram.png?v=1772188272)
 
 ## ¿Cómo funciona?
-
 El CRC se basa en el tratamiento de los datos que se transmitirán como polinomios. El emisor y el receptor acuerdan un polinomio divisor fijo, a menudo denominado polinomio generador. Los datos se aumentan con una suma de comprobación, que es el resto de la división polinómica de los datos originales por el polinomio del generador.
 
-Al final del remitente, se calcula la suma de comprobación de CRC y se anexa a los datos antes de la transmisión. Al final del receptor, los datos recibidos junto con la suma de comprobación se dividen por el mismo polinomio generador. Si el resto es cero, se supone que los datos están libres de errores; de lo contrario, se detecta un error.
+Del lado del emisor, se obtiene este código y se coloca al final de los datos antes de enviarlos. Del lado del receptor, se toma la información junto con el código recibido y se divide nuevamente entre el mismo polinomio. Si el resultado de esa división da como residuo cero, se asume que la información no tiene errores; si el residuo es distinto de cero, se identifica que existió un problema en la transmisión.
 
 ## Ventajas por las que se usa sobre otras opciones
 
-- El CRC es particularmente eficaz para detectar errores que podrían alterar el orden de los bits en un mensaje. Esto es muy importante en situaciones en las que mantener la secuencia exacta de bits es esencial para interpretar los datos correctamente.
-- Una de las ventajas clave del CRC es su sencillez en la implementación, especialmente en el hardware binario. El algoritmo implica operaciones directas en bit, lo que lo hace eficiente para la verificación de errores basada en hardware.
-- En los canales de comunicación del mundo real, el ruido es un compañero inevitable. El CRC es particularmente robusto en la detección de errores comunes introducidos por el ruido durante la transmisión de datos. Su naturaleza cíclica y su dependencia de la división polinomial le permiten identificar de manera eficaz los errores causados por fluctuaciones aleatorias o alteraciones en la señal.
+- El CRC destaca por su capacidad para detectar fallos que modifiquen el orden de los bits dentro de un mensaje, algo fundamental en contextos donde conservar la secuencia correcta de bits resulta indispensable para leer bien la información.
+- En los sistemas de comunicación reales, el ruido siempre está presente. El CRC resulta ser especialmente confiable para detectar este tipo de errores que el ruido provoca durante el envío de datos. Gracias a su carácter cíclico y a que se apoya en la división de polinomios, logra detectar con eficacia errores generados por interferencias o variaciones inesperadas en la señal.
 
 ## CRC-16 y CRC-32, ¿qué son?
 
@@ -37,17 +33,13 @@ Al final del remitente, se calcula la suma de comprobación de CRC y se anexa a 
 
 ## ¿Qué es la trama de comunicación "Ethernet"?
 
-Dentro de las redes Ethernet, los dispositivos conectados entre sí se intercambian paquetes de datos, denominados a su vez paquetes Ethernet. Cuando se produce dicha transmisión de datos, la trama Ethernet es la responsable de la configuración de las reglas de transmisión para conseguir el éxito en la misma.
+En las redes tipo Ethernet, los equipos conectados se comunican mediante el envío de paquetes de información, llamados paquetes Ethernet. Durante este proceso de transmisión, la trama Ethernet cumple la función de establecer las normas necesarias para que el envío se complete correctamente.
 
-Podríamos decir que los datos enviados dentro de redes Ethernet se transportan a través de la trama, la cual tiene un tamaño de entre 64 y 1518 bytes, en función del tamaño de los datos que transporte.
+Se puede decir que la información que circula por redes Ethernet viaja dentro de la trama, cuyo tamaño varía entre 64 y 1518 bytes, dependiendo de la cantidad de datos que contenga.
 
-Las tramas Ethernet tienen información de control sobre los datos, información sobre las direcciones de origen y destino de los envíos y un registro de los datos enviados.
+Cada trama Ethernet incluye datos de control, las direcciones tanto de origen como de destino, y un registro de la información transmitida.
 
 ![Trama de comunicación serial con 1 bit de inicio, 8 bits de datos, 1 bit de parada a 9600 BAUD](https://hetpro-store.com/TUTORIALES/wp-content/uploads/2017/10/Distintas-Tramas-protocolo-Serial.jpg)
-
-
-
-Para implementar CRC-16 y CRC-32 en Assembly (Ensamblador) para tramas de comunicación, el enfoque más eficiente y utilizado en sistemas embebidos o de comunicaciones es el método por tabla de búsqueda (Lookup Table). Calcularlo bit a bit es muy lento, mientras que con una tabla precalculada se procesa un byte completo a la vez.
 
 ### Ejemplo de código CRC-16 (Python)
 
