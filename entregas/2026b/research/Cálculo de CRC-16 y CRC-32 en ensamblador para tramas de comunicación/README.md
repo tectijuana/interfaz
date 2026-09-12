@@ -3,6 +3,7 @@
 + **Materia:** Lenguajes de Interfaz - (17:00-18:00) 
 + **Grupo:** SCC-1014 - "B"
 + **Fecha:** 11/ Septiembre /2026
++ **Titulo del tema:** Cálculo de CRC-16 y CRC-32 en ensamblador para tramas de comunicación
 + **Descripcion:** Investigacion de las tramas de comunicacion CRC-16 y CRC-32 en las tramas de comunicacion
 
 # Cálculo de CRC-16 y CRC-32 en ensamblador para tramas de comunicación
