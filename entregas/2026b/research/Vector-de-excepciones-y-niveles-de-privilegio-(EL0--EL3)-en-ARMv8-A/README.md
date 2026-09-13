@@ -1,6 +1,6 @@
 # Vector de Excepciones y Niveles de Privilegio (EL0–EL3) en ARMv8-A
 
-# Introducción
+## Introducción
 
 ARMv8-A organiza la ejecución del software en **niveles de privilegio jerárquicos**, llamados *Exception Levels* (EL). Cuanto mayor es el número, mayor es el privilegio:
 
