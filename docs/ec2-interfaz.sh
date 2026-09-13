@@ -30,6 +30,32 @@ log_step() { echo; echo "${C_BOLD}${C_BLUE}== $* ==${C_RESET}"; }
 # para no meter latencia/llamadas de más solo por navegar el menú.
 AWS_WHOAMI="$(aws sts get-caller-identity --query 'Arn' --output text 2>/dev/null || echo "no disponible — revisa tus credenciales AWS")"
 
+# ----- nombre de la llave SSH -----
+# Solo letras/números/punto/guion/guion_bajo: así el nombre sirve tal cual como
+# --key-name de AWS y como nombre de archivo (<nombre>.pem) sin romper comillas
+# ni rutas en el resto del script.
+KEY_NAME_DEFAULT="llavesita"
+KEY_NAME="$KEY_NAME_DEFAULT"
+
+validar_key_name() {
+  [[ "$1" =~ ^[A-Za-z0-9._-]{1,64}$ ]]
+}
+
+pedir_key_name() {
+  local entrada
+  read -r -p "Nombre de la llave SSH (Enter = '${KEY_NAME}'): " entrada
+  if [ -z "$entrada" ]; then
+    log_ok "Se usará la llave '${KEY_NAME}'"
+    return 0
+  fi
+  if validar_key_name "$entrada"; then
+    KEY_NAME="$entrada"
+    log_ok "Llave configurada como '${KEY_NAME}'"
+  else
+    log_err "'$entrada' no es válido (solo letras, números, punto, guion o guion_bajo). Se mantiene '${KEY_NAME}'."
+  fi
+}
+
 banner() {
   clear
   echo "${C_CYAN}"
@@ -45,6 +71,7 @@ EOF
   echo "${C_RESET}"
   echo "🧩 ${C_BOLD}CloudShell AWS - Nodos ARM64${C_RESET}"
   echo "${C_DIM}   Región: ${AWS_DEFAULT_REGION}  ·  Identidad: ${AWS_WHOAMI}${C_RESET}"
+  echo "${C_DIM}   Llave SSH: ${KEY_NAME}.pem${C_RESET}"
 }
 
 # abortar si un valor salió vacío o "None" (típico de --query --output text sin match)
@@ -281,10 +308,28 @@ EOF
 
 listar_instancias() {
   echo "===== Instancias EC2 (no terminadas) ====="
-  aws ec2 describe-instances \
+  local filas
+  filas=$(aws ec2 describe-instances \
     --filters "Name=instance-state-name,Values=pending,running,stopping,stopped" \
     --query "Reservations[].Instances[].[InstanceId,State.Name,Tags[?Key=='Name']|[0].Value,PublicIpAddress,InstanceType]" \
-    --output table
+    --output text)
+
+  if [ -z "$filas" ]; then
+    echo "No hay instancias activas."
+    return 0
+  fi
+
+  local key="${KEY_NAME:-llavesita}"
+  {
+    echo -e "InstanceId\tEstado\tNombre\tIP publica\tTipo\tSSH (copiar/pegar)"
+    while IFS=$'\t' read -r id estado nombre ip tipo; do
+      local ssh_cmd="-"
+      if [ -n "$ip" ] && [ "$ip" != "None" ]; then
+        ssh_cmd="ssh -i ${key}.pem ubuntu@$ip"
+      fi
+      echo -e "$id\t$estado\t$nombre\t$ip\t$tipo\t$ssh_cmd"
+    done <<< "$filas"
+  } | column -t -s $'\t'
 }
 
 terminar_instancia() {
@@ -335,6 +380,11 @@ pausar() {
 # Ctrl+C en medio de una operación AWS no debe dejar al alumno con un error crudo.
 trap 'echo; log_warn "Interrumpido por el usuario."; exit 130' INT
 
+banner
+echo
+echo "===== Llave SSH ====="
+pedir_key_name
+
 while true; do
   banner
   echo
@@ -343,16 +393,18 @@ while true; do
   echo "  ${C_CYAN}2)${C_RESET} Crear EC2-VM para Programación Lógica y Funcional"
   echo "  ${C_CYAN}3)${C_RESET} Listar todas las EC2-VM"
   echo "  ${C_CYAN}4)${C_RESET} Terminar alguna EC2-VM"
-  echo "  ${C_CYAN}5)${C_RESET} Salir"
+  echo "  ${C_CYAN}5)${C_RESET} Cambiar llave SSH (actual: ${KEY_NAME}.pem)"
+  echo "  ${C_CYAN}6)${C_RESET} Salir"
   echo
-  read -r -p "${C_BOLD}Elige una opción [1-5]: ${C_RESET}" opcion
+  read -r -p "${C_BOLD}Elige una opción [1-6]: ${C_RESET}" opcion
 
   case "$opcion" in
     1) crear_ec2 interfaz; pausar ;;
     2) crear_ec2 plf; pausar ;;
     3) listar_instancias; pausar ;;
     4) terminar_instancia; pausar ;;
-    5) echo "👋 Hasta luego."; exit 0 ;;
-    *) log_err "Opción inválida: '$opcion' (usa un número del 1 al 5)"; pausar ;;
+    5) pedir_key_name; pausar ;;
+    6) echo "👋 Hasta luego."; exit 0 ;;
+    *) log_err "Opción inválida: '$opcion' (usa un número del 1 al 6)"; pausar ;;
   esac
 done
