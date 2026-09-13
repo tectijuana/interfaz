@@ -311,7 +311,7 @@ listar_instancias() {
   local filas
   filas=$(aws ec2 describe-instances \
     --filters "Name=instance-state-name,Values=pending,running,stopping,stopped" \
-    --query "Reservations[].Instances[].[InstanceId,State.Name,Tags[?Key=='Name']|[0].Value,PublicIpAddress,InstanceType]" \
+    --query "Reservations[].Instances[].[InstanceId,State.Name,Tags[?Key=='Name']|[0].Value,PublicIpAddress,InstanceType,KeyName]" \
     --output text)
 
   if [ -z "$filas" ]; then
@@ -319,13 +319,12 @@ listar_instancias() {
     return 0
   fi
 
-  local key="${KEY_NAME:-llavesita}"
   {
     echo -e "InstanceId\tEstado\tNombre\tIP publica\tTipo\tSSH (copiar/pegar)"
-    while IFS=$'\t' read -r id estado nombre ip tipo; do
+    while IFS=$'\t' read -r id estado nombre ip tipo keyname; do
       local ssh_cmd="-"
       if [ -n "$ip" ] && [ "$ip" != "None" ]; then
-        ssh_cmd="ssh -i ${key}.pem ubuntu@$ip"
+        ssh_cmd="ssh -i ${keyname}.pem ubuntu@$ip"
       fi
       echo -e "$id\t$estado\t$nombre\t$ip\t$tipo\t$ssh_cmd"
     done <<< "$filas"
