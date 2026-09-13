@@ -1,7 +1,5 @@
 # Vector de Excepciones y Niveles de Privilegio (EL0–EL3) en ARMv8-A
 
-Guía de referencia sobre el modelo de privilegios y el manejo de excepciones en la arquitectura **ARMv8-A**: los cuatro niveles de ejecución (*Exception Levels*, EL0–EL3), cómo y cuándo se transita entre ellos, y la estructura de la **tabla de vectores de excepción** que el procesador consulta cada vez que ocurre una excepción.
-
 ## Introducción
 
 ARMv8-A organiza la ejecución del software en **niveles de privilegio jerárquicos**, llamados *Exception Levels* (EL). Cuanto mayor es el número, mayor es el privilegio:
