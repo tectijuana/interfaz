@@ -56,6 +56,29 @@ pedir_key_name() {
   fi
 }
 
+# ----- nombre (tag "Name") de la instancia -----
+# Se rechazan comillas/llaves/coma porque van embebidas en el shorthand de
+# --tag-specifications ("Key=Name,Value='...'"); cualquiera de esos caracteres
+# rompería el parseo de esa opción del AWS CLI.
+validar_instance_name() {
+  [ -n "$1" ] && [[ ! "$1" =~ [,\{\}\'\"\\] ]]
+}
+
+pedir_instance_name() {
+  local entrada
+  read -r -p "Nombre de la instancia — tag 'Name' (Enter = '${INSTANCE_NAME}'): " entrada
+  if [ -z "$entrada" ]; then
+    log_ok "Se usará el nombre '${INSTANCE_NAME}'"
+    return 0
+  fi
+  if validar_instance_name "$entrada"; then
+    INSTANCE_NAME="$entrada"
+    log_ok "Nombre configurado como '${INSTANCE_NAME}'"
+  else
+    log_err "'$entrada' no es válido (no uses comillas, comas ni llaves { }). Se mantiene '${INSTANCE_NAME}'."
+  fi
+}
+
 banner() {
   clear
   echo "${C_CYAN}"
@@ -124,13 +147,13 @@ crear_ec2() {
     interfaz)
       DESC="Leng. Ensamblador para ARM64"
       INSTANCE_TYPE="${INSTANCE_TYPE:-t4g.micro}"
-      INSTANCE_NAME="${INSTANCE_NAME:-Curso Leng. de Interfaz}"
+      INSTANCE_NAME="Curso Leng. de Interfaz"
       AMI_PATTERN="ubuntu/images/hvm-ssd/ubuntu-jammy-22.04-arm64-server-*"
       ;;
     plf)
       DESC="Programacion Logica y Funcional - ARM64"
       INSTANCE_TYPE="${INSTANCE_TYPE:-t4g.large}"
-      INSTANCE_NAME="${INSTANCE_NAME:-Curso-PLF}"
+      INSTANCE_NAME="Curso-PLF"
       AMI_PATTERN="ubuntu/images/hvm-ssd-gp3/ubuntu-noble-24.04-arm64-server-*"
       root_gb="${ROOT_GB:-30}"
       swap_gb="${SWAP_GB:-2}"
@@ -145,6 +168,8 @@ crear_ec2() {
       return 1
       ;;
   esac
+
+  pedir_instance_name
 
   echo "===== CONFIG ($perfil) ====="
   echo "   INSTANCE_TYPE = $INSTANCE_TYPE"
