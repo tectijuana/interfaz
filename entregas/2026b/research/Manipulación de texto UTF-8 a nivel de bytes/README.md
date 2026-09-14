@@ -1,4 +1,4 @@
-Nombre: Jovel Cuen Mario Alejandro  
+Nombre: Jovel Cuen Mario Alejandro   
 Numero de Control: 24212672   
 Clase: Lenguajes de Interfaz "B" 17:00 pm
 #
@@ -8,7 +8,7 @@ Clase: Lenguajes de Interfaz "B" 17:00 pm
 ![Imagen](https://linube.com/blog/wp-content/uploads/utf-8.jpg)
 
 ## ¿Qué es UTF-8?
-> “UTF-8” es la abreviatura de “8-bit UnicodeTransformation Format” y designa a la codificación de caracteres más extendida en la World Wide Web. El estándar internacional Unicode incluye tanto signos lingüísticos como elementos textuales de casi todos los idiomas, para el procesamiento electrónico de datos. Por ello, los códigos UTF-8 desempeñan para Unicode un papel fundamental.
+> “UTF-8” es la abreviatura de “8-bit UnicodeTransformation Format” y designa a la codificación de caracteres más extendida en la World Wide Web. El estándar internacional Unicode incluye tanto signos lingüísticos como elementos textuales de (casi) todos los idiomas, para el procesamiento electrónico de datos. Por ello, los códigos UTF-8 desempeñan para Unicode un papel fundamental.
 >
 
 ## ¿Qué es un Byte?
@@ -21,12 +21,12 @@ La codificación UTF-8 sorprende por la compatibilidad retrógrada con ASCII y, 
 | Carácter | U | T | F | - | 8 |
 | :--- | :--- | :--- | :--- | :--- | :--- |
 | UTF-8, binario | 01010101 | 01010100 | 01000110 | 00101101 | 00111000 |
-| Punto de Unicode, hexadecimal | U+0055 | U+0054 | U+0046 | U+002D | U+0028 |
+| Punto de Unicode, hexadecimal | U+0055 | U+0054 | U+0046 | U+002D | U+0038 |
 
 La codificación UTF-8 asigna una única cadena de bits a los caracteres ASCII como los empleados en la tabla. Los siguientes caracteres y símbolos dentro de Unicode tienen de dos a cuatro cadenas de 8 bits. La primera cadena recibe el nombre de byte de inicio y las cadenas siguientes son bytes sucesivos. Los bytes de inicio con bytes sucesivos siempre empiezan por 11 y los bytes sucesivos por 10. Si se busca un determinado punto en el código manualmente, puede reconocerse el principio de un carácter codificado con los marcadores 0 y 11. El primer carácter multibyte imprimible es el signo de exclamación invertido:
 
-| Carácter | i |
-| :--- | :--- | 
+| Carácter | ¡ |
+| :--- | :--- |
 | UTF-8, binario | 11000010 10100001 |
 | Punto de Unicode, hexadecimal | U+00A1 |
 
@@ -49,7 +49,7 @@ Hay algunos rangos de valores de Unicode sin definir para UTF-8, pues estos se u
 | **Notación decimal** | **Notación binaria** | - |
 | 0 - 127 | 00000000 - 01111111 | 1 byte; correponde a caracteres a ASCII |
 | 128 - 191 | 10000000 - 10111111 | Byte en segundo y cuarto lugar |
-|  192 - 193 | 11000000 - 11000001 | No válido: cadenas de bytes muy larga (2 byte) para los carateres del rango 0 - 127 |
+|  192 - 193 | 11000000 - 11000001 | No válido: cadenas de bytes muy largas (2 byte) para los caracteres del rango 0 - 127 |
 | 194 - 244 | 11000010 - 11011111 | Byte de inicio para secuencias con 2 bytes |
 |           | 11100000 - 11101111 | Byte de inicio para secuencias con 3 bytes |
 |           | 11110000 - 11110100 | Byte de inicio para secuencias con 4 bytes |
@@ -58,13 +58,31 @@ Hay algunos rangos de valores de Unicode sin definir para UTF-8, pues estos se u
 |           | 11111100 - 11111101 | No válido: Byte de inicio para secuencias de 6 bytes |
 |           | 11111110 - 11111111 | No válido: No definido, reservado para UTF-16 |
 
-# Conclusión
-Como conclusión se puede tomar que UTF- 8 es una forma importante de representar y manejar textos en computadora por que permite trabajar con caracteres de distintos idiomas utilizando una cantidad variable de bytes. Al conocer cómo se organizan los bytes de inicio y sus sucesivos es posible entender cómo una computadora puede lograr entender y interpretar correctamente un carácter. 
+## Ejemplo de manipulación de bytes UTF-8 en ensamblador 
+```
+; Detecta si un byte es el inicio de una secuencia UTF-8 de 2 bytes
 
-## Bibliografia 
+mov     bl, al
+and     bl, 11100000b   ; Se queda con los primeros 3 bits
+cmp     bl, 11000000b   ; Compara con el patrón 110
+je      son_dos_bytes    ; Si coincide, es un inicio de 2 bytes
+```
+Explicación:  
+En UTF-8 los caracteres que utilizan una secuencia de 2 bytes comienzan con el patrón de bits 110. Entonces para comprobar si un byte tiene este patrón, primero se copia su valor a BL y después se utiliza una AND de 11100000b, esto hace que los demás bits se apaguen y solamente se conserven los tres primeros.
 
-[1] IONOS Digital Guide, “UTF-8: codificación para una comunicación digital global,” 20 de noviembre de 2025. Disponible en: https://www.ionos.mx/digitalguide/paginas-web/creacion-de-paginas-web/utf-8-codificacion-para-una-comunicacion-digital-global/
+Luego CMP compara el resultado con 11000000b, que corresponde al patrón 110 en los tres bits más importantes. Si ambos valores son iguales, la instrucción JE indica que se encontró el inicio de una secuencia UTF-8 de 2 bytes y como el resultado coincide con 11000000, se puede determinar que ese byte corresponde al inicio de una secuencia UTF-8 de 2 bytes.
 
-[2] Arsys, “¿Qué es UTF-8 y qué ventajas tiene?,”. Disponible en: https://www.arsys.es/blog/utf8.
+## Conclusión
+Como conclusión se puede tomar que UTF- 8 es una forma importante de representar y manejar textos en computadora por que permite trabajar con caracteres de distintos idiomas utilizando una cantidad variable de bytes. Al conocer cómo se organizan los bytes de inicio y sus sucesivos es posible entender cómo una computadora puede lograr entender y interpretar correctamente un carácter.
 
-[3] IONOS Digital Guide, “¿Qué es un byte? Te explicamos la cantidad más pequeña de datos,”. Disponible en: https://www.ionos.mx/digitalguide/paginas-web/desarrollo-web/que-es-un-byte/
+## Bibliografia
+
+[1] IONOS Digital Guide, “UTF-8: codificación para una comunicación digital global,” 20 de noviembre de 2025. [En línea]. Disponible en: https://www.ionos.mx/digitalguide/paginas-web/creacion-de-paginas-web/utf-8-codificacion-para-una-comunicacion-digital-global/
+
+[2] Arsys, “¿Qué es UTF-8 y qué ventajas tiene?,” [En línea]. Disponible en: https://www.arsys.es/blog/utf8.
+
+[3] IONOS Digital Guide, “¿Qué es un byte? Te explicamos la cantidad más pequeña de datos,” [En línea]. Disponible en: https://www.ionos.mx/digitalguide/paginas-web/desarrollo-web/que-es-un-byte/
+
+[4] F. Yergeau, “UTF-8, a transformation format of ISO 10646,” RFC 3629, Internet Engineering Task Force (IETF), nov. 2003. [En línea]. Disponible en: https://www.rfc-editor.org/info/rfc3629/
+
+[5] N. Trifunovic, “Decoding UTF-8. Part II: Determining Sequence Length - a Straightforward Approach,” Substack, 27 jul. 2025. [En línea]. Disponible en: https://nemanjatrifunovic.substack.com/p/decoding-utf-8-part-ii-determining
