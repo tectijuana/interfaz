@@ -1,7 +1,9 @@
 # Documentación del uso de IA
 
-## Consulta 1
-### Prompt
+## Prompts Utilizados
+
+### Consulta 1
+#### Prompt
 ```text
 # Role
 You're a senior software engineer specialized on computer science research, arm architecture, and low level code
@@ -21,7 +23,7 @@ I want summaries for each subtopic
 At the end add a couple of recommendations you suggest me to research the topic more easily and an explanation of problems or troubles i might find while doing this research
 ```
 
-### Respuesta
+#### Respuesta
 ```markdown
 TL;DR:
 A linker script acts as the blueprint that bridges compiled object files (.o) and the physical memory of an ARM microcontroller. It dictates exactly where the linker must place executable code (Flash) and variables (SRAM), defining the memory boundaries, initialization values, and the startup vector table so the microcontroller knows how to boot and execute the firmware.
@@ -69,9 +71,9 @@ Pitfalls and Troubles You Will Face
  * Stack/Heap Collisions: Linker scripts often do not dynamically prevent the stack and heap from colliding. You need to understand how linker symbols act as "guardrails" that the software must respect, but the hardware will not enforce unless you configure a Memory Protection Unit (MPU).
 ```
 
-## Consulta 2
+### Consulta 2
 
-### Prompt
+#### Prompt
 ```text
 Arregla la ortografía de este texto, NO cambies el contenido si no es necesario para corregir la ortografía 
 
@@ -80,7 +82,7 @@ Para resolver esto se creo el sistema linker que con el uso de un linker script 
 El propósito de esta investigación es mostrar el funcionamiento y creación de estos linker scripts que permiten el funcionamiento de código máquina con direcciones de memoria relativas en un sistema que únicamente opera con direcciones de memoria físicas.
 ```
 
-### Respuesta 
+#### Respuesta 
 ```text
 TL;DR: Se corrigieron tildes faltantes y mal colocadas («cómo» por «como», «será», «máquina», «creó»), puntuación (comas para separar oraciones subordinadas largas) y el uso de artículos para términos técnicos. El contenido y la estructura se mantuvieron intactos.
 Aquí tienes el texto corregido:
@@ -97,9 +99,9 @@ Cambios puntuales realizados
  * Puntuación: Se sustituyó la coma antes de «Sin embargo» por un punto y seguido para evitar una oración excesivamente larga (run-on sentence), y se colocaron comas parentéticas para aislar incisos explicativos («como C,», «que, con el uso...»).
 ```
 
-## Consulta 3
+### Consulta 3
 
-### Prompt
+#### Prompt
 ```text
 # Rol
 Eres un escritor profesional contratado para unicamente seguir instrucciones y no cambiar nada del texto que no sea relevante con la puntuacion
@@ -325,7 +327,7 @@ Finalmente, como conclusion, creo que una gran forma de resumir todo este proces
 Esto te permite ver como existe un gran proceso que se ejecuta de manera practicamente instantanea e invisible detras de cada compilacion y ejecucion de un proyecto para microcontroladores, poder entender esto ha sido una forma de tomar en cuenta todos los detalles que se tienen que manejar cuando se trabaja con estos pequeños controladores y te permite darte una perspectiva de lo automatico que es todo este proceso que normalmente es hecho por ti por las herramientas de compilacion y enlazamiento.
 ```
 
-### Respuesta
+#### Respuesta
 
 ```text
 ### Desarrollo
@@ -556,9 +558,9 @@ Finalmente, como conclusión, creo que una gran forma de resumir todo este proce
 Esto te permite ver cómo existe un gran proceso que se ejecuta de manera prácticamente instantánea e invisible detrás de cada compilación y ejecución de un proyecto para microcontroladores. Poder entender esto ha sido una forma de tomar en cuenta todos los detalles que se tienen que manejar cuando se trabaja con estos pequeños controladores y te permite darte una perspectiva de lo automático que es todo este proceso, que normalmente es hecho por ti por las herramientas de compilación y enlazamiento.
 ```
 
-## Consulta 4
+### Consulta 4
 
-### Prompt
+#### Prompt
 ```text
 format these in markdown:
 
@@ -573,7 +575,7 @@ S, P. R. (2026, 29 abril). Understanding ARM Cortex-M Linker Script and Startup 
 Simple explanation of memory map in ARM Cortex-M: main memory regions, heap and stack. (2024, 16 agosto). Home. https://thongrobot.wordpress.com/2017/12/05/dien-giai-phan-vung-nho-memory-map-trong-stm32/
 ```
 
-### Respuesta
+#### Respuesta
 ```text
 Claro, te los dejo en Markdown limpio, manteniendo el formato de referencias y los enlaces como enlaces Markdown:
 
@@ -595,3 +597,18 @@ S, P. R. (2026, 29 abril). *Understanding ARM Cortex-M Linker Script and Startup
 
 *Simple explanation of memory map in ARM Cortex-M: main memory regions, heap and stack*. (2024, 16 agosto). Home. [https://thongrobot.wordpress.com/2017/12/05/dien-giai-phan-vung-nho-memory-map-trong-stm32/](https://thongrobot.wordpress.com/2017/12/05/dien-giai-phan-vung-nho-memory-map-trong-stm32/)
 ```
+
+## Herramientas Utilizadas
+- Gemini
+- ChatGPT
+
+## Cambios y validación 
+- En algunas de las correciones de ortografia habia principalmente errores de formato, tiendo a marcar mis listas utilizando `-` y la IA uso `*` por lo que tuve que corregir eso y especialmente los formatos de las tablas, ya que aunque se veian correctamente en el preview, en el markdown crudo no eran legibles
+- Valide que los Links que uso en la bibliografia que le pedi que formateara sean los mismos que yo le habia dado para que abrieran
+
+## Reflexión personal
+La IA me ayudo particularmente en dos casos, primero a poder comenzar la investigación dandome un resumen muy bueno de que cosas tenia que entender para comenzar con esto, y de que temas tenia que comenzar a investigar para seguir con la investigación y evitar que se quedara estancada.
+El segundo tema con el que me ayudo particularmente es con la puntuación, ya que me permitia concentrarme en escribir la investigación para que al final pudiera unicamente pedirle que se encargara de añadir los acentos, comas, y puntos que faltaban.
+Algo que note es que Gemini tiene una mayor tendencia a darme Markdown roto que ChatGPT
+
+- **Fecha:** 2026-09-14
