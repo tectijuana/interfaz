@@ -219,4 +219,8 @@ Finalmente, cuando `.data` ya fue copiada a RAM y `.bss` ya fue inicializada en 
 
 ### Conclusiones
 
+Finalmente, como conclusion, creo que una gran forma de resumir todo este proceso es viendo como todo comienza desde que el compilador convierte el codigo fuente en archivos objeto y los organiza en secciones, el linker combina esos archivos y resuelve sus referencias, y el linker script le indica al linker como organizar esas secciones dentro de la memoria del microcontrolador, posteriormente, cuando el microcontrolador recibe energia o ocurre un reset, la Tabla de Vectores proporciona el MSP y la direccion del Reset Handler, el Startup Code prepara la memoria y el entorno de ejecucion, y finalmente se ejecuta `main()`.
+
+Esto te permite ver como existe un gran proceso que se ejecuta de manera practicamente instantanea e invisible detras de cada compilacion y ejecucion de un proyecto para microcontroladores, poder entender esto ha sido una forma de tomar en cuenta todos los detalles que se tienen que manejar cuando se trabaja con estos pequeños controladores y te permite darte una perspectiva de lo automatico que es todo este proceso que normalmente es hecho por ti por las herramientas de compilacion y enlazamiento.
+
 ### Bibliografía
