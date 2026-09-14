@@ -11,6 +11,7 @@
   - "Explica cómo calcular los ciclos de reloj necesarios para generar retardos en un procesador Cortex-M de 16 MHz."
   - "Explica el uso de CPSID, CPSIE, DSB e ISB en una implementación de bit-banging."
   - "Explica cómo se utiliza el sensor DS18B20 mediante el protocolo 1-Wire y los comandos 0xCC y 0x44."
+  - "Ayúdame a adaptar mi investigación al formato de un archivo Markdown para GitHub, organizando la información con títulos, subtítulos, tablas, listas, bloques de código y diagramas de texto cuando sean necesarios, sin agregar información que no esté en mi investigación."
 
 - **Herramientas utilizadas**:
   - ChatGPT
