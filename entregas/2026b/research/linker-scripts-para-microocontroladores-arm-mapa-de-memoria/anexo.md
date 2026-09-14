@@ -555,3 +555,47 @@ Finalmente, como conclusión, creo que una gran forma de resumir todo este proce
 
 Esto te permite ver cómo existe un gran proceso que se ejecuta de manera prácticamente instantánea e invisible detrás de cada compilación y ejecución de un proyecto para microcontroladores. Poder entender esto ha sido una forma de tomar en cuenta todos los detalles que se tienen que manejar cuando se trabaja con estos pequeños controladores y te permite darte una perspectiva de lo automático que es todo este proceso, que normalmente es hecho por ti por las herramientas de compilación y enlazamiento.
 ```
+
+## Consulta 4
+
+### Prompt
+```text
+format these in markdown:
+
+Alheraki, A. (s. f.). Object File Generation ELF Format Deep Dive - Section Headers .text, .data, .bss. SimplifyC++. https://simplifycpp.org/articles/a0758/object-file-generation-elf-format-deep-dive-section-headers-text-data-bss/
+ARM [ARM]. (s. f.-a). Linker scripts. ARM Support. Recuperado 14 de septiembre de 2026, de https://support.arm.com/documentation/107976/22-1-0/Map-code-and-data-to-your-target-device/Linker-scripts
+ARM [ARM]. (s. f.-b). Memory address space. ARM Support. Recuperado 14 de septiembre de 2026, de https://support.arm.com/documentation/107565/0101/Memory-system/Memory-address-space
+Fan, C. (2023, 5 julio). VMA & LMA - ElseWhere. https://duetorun.com/blog/20230705/vma-lma/#ld_output_section_address
+FastBitLab. (2023, 25 agosto). Microcontroller Embedded C Programming Lecture 106| Processor addressable memory regions. FastBit EBA. https://fastbitlab.com/blog/processor-addressable-memory-regions/
+Harvard Architecture - Embedded Systems Glossary | EmbeddedRelated. (s. f.). https://www.embeddedrelated.com/glossary/harvard-architecture
+Inferara. (2025, 15 enero). Understanding the C Runtime: crt0, crt1, crti, and crtn. Inferara. https://inferara.com/blog/c-runtime/
+S, P. R. (2026, 29 abril). Understanding ARM Cortex-M Linker Script and Startup Code: A Practical Guide📘. https://www.linkedin.com/pulse/understanding-arm-cortex-m-linker-script-startup-code-pravin-raghul-i4qkc
+Simple explanation of memory map in ARM Cortex-M: main memory regions, heap and stack. (2024, 16 agosto). Home. https://thongrobot.wordpress.com/2017/12/05/dien-giai-phan-vung-nho-memory-map-trong-stm32/
+```
+
+### Respuesta
+```text
+Claro, te los dejo en Markdown limpio, manteniendo el formato de referencias y los enlaces como enlaces Markdown:
+
+Alheraki, A. (s. f.). *Object File Generation ELF Format Deep Dive - Section Headers .text, .data, .bss*. SimplifyC++. [https://simplifycpp.org/articles/a0758/object-file-generation-elf-format-deep-dive-section-headers-text-data-bss/](https://simplifycpp.org/articles/a0758/object-file-generation-elf-format-deep-dive-section-headers-text-data-bss/)
+
+ARM [ARM]. (s. f.-a). *Linker scripts*. ARM Support. Recuperado 14 de septiembre de 2026, de [https://support.arm.com/documentation/107976/22-1-0/Map-code-and-data-to-your-target-device/Linker-scripts](https://support.arm.com/documentation/107976/22-1-0/Map-code-and-data-to-your-target-device/Linker-scripts)
+
+ARM [ARM]. (s. f.-b). *Memory address space*. ARM Support. Recuperado 14 de septiembre de 2026, de [https://support.arm.com/documentation/107565/0101/Memory-system/Memory-address-space](https://support.arm.com/documentation/107565/0101/Memory-system/Memory-address-space)
+
+Fan, C. (2023, 5 julio). *VMA & LMA - ElseWhere*. [https://duetorun.com/blog/20230705/vma-lma/#ld_output_section_address](https://duetorun.com/blog/20230705/vma-lma/#ld_output_section_address)
+
+FastBitLab. (2023, 25 agosto). *Microcontroller Embedded C Programming Lecture 106| Processor addressable memory regions*. FastBit EBA. [https://fastbitlab.com/blog/processor-addressable-memory-regions/](https://fastbitlab.com/blog/processor-addressable-memory-regions/)
+
+*Harvard Architecture - Embedded Systems Glossary | EmbeddedRelated*. (s. f.). [https://www.embeddedrelated.com/glossary/harvard-architecture](https://www.embeddedrelated.com/glossary/harvard-architecture)
+
+Inferara. (2025, 15 enero). Understanding the C Runtime: crt0, crt1, crti, and crtn. *Inferara*. [https://inferara.com/blog/c-runtime/](https://inferara.com/blog/c-runtime/)
+
+S, P. R. (2026, 29 abril). *Understanding ARM Cortex-M Linker Script and Startup Code: A Practical Guide📘*. [https://www.linkedin.com/pulse/understanding-arm-cortex-m-linker-script-startup-code-pravin-raghul-i4qkc](https://www.linkedin.com/pulse/understanding-arm-cortex-m-linker-script-startup-code-pravin-raghul-i4qkc)
+
+*Simple explanation of memory map in ARM Cortex-M: main memory regions, heap and stack*. (2024, 16 agosto). Home. [https://thongrobot.wordpress.com/2017/12/05/dien-giai-phan-vung-nho-memory-map-trong-stm32/](https://thongrobot.wordpress.com/2017/12/05/dien-giai-phan-vung-nho-memory-map-trong-stm32/)
+```
+
+S, P. R. (2026, 29 abril). *Understanding ARM Cortex-M Linker Script and Startup Code: A Practical Guide📘*. [https://www.linkedin.com/pulse/understanding-arm-cortex-m-linker-script-startup-code-pravin-raghul-i4qkc](https://www.linkedin.com/pulse/understanding-arm-cortex-m-linker-script-startup-code-pravin-raghul-i4qkc)
+
+*Simple explanation of memory map in ARM Cortex-M: main memory regions, heap and stack*. (2024, 16 agosto). Home. [https://thongrobot.wordpress.com/2017/12/05/dien-giai-phan-vung-nho-memory-map-trong-stm32/](https://thongrobot.wordpress.com/2017/12/05/dien-giai-phan-vung-nho-memory-map-trong-stm32/)
