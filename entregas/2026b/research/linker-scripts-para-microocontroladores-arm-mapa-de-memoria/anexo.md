@@ -595,7 +595,3 @@ S, P. R. (2026, 29 abril). *Understanding ARM Cortex-M Linker Script and Startup
 
 *Simple explanation of memory map in ARM Cortex-M: main memory regions, heap and stack*. (2024, 16 agosto). Home. [https://thongrobot.wordpress.com/2017/12/05/dien-giai-phan-vung-nho-memory-map-trong-stm32/](https://thongrobot.wordpress.com/2017/12/05/dien-giai-phan-vung-nho-memory-map-trong-stm32/)
 ```
-
-S, P. R. (2026, 29 abril). *Understanding ARM Cortex-M Linker Script and Startup Code: A Practical Guide📘*. [https://www.linkedin.com/pulse/understanding-arm-cortex-m-linker-script-startup-code-pravin-raghul-i4qkc](https://www.linkedin.com/pulse/understanding-arm-cortex-m-linker-script-startup-code-pravin-raghul-i4qkc)
-
-*Simple explanation of memory map in ARM Cortex-M: main memory regions, heap and stack*. (2024, 16 agosto). Home. [https://thongrobot.wordpress.com/2017/12/05/dien-giai-phan-vung-nho-memory-map-trong-stm32/](https://thongrobot.wordpress.com/2017/12/05/dien-giai-phan-vung-nho-memory-map-trong-stm32/)
