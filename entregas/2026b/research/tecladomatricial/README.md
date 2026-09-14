@@ -13,13 +13,71 @@ Un teclado matricial permite la conexión de múltiples botones utilizando un me
 Las _teclas_ de un teclado están organizadas en filas y columnas. Existen múltiples teclados con diferente número de teclas, siendo los más habituales las configuraciones de **3×3**, **3×4** y **4×4**.
 
 Este tipo de teclados están constituidos por 3 membranas superpuestas, dos membranas con material conductor y una en medio no conductora, para separarlas. En condiciones normales, el interruptor se encuentra abierto, pero al presionar la tecla, la membrana superior e inferior entran en contacto permitiendo la circulación de la corriente.
-![Diagrama de escaneo](https://eloctavobit.com/imagenes/2023/06/647b8edf4dbb5.webp)
+![Diagrama de escaneo 1](https://eloctavobit.com/imagenes/2023/06/647b8edf4dbb5.webp)
 Los pulsadores están distribuidos en _filas_ y _columnas_. Para detectar la pulsación de una tecla tendremos que conocer la posición **(X, Y)**. Por ejemplo, la tecla del número 5 corresponde a la fila 2 y columna 2, por lo que se encuentra en la posición **(2,2)**.
 
+### 2.1 Algoritmo de detección e identificación a bajo nivel
+El algoritmo de escaneo consiste en un **ciclo iterativo**. A nivel de registros (como se implementa comúnmente en lenguaje ensamblador para microcontroladores PIC), el programa de control se divide en dos partes: una subrutina de "detección" (que detecta que se oprimió una tecla) y una subrutina de "identificación" (que determina cuál fue).
 
-### 2.1 Algoritmo de escaneo
-El algoritmo de escaneo consiste en un **ciclo iterativo**. Configuras las columnas de la matriz como pines de salida y las filas como pines de entrada. El programa enciende (envía voltaje) a la primera columna, y luego revisa todas las filas para ver si alguna recibe señal. Si detecta voltaje en una fila específica, el programa cruza la coordenada de esa fila con la columna que está actualmente encendida para determinar qué tecla exacta cerró el circuito. Luego, apaga esa columna, enciende la siguiente, y repite el proceso a alta velocidad.
+El proceso se realiza de la siguiente manera:
+* Se programa un puerto, asignando la mitad de las señales como salidas y la otra mitad como entradas.
+* La técnica consiste en escribir en los bits del puerto en forma secuencial un "CERO" lógico en las columnas y leer cada vez el estado de los renglones.
+* Cuando una tecla es oprimida, la lectura en alguno de los renglones será también un "CERO".
+* El código de 8 bits obtenido de esta lectura se convierte en el código ASCII de la tecla oprimida mediante el uso de una tabla de equivalencias.
 
+#### 2.1.1 Ejemplo práctico de escaneo (Puerto B)
+Tomando como referencia un diagrama típico de conexión hacia el **Puerto B** de un microcontrolador (por ejemplo, un PIC 16F88), los 8 pines se distribuyen de la siguiente manera:
+* **Salidas (Columnas Y):** El pin `RB0` se conecta a `Y1`, `RB1` a `Y2`, `RB2` a `Y3` y `RB3` a `Y4`.
+![Diagrama de conexion puerto B](https://www.puntoflotante.net/clip_image726.gif)
+
+**Escenario: El usuario presiona la tecla "0" (Intersección X1, Y1):**
+> 1. El microcontrolador, en su ciclo de escaneo, envía un `0` lógico a la primera columna (`Y1`) y un `1` al resto de las columnas. Por lo tanto, el estado de los 4 bits más bajos del puerto (RB3...RB0) será `1110`.
+>  2. El sistema procede a leer los 4 bits más altos (RB7...RB4) correspondientes a los renglones. Debido a la configuración de resistencias *pull-up*, los renglones normalmente leen un `1`.
+>  3. Como la tecla **"0"** está presionada, el circuito se cierra entre `Y1` y `X1`. El `0` lógico fluye hacia el renglón `X1`, causando que el pin `RB4` lea un `0`.
+>  4. El estado de los 4 bits altos leídos será entonces `1110`.
+>  5. Al concatenar la lectura completa del puerto B (RB7...RB0), el microcontrolador obtiene el byte `11101110`, lo que equivale al valor hexadecimal **0xEE**.
+>  6. Finalmente, el software busca este valor `0xEE` en su tabla de traducción (*Look-up Table*) y lo identifica exitosamente como la tecla **"0"**.
+
+#### 2.1.2 Implementación del escaneo en código ensamblador
+Para ilustrar el proceso descrito anteriormente, a continuación se presenta un fragmento funcional en lenguaje ensamblador para un microcontrolador PIC (ej. PIC16F88). Este código traduce el algoritmo iterativo de escaneo utilizando manipulación directa de registros.
+
+```assembly
+; Fragmento de barrido y detección de teclado matricial
+
+; 1. Inicialización de puertos (Resumen)
+    MOVLW   H'F0'       ; RB0..RB3=Salidas (Columnas), RB4..RB7=Entradas (Renglones)
+    MOVWF   TRISB
+    BCF     OPTION_REG,7 ; Activa resistencias de Pull-up en puerto B
+
+; 2. Ciclo principal de barrido
+vuelta1:
+    movlw   H'EF'       ; Carga 11101111 (Coloca un 0 lógico en la primera columna)
+    movwf   I
+    movlw   D'4'
+    movwf   J           ; Inicializa contador para recorrer las 4 columnas
+
+vuelta2:
+    rrf     I,f         ; Rota los bits a la derecha (desplaza el 0 a la siguiente columna)
+    movfw   I
+    movwf   PORTB       ; Escribe el patrón de salida en el puerto B
+    call    delay       ; Retardo breve para estabilización eléctrica
+
+; 3. Lectura y detección de tecla
+    movfw   PORTB       ; Lee el estado actual del puerto B (Renglones)
+    iorlw   H'0F'       ; Aplica máscara OR para evaluar únicamente los bits RB4...RB7
+    movwf   K           ; Guarda la lectura
+    comf    K,f         ; Invierte los bits lógicos
+    btfss   STATUS,2    ; Verifica la bandera Z (Zero). Si la lectura indica presión...
+    goto    teclazo     ; ...salta a la rutina de identificación de tecla
+    
+    decfsz  J,f         ; Si no hay presión, decrementa el contador de columnas
+    goto    vuelta2     ; Repite el proceso para la siguiente columna
+    goto    vuelta1     ; Si ya recorrió las 4 columnas, reinicia el barrido general
+
+; 4. Rutina de identificación (teclazo)
+teclazo:
+    ; [Aquí el sistema procesa el código renglón/columna contenido en PORTB 
+    ; y cruza la información para obtener el carácter o número presionado]
 ### 2.2 Requisitos de hardware
 _Para realizar la lectura de un teclado matricial e implementar la técnica de antirrebote (debounce) por software, el programa o firmware debe gestionar los siguientes elementos:_
 
@@ -28,9 +86,11 @@ _Para realizar la lectura de un teclado matricial e implementar la técnica de a
 **Habilitación de resistencias de pulso:** Activar las resistencias internas de *pull-up* o *pull-down* en los pines definidos como entradas para evitar estados flotantes o lecturas erráticas producidas por ruido eléctrico.
 
 **Manejo de tiempos o temporización:** Implementar rutinas de retardo (por ejemplo, `delay_ms(20)`) o contadores mediante interrupciones por *Timer* para pausar la ejecución durante el tiempo de estabilización de los contactos mecánicos. 
+
 **Operaciones a nivel de bits (Bitwise operations):** Emplear máscaras lógicas (AND, OR) y desplazamientos para aislar e interpretar el estado de un pin específico dentro del registro del puerto.  
 
 **Tabla de traducción (Look-up Table):** Definir una matriz bidimensional en código que asocie la intersección de una fila y una columna con su carácter ASCII o valor hexadecimal correspondiente.
+```
 
 ## 3. El fenómeno del rebote
 Los contactos metálicos de un pulsador no cierran de forma instantánea. Generan múltiples transiciones rápidas antes de estabilizarse mecánicamente.
@@ -39,6 +99,10 @@ Los teclados de matriz deben gestionar los rebotes de las teclas, es decir, los 
 
 Para evitarlo, se emplean técnicas de eliminación de rebotes. Éstas pueden incluir filtros de hardware o temporizadores de software que no tienen en cuenta las señales transitorias y garantizan que sólo se registren las pulsaciones estables e intencionadas.
 
+### 4 Debounce
+Un debounce _(o desparasitado)_ en un teclado matricial es una técnica por software o hardware que elimina las lecturas falsas causadas por el rebote mecánico de las láminas metálicas de las teclas al presionarlas o soltarlas.
+
+Su función es garantizar que una sola pulsación física se registre como un único evento de tecla y no como múltiples tomas consecutivas.
 
 ### 4.1 Método por retardo (Delay)
 Consiste en detectar un cambio de estado, aplicar una pausa temporal (ej. 10 a 50 ms) y realizar una segunda verificación.
@@ -67,41 +131,56 @@ A continuación, se presenta la estructura base del algoritmo de la máquina de 
 // return: whether output has changed 
 bool update(bool input) 
 {
- if (input) 
- { 
- if (counter < +thres_steady) 
- ++counter; } 
- else { 
- if (counter > -thres_steady) 
- --counter;
-  } switch (state) 
-  { 
-  case 0:
-   // steady-state lo if (counter >= -thres_transient_abs) 
-   { 
-   // => transient lo-hi counter = 0; 
-   state = 1; return true; 
-   } else
+    if (input) 
     { 
-   return false;
+        if (counter < +thres_steady) 
+            ++counter; 
     } 
-   case 1:
-    // transient lo-hi switch (counter)
-     { 
-     case +thres_steady: 
-     // => steady-state hi state = 2;
-      return false;
-       case -thres_steady:
-        // => steady-state lo state = 0;
-         return true;
-          default: 
-          return false;
-           }
-            // ... [cases 2 and 3 omitted] ... } 
+    else 
+    { 
+        if (counter > -thres_steady) 
+            --counter;
+    }
 
+    switch (state) 
+    { 
+        case 0: // steady-state lo
+            if (counter >= -thres_transient_abs) 
+            { 
+                // => transient lo-hi 
+                counter = 0; 
+                state = 1; 
+                return true; 
+            } 
+            else
+            { 
+                return false;
+            } 
+
+        case 1: // transient lo-hi 
+            switch (counter)
+            { 
+                case +thres_steady: 
+                    // => steady-state hi 
+                    state = 2;
+                    return false;
+
+                case -thres_steady:
+                    // => steady-state lo 
+                    state = 0;
+                    return true;
+
+                default: 
+                    return false;
+            }
+            // ... [cases 2 and 3 omitted] ... 
+    }
+}
 ```
 ## 5. Conclusiones
-La implementación práctica de la interfaz permitió comprobar el funcionamiento del circuito y relacionar la lógica digital con una respuesta física tangible. El uso de la fuente de 5V y el protoboard garantizó una alimentación estable, mientras que las herramientas de medición fueron clave para verificar los niveles lógicos y el acondicionamiento del circuito mediante elementos pasivos.
+La implementación de una interfaz de teclado matricial optimiza de forma sustancial el uso de puertos I/O en un microcontrolador, permitiendo la lectura de múltiples entradas mediante técnicas de escaneo y multiplexación. Sin embargo, la naturaleza mecánica de los contactos exige un tratamiento riguroso de las señales transitorias para garantizar una operación confiable.
+
+El uso de algoritmos de antirrebote  por software demuestra ser una solución eficiente y económica al sustituir filtros de hardware externos. En conclusión, la correcta integración entre el escaneo matricial y un algoritmo de filtrado no bloqueante es fundamental para desarrollar sistemas embebidos en tiempo real robustos, eficientes y de alta respuesta.
 
 
 ## 6. Referencias
@@ -112,4 +191,4 @@ La implementación práctica de la interfaz permitió comprobar el funcionamient
 
 * summivox. (2016, junio 3). *Keyboard matrix scanning and debouncing*. Frog in the Well. https://summivox.wordpress.com/2016/06/03/keyboard-matrix-scanning-and-debouncing/
 
-* (S/f). Studocu.com. Recuperado el 13 de septiembre de 2026, de https://www.studocu.com/pe/document/universidad-nacional-del-callao/sistemas-digitales/sistemas-digitales-92g-laboratorio-05-teclado-matricial-y-componentes/132846470?sid=%24device%3Acdc15366-0f4c-449d-982e-4edf867b8f6e1789266471
+* Punto Flotante S.A. (s.f.). *Conexión de un teclado matricial hexadecimal con microcontroladores PIC 16F84, 16F628, 16F88, 18F2550*. Recuperado el 14 de septiembre de 2026, de https://www.puntoflotante.net/PROY_TECL.htm
