@@ -14,6 +14,7 @@ Las _teclas_ de un teclado están organizadas en filas y columnas. Existen múlt
 
 Este tipo de teclados están constituidos por 3 membranas superpuestas, dos membranas con material conductor y una en medio no conductora, para separarlas. En condiciones normales, el interruptor se encuentra abierto, pero al presionar la tecla, la membrana superior e inferior entran en contacto permitiendo la circulación de la corriente.
 ![Diagrama de escaneo 1](https://eloctavobit.com/imagenes/2023/06/647b8edf4dbb5.webp)
+
 Los pulsadores están distribuidos en _filas_ y _columnas_. Para detectar la pulsación de una tecla tendremos que conocer la posición **(X, Y)**. Por ejemplo, la tecla del número 5 corresponde a la fila 2 y columna 2, por lo que se encuentra en la posición **(2,2)**.
 
 ### 2.1 Algoritmo de detección e identificación a bajo nivel
@@ -78,6 +79,7 @@ vuelta2:
 teclazo:
     ; [Aquí el sistema procesa el código renglón/columna contenido en PORTB 
     ; y cruza la información para obtener el carácter o número presionado]
+```
 ### 2.2 Requisitos de hardware
 _Para realizar la lectura de un teclado matricial e implementar la técnica de antirrebote (debounce) por software, el programa o firmware debe gestionar los siguientes elementos:_
 
@@ -90,7 +92,7 @@ _Para realizar la lectura de un teclado matricial e implementar la técnica de a
 **Operaciones a nivel de bits (Bitwise operations):** Emplear máscaras lógicas (AND, OR) y desplazamientos para aislar e interpretar el estado de un pin específico dentro del registro del puerto.  
 
 **Tabla de traducción (Look-up Table):** Definir una matriz bidimensional en código que asocie la intersección de una fila y una columna con su carácter ASCII o valor hexadecimal correspondiente.
-```
+
 
 ## 3. El fenómeno del rebote
 Los contactos metálicos de un pulsador no cierran de forma instantánea. Generan múltiples transiciones rápidas antes de estabilizarse mecánicamente.
