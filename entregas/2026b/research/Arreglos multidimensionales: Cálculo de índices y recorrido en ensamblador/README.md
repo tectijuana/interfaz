@@ -6,7 +6,7 @@ Cuando se programa en lenguajes de alto nivel como C, Java o Python, acceder a u
 
 ## Desarrollo Técnico
 
-El manejo de arreglos multidimensionales en lenguaje ensamblador requiere calcular explícitamente la dirección de cada elemento a partir de sus índices, así como construir manualmente la lógica de recorrido mediante bucles basados en comparaciones y saltos condicionales.
+El manejo de arreglos multidimensionales en lenguaje ensamblador requiere calcular explícitamente la dirección de cada elemento a partir de sus índices, así como construir manualmente la lógica de recorrido mediante bucles basados en comparaciones y saltos condicionales. Los ejemplos siguientes usan la arquitectura **AArch64 (ARM64)**, con registros de 32 bits (`w0`-`w3`) para datos y registros de 64 bits (`x0`-`x3`) para direcciones e índices.
 
 ### 1. Representación en memoria: row-major y column-major
 
@@ -28,82 +28,99 @@ dirección = base + (i × C + j) × tam
 
 Por ejemplo, en una matriz de enteros de 4 bytes con 4 columnas, base `0x1000`, el elemento `A[2][1]` está en `0x1000 + (2×4 + 1)×4 = 0x1024`. Esta fórmula se generaliza a n dimensiones multiplicando cada índice por el producto de las dimensiones que le siguen; es exactamente el cálculo que realiza un compilador de forma automática al traducir `matriz[i][j][k]`.
 
-### 3. Modos de direccionamiento en x86 para arreglos
+### 3. Modos de direccionamiento en ARM64 para arreglos
 
-Las arquitecturas x86 e x86-64 incluyen un modo de direccionamiento pensado específicamente para el acceso a arreglos, conocido como **base-índice-escala** (SIB, *Scale-Index-Base*). Su forma general en sintaxis NASM es:
-
-```
-[base + índice*escala + desplazamiento]
-```
-
-Donde `escala` solo puede valer 1, 2, 4 u 8 (el tamaño de byte, word, dword o qword). Gracias a este modo, el procesador calcula en una sola instrucción una dirección equivalente a `base + índice × tam`, sin necesitar una multiplicación explícita cuando el elemento mide 1, 2, 4 u 8 bytes:
+AArch64 ofrece, a nivel de hardware, el modo de **direccionamiento con registro-offset escalado**, pensado específicamente para el acceso a arreglos. Su forma general con la instrucción `LDR`/`STR` es:
 
 ```
-; EAX = A[i][j], con C = 6 columnas
-; EAX = i, EBX = j, ESI = base de la matriz
-imul  edx, eax, 6        ; EDX = i * C
-add   edx, ebx            ; EDX = i * C + j
-mov   eax, [esi + edx*4]  ; EAX = A[i][j]
+LDR  Wt, [Xn, Xm, LSL #escala]
 ```
 
-Cuando el número de columnas es potencia de dos, la multiplicación puede reemplazarse por un desplazamiento de bits (`shl`), más eficiente que `imul` en muchos procesadores.
+Donde `Xn` es el registro base (dirección de inicio del arreglo), `Xm` es el registro índice (el offset ya calculado) y `LSL #escala` desplaza los bits de `Xm` para multiplicarlo por el tamaño del elemento (`#0` para bytes, `#1` para halfwords de 2 bytes, `#2` para words de 4 bytes, `#3` para doublewords de 8 bytes). Gracias a esto, el procesador calcula en una sola instrucción una dirección equivalente a `base + índice × tam`, sin necesitar una multiplicación aparte.
+
+Acceso a un vector (caso base), con `x1 = i`, `x2` = base del vector:
+
+```
+// w0 = vector[i]   (vector de word, 4 bytes)
+LDR   w0, [x2, x1, LSL #2]
+```
+
+Para un arreglo bidimensional `A[F][C]` de word, en row-major, acceder a `A[i][j]` requiere primero calcular el offset `i × C + j` y luego usar ese offset como índice escalado. Con `x1 = i`, `x2 = j`, `x3` = base, `C = 6`:
+
+```
+// w0 = A[i][j], con C = 6 columnas
+// x1 = i, x2 = j, x3 = base de la matriz
+MOV   x4, #6              // x4 = C (número de columnas)
+MUL   x5, x1, x4          // x5 = i * C
+ADD   x5, x5, x2          // x5 = i * C + j   (offset en elementos)
+LDR   w0, [x3, x5, LSL #2]   // w0 = A[i][j]  (escala 4 = sizeof(word))
+```
+
+Cuando el número de columnas es potencia de dos (por ejemplo `C = 8`), la multiplicación puede sustituirse por un desplazamiento de bits (`LSL`), más eficiente que `MUL`:
+
+```
+// Igual que el ejemplo anterior, pero con C = 8 (potencia de 2)
+LSL   x5, x1, #3          // x5 = i * 8   (equivalente a i * C, C=8)
+ADD   x5, x5, x2          // x5 = i*8 + j
+LDR   w0, [x3, x5, LSL #2]   // w0 = A[i][j]
+```
 
 ### 4. Recorrido con bucles anidados
 
-Al no existir una instrucción `for`, el recorrido de una matriz en ensamblador se construye combinando registros como contadores de fila y columna, la instrucción `cmp` para comparar contra el límite, y saltos condicionales (`jge`, `jmp`) que emulan el bucle. La estructura típica anida un ciclo externo (filas) y uno interno (columnas), y aprovecha que, en row-major, avanzar el puntero en 4 bytes en cada paso del ciclo interno recorre la fila completa de forma secuencial.
+Al no existir una instrucción `for`, el recorrido de una matriz en ensamblador se construye combinando registros como contadores de fila y columna, la instrucción `CMP` para comparar contra el límite, y saltos condicionales (`B.GE`, `B`) que emulan el bucle. La estructura típica anida un ciclo externo (filas) y uno interno (columnas), y aprovecha que, en row-major, avanzar el puntero en 4 bytes en cada paso del ciclo interno recorre la fila completa de forma secuencial.
 
 ### 5. Ejemplo práctico: suma de los elementos de una matriz
 
-El siguiente programa en NASM recorre una matriz de `F` filas por `C` columnas y acumula la suma de todos sus elementos en `EAX`, avanzando el puntero de forma secuencial:
+El siguiente programa en AArch64 (sintaxis GNU) recorre una matriz de `F` filas por `C` columnas y acumula la suma de todos sus elementos en `w0`, avanzando el puntero de forma secuencial:
 
 ```
-section .data
-    F       equ 3
-    C       equ 4
-    matriz  dd 1,2,3,4, 5,6,7,8, 9,10,11,12   ; 3x4, row-major
+.data
+matriz: .word 1,2,3,4, 5,6,7,8, 9,10,11,12   // 3x4, row-major
 
-section .text
-    global _start
+.text
+.global _start
 _start:
-    xor   eax, eax        ; acumulador de la suma
-    xor   ecx, ecx        ; i = 0
-    lea   esi, [matriz]   ; puntero al elemento actual
+    MOV   w0, #0              // acumulador de la suma
+    MOV   x1, #0              // i = 0 (índice de fila)
+    ADRP  x2, matriz          // x2 = dirección base de la matriz
+    ADD   x2, x2, :lo12:matriz
 
 fila_loop:
-    cmp   ecx, F
-    jge   fin_fila_loop
+    CMP   x1, #3               // F = 3 filas
+    B.GE  fin_fila_loop
 
-    xor   edx, edx        ; j = 0
+    MOV   x3, #0               // j = 0 (índice de columna)
 col_loop:
-    cmp   edx, C
-    jge   fin_col_loop
+    CMP   x3, #4                // C = 4 columnas
+    B.GE  fin_col_loop
 
-    add   eax, [esi]      ; acumular matriz[i][j]
-    add   esi, 4          ; avanzar al siguiente dword
-    inc   edx
-    jmp   col_loop
+    LDR   w4, [x2]              // cargar matriz[i][j]
+    ADD   w0, w0, w4            // acumular
+    ADD   x2, x2, #4            // avanzar el puntero al siguiente word
+    ADD   x3, x3, #1            // j++
+    B     col_loop
 
 fin_col_loop:
-    inc   ecx
-    jmp   fila_loop
+    ADD   x1, x1, #1            // i++
+    B     fila_loop
 
 fin_fila_loop:
-    ; EAX contiene la suma total de los elementos
+    // w0 contiene la suma total de los elementos
 ```
 
 ## Conclusión
 
 Desarrollar esta investigación permite ver lo que ocurre realmente detrás de una simple expresión como `matriz[i][j]`. Lo que en un lenguaje de alto nivel es una sola línea de código, en ensamblador se traduce en un cálculo explícito de direcciones y en una estructura de bucles construida manualmente con comparaciones y saltos.
 
-Comprender la fórmula `offset = i×C + j`, el papel del modo de direccionamiento base-índice-escala del procesador, y el impacto del orden de recorrido sobre la localidad de la caché, ofrece una perspectiva mucho más profunda de cómo la computadora maneja las estructuras de datos. Esta base es esencial no solo para programar en ensamblador, sino también para escribir código de alto nivel más consciente del rendimiento real del hardware.
+Comprender la fórmula `offset = i×C + j`, el papel del modo de direccionamiento con registro-offset escalado del procesador, y el impacto del orden de recorrido sobre la localidad de la caché, ofrece una perspectiva mucho más profunda de cómo la computadora maneja las estructuras de datos. Esta base es esencial no solo para programar en ensamblador, sino también para escribir código de alto nivel más consciente del rendimiento real del hardware.
 
 ## Bibliografía
 
 [1] Wikipedia contributors, "Row- and column-major order," *Wikipedia*. [En línea]. Disponible en: <https://en.wikipedia.org/wiki/Row-_and_column-major_order>. [Accedido: 14-sep-2026].
 
-[2] Oracle Corporation, "Addressing Modes — IA-32 Assembly Language Reference Manual," *docs.oracle.com*. [En línea]. Disponible en: <https://docs.oracle.com/cd/E19455-01/806-3773/assemblersyntax-21/index.html>. [Accedido: 14-sep-2026].
+[2] Arm Limited, "Addressing modes — Arm A-profile A64 Instruction Set Architecture," *developer.arm.com*. [En línea]. Disponible en: <https://developer.arm.com/documentation/ddi0602/latest>. [Accedido: 15-sep-2026].
 
-[3] E. Morris, "How x86_64 addresses memory," *ENOSUCHBLOG*, 2020. [En línea]. Disponible en: <https://blog.yossarian.net/2020/06/13/How-x86_64-addresses-memory>. [Accedido: 14-sep-2026].
+[3] R. Ferrer, "Exploring AArch64 assembler – Chapter 5 (Load and store instructions)," *Think In Geek*, 2016. [En línea]. Disponible en: <https://thinkingeek.com/2016/11/13/exploring-aarch64-assembler-chapter-5/>. [Accedido: 15-sep-2026].
 
 [4] GeeksforGeeks, "Row Major Order and Column Major Order," *GeeksforGeeks*. [En línea]. Disponible en: <https://www.geeksforgeeks.org/dsa/row-major-order-and-column-major-order/>. [Accedido: 14-sep-2026].
 
