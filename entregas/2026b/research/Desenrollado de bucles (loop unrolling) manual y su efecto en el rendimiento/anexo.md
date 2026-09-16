@@ -1,4 +1,12 @@
 # Anexo Investigación Desenrollado de bucles (loop unrolling) manual y su efecto en el rendimiento
+# Informascion del estudiante
+  Alumno: Cesar Adrian Luis Juan Camacho
+  
+  Materia:  Lenguajes de interfaz
+  
+  Horario: 5:00 - 6:00 PM
+  
+  Tema: Desenrollado de bucles (loop unrolling) manual y su efecto en el rendimiento
 ---
 
 ## 1. Prompts utilizados
@@ -65,3 +73,25 @@ Para un próximo trabajo de este tipo, compilaría y ejecutaría realmente el `b
 * **Fecha de la asistencia IA:** 11 de septiembre de 2026
 * **Versión de entrega/práctica:** v1.0
 * **Herramientas:** Claude (Sonnet 5), Anthropic — interfaz de chat de Claude.ai
+---
+
+# Declaración de Originalidad
+
+**Título del trabajo:** 1.1 Investigación via Pull Request Desenrollado de bucles (loop unrolling) manual y su efecto en el rendimiento
+**Curso:** Lenguajes de interfaz
+**Nombre completo del estudiante:** Cesar Adrian Luis Juan Camacho
+**Fecha:** 16 de septiembre de 2026
+
+---
+
+Declaro que el presente trabajo es de mi autoría y ha sido elaborado por mí de forma individual, respetando las normas de integridad académica del curso. Todas las fuentes bibliográficas consultadas (libros, papers, documentación oficial) han sido debidamente citadas en el apartado de bibliografía en formato IEEE.
+
+Durante la elaboración de este trabajo utilicé asistencia de inteligencia artificial (Claude, de Anthropic) como apoyo puntual para organizar la redacción, generar ejemplos de código iniciales y sugerir referencias bibliográficas, las cuales verifiqué, corregí y adapté personalmente antes de incluirlas en el documento final. El contenido, las decisiones técnicas y la comprensión conceptual reflejados en este trabajo son propios. El detalle de los prompts utilizados, las herramientas empleadas y una reflexión crítica sobre dicho uso se documentan de forma completa en el archivo `anexo.md` que acompaña esta entrega.
+
+Entiendo que declarar información falsa sobre la originalidad de este trabajo o sobre el uso de herramientas de IA constituye una falta a la integridad académica y puede tener las consecuencias establecidas por el reglamento del curso.
+
+---
+
+**Firma:** CesarLJ
+**Nombre:** Cesar Adrian Luis Juan Camacho
+**Fecha:** 16/09/2026
