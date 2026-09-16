@@ -192,3 +192,18 @@ long suma_paralela(const int *arreglo, int n) {
 ```
 
 Al usar cuatro acumuladores independientes (`acc0`...`acc3`), se elimina la dependencia de datos secuencial que existía en `suma_desenrollada` (donde cada suma dependía del valor anterior de `total`), permitiendo que el procesador ejecute las cuatro sumas verdaderamente en paralelo dentro del mismo ciclo de iteración, antes de combinarlas en un único resultado final.
+
+---
+## 5. Bibliografía (formato IEEE)
+
+[1] J. L. Hennessy and D. A. Patterson, *Computer Architecture: A Quantitative Approach*, 6th ed. Cambridge, MA, USA: Morgan Kaufmann, 2017.
+
+[2] R. Allen and K. Kennedy, *Optimizing Compilers for Modern Architectures: A Dependence-Based Approach*. San Francisco, CA, USA: Morgan Kaufmann, 2001.
+
+[3] 
+[4] Intel Corporation, "Intel 64 and IA-32 Architectures Optimization Reference Manual," Intel Corp., Santa Clara, CA, USA, 2023. [Online]. Available: https://www.intel.com/content/www/us/en/developer/articles/technical/intel-sdm.html. [Accessed: 11-Sep-2026].
+
+[5] Free Software Foundation, "Options That Control Optimization — Using the GNU Compiler Collection (GCC)," *GCC Online Documentation*. [Online]. Available: https://gcc.gnu.org/onlinedocs/gcc/Optimize-Options.html. [Accessed: 11-Sep-2026].
+
+---S. Muchnick, *Advanced Compiler Design and Implementation*. San Francisco, CA, USA: Morgan Kaufmann, 1997.
+
