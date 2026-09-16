@@ -1,0 +1,20 @@
+cff-version: 1.2.0
+message: "Si utilizas este material, por favor cita este repositorio."
+type: dataset
+title: "Lenguajes de Interfaz (SCC-1014) — Curso de Ensamblador ARM64/ARM32/RISC-V"
+authors:
+  - family-names: "Solís Reyes"
+    given-names: "René"
+    alias: "IoTeacher"
+    affiliation: "TecNM Campus Instituto Tecnológico de Tijuana"
+    email: "rene.solis@tectijuana.edu.mx"
+    orcid: "https://orcid.org/0000-0002-0334-5595"
+repository-code: "https://github.com/tectijuana/interfaz"
+license: CC-BY-NC-SA-4.0
+keywords:
+  - assembly
+  - arm64
+  - arm32
+  - risc-v
+  - computer-architecture
+  - education

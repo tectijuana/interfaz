@@ -3,6 +3,10 @@
 
 #  Lenguajes de Interfaz (Assembly Language)
 
+[![Licencia](https://img.shields.io/badge/Licencia-CC%20BY--NC--SA%204.0-lightgrey?labelColor=555555)](LICENSE.md)
+[![Citar](https://img.shields.io/badge/Citar-CITATION.cff-4c9a2a?labelColor=555555)](CITATION.cff)
+[![Lenguajes](https://img.shields.io/badge/Lenguajes-ARM64%20%7C%20ARM32%20%7C%20RISC--V-orange?labelColor=555555)](units/)
+
 Repositorio oficial del curso **Lenguajes de Interfaz**. Aquí encontrarás materiales, ejemplos y prácticas relacionadas con **programación en ensamblador** y **lenguajes de bajo nivel** para arquitecturas ARM (32/64 bits) y RISC‑V.
 
 
