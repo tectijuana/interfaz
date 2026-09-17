@@ -1,11 +1,8 @@
-# 38 Reloj de Tiempo Real (RTC): Mantenimiento de fecha y hora en embebidos
+# 38 Perfilado de consumo energetico: rutinas en ensamblador frente a c
 **Por: Urrea Ramirez Juan Pablo**
 
 ## Introducción
-El RTC está diseñado para mantener la hora de forma continua (tanto los segundos, minutos, horas, días y, a menudo, meses y años) incluso en situaciones en las que el microprocesador principal está apagado. Esta función es posible gracias al uso de una **fuente de alimentación independiente**, normalmente en forma de pilas o condensadores.  El **Reloj de Tiempo Real** (RTC, o *Real-Time Clock*) es un circuito electrónico especializado que se utiliza para mantener la hora real exacta, independientemente del estado de funcionamiento del sistema digital principal. 
-
-
-El RTC se utiliza en una amplia gama de dispositivos electrónicos, desde ordenadores personales, sistemas embebidos, registradores de datos y equipos médicos, hasta automatismos industriales y sistemas de medición inteligentes. En los ordenadores personales, el RTC se encarga de mantener el tiempo del sistema entre ciclos de alimentación, y también puede interactuar con la BIOS o el sistema operativo. En los sistemas de ahorro de energía, el RTC permite sacar el dispositivo del modo de reposo o programar eventos a lo largo del tiempo.
+El perfilado de consumo energético (energy profiling) surge como una metodología de análisis que nos permite evaluar el impacto del software en el comportamiento eléctrico del sistema. Este trabajo de investigación aborda el estudio comparativo entre las rutinas desarrolladas en lenguaje C y sus contrapartes optimizadas a bajo nivel en lenguaje Ensamblador. A través del análisis del juego de instrucciones (ISA), el acceso a registros internos y la minimización de transiciones en la memoria, se busca determinar hasta qué punto la programación directa en ensamblador ofrece reducciones significativas en el consumo de potencia frente al código generado de forma automatizada por un compilador en C al requerir menos recursos en teoría.
 
 ## Características
 El reloj de tiempo real mantiene la fecha y hora del reloj de pared (año, mes, día, hora, minuto, segundo) y sobrevive a la pérdida de alimentación mediante respaldo por batería. El reloj libre (por ejemplo, el archivo de estado S:4 de Allen-Bradley en el SLC 500) es un tren de bits de onda cuadrada con frecuencias fijas (un bit conmuta cada 80 ms, otro cada segundo, y así sucesivamente) usado para generar pulsos periódicos dentro del programa. No almacena una fecha y se reinicia ante una pérdida de alimentación a menos que la CPU cuente con batería.
