@@ -132,14 +132,164 @@ De esta forma, C proporciona los elementos necesarios para establecer una interf
 ## 5. El calificador `volatile`
 
 ### 5.1 Funcionamiento de `volatile`
-### 5.2 Uso de `volatile` con MMIO
 
-## 6. Limitaciones de `volatile`
+El calificador `volatile` se utiliza en C para indicar que el valor de un objeto puede cambiar de una forma que no es evidente únicamente al analizar el flujo normal del programa. Esto puede ocurrir, por ejemplo, cuando una posición de memoria representa un registro de hardware cuyo contenido puede ser modificado directamente por un periférico.
 
-## 8. Aplicaciones
+Al utilizar `volatile`, se indica al compilador que los accesos realizados sobre ese objeto son significativos y que no debe asumir que su valor permanece sin cambios simplemente porque el programa no lo haya modificado.
 
-## 9. Relación con Lenguajes de Interfaz
+Esto es especialmente importante cuando se trabaja con MMIO, ya que los registros de los periféricos pueden cambiar independientemente de la ejecución normal del programa.
+
+Por ejemplo, supongamos que existe un registro de estado que indica si un dispositivo se encuentra ocupado o listo:
+
+```text
+Registro STATUS
+
+0x00000000  →  Dispositivo ocupado
+      ↓
+      ↓ El hardware termina su operación
+      ↓
+0x00000001  →  Dispositivo listo
+```
+
+El cambio entre ambos valores puede ser realizado directamente por el hardware, sin que el programa ejecute una instrucción de escritura sobre ese registro.
+
+### 5.2 ¿Por qué es necesario `volatile` en MMIO?
+
+Cuando los registros de hardware se encuentran mapeados en direcciones de memoria, el compilador de C o C++ no necesariamente conoce que detrás de esas direcciones existe un periférico, como un temporizador, un controlador GPIO o una tarjeta de red.
+
+El compilador normalmente aplica optimizaciones suponiendo el comportamiento convencional de la memoria. Por ejemplo, si un valor es leído varias veces y el programa no realiza ninguna escritura sobre él, podría considerar innecesario repetir determinadas lecturas.
+
+Esto representa un problema en MMIO, ya que el contenido de un registro puede ser modificado directamente por el hardware, independientemente de las instrucciones ejecutadas por el programa.
+
+#### Problema sin `volatile`
+
+Supongamos que un programa necesita esperar hasta que un registro de estado cambie su valor:
+
+```c
+uint32_t *status_reg = (uint32_t *)0x40001000;
+
+while (*status_reg == 0) {
+    // Esperar a que el hardware cambie el estado
+}
+```
+
+En este ejemplo, el programa no modifica el contenido apuntado por `status_reg` dentro del ciclo. Al tratarse de un objeto no declarado como `volatile`, el compilador puede aplicar optimizaciones basándose únicamente en las modificaciones que observa dentro del programa.
+
+Conceptualmente, una optimización podría producir un comportamiento equivalente al siguiente:
+
+```c
+uint32_t temp = *status_reg;
+
+while (temp == 0) {
+    // El registro de hardware ya no se vuelve a consultar
+}
+```
+
+En este caso, el valor sería leído inicialmente y almacenado temporalmente. Si el valor obtenido fuera `0`, las siguientes iteraciones podrían continuar utilizando ese mismo valor y el programa no observaría posteriormente el cambio realizado por el hardware.
+
+El problema puede representarse de la siguiente manera:
+
+```text
+Primera lectura
+
+Registro STATUS
+0x00000000
+      │
+      ▼
+Registro de la CPU
+0x00000000
+
+      ↓ El hardware modifica STATUS
+
+Registro STATUS
+0x00000001
+
+Pero el programa continúa utilizando:
+
+Registro de la CPU
+0x00000000
+```
+
+Por esta razón, el programa necesita indicar que el valor asociado con esa dirección puede cambiar independientemente de las modificaciones visibles en el código.
+
+#### Solución mediante `volatile`
+
+El registro puede declararse utilizando el calificador `volatile`:
+
+```c
+volatile uint32_t *status_reg =
+    (volatile uint32_t *)0x40001000;
+
+while (*status_reg == 0) {
+    // Consultar nuevamente el registro
+}
+```
+
+En este caso, los accesos se realizan sobre un objeto declarado como `volatile`. Esto indica al compilador que las lecturas del registro son observables y que no debe eliminar una lectura simplemente porque el programa no haya realizado una escritura sobre ese valor.
+
+el funcionamiento esperado puede representarse de la siguiente manera:
+
+```text
+Lectura 1
+STATUS → 0x00000000
+           ↓
+     Dispositivo ocupado
+
+Lectura 2
+STATUS → 0x00000000
+           ↓
+     Dispositivo ocupado
+
+      ↓ El hardware cambia el registro
+
+Lectura 3
+STATUS → 0x00000001
+           ↓
+      Dispositivo listo
+```
+
+De esta manera, el programa puede detectar los cambios producidos directamente por el periférico.
+
+### 5.3 ¿Qué garantiza `volatile`?
+
+El calificador `volatile` indica al compilador que los accesos al objeto tienen importancia para el comportamiento del programa. Esto resulta especialmente útil en MMIO, donde una lectura o escritura puede representar una interacción con un dispositivo de hardware.
+
+Entre sus principales efectos se encuentran:
+
+- **Preservación de accesos:** las lecturas y escrituras `volatile` requeridas por el programa no pueden eliminarse simplemente por considerarse innecesarias.
+
+- **Cambios externos:** el compilador no debe asumir que el valor permanece constante únicamente porque el programa no lo haya modificado.
+
+- **Acceso a registros MMIO:** permite expresar en C que una dirección representa un objeto cuyo estado puede depender directamente del hardware.
+
+Por ejemplo:
+
+```c
+volatile uint32_t *status =
+    (volatile uint32_t *)0x40001000;
+
+uint32_t estado = *status;
+```
+
+En este caso, el acceso a `*status` corresponde a una lectura de un objeto `volatile`, por lo que tiene significado observable para el programa.
+
+Sin embargo, `volatile` tiene ciertas limitaciones. No debe considerarse por sí mismo un mecanismo de sincronización entre diferentes hilos o núcleos, ni garantiza atomicidad o todas las formas de ordenamiento de memoria que pueden requerirse en una arquitectura determinada. Estas características pueden necesitar mecanismos adicionales proporcionados por el lenguaje, la arquitectura o el sistema.
 
 ## Conclusiones
+A lo largo de esta investigación se pudo comprender cómo la entrada y salida mapeada en memoria (MMIO) permite establecer una comunicación directa entre el procesador y los diferentes periféricos de un sistema. Mediante este mecanismo, los registros de hardware son asociados con direcciones dentro del espacio de memoria, permitiendo que la CPU pueda consultar el estado de un dispositivo, enviar información o modificar su funcionamiento utilizando operaciones de lectura y escritura.
+
+También se observó cómo el lenguaje C permite trabajar con estos registros mediante punteros que hacen referencia a direcciones específicas de memoria. Esto demuestra la relación que existe entre el software y el hardware, ya que una operación realizada desde el código puede terminar provocando una acción directamente sobre un periférico. El uso de direcciones base, desplazamientos y operaciones sobre bits permite acceder y modificar registros específicos de un dispositivo. 
+
+Por otra parte, se identificó la importancia del calificador `volatile` al trabajar con MMIO. Los registros de hardware pueden cambiar independientemente de las instrucciones ejecutadas por el programa, por lo que el compilador no debe tratarlos de la misma manera que una posición convencional de memoria. `volatile` permite indicar que estos accesos son significativos y evita que determinadas optimizaciones eliminen accesos que son necesarios para interactuar correctamente con el hardware.
+
+Finalmente, MMIO y `volatile` muestran la importancia de comprender la interacción entre el lenguaje de programación, el compilador, el procesador y los dispositivos físicos. Aunque `volatile` es una herramienta importante para trabajar con registros MMIO, también se debe considerar que tiene limitaciones y que por sí mismo no proporciona mecanismos como atomicidad o sincronización. Comprender estos conceptos permite tener una visión más clara de cómo un programa escrito en un lenguaje como C puede utilizarse para controlar y comunicarse directamente con el hardware.
 
 ## Referencias
+
+[1] L. Clipp, “GPU Virtualization Part 1: An Introduction to PCIe and MMIO,” *Top of Mind*, Feb. 15, 2026. [Online]. Available: https://topofmind-dev.translate.goog/blog/2026/02/15/gpu-virtualization-part-1-an-introduction-to-pcie-and-mmio/?_x_tr_sl=en&_x_tr_tl=es&_x_tr_hl=es&_x_tr_pto=tc
+
+[2] Microsoft, “volatile (Referencia de C#),” *Microsoft Learn*, Jan. 26, 2026. [Online]. Available: https://learn.microsoft.com/es-es/dotnet/csharp/language-reference/keywords/volatile
+
+[3] R. Deuri, “Memory Mapped IO (MMIO),” *DEV Community*, Nov. 20, 2025. [Online]. Available: https://dev-to.translate.goog/ripan030/memory-mapped-io-mmio-5bn8?_x_tr_sl=en&_x_tr_tl=es&_x_tr_hl=es&_x_tr_pto=tc
+
+[4] L. Llamas, “Volatile en C++: variables que pueden cambiar fuera del código,” *Luis Llamas*. [Online]. Available: https://www.luisllamas.es/cpp-variables-volatile/
