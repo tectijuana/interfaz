@@ -145,20 +145,18 @@ El experimento nos permite concluir lo contrario a la hipótesis de partida: la 
 
 ## VIII. Discusión
 
-El ensamblador conserva ventaja demostrable en escenarios acotados:
-
-- **Rutinas de espera y temporización exacta**, donde el número de ciclos forma parte de la especificación funcional y el compilador no ofrece garantías.
-- **Manipulación de registros periféricos y secuencias de bajo consumo**, como la entrada a modos *sleep*, donde el orden preciso de las escrituras condiciona si el núcleo llega a apagarse [3].
-- **Aritmética de precisión múltiple y criptografía**, donde el acceso explícito al bit de acarreo y a los registros de multiplicación evita expansiones costosas.
-- **Núcleos sin soporte de compilador maduro**, o secciones críticas de arranque previas a la inicialización de la pila.
-
-En contrapartida, el costo es alto: pérdida de portabilidad, mayor superficie de error y un mantenimiento que ningún analizador estático cubre. Además, la optimización energética de mayor impacto en un sistema embebido real rara vez se encuentra en el lazo aritmético, sino en apagar el procesador. Un ATmega328P en modo *power-down* consume del orden de microamperios frente a los ~12 mA en actividad [3], una relación de tres órdenes de magnitud que ninguna microoptimización del lazo puede igualar. La estrategia correcta es, por tanto, *race to sleep*: terminar el trabajo lo antes posible y devolver el núcleo al modo de bajo consumo.
+A pesar de que el ensamblador tiene algunas ventajas como
+- **Rutinas de espera y temporización exacta**, 
+- **Manipulación de registros periféricos y secuencias de bajo consumo**, 
+- **Aritmética de precisión múltiple y criptografía**,
+- **Núcleos sin soporte de compilador maduro**, 
+el costo es alto ya que la pérdida de portabilidad es una gran desventaja en los tiempos actuales donde cualquier programa necesita compartirse, mayor superficie de error y un mantenimiento que ningún analizador estático cubre. La mejor manera de optimizar seria apagar el procesador.
 
 ## IX. Conclusión
 
-El perfilado energético confirma que el consumo de una rutina en un microcontrolador de 8 bits se concluye del número de ciclos ejecutados y por la cantidad de accesos a memoria, y no suele afectar el lenguaje en que se escribió el código fuente. La hipótesis de que el ensamblador ofrece por sí mismo una reducción significativa de potencia no se sostiene frente a un compilador de C con optimización activada: en la rutina analizada ambas implementaciones convergen al mismo lazo de siete ciclos.
+El perfilado de energía indica que el consumo de una rutina en un microcontrolador de 8 bits se determina por el número de ciclos que se ejecutan y la cantidad de accesos a la memoria; el lenguaje del código fuente es solo una variable que, por sí sola, no determina el consumo. En la rutina estudiada, un compilador de C con optimización activada llega al mismo lazo de siete ciclos que la versión en ensamblador, con la ventaja adicional de mantener la portabilidad del código.
 
-La verdadera diferencia radica entre compilar con y sin optimización. Este resultado reubica el esfuerzo del desarrollador: antes de reescribir a mano conviene revisar las banderas del compilador, inspeccionar el desensamblado y, sobre todo, gestionar los modos de bajo consumo del dispositivo. El ensamblador queda así reservado a su papel legítimo —control temporal exacto, secuencias de periférico y aritmética especializada— y no como técnica general de ahorro energético.
+La verdadera diferencia está en compilar con optimización o sin ella. Esto reubica la prioridad del desarrollador: antes de reescribir manualmente, conviene examinar las banderas del compilador, revisar el código desensamblado y, sobre todo, gestionar los modos de bajo consumo del dispositivo. De esta forma, el ensamblador se reserva para su función adecuada: control temporal preciso, manejo de secuencias de periféricos y operaciones aritméticas específicas, y no como un método general para ahorrar energía.
 
 
 ## Referencias
