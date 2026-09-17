@@ -7,8 +7,11 @@ El RTC está diseñado para mantener la hora de forma continua (tanto los segund
 
 El RTC se utiliza en una amplia gama de dispositivos electrónicos, desde ordenadores personales, sistemas embebidos, registradores de datos y equipos médicos, hasta automatismos industriales y sistemas de medición inteligentes. En los ordenadores personales, el RTC se encarga de mantener el tiempo del sistema entre ciclos de alimentación, y también puede interactuar con la BIOS o el sistema operativo. En los sistemas de ahorro de energía, el RTC permite sacar el dispositivo del modo de reposo o programar eventos a lo largo del tiempo.
 
-## Componentes clave
+## Características
+El reloj de tiempo real mantiene la fecha y hora del reloj de pared (año, mes, día, hora, minuto, segundo) y sobrevive a la pérdida de alimentación mediante respaldo por batería. El reloj libre (por ejemplo, el archivo de estado S:4 de Allen-Bradley en el SLC 500) es un tren de bits de onda cuadrada con frecuencias fijas (un bit conmuta cada 80 ms, otro cada segundo, y así sucesivamente) usado para generar pulsos periódicos dentro del programa. No almacena una fecha y se reinicia ante una pérdida de alimentación a menos que la CPU cuente con batería.
 
+
+## Componentes clave
 Los circuitos RTC suelen integrar un generador de reloj basado en un **resonador de cuarzo de 32,768 kHz**, que proporciona una gran estabilidad y precisión de temporización. Además, contienen registros que almacenan datos de temporización y, a menudo, un calendario con corrección del año bisiesto, así como alarmas de temporización y funciones de interrupción.
 
 ## Interfaces de comunicación
