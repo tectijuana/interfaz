@@ -1,11 +1,9 @@
 # 38 Reloj de Tiempo Real (RTC): Mantenimiento de fecha y hora en embebidos
 **Por: Urrea Ramirez Juan Pablo**
 
-## Definición precisa y arquitectura básica
+## Introducción
+El RTC está diseñado para mantener la hora de forma continua (tanto los segundos, minutos, horas, días y, a menudo, meses y años) incluso en situaciones en las que el microprocesador principal está apagado. Esta función es posible gracias al uso de una **fuente de alimentación independiente**, normalmente en forma de pilas o condensadores.  El **Reloj de Tiempo Real** (RTC, o *Real-Time Clock*) es un circuito electrónico especializado que se utiliza para mantener la hora real exacta, independientemente del estado de funcionamiento del sistema digital principal. 
 
-El **Reloj de Tiempo Real** (RTC, o *Real-Time Clock*) es un circuito electrónico especializado que se utiliza para mantener la hora real exacta, independientemente del estado de funcionamiento del sistema digital principal. 
-
-El RTC está diseñado para mantener la hora de forma continua (tanto los segundos, minutos, horas, días y, a menudo, meses y años) incluso en situaciones en las que el microprocesador principal está apagado. Esta función es posible gracias al uso de una **fuente de alimentación independiente**, normalmente en forma de pilas o condensadores. 
 
 El RTC se utiliza en una amplia gama de dispositivos electrónicos, desde ordenadores personales, sistemas embebidos, registradores de datos y equipos médicos, hasta automatismos industriales y sistemas de medición inteligentes. En los ordenadores personales, el RTC se encarga de mantener el tiempo del sistema entre ciclos de alimentación, y también puede interactuar con la BIOS o el sistema operativo. En los sistemas de ahorro de energía, el RTC permite sacar el dispositivo del modo de reposo o programar eventos a lo largo del tiempo.
 
@@ -17,7 +15,7 @@ Los circuitos RTC suelen integrar un generador de reloj basado en un **resonador
 
 La comunicación con el microcontrolador o el procesador se realiza a través de interfaces serie estándar como **I²C**, **SPI** o, en ocasiones, buses paralelos.
 
-### El módulo PCF8563 frente a otras alternativas
+## El módulo PCF8563 frente a otras alternativas
 
 Existe una amplia variedad de módulos de Reloj de Tiempo Real (RTC) disponibles en el mercado, tales como los modelos **DS1307** y **DS3231**. No obstante, en términos de eficiencia energética, el consumo de potencia de estos dispositivos es relativamente elevado, lo cual puede agotar de manera prematura la fuente de alimentación en aquellas aplicaciones de hardware basadas en baterías. 
 
@@ -112,9 +110,10 @@ void loop() {
 
 <img width="500" height="360" alt="image" src="https://github.com/user-attachments/assets/0febed6c-ef42-44d9-9211-f74f15c3fa11" />
 
+## Conclusión
+A pesar de haber muchas maneras de configurar un Reloj de Tiempo Real (RTC), en la cuestión del mantenimiento de hora y fecha, la solución definitiva se encuentra en la correcta manipulación de sus registros internos a través de un bus de comunicación bidireccional como el I²C. El éxito del sistema embebido depende de que el microcontrolador (como Arduino en este ejemplo) logre acceder y traducir eficientemente los datos temporales —los cuales se almacenan en formato BCD (Binario Codificado en Decimal)— para su procesamiento, al mismo tiempo que el hardware garantiza la autonomía del conteo mediante su propia batería de respaldo.
 
-
-### Referencias
+## Referencias
 
 [1] (N.d.). Industrialmonitordirect.com. Retrieved September 17, 2026, from https://industrialmonitordirect.com/es/blogs/knowledgebase/plc-real-time-clock-programming-registers-tags-and-time-sync?srsltid=AU7gw4WL6vHzt23EDVHTH9pOMdyakYfqjdia5vV8Ev879OZlxEJi3W58#section-0
 
