@@ -95,22 +95,4 @@ Entiendo que el plagio total o parcial invalida la entrega.
 ---
 
 
-<img width="619" height="109" alt="image" src="https://github.com/user-attachments/assets/e688a197-c94c-4ef7-8135-430c25cc6462" />
-
-Nombre del autor para auditar: ______________________  SOLO SI ES UN PEER-REVIEW LLENE ESTE FORMATO, DE LO CONTRARIO FAVOR DE SALTARLO (BORRAR ESTE MENSAJE(
-
-
-Estimado/a autor/a:
-
-Gracias por su valiosa aportación en la validación de diagramas Mermaid, el uso de formato Markdown extendido, la incorporación de imágenes y la correcta estructuración de tablas en Markdown.
-
-Su auditoría contribuye significativamente al fortalecimiento de la comunidad de Lenguaje de Interfaz, ayudando a consolidar una fuente de contenido de calidad para nuestros visitantes y para los procesos de indexación.
-
-Le deseamos mucho éxito en su labor académica y profesional.
-
-Atentamente,
-
-René Solis R.
-@IoTeacher
-
 
