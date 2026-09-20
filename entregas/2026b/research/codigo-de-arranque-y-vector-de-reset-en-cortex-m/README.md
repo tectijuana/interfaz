@@ -1,11 +1,17 @@
 # Código de arranque (startup) y vector de reset en Cortex-M
 
 **Alumno:** Jesus Cruz Tafoya
+
 **No. de control:** 25210860
+
 **Horario:** 3 pm-4 pm
+
 **Materia:** Lenguajes de Interfaz (SCC-1014)
+
 **Institución:** TecNM Campus Tijuana, Ingeniería en Sistemas Computacionales
+
 **Tema:** Código de arranque (startup) y vector de reset en Cortex-M
+
 **Fecha de entrega:** 20 de septiembre
 
 ---
