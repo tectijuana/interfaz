@@ -26,6 +26,18 @@ Al declarar configuraciones estructuradas bajo atributos como PERF_TYPE_HARDWARE
 En Windows, plataformas como el Windows Performance Toolkit implementan abstracciones conceptualmente equivalentes mediante perfiles del sistema para rastrear tasas CPI y desajustes de rama usando estos mismos fundamentos.
 5. El Riesgo de los Entornos de Emulación
 Al investigar fallas comunes reportadas en el conteo de ciclos de AArch64, se destaca un error generalizado: Intentar realizar la optimización de PMU dentro de un emulador como QEMU.
+
+**Bibliografía**
+
+[1] ARM Limited, "PMCCNTR_EL0, Performance Monitors Cycle Counter," *ARM Architecture Reference Manual*, dic. 2024. [En línea]. Disponible en: https://support.arm.com/documentation/ddi0601/2024-12/External-Registers/PMCCNTR-EL0--Performance-Monitors-Cycle-Counter.
+
+[2] Linux Kernel Documentation, "Activity Monitors Unit (AMU)," *kernel.org*. [En línea]. Disponible en: https://docs.kernel.org/arch/arm64/amu.html.
+
+[3] Z. Sun, "How to Use Performance Monitor Unit (PMU) of 64-bit ARMv8-A in Linux," *zhiyisun.github.io*, mar. 2016. [En línea]. Disponible en: https://zhiyisun.github.io/2016/03/02/How-to-Use-Performance-Monitor-Unit-(PMU)-of-64-bit-ARMv8-A-in-Linux.html.
+
+[4] Microsoft, "Recording PMU Events," *Windows Hardware Developer*, [En línea]. Disponible en: https://learn.microsoft.com/es-es/windows-hardware/test/wpt/recording-pmu-events.
+
+[5] Stack Overflow, "How do I use hardware performance counters in AArch64 assembly?," *stackoverflow.com*, abr. 2017. [En línea]. Disponible en: https://stackoverflow.com/questions/43564391/how-do-i-use-hardware-performance-counters-in-aarch64-assembly.
 QEMU opera bajo un modelo netamente funcional y rápido de traducción binaria orientada a nano-segundos, y no provee una infraestructura real de eventos PMU ni un modelo de tubería (pipeline) de microarquitectura preciso.
 En entornos emulados como QEMU, las ejecuciones ocurren de manera secuencial abstracta y el conteo de "ciclos" devuelto a menudo es el resultado de escalar divisiones arbitrarias del tiempo del sistema huésped.
 Por lo tanto, la optimización profunda del IPC (Instrucciones Por Ciclo) o los aciertos a memoria caché solo es ejecutada sobre silicio físico o empleando simuladores comerciales dedicados de microarquitectura orientados a ciclos.
