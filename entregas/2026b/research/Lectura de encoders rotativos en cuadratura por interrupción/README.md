@@ -19,7 +19,7 @@ Un encoder en cuadratura genera dos señales de onda cuadrada desplazadas en fas
   * **Sentido Horario (CW):** El canal A se adelanta al canal B por $90^\circ$.
   * **Sentido Antihorario (CCW):** El canal B se adelanta al canal A por $90^\circ$.
 
-> <img src=<img width="947" height="517" alt="diagrama de tiempos de encoder en cuadratura" src="https://github.com/user-attachments/assets/7fd40d16-ef73-4ecd-95b9-f081a1874257" />
+> <img width="947" height="517" alt="diagrama de tiempos de encoder en cuadratura" src="https://github.com/user-attachments/assets/7fd40d16-ef73-4ecd-95b9-f081a1874257" />
 
 
 ---
@@ -39,6 +39,7 @@ El nivel de detalle con el que se procesan las señales del encoder define la re
 | **Modo 2X** | 2 por período ($2 \times \text{PPR}$) | • Duplica la resolución del encoder sin costo adicional de hardware.<br>• Buen balance entre resolución angular y uso de recursos del sistema. | • Sensible a asimetrías de ciclo de trabajo (*duty cycle*) del sensor.<br>• Requiere detectar ambos flancos en un pin GPIO. | **Moderada:** Procesa el doble de interrupciones por revolución que el modo 1X. |
 | **Modo 4X** | 4 por período ($4 \times \text{PPR}$) | • Máxima resolución posible (utiliza todos los estados de la cuadratura).<br>• Permite detectar cambios de dirección instantáneos en cualquier transición de fase. | • Sensible a variaciones de tolerancia de la señal de $90^\circ$.<br>• Mayor riesgo de saturación de CPU a altas velocidades (RPM) si no hay filtro RC. | **Alta:** Cuatriplica el número de llamadas a la ISR por ciclo respecto al modo 1X. |
 
+---
 
 ## 3. Hardware e Interfaz Física
 
@@ -49,8 +50,9 @@ Los encoders pueden ser de tipo óptico o magnético, con salidas tipo *Push-Pul
 * **Inmunidad al Ruido:** Las líneas del encoder en entornos industriales son propensas a acoples electromagnéticos (EMI).
 * **Filtros RC Pasivos:** Implementados para atenuar transitorios de alta frecuencia antes de ingresar al pin GPIO.
 
-> **[ ESPACIO RESERVADO PARA DIAGRAMA 1 ]**
-> * **Descripción requerida:** Esquema eléctrico del circuito de filtrado RC (Resistencia-Capacitor) y Schmitt Trigger conectado entre el encoder y el pin de interrupción del microcontrolador.
+> <<img width="947" height="517" alt="diagrama de tiempos de encoder en cuadratura" src="https://github.com/user-attachments/assets/f7d36a0f-265e-4b28-aee8-204e0c8cf7be" />
+
+Resistencia Pull-Up ($R_{pullup}$): Asegura un nivel lógico alto constante cuando la salida del encoder es de colector abierto (Open-Collector).Filtro Pasa-Bajas RC ($R_{filter}$ y $C_{filter}$): Atenúa los picos y ruidos de alta frecuencia provocados por el rebote mecánico (chatter). La frecuencia de corte se define mediante la fórmula:$$f_c = \frac{1}{2\pi \cdot R_{filter} \cdot C_{filter}}$$Inversor / Buffer Schmitt Trigger (ej. 74HC14): Elimina la zona de incertidumbre en las transiciones lentas de voltaje generadas por el capacitor, entregando una onda cuadrada limpia con flancos de subida y bajada definidos hacia el pin de interrupción del microcontrolador.
 
 ---
 
