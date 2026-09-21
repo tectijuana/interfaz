@@ -201,6 +201,13 @@ find_max_int32:
     mv      a0, t0              # Coloca el resultado en a0 para el retorno
     ret
 ```
+# Referencias Bibliográficas
+
+- **ARM Limited.** (2021). *ARM Architecture Reference Manual ARMv8, for ARMv8-A architecture profile* (Document ID: DDI 0487G.a). ARM Limited.
+- **Waterman, A., & Asanović, K.** (Eds.). (2019). *The RISC-V Instruction Set Manual, Volume I: Unprivileged ISA* (Document Version 20191213). RISC-V International.
+- **Patterson, D. A., & Hennessy, J. L.** (2017). *Computer Organization and Design RISC-V Edition: The Hardware Software Interface*. Morgan Kaufmann.
+- **ARM Limited.** (2022). *Procedure Call Standard for the AArch64 Architecture (AArch64 ABI 2022Q3)* (Document ID: GENC-003534). ARM Limited.
+- **RISC-V International.** (2021). *RISC-V Application Binary Interface Specification* (Version 1.0). RISC-V International.
 
 
 
