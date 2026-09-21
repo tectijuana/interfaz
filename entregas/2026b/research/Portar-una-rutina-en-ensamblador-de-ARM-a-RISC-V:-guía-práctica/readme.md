@@ -134,3 +134,73 @@ ldp     x29, x30, [sp], #32    // Restaura FP, LR y libera 32 bytes de pila
 ret                            // Retorna usando LR (x30)
 ```
 ### Ejemplo Práctico de Portabilidad (Paso a Paso)
+# Ejemplo Práctico de Portabilidad: ARM64 a RISC-V (RV64I)
+
+A continuación se presenta el proceso paso a paso para portar una función real de producción que busca el **valor máximo** dentro de un arreglo de enteros firmados de 32 bits (`int32_t`).
+
+---
+
+## 1. Definición de la Función en C
+
+Para mantener el contexto del problema, la función tiene la siguiente firma en C:
+
+```c
+#include <stdint.h>
+#include <stddef.h>
+
+int32_t find_max_int32(const int32_t *array, size_t count);
+```
+### Implementación Original en ARM64
+```c
+.global find_max_int32
+.type find_max_int32, %function
+
+find_max_int32:
+    // Entradas: X0 = array, X1 = count
+    ldr     w2, [x0], #4        // w2 = max_val = array[0]; x0 += 4
+    subs    x1, x1, #1          // count--; actualiza flags NZCV
+    b.eq    .Ldone              // Si count == 0, termina inmediatamente
+
+.Lloop:
+    ldr     w3, [x0], #4        // w3 = array[i]; x0 += 4
+    cmp     w3, w2              // Compara array[i] con max_val
+    csel    w2, w3, w2, gt      // Si w3 > w2 (signed), w2 = w3
+
+    subs    x1, x1, #1          // count--
+    b.ne    .Lloop              // Si count != 0, continúa el bucle
+
+.Ldone:
+    sxtw    x0, w2              // Extiende el signo de 32 bits (w2) a 64 bits (x0)
+    ret
+```
+### Implementación Traducida en RISC-V (RV64I)
+```c
+.global find_max_int32
+.type find_max_int32, @function
+
+find_max_int32:
+    # Entradas: a0 = array, a1 = count
+    lw      t0, 0(a0)           # t0 (max_val) = array[0] (lw extiende el signo a 64 bits)
+    addi    a0, a0, 4           # array++ (Avanza 4 bytes manualmente)
+    addi    a1, a1, -1          # count--
+    beqz    a1, .Ldone          # Si count == 0, salta al final
+
+.Lloop:
+    lw      t1, 0(a0)           # t1 = array[i]
+    addi    a0, a0, 4           # array++ (Avanza 4 bytes)
+
+    # Reemplazo de CSEL mediante bifurcación explícita
+    ble     t1, t0, .Lskip_max  # Si t1 <= t0 (con signo), salta la actualización
+    mv      t0, t1              # t0 = t1 (Nuevo máximo)
+
+.Lskip_max:
+    addi    a1, a1, -1          # count--
+    bnez    a1, .Lloop          # Si count != 0, continúa el bucle
+
+.Ldone:
+    mv      a0, t0              # Coloca el resultado en a0 para el retorno
+    ret
+```
+
+
+
