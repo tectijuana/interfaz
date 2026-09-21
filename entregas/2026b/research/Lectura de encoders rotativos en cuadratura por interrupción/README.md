@@ -161,10 +161,10 @@ Cada interrupción impone un costo en ciclos de reloj (*Context Switching*):
 
 La frecuencia máxima leíble antes de perder pulsos o bloquear la CPU se calcula mediante:
 
-$$f_{\text{max}} = \frac{1}{T_{\text{ISR\_ejecución}} + T_{\text{overhead\_hardware}}}$$
+$$f_{\text{max}} = \frac{1}{T_{\text{ISR execution}} + T_{\text{overhead hardware}}}$$
 
-> **[ ESPACIO RESERVADO PARA IMAGEN 2 ]**
-> * **Descripción requerida:** Gráfica del porcentaje de uso de la CPU vs. Frecuencia de pulsos del Encoder (demostrando la saturación por interrupciones a altas RPM).
+<img width="883" height="477" alt="carga de CPU vs frecuencia del encoder" src="https://github.com/user-attachments/assets/0b29f62c-99ea-4e3e-a583-71e1d48265b3" />
+
 
 ---
 
