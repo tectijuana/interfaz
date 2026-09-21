@@ -72,3 +72,13 @@ Finalmente, para garantizar que la información fluya sin interrupciones ni pér
 
 ## Conclusiones
 La comunicación USB CDC en microcontroladores ARM constituye una herramienta importante en el diseño actual de sistemas embebidos y lenguajes de interfaz. Al permitir que el microcontrolador emule un puerto serie virtual mediante su propio hardware nativo, sin necesidad de componentes de conversión externos, reduciendo el costo, la complejidad del diseño de PCB y el consumo de energía. Entender esta estructura de los descriptores, el proceso de enumeración y la gestión de Endpoints permite al desarrollador aprovechar las máximas velocidades del bus USB para diversas aplicaciones.
+
+## Bibliografia
+
+[1] IBM Corporation, "What is a microcontroller?," *IBM Topics*, 2023. [En línea]. Disponible en: https://www.ibm.com/think/topics/microcontroller
+
+[2] STMicroelectronics, *UM1734 User Manual: STM32Cube USB device library*, DocID026260 Rev 5, 2021. [En línea]. Disponible en: https://manuals.plus/m/3e3562a6a7641e21ceeeecfb0170b371682cf4f20d6af2989dba5d968a3bda06
+
+[3] USB Implementers Forum, *Universal Serial Bus Class Definitions for Communication Devices (CDC)*, Spec v1.2, 2010. [En línea]. Disponible en: https://www.usb.org/document-library/class-definitions-communication-devices-12
+
+[4] Raspberry Pi Ltd, *RP2040 Datasheet: A high-performance microcontroller chip with onboard USB*, Raspberry Pi Documentation, 2024. [En línea]. Disponible en: https://www.farnell.com/datasheets/3966712.pdf
