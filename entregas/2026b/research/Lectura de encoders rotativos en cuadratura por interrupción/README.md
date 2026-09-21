@@ -50,7 +50,8 @@ Los encoders pueden ser de tipo óptico o magnético, con salidas tipo *Push-Pul
 * **Inmunidad al Ruido:** Las líneas del encoder en entornos industriales son propensas a acoples electromagnéticos (EMI).
 * **Filtros RC Pasivos:** Implementados para atenuar transitorios de alta frecuencia antes de ingresar al pin GPIO.
 
-> <<img width="947" height="517" alt="diagrama de tiempos de encoder en cuadratura" src="https://github.com/user-attachments/assets/f7d36a0f-265e-4b28-aee8-204e0c8cf7be" />
+> <img width="947" height="512" alt="Esquema electrico del circuito de filtrado RC y Schmitt Trigger" src="https://github.com/user-attachments/assets/94055368-8c76-43e9-9fff-92560d904223" />
+
 
 #### Descripción de los Componentes del Circuito de Acondicionamiento
 
@@ -96,8 +97,24 @@ $$\text{Índice} = (A_{\text{previo}} \ll 3) \mid (B_{\text{previo}} \ll 2) \mid
 
 #### Tabla de Transición de Estados (Modo 4X):
 
-> **[ ESPACIO RESERVADO PARA CUADRO INFORMATIVO 2 ]**
-> * **Descripción requerida:** Matriz de estados simplificada en formato de tabla (Índice de 0 a 15, Estado Previo, Estado Actual, Acción: +1, -1, 0 o Error por cambio doble de estado).
+| Índice | Estado Previo ($A_p B_p$) | Estado Actual ($A_a B_a$) | Acción ($+1$, $-1$, $0$, Error) | Condición / Interpretación |
+| :---: | :---: | :---: | :---: | :--- |
+| **0** | `00` | `00` | $0$ | Sin cambio de estado |
+| **1** | `00` | `01` | $-1$ | Paso en sentido antihorario (CCW) |
+| **2** | `00` | `10` | $+1$ | Paso en sentido horario (CW) |
+| **3** | `00` | `11` | $0$ (Error) | Transición inválida (doble cambio simultáneo) |
+| **4** | `01` | `00` | $+1$ | Paso en sentido horario (CW) |
+| **5** | `01` | `01` | $0$ | Sin cambio de estado |
+| **6** | `01` | `10` | $0$ (Error) | Transición inválida (doble cambio simultáneo) |
+| **7** | `01` | `11` | $-1$ | Paso en sentido antihorario (CCW) |
+| **8** | `10` | `00` | $-1$ | Paso en sentido antihorario (CCW) |
+| **9** | `10` | `01` | $0$ (Error) | Transición inválida (doble cambio simultáneo) |
+| **10** | `10` | `10` | $0$ | Sin cambio de estado |
+| **11** | `10` | `11` | $+1$ | Paso en sentido horario (CW) |
+| **12** | `11` | `00` | $0$ (Error) | Transición inválida (doble cambio simultáneo) |
+| **13** | `11` | `01` | $+1$ | Paso en sentido horario (CW) |
+| **14** | `11` | `10` | $-1$ | Paso en sentido antihorario (CCW) |
+| **15** | `11` | `11` | $0$ | Sin cambio de estado |
 
 ---
 
