@@ -52,7 +52,18 @@ Los encoders pueden ser de tipo óptico o magnético, con salidas tipo *Push-Pul
 
 > <<img width="947" height="517" alt="diagrama de tiempos de encoder en cuadratura" src="https://github.com/user-attachments/assets/f7d36a0f-265e-4b28-aee8-204e0c8cf7be" />
 
-Resistencia Pull-Up ($R_{pullup}$): Asegura un nivel lógico alto constante cuando la salida del encoder es de colector abierto (Open-Collector).Filtro Pasa-Bajas RC ($R_{filter}$ y $C_{filter}$): Atenúa los picos y ruidos de alta frecuencia provocados por el rebote mecánico (chatter). La frecuencia de corte se define mediante la fórmula:$$f_c = \frac{1}{2\pi \cdot R_{filter} \cdot C_{filter}}$$Inversor / Buffer Schmitt Trigger (ej. 74HC14): Elimina la zona de incertidumbre en las transiciones lentas de voltaje generadas por el capacitor, entregando una onda cuadrada limpia con flancos de subida y bajada definidos hacia el pin de interrupción del microcontrolador.
+#### Descripción de los Componentes del Circuito de Acondicionamiento
+
+1. **Resistencia Pull-Up ($R_{\text{pullup}}$):** 
+   Asegura un nivel lógico alto ($V_{CC}$) constante cuando la salida del encoder se encuentra en estado flotante o es de tipo colector abierto (*Open-Collector*). Evita estados indeterminados en la línea de entrada.
+
+2. **Filtro Pasa-Bajas RC ($R_{\text{filter}}$ y $C_{\text{filter}}$):** 
+   Forma una red atenuadora pasiva que filtra el ruido electromagnético de alta frecuencia y absorbe los picos de voltaje transitorios provocados por el rebote mecánico (*chatter*). La frecuencia de corte ($f_c$) del filtro se calcula mediante:
+   
+   $$f_c = \frac{1}{2\pi \cdot R_{\text{filter}} \cdot C_{\text{filter}}}$$
+
+3. **Inversor / Buffer Schmitt Trigger:** 
+   Aporta histeresis de voltaje al sistema. Elimina la zona de incertidumbre y la lenta tasa de variación (*slew rate*) introducida por el capacitor en las transiciones de voltaje, entregando una onda cuadrada de flancos rápidos y limpios al pin de interrupción del microcontrolador.
 
 ---
 
