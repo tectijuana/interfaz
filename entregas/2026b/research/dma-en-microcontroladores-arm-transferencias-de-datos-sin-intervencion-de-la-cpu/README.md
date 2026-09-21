@@ -49,8 +49,6 @@ Con DMA, el proceso se divide en una fase de configuración y una fase de transf
 
 Por lo tanto, DMA permite realizar la transferencia de datos **sin intervención directa de la CPU durante el movimiento de cada elemento**. La CPU participa principalmente en la configuración inicial del controlador y, cuando se requiere, en la atención de eventos generados por el DMA.
 
-![7. Diagrama en bloque de un canal DMA. | Download Scientific Diagram](https://www.researchgate.net/profile/Santiago-Perez-5/publication/282335835/figure/fig53/AS:668972395556868@1536506856205/Diagrama-en-bloque-de-un-canal-DMA.png)
-
 ## 2. Configuración del DMA en microcontroladores STM32
 
 En los microcontroladores STM32, la configuración del DMA puede realizarse directamente mediante registros o mediante las bibliotecas proporcionadas por STMicroelectronics, como la **HAL (Hardware Abstraction Layer)**.
