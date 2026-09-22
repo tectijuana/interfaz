@@ -1,376 +1,268 @@
 # Medición y optimización de latencia en interfaces de tiempo real
 
-TELLEZ RUIZ MARIA REBECA
-Ingeniería en Sistemas Computacionales
-Lenguajes de Interfaz
-Tema: Medición y optimización de latencia en interfaces de tiempo real
+## Introducción
 
- Introducción
+En los sistemas de tiempo real es importante que el procesador pueda responder rápidamente cuando ocurre un evento. Por ejemplo, un sensor puede generar una interrupción y el sistema debe atenderla en un tiempo determinado.
 
-Cuando usamos una aplicación esperamos que responda después de realizar alguna acción. Por ejemplo, cuando presionamos un botón esperamos que suceda algo casi de inmediato. Si la aplicación tarda mucho en responder, podemos pensar que se trabó o que algo está funcionando mal. A este retraso se le conoce como latencia.
+El tiempo que transcurre desde que ocurre el evento hasta que el procesador comienza a atenderlo se conoce como **latencia**.
 
-La latencia es importante en las interfaces de tiempo real porque en este tipo de sistemas el tiempo de respuesta tiene bastante importancia. No solamente se necesita que el programa entregue un resultado correcto, también se necesita que lo haga en el momento adecuado.
+En la materia de **Lenguajes de Interfaz**, este tema se puede relacionar con el funcionamiento interno del procesador, el lenguaje ensamblador, las interrupciones, los registros, los ciclos de reloj y el acceso a memoria.
 
-Este problema se puede presentar por diferentes razones. Puede ser por una operación que tarda demasiado, una consulta a una base de datos, una conexión lenta, demasiados procesos ejecutándose al mismo tiempo o incluso por la forma en que está programada la interfaz.
+El objetivo de esta investigación es explicar cómo se puede medir la latencia y qué técnicas pueden utilizarse para reducirla en interfaces y sistemas de tiempo real.
 
-Por eso, para poder mejorar una aplicación primero es necesario medir cuánto tarda en responder y buscar qué parte está causando el problema. En este trabajo se explica qué es la latencia, cómo se puede medir, cuáles son algunas de sus causas y qué métodos existen para reducirla.
+---
 
-## ¿Qué es la latencia?
+## 1. ¿Qué es la latencia?
 
-La latencia es básicamente el tiempo que pasa entre una acción y la respuesta del sistema.
+La latencia es el tiempo que transcurre entre que ocurre un evento y el momento en que el sistema comienza a responder a dicho evento.
 
-Un ejemplo muy sencillo sería un botón de una aplicación. El usuario hace clic y después de un momento aparece el resultado. Ese tiempo entre el clic y la respuesta forma parte de la latencia que percibe el usuario.
+En un sistema de tiempo real, una latencia alta puede provocar que la respuesta llegue demasiado tarde.
 
-El proceso podría verse de esta manera:
+Un ejemplo sencillo es el siguiente:
 
-Usuario realiza una acción
-          ↓
-La interfaz recibe la acción
-          ↓
-El programa procesa la información
-          ↓
-Se obtiene el resultado
-          ↓
-La interfaz se actualiza
-          ↓
-El usuario ve la respuesta
+**Evento → Interrupción → Atención del procesador → Ejecución de instrucciones → Respuesta**
 
+La latencia puede medirse utilizando unidades de tiempo, como nanosegundos o microsegundos, pero también puede medirse mediante la cantidad de **ciclos de reloj** que utiliza el procesador.
 
-Aunque algunas de estas operaciones pueden tardar muy poco, cuando se van acumulando pueden hacer que la aplicación se sienta lenta.
+---
 
-La latencia también puede aparecer cuando una aplicación se comunica con otro equipo. Por ejemplo, si una aplicación necesita pedir información a un servidor, la solicitud tiene que viajar por la red, ser procesada y después regresar con una respuesta.
+## 2. Factores que afectan la latencia
 
-## Interfaces de tiempo real
+La latencia de un sistema puede depender de diferentes factores, entre ellos:
 
-Las interfaces de tiempo real son importantes en aplicaciones donde la información necesita actualizarse o responder en un periodo determinado.
+* Tiempo necesario para detectar una interrupción.
+* Prioridad asignada a la interrupción.
+* Instrucción que se está ejecutando cuando ocurre el evento.
+* Tiempo utilizado para guardar y restaurar registros.
+* Accesos a memoria.
+* Cantidad de instrucciones que contiene una rutina de atención de interrupción.
+* Esperas relacionadas con periféricos.
+* Organización de la memoria y caché.
+* Frecuencia del procesador.
 
-Un ejemplo puede ser una aplicación que recibe información de sensores. Si el sensor envía un dato y la interfaz tarda demasiado en mostrarlo, el usuario podría estar viendo información que ya no representa correctamente lo que está sucediendo.
+Por esta razón, para reducir la latencia es necesario identificar qué parte del proceso está consumiendo más tiempo.
 
-También existen sistemas donde una respuesta tardía puede afectar el funcionamiento general. Por eso, en estos casos no solamente interesa que el resultado sea correcto, sino también cuándo se obtiene.
+---
 
-En una interfaz normal, unos segundos de espera pueden ser molestos. En un sistema que necesita respuestas rápidas, una demora puede ser un problema mucho más importante.
+## 3. Medición mediante ciclos de reloj
 
-## Diferencia entre latencia y tiempo de respuesta
+Una forma de medir la latencia es utilizar los ciclos de reloj del procesador.
 
-Los dos conceptos están relacionados, pero no necesariamente significan exactamente lo mismo.
+En arquitecturas ARM64 existen mecanismos de monitoreo de rendimiento que permiten obtener información relacionada con los ciclos ejecutados. Uno de ellos es el contador **PMCCNTR**.
 
-La latencia puede referirse al retraso que existe entre dos eventos. El tiempo de respuesta puede representar todo el tiempo que tarda una solicitud desde que comienza hasta que el usuario recibe el resultado.
+El acceso a este contador depende del procesador, del nivel de privilegio y de la configuración del sistema operativo, por lo que no siempre puede utilizarse directamente desde una aplicación común.
 
-Por ejemplo:
+La fórmula básica para obtener los ciclos utilizados es:
 
+**Latencia = ciclos finales − ciclos iniciales**
 
-Clic del usuario
-      ↓
-Solicitud
-      ↓
-Procesamiento
-      ↓
-Consulta de información
-      ↓
-Respuesta
-      ↓
-Actualización de pantalla
+Por ejemplo, si se registran 500 ciclos entre el inicio y el final de una operación, se puede utilizar esa cantidad para analizar el tiempo empleado.
 
+Si el procesador trabaja a una frecuencia de 1 GHz, de manera aproximada un ciclo corresponde a 1 nanosegundo. Por lo tanto:
 
-Si desde el clic hasta la actualización pasan 500 milisegundos, ese sería aproximadamente el tiempo que el usuario tuvo que esperar para obtener el resultado.
+**500 ciclos ≈ 500 ns**
 
-## ¿Por qué se debe medir?
+Esta relación es aproximada y depende de la frecuencia real del procesador.
 
-Antes de intentar hacer más rápida una aplicación, primero se necesita saber qué parte está tardando.
+---
 
-Si un programa parece lento, se podría pensar que el problema está en la base de datos, pero después de hacer mediciones se puede descubrir que el problema realmente está en otra parte.
+## 4. Ejemplo de medición de una interrupción
 
-Por eso es mejor seguir un proceso:
+Para medir la latencia de una interrupción se puede seguir un proceso como el siguiente:
 
+1. Registrar el contador de ciclos antes del evento.
+2. Generar o esperar el evento.
+3. Detectar la interrupción.
+4. Ejecutar la rutina de atención de la interrupción.
+5. Registrar nuevamente el contador de ciclos.
+6. Restar el valor inicial al valor final.
+7. Repetir la prueba varias veces.
+8. Comparar los resultados obtenidos.
 
-Medir
-  ↓
-Analizar
-  ↓
-Encontrar el problema
-  ↓
-Optimizar
-  ↓
-Medir nuevamente
+Un ejemplo de mediciones podría ser:
 
+| Prueba | Ciclos medidos | Latencia aproximada |
+| ------ | -------------: | ------------------: |
+| 1      |            820 |              820 ns |
+| 2      |            845 |              845 ns |
+| 3      |            810 |              810 ns |
+| 4      |            830 |              830 ns |
+| 5      |            825 |              825 ns |
 
-De esta forma se puede comprobar si el cambio realmente funcionó.
+Las pequeñas diferencias entre las pruebas pueden deberse a otros procesos que se estén ejecutando en el sistema o a las condiciones del procesador.
 
-También es importante hacer varias pruebas. Una sola prueba no siempre representa el comportamiento normal de un programa porque la computadora puede estar realizando otras tareas al mismo tiempo.
+---
 
-## ¿Cómo se puede medir la latencia?
+## 5. Relación con lenguaje ensamblador
 
-Una manera sencilla de medir el tiempo de una operación es registrar el momento en que comienza y el momento en que termina.
+La latencia también está relacionada con las instrucciones que ejecuta el procesador.
 
-Por ejemplo:
+En lenguaje ensamblador se pueden realizar operaciones como:
 
+* Cargar datos desde memoria.
+* Guardar datos en memoria.
+* Realizar operaciones aritméticas.
+* Comparar valores.
+* Realizar saltos.
+* Manipular registros.
 
-inicio = tiempo actual
+La cantidad y el tipo de instrucciones utilizadas pueden influir en el tiempo de ejecución de una operación.
 
-realizar operación
+Por ejemplo, una rutina que contiene muchas instrucciones y accesos innecesarios a memoria puede tardar más tiempo que una rutina más sencilla.
 
-fin = tiempo actual
+Por esta razón, el análisis de instrucciones en ensamblador puede ayudar a identificar partes del código que pueden ser optimizadas.
 
-latencia = fin - inicio
+---
 
-Si una operación comienza en 1000 milisegundos y termina en 1150 milisegundos:
+## 6. Interrupciones y latencia
 
+Una interrupción permite que un dispositivo o evento solicite la atención del procesador.
 
-1150 - 1000 = 150 ms
+Un flujo simplificado puede representarse de la siguiente manera:
 
-La operación tardó 150 milisegundos.
+**Evento → Señal de interrupción → Procesador → Rutina de atención (ISR) → Procesamiento → Retorno**
 
-En un programa real se pueden utilizar funciones de medición de tiempo proporcionadas por el lenguaje de programación. Lo importante es medir exactamente la parte que se quiere analizar.
+La rutina que atiende la interrupción se conoce como **ISR (Interrupt Service Routine)**.
 
-## Ejemplo de varias mediciones
+Una recomendación importante es mantener la ISR lo más corta posible. Si una ISR realiza demasiadas operaciones, puede aumentar el tiempo durante el cual el procesador permanece atendiendo esa interrupción.
 
-Supongamos que tenemos un botón que realiza una consulta y queremos saber cuánto tarda.
+---
 
-Podemos realizar varias pruebas:
+## 7. Prioridades de interrupción
 
-| Prueba | Tiempo |
-| 1      | 120 ms |
-| 2      | 118 ms |
-| 3      | 125 ms |
-| 4      | 121 ms |
-| 5      | 240 ms |
-| 6      | 119 ms |
-| 7      | 123 ms |
-| 8      | 117 ms |
-| 9      | 122 ms |
-| 10     | 120 ms |
+Cuando existen varias interrupciones, el sistema puede utilizar diferentes niveles de prioridad.
 
-La mayoría de los resultados están cerca de 120 milisegundos, pero la prueba 5 tardó 240 milisegundos.
+Una interrupción de mayor prioridad puede ser atendida antes que otra de menor prioridad.
 
-Esto puede indicar que en esa ejecución ocurrió algo diferente. Por ejemplo, otro proceso pudo estar utilizando recursos de la computadora o pudo existir alguna espera durante la operación.
+La asignación correcta de prioridades puede ayudar a que los eventos importantes sean atendidos rápidamente.
 
-Por eso no es buena idea revisar solamente un resultado. Es mejor realizar varias pruebas y comparar los datos.
+Sin embargo, una mala configuración de prioridades puede provocar que algunas interrupciones tengan que esperar demasiado tiempo.
 
-Algunos valores que se pueden obtener son:
+Por eso, al diseñar un sistema de tiempo real es importante considerar cuáles eventos necesitan una respuesta más rápida.
 
-* Tiempo mínimo.
-* Tiempo máximo.
-* Promedio.
-* Mediana.
-* Percentiles.
-* Variación entre las pruebas.
+---
 
-## Principales causas de latencia
+## 8. Técnicas para reducir la latencia
 
-La latencia puede tener diferentes causas dependiendo de cómo esté construida la aplicación.
+Existen diferentes técnicas que pueden utilizarse para disminuir la latencia.
 
-### Procesamiento
+### 8.1 Reducir el código dentro de la ISR
 
-Una función que realiza demasiados cálculos puede tardar más tiempo de lo necesario. Si existen operaciones que no son necesarias, eliminarlas puede ayudar a mejorar el rendimiento.
+La rutina de atención de interrupciones debe contener solamente las operaciones necesarias.
 
-### Memoria
+Las operaciones que no sean urgentes pueden realizarse posteriormente fuera de la ISR.
 
-El uso de memoria también puede influir. Una aplicación que maneja demasiada información al mismo tiempo puede consumir muchos recursos y afectar su funcionamiento.
+### 8.2 Optimizar el código crítico
 
-### Red
+Las partes del programa que necesitan responder rápidamente pueden optimizarse utilizando instrucciones adecuadas y evitando operaciones innecesarias.
 
-Las aplicaciones que necesitan Internet o comunicarse con un servidor pueden tener retrasos debido a la conexión.
+En algunos casos, el análisis del código ensamblador permite identificar instrucciones que pueden reducirse o mejorarse.
 
-Por ejemplo, si una aplicación necesita enviar una solicitud al servidor y esperar la respuesta, el usuario tendrá que esperar todo ese proceso.
+### 8.3 Reducir accesos innecesarios a memoria
 
-### Bases de datos
+Los accesos a memoria pueden agregar tiempo a la ejecución.
 
-Las consultas a bases de datos pueden tardar cuando se maneja una gran cantidad de información o cuando la consulta no está bien optimizada.
+Cuando sea posible, se pueden utilizar registros para almacenar temporalmente los datos que se necesitan con mayor frecuencia.
 
-Esto puede notarse especialmente cuando una interfaz necesita consultar datos cada vez que el usuario realiza una acción.
+### 8.4 Utilizar prioridades adecuadas
 
-### Almacenamiento
+Las interrupciones importantes deben contar con una prioridad adecuada para evitar esperas innecesarias.
 
-Leer y guardar información también requiere tiempo. Si una aplicación realiza muchas operaciones de lectura y escritura, esto puede afectar el tiempo de respuesta.
+### 8.5 Medir antes y después
 
-### Bloqueos
+Una optimización debe comprobarse mediante mediciones.
 
-Un bloqueo ocurre cuando una tarea tiene que esperar a que otra termine para poder continuar. Si esto ocurre dentro de una interfaz, puede provocar que el usuario sienta que el programa se congeló.
+El proceso puede ser:
 
-### Actualización de la interfaz
+**Medir → Analizar → Optimizar → Medir nuevamente**
 
-También se puede producir retraso cuando la interfaz realiza demasiadas actualizaciones al mismo tiempo.
+De esta manera se puede comprobar si realmente disminuyó la latencia.
 
-Una aplicación con muchos elementos visuales o procesos ejecutándose en el mismo momento puede perder fluidez.
+---
 
-## Técnicas para reducir la latencia
+## 9. Ejemplo de optimización
 
-Existen diferentes formas de intentar reducir la latencia.
+Supongamos que una rutina de atención de interrupción inicialmente utiliza 1200 ciclos.
 
-### Eliminar operaciones innecesarias
+Después de analizar el código y eliminar algunas operaciones innecesarias, la rutina utiliza 750 ciclos.
 
-Una de las opciones más sencillas es revisar el código y eliminar procesos que realmente no sean necesarios.
+| Situación            | Ciclos |
+| -------------------- | -----: |
+| Antes de optimizar   |   1200 |
+| Después de optimizar |    750 |
 
-Si una aplicación hace diez operaciones cuando solamente necesita hacer cinco, reducirlas puede ayudar a disminuir el tiempo de respuesta.
+La reducción obtenida es:
 
-### Mejorar los algoritmos
+**1200 − 750 = 450 ciclos**
 
-La forma en que se resuelve un problema también afecta el rendimiento.
+Porcentaje aproximado de reducción:
 
-Un algoritmo que necesita realizar muchas operaciones puede tardar más que otro que resuelve el mismo problema de una manera más eficiente.
+**(450 / 1200) × 100 = 37.5 %**
 
-Por eso, cuando existe un problema de rendimiento, también es importante revisar los algoritmos utilizados.
+Este ejemplo muestra cómo las mediciones pueden utilizarse para comprobar los resultados de una optimización.
 
-### Usar caché
+---
 
-La caché permite guardar temporalmente información que se utiliza con frecuencia.
+## 10. ARM64 y RISC-V
 
-Por ejemplo, si una aplicación necesita consultar el mismo dato muchas veces, podría guardar temporalmente ese dato para no tener que obtenerlo nuevamente.
+La medición de ciclos también puede estudiarse en diferentes arquitecturas de procesadores.
 
-Esto puede reducir algunas operaciones y mejorar el tiempo de respuesta.
+En **ARM64**, existen mecanismos de monitoreo de rendimiento que pueden utilizarse para obtener información sobre la ejecución del procesador. Uno de los elementos relacionados con esta medición es el contador **PMCCNTR**.
 
-### Procesamiento asíncrono
+En **RISC-V**, existe el contador **mcycle**, que permite contar ciclos de reloj del procesador. El acceso y las condiciones de uso dependen del nivel de privilegio y de la implementación utilizada.
 
-Otra opción es utilizar procesos asíncronos para operaciones que pueden tardar.
+Estas herramientas permiten analizar cuánto tiempo puede tardar una sección determinada del código y pueden ser útiles para estudiar la latencia en sistemas de tiempo real.
 
-Por ejemplo, si una aplicación necesita consultar información de Internet, no necesariamente tiene que bloquear toda la interfaz mientras espera la respuesta.
+---
 
-De esta manera el usuario puede seguir viendo la interfaz mientras la operación continúa en segundo plano.
+## 11. Importancia en interfaces de tiempo real
 
-### Reducir solicitudes de red
-
-Si una aplicación realiza demasiadas solicitudes a un servidor, se puede revisar si algunas de ellas pueden evitarse o combinarse.
-
-También puede ser conveniente enviar solamente la información que realmente se necesita.
-
-### Optimizar consultas
-
-En aplicaciones que utilizan bases de datos es importante revisar las consultas que se realizan.
-
-Una consulta que busca información innecesaria puede tardar más que una consulta que solamente obtiene los datos necesarios.
-
-## Latencia que percibe el usuario
-
-No toda la latencia se siente de la misma manera.
-
-Si una aplicación tarda muy poco en responder, probablemente el usuario ni siquiera lo note. En cambio, si una acción tarda varios segundos, es posible que la persona piense que la aplicación dejó de funcionar.
-
-Cuando una operación necesita tiempo, se pueden utilizar elementos que indiquen que el proceso sigue funcionando.
+La latencia es especialmente importante en sistemas que necesitan responder rápidamente a eventos externos.
 
 Algunos ejemplos son:
 
-* Indicadores de carga.
-* Barras de progreso.
-* Mensajes como "Cargando".
-* Animaciones.
-* Mostrar el estado de una operación.
+* Sistemas de control.
+* Robots.
+* Sensores.
+* Sistemas industriales.
+* Sistemas electrónicos.
+* Sistemas de adquisición de datos.
+* Aplicaciones controladas mediante interrupciones.
 
-Estos elementos no hacen que la operación sea más rápida, pero ayudan a que el usuario entienda qué está pasando.
+En estos sistemas, una respuesta demasiado lenta puede afectar el funcionamiento esperado.
 
-Por ejemplo, no es lo mismo ver una pantalla que parece congelada que ver un mensaje que diga "Cargando información...".
+Por eso, conocer el funcionamiento del procesador, las interrupciones, los registros y los ciclos de reloj ayuda a comprender mejor el comportamiento de una interfaz de tiempo real.
 
-## Ejemplo de optimización
+---
 
-Supongamos que tenemos una aplicación que consulta información de una base de datos.
+## 12. Conclusión
 
-Primero realizamos algunas pruebas:
+La medición y optimización de la latencia permite conocer cuánto tiempo necesita un sistema para responder ante un evento.
 
-| Prueba |  Antes |
-| 1      | 620 ms |
-| 2      | 650 ms |
-| 3      | 630 ms |
-| 4      | 680 ms |
-| 5      | 640 ms |
+En el contexto de **Lenguajes de Interfaz**, este tema puede estudiarse desde un nivel más cercano al hardware mediante conceptos como ciclos de reloj, interrupciones, registros, ensamblador y acceso a memoria.
 
-Después revisamos la consulta y hacemos algunos cambios para obtener solamente la información que necesitamos.
+Una forma de mejorar el rendimiento consiste en medir primero la latencia, analizar las partes que consumen más tiempo, realizar una optimización y volver a medir.
 
-Volvemos a realizar las pruebas:
+El proceso puede resumirse como:
 
-| Prueba | Después |
-| 1      |  420 ms |
-| 2      |  410 ms |
-| 3      |  430 ms |
-| 4      |  415 ms |
-| 5      |  425 ms |
+**Medir → Analizar → Optimizar → Volver a medir**
 
-En este ejemplo se puede observar que el tiempo disminuyó.
+De esta manera se puede comprobar mediante datos si una modificación realmente ayuda a reducir la latencia.
 
-Lo importante es que no solamente se está diciendo que la aplicación es más rápida. Tenemos datos que permiten comparar cómo funcionaba antes y cómo funciona después.
+---
 
-## Sistemas de tiempo real y tiempos máximos
+## 13. Referencias
 
-En un sistema de tiempo real puede ser importante conocer no solamente el promedio de las mediciones, sino también cuánto puede tardar una operación en el peor caso.
+[1] Arm Limited, *Arm Architecture Reference Manual for A-profile architecture*, Arm Developer, 2024. [Online]. Available: https://developer.arm.com/documentation/ddi0487/latest/
 
-Por ejemplo, imaginemos que una aplicación normalmente responde en 50 milisegundos, pero algunas veces tarda varios segundos.
+[2] Arm Limited, *Learn the Architecture - AArch64 Instruction Set Architecture*, Arm Developer. [Online]. Available: https://developer.arm.com/documentation/102374/latest/
 
-Aunque el promedio pueda parecer bueno, esas demoras pueden representar un problema si el sistema necesita responder de forma constante.
+[3] Arm Limited, *Performance Monitors Extension*, Arm Developer. [Online]. Available: https://developer.arm.com/documentation/ddi0487/latest/
 
-Por esta razón se pueden revisar aspectos como:
+[4] RISC-V International, *The RISC-V Instruction Set Manual, Volume II: Privileged Architecture*, RISC-V International. [Online]. Available: https://docs.riscv.org/reference/isa/priv/machine.html
 
-* Tiempo promedio.
-* Tiempo máximo.
-* Variación.
-* Frecuencia de retrasos.
-* Uso de CPU.
-* Uso de memoria.
-* Prioridad de las tareas.
+[5] RISC-V International, *RISC-V Instruction Set Manual*, RISC-V International. [Online]. Available: https://docs.riscv.org/
 
-## Rendimiento y uso de recursos
+[6] A. Silberschatz, P. B. Galvin and G. Gagne, *Operating System Concepts*, 10th ed. Hoboken, NJ, USA: Wiley, 2018.
 
-Una optimización no siempre consiste en reducir el tiempo sin importar lo demás.
-
-A veces una técnica puede hacer que una operación sea más rápida, pero utilizar más memoria o CPU.
-
-Por ejemplo, guardar muchos datos en caché puede reducir algunas consultas, pero también aumenta el uso de memoria.
-
-Por eso es necesario buscar un equilibrio entre:
-
-Velocidad
-   +
-Memoria
-   +
-CPU
-   +
-Red
-   +
-Almacenamiento
-
-
-La mejor opción depende de las necesidades de cada aplicación.
-
-## Proceso para optimizar una interfaz
-
-Un proceso sencillo para trabajar con la latencia puede ser:
-
-1. Identificar la acción que parece lenta.
-2. Medir cuánto tarda.
-3. Realizar varias pruebas.
-4. Revisar los resultados.
-5. Buscar la causa del retraso.
-6. Aplicar un cambio.
-7. Volver a realizar las pruebas.
-8. Comparar los resultados.
-9. Mantener el cambio si realmente produjo una mejora.
-
-Este proceso ayuda a evitar cambiar partes del programa sin saber si realmente son responsables del problema.
-
-## Análisis personal
-
-Considero que la latencia es un tema importante porque muchas veces como usuarios solamente pensamos que una aplicación es lenta, pero no sabemos exactamente por qué.
-
-Al investigar el tema entendí que existen diferentes partes que pueden generar un retraso. No necesariamente significa que el programa esté mal hecho. Puede ser una consulta, la red, la cantidad de información que se procesa o la forma en que se actualiza la interfaz.
-
-También me parece importante realizar varias mediciones. Si solamente se mide una vez, puede ocurrir que ese resultado sea diferente al comportamiento normal de la aplicación.
-
-Otro punto que me pareció interesante es que mejorar la experiencia del usuario no siempre significa reducir la latencia. Si una operación necesita tiempo, mostrar un indicador de carga puede hacer que el usuario entienda que el programa sigue funcionando.
-
-Por lo tanto, considero que la mejor forma de trabajar con este problema es primero medir, después encontrar la causa y finalmente realizar una optimización. Después se deben repetir las pruebas para comprobar si realmente hubo una mejora.
-
-## Conclusión
-
-La latencia es el retraso que existe entre una acción y la respuesta de un sistema. En las interfaces de tiempo real es un aspecto importante porque el sistema necesita responder de manera rápida y, en algunos casos, dentro de ciertos límites de tiempo.
-
-Existen diferentes causas de latencia, como el procesamiento, la memoria, las conexiones de red, las bases de datos, el almacenamiento, los bloqueos y las actualizaciones de la interfaz.
-
-Para reducirla existen diferentes técnicas, como mejorar los algoritmos, eliminar operaciones innecesarias, utilizar caché, realizar operaciones de manera asíncrona y optimizar las consultas o comunicaciones.
-
-Lo más importante es no realizar cambios solamente porque una aplicación parece lenta. Primero se deben realizar mediciones para conocer dónde está el problema. Después se puede aplicar una solución y volver a medir para comprobar el resultado.
-
-En conclusión, medir y optimizar la latencia ayuda a crear interfaces que no solamente funcionan correctamente, sino que también responden de una forma más fluida para el usuario.
-
-## Bibliografía
-
-* Mozilla Developer Network (MDN). Documentación sobre rendimiento y latencia en aplicaciones web.
-* Microsoft Learn. Documentación sobre medición y rendimiento de aplicaciones.
-* Microsoft Learn. Documentación sobre diagnóstico y optimización del rendimiento.
-* IEEE Xplore. Publicaciones relacionadas con sistemas de tiempo real y rendimiento.
+[7] J. L. Hennessy and D. A. Patterson, *Computer Architecture: A Quantitative Approach*, 6th ed. Cambridge, MA, USA: Morgan Kaufmann, 2019.
