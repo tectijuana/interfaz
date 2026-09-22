@@ -1,4 +1,7 @@
-# Investigación: Conversión de bases y formateo de números a cadena en ensamblador (80x86 Assembly)
+# Conversión de bases y formateo de números a cadena en ensamblador
+
+**Arquitecturas estudiadas:** ARM64 (AArch64), ARM32 y RISC-V  
+**Tema:** Conversión de bases y formateo de números a cadena en lenguaje ensamblador
 
 > **Nota del docente:** el tema asignado corresponde a la arquitectura del curso
 > (ARM64/ARM32/RISC-V). Este documento está desarrollado íntegramente en x86/NASM,
