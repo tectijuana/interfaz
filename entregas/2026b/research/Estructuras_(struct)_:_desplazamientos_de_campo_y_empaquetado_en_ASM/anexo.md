@@ -41,3 +41,6 @@ Intel Corporation, "Intel® 64 and IA-32 Architectures Software Developer's Manu
 Lista de herramientas:
 1) ChatGPT
 2) Gemini
+
+Retroalimentacion:
+Aprendí que las estructuras (struct) en ensamblador sirven para organizar varios datos relacionados en un mismo lugar. También aprendí que el desplazamiento (offset) indica dónde está cada dato dentro de la estructura y que el empaquetado (padding) puede agregar espacios para acomodar mejor los datos en la memoria. En pocas palabras, aprendí cómo se organizan y guardan los datos en la memoria usando ASM.
