@@ -21,6 +21,7 @@ Esta rúbrica se usa como guía para evaluar cada PR durante las dos revisiones 
 | **Evidencia de Soporte** | 1–5 | ¿Incluye evidencia, pruebas o demostraciones pertinentes? |
 | **Referencias y Bibliografía** | 1–5 | ¿Se citan fuentes externas adecuadamente? |
 | **Respuesta a Comentarios Previos** | 1–5 | ¿El autor atendió las recomendaciones de revisión anterior? |
+| **Aporte Propio / Declaración de IA** | 1–5 | Ver [`AI_GUIDANCE.md`](./AI_GUIDANCE.md#🎚️-niveles-de-participación-de-ia). Nivel declarado 0–2: evaluar normalmente. Nivel 3–4: este puntaje refleja la comprensión propia demostrada en la "Explicación propia de una decisión técnica central" del ANEXO.md, no la calidad del contenido producido por la IA. Sin declaración de nivel en el ANEXO.md → 1/5 en este criterio (no por deshonestidad, sino por incumplir el formato). |
 
 ---
 
@@ -42,7 +43,7 @@ Esta rúbrica se usa como guía para evaluar cada PR durante las dos revisiones 
 ---
 
 ## 📊 Calificación Final
-**Puntaje Total:** ___ / 35
+**Puntaje Total:** ___ / 40
 
 **Resultado de la revisión:**  
 ☐ Aprobado  

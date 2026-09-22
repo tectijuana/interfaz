@@ -51,10 +51,45 @@ Aprovechar herramientas de IA como apoyo en el **aprendizaje técnico, la docume
 
 ---
 
+## 🎚️ Niveles de participación de IA
+
+La transparencia total sobre el uso de IA **exime de sanción por deshonestidad académica**
+(ocultar el uso es la falta grave, no usar la herramienta). Pero declarar honestamente no
+exime de que la calificación refleje el aprendizaje **realmente demostrado** — se evalúa tu
+comprensión, no la calidad del artefacto entregado. Este es el criterio que ya aplican
+Tec de Monterrey y UNAM en sus lineamientos de IA generativa, y el que sigue este curso.
+
+Declara en el ANEXO.md el nivel que corresponda:
+
+| Nivel | Descripción |
+|-------|-------------|
+| **0 — Sin IA** | Trabajo 100% propio. |
+| **1 — Consulta puntual** | Dudas conceptuales o de sintaxis; sin generación sustancial de código o texto. |
+| **2 — Asistido** | La IA generó fragmentos o un borrador; tú lo reescribiste/adaptaste y puedes explicarlo línea por línea. |
+| **3 — Colaborativo extenso** | La IA generó la mayor parte del código o texto; tú lo revisaste, corregiste errores y validaste personalmente en tu entorno. |
+| **4 — Delegado a agente autónomo** | Un agente (Codex, Claude Code u otro con ejecución/navegación autónoma) hizo la investigación, implementación y validación con supervisión mínima directa de tu parte. |
+
+**Si declaras nivel 3 o 4**, el ANEXO.md debe incluir además una **explicación propia**
+(mínimo ~150 palabras, en tus palabras, sin apoyo de IA para redactarla) de **una decisión
+técnica central** del trabajo entregado — no una reflexión genérica. Si esa explicación es
+ausente, vaga, o revela que no comprendiste el punto central (p. ej. "me perdí con la lógica
+del algoritmo"), la categoría de "Declaración de IA" / "Aporte Propio" de la rúbrica
+correspondiente (`GRADING.md` o `REVIEW_RUBRIC.md`) se califica bajo, en proporción a esa
+falta de comprensión demostrada — no en cero, y sin sanción por deshonestidad, porque
+declaraste con honestidad.
+
+Explorar herramientas nuevas (agentes autónomos, no solo copiar-pegar) es una habilidad
+digital valiosa para un ingeniero en sistemas computacionales, y se valora positivamente
+que la explores — siempre que puedas dar cuenta de lo que hizo la herramienta.
+
+---
+
 ## 📝 Formato obligatorio de declaración en prácticas o proyectos
 
 ```markdown
 ### Asistencia de Inteligencia Artificial
+
+- **Nivel de participación de IA**: 0–4 (ver tabla en este documento)
 
 - **Prompts utilizados**:
   - "¿Qué registros debe preservar una función en el ABI de AArch64 y por qué x19–x28 son callee-saved?"
@@ -71,6 +106,9 @@ Aprovechar herramientas de IA como apoyo en el **aprendizaje técnico, la docume
 
 - **Reflexión personal**:
   La IA me ayudó a entender la convención de llamadas, pero inventó un número de syscall. Esto reforzó mi hábito de validar contra la documentación oficial y con `strace`.
+
+- **Explicación propia de una decisión técnica central** *(obligatorio solo si el nivel declarado es 3 o 4)*:
+  Redactada por el estudiante, sin apoyo de IA, explicando con sus propias palabras una decisión técnica central del trabajo entregado.
 
 - **Fecha**: 2026-09-18
 - **Plataforma utilizada**: AWS EC2 Graviton (Debian ARM64); verificación local con QEMU
