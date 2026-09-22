@@ -1,4 +1,11 @@
-# Investigación: Conversión de bases y formateo de números a cadena en ensamblador
+# Investigación: Conversión de bases y formateo de números a cadena en ensamblador (80x86 Assembly)
+
+> **Nota del docente:** el tema asignado corresponde a la arquitectura del curso
+> (ARM64/ARM32/RISC-V). Este documento está desarrollado íntegramente en x86/NASM,
+> fuera del alcance de la materia. Se deja el título aclarado para quien consulte
+> este material como referencia, para no inducir a error sobre la arquitectura
+> tratada. Ver observaciones de revisión en el Pull Request.
+
 ### Nombre: Cab Piñon Isury Michelle 
 ### No.Control: 24210475
 ### Materia: Leguajes de interfaz 
