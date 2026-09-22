@@ -9,6 +9,7 @@
   - "¿Dame más ejemplos de la utilidad de esto, en alguna aplicación real, entiendo el concepto de que es por eficiencia del procesador, pero para qué moverías estos datos a otras secciones para qué los brincarías o querrías limpiar o mantener el signo o precisamente colocarlo enmedio?"
   - "Ok con este contexto vuelve al bajo nivel volviendo a explicar los conceptos para mi investigación"
   - "Usando esta misma estructura de temas, la sección de conocimientos previos que resuelve y como lo resuelve, agregando ejemplos cortos de aplicaciones"
+
 - **Herramientas utilizadas**:
   - Gemini
 
