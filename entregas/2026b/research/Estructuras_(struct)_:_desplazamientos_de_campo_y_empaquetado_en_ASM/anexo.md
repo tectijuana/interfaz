@@ -1,46 +1,52 @@
 Prompt:
-¿Cómo se declara una estructura en el ensamblador MASM, de qué manera se 
-definen sus campos de datos y cómo calcula el ensamblador la disposición de los datos en la memoria?
+¿Cómo se declara una estructura en lenguaje ensamblador para la arquitectura ARM64 (AArch64), de qué manera se definen sus campos de datos y cómo calcula el ensamblador la disposición de los datos en la memoria?
 
 Respuesta de la IA:
-En Microsoft Macro Assembler (MASM), una estructura (STRUCT) es un tipo de dato definido por el usuario que agrupa campos de diferentes tipos dentro de un mismo bloque contiguo de memoria.
-La sintaxis requiere iniciar la definición con el nombre de la estructura seguido de la directiva STRUCT, y cerrarla obligatoriamente con la directiva ENDS. En el cuerpo de la declaración se especifican los nombres de los campos, su tamaño mediante tipos de datos primarios (BYTE, WORD, DWORD, QWORD, o arreglos usando DUP) y su valor de inicialización.
-Si no se desea asignar un valor inicial, se utiliza el símbolo de interrogación ?.Por ejemplo, para definir la estructura de un estudiante:
+En la arquitectura ARM64 (AArch64), cuando se utiliza la herramienta estándar de ensamblado (como GNU Assembler / gas), no existe una directiva STRUCT automática como en otros ensambladores de alto nivel. La disposición de datos se gestiona mediante directivas de asignación de espacio dentro de la sección .data o mediante la definición manual de desplazamientos.
+Para declarar variables que simulen una estructura contigua en memoria, se especifican sus miembros utilizando directivas de tamaño propias de ARM64: .byte (1 byte), .hword (2 bytes), .word (4 bytes) y .xword (8 bytes). Por ejemplo, para representar la información de un alumno en memoria contigua dentro de ARM64:
 
-Estudiante STRUCT
-    id        DWORD ?       ; 4 bytes
-    edad      BYTE  ?       ; 1 byte
-    promedio  WORD  ?       ; 2 bytes
-Estudiante ENDS
+    .data
+    .align 3                    ; Alinea la memoria a multiplos de 8 bytes (2^3)
+alumno1:
+    .word   1001                ; id: 4 bytes (offset 0)
+    .byte   20                  ; edad: 1 byte (offset 4)
+    .skip   3                   ; padding manual de 3 bytes para alinear
+    .xword  95                  ; promedio: 8 bytes (offset 8)
 
-Cuando declaras una variable basada en esta estructura (por ejemplo, alumno1 Estudiante <>), MASM no solo reserva espacio en el segmento de datos, sino que asigna a cada campo un desplazamiento (offset) simbólico relativo al inicio de la estructura. De esta manera, el compilador traduce accesos como alumno1.promedio a una dirección efectiva calculada como [dirección_base + offset_promedio], permitiendo abstraer la manipulación directa de punteros sin perder el control de bajo nivel.
+A nivel del conjunto de instrucciones, ARM64 no accede a los campos usando una sintaxis tipo alumno1.promedio. En su lugar, el programador carga la dirección base de la estructura en un registro de propósito general de 64 bits (como x0) utilizando instrucciones como adrp y add, y accede a los miembros específicos mediante el modo de direccionamiento por registro base más desplazamiento relativo numerico (por ejemplo, ldr w1, [x0, #0] para el id o ldr x3, [x0, #8] para el promedio). Entender cómo se calculan estos desplazamientos permite al programador mover información directamente en la memoria sin cometer errores.
 
 Referencia IEEE:
-Microsoft, "STRUCT (MASM)," Microsoft Learn, Aug. 03, 2021. Disponible en: https://learn.microsoft.com/en-us/cpp/assembler/masm/struct-masm
+ARM Limited, "GNU Assembler Directives," GNU Toolchain Reference Documentation, 2024. Disponible en: [https://sourceware.org/binutils/docs/as/ARM-Directives.html](https://sourceware.org/binutils/docs/as/ARM-Directives.html?utm_source=gemini)
 
 Prompt:
-¿Qué herramientas, directivas y mecanismos ofrece MASM para controlar la alineación de memoria, modificar el empaquetado de las estructuras y gestionar la inserción explícita de bytes de relleno (padding)?
+¿Qué reglas de alineación y empaquetado establece la interfaz binaria de aplicación (ABI) para ARM64 y cómo intervienen directivas como .align o .balign en la inserción de bytes de relleno (padding)?
 
 Respuesta de la IA:
-MASM incluye un repertorio de directivas de organización que permiten controlar cómo se empaquetan los datos y en qué límites de direcciones (boundaries) deben colocarse las estructuras y sus componentes.Por defecto, el ensamblador puede aplicar reglas de alineación natural donde cada tipo de dato intenta colocarse en una dirección que sea múltiplo de su propio tamaño. 
-Sin embargo, el programador puede alterar este comportamiento mediante directivas específicas:Parámetro de alineación en STRUCT: Es posible pasar un valor de alineación directamente en la declaración de la estructura, por ejemplo MiEstructura STRUCT 4, forzando a que los miembros se alineen en límites de 4 bytes.Directiva ALIGN: Se utiliza antes o dentro de las definiciones de datos para forzar a que la siguiente variable o campo comience en una dirección divisible por $N$ (donde $N$ suele ser 2, 4, 8 o 16).Relleno explícito (padding): Si el ensamblador detecta que un campo de 2 u 8 bytes no comienza en un límite adecuado, insertará de forma automática bytes vacíos (normalmente sin inicializar o con valor cero) entre el campo anterior y el actual.
-El empaquetado de datos afecta directamente el tamaño final reportado por el operador SIZEOF. Una estructura cuyos campos suman $7$ bytes de datos reales puede terminar ocupando $12$ u $8$ bytes en memoria debido al empaquetado. Conocer estas directivas es indispensable cuando se diseñan estructuras que deben interactuar con las APIs del sistema operativo o con estructuras declaradas en lenguajes de alto nivel como C/C++.
-
-Re ferencia IEEE:
-Microsoft, "Directives Reference (MASM)," Microsoft Learn, 2023. Disponible en: https://learn.microsoft.com/en-us/cpp/assembler/masm/directives-reference
-
-Prompt:
-¿Cuál es el comportamiento de la arquitectura de procesadores Intel a nivel de hardware al acceder a datos alineados versus desalineados, y por qué el relleno (padding) es fundamental para el rendimiento del sistema?
-
-Respuesta de la IA:
-La arquitectura Intel 64 e IA-32 está diseñada para gestionar transferencias de datos entre la memoria principal, las líneas de memoria caché (L1, L2, L3) y los registros internos del procesador mediante buses de datos de ancho fijo (por ejemplo, 64 bits o 128 bits en instrucciones SIMD).Aunque los procesadores x86/x64 modernos cuentan con mecanismos en el hardware que permiten realizar accesos a memoria desalineados (unaligned memory accesses) sin generar una excepción fatal del sistema, esta flexibilidad tiene un costo alto en términos de rendimiento:Acceso Alineado: Si un dato de 4 bytes (un DWORD) se ubica en una dirección de memoria múltiplo de 4 (como 0x0004), se encuentra completamente contenido dentro de una sola palabra de memoria y una sola línea de caché. El procesador realiza la lectura o escritura en un único ciclo de bus.Acceso Desalineado: Si ese mismo dato de 4 bytes cruza un límite de palabra de memoria o, peor aún, el límite de una línea de caché de 64 bytes (por ejemplo, comenzando en 0x003F), el controlador de memoria debe ejecutar dos lecturas separadas, combinar los fragmentos mediante registros de desplazamiento y máscara internos, e ignorar los bytes sobrantes.Esta penalización afecta el rendimiento general del código, incrementando la latencia de las instrucciones y saturando el bus del procesador. Por esta razón, el uso deliberado del relleno (padding) por parte del ensamblador asegura que cada elemento coincida con su frontera natural en la memoria física, maximizando la eficiencia en la ejecución a nivel de microarquitectura.
+En la arquitectura ARM64, las reglas sobre cómo se deben organizar y empaquetar los datos en memoria están estrictamente normalizadas por el estándar Procedure Call Standard for the Arm 64-bit Architecture (AAPCS64).
+Según esta especificación, cada tipo de dato tiene un requisito de alineación natural que corresponde a un múltiplo de su propio tamaño en bytes: un dato de 2 bytes (.hword) debe ubicarse en una dirección divisible por 2, un dato de 4 bytes (.word) en una dirección divisible por 4, y un dato de 8 bytes (.xword o punteros) en una dirección divisible por 8. Los tipos de datos vectoriales de 128 bits requieren alineaciones de 16 bytes.
+Para garantizar que estas reglas se cumplan al construir estructuras de datos en ensamblador, se utilizan directivas específicas: la directiva .balign N fuerza a que la dirección del siguiente campo comience en un límite de $N$ bytes, mientras que .align N en algunas cadenas de herramientas ARM64 interpreta $N$ como una potencia de dos ($2^N$). Si el ensamblador o el programador detecta que un campo no coincide con su frontera adecuada, se utiliza la directiva .skip o .space para insertar explícitamente bytes de relleno (padding). Si una estructura coloca un .byte seguido de un .xword, se insertarán automáticamente o manualmente 7 bytes de relleno para asegurar la alineación, lo que altera el tamaño total reportado para la estructura y evita fallos de compatibilidad con programas en C/C++.
 
 Referencia IEEE:
-Intel Corporation, "Intel® 64 and IA-32 Architectures Software Developer's Manual," Combined Volumes: 1, 2A, 2B, 2C, 2D, 3A, 3B, 3C, 3D, and 4, Jun. 2024. Disponible en: https://cdrdv2-public.intel.com/825743/325462-sdm-vol-1-2abcd-3abcd-4.pdf
+ARM Limited, "Procedure Call Standard for the Arm 64-bit Architecture (AAPCS64)," Arm Architecture Reference Documentation, 2024. Disponible en: [https://github.com/ARM-software/abi-aa/blob/main/aapcs64/aapcs64.rst](https://github.com/ARM-software/abi-aa/blob/main/aapcs64/aapcs64.rst?utm_source=gemini)
+
+Prompt:
+¿Cuál es el comportamiento de la arquitectura de procesadores ARM64 a nivel de hardware al acceder a datos alineados versus desalineados, y por qué el relleno (padding) es fundamental para el rendimiento del sistema?
+
+Respuesta de la IA:
+Los procesadores basados en las arquitecturas ARM64 (ARMv8-A y ARMv9-A) gestionan la memoria a través de una microarquitectura RISC optimizada para transferencias de datos de 64 bits y 128 bits mediante un bus de datos de ancho fijo y líneas de caché de 64 bytes.
+Aunque los núcleos ARM64 modernos soportan accesos a memoria desalineados (unaligned memory accesses) para la mayoría de las instrucciones normales de carga y almacenamiento (LDR, STR) sin generar una excepción inmediata, este comportamiento involucra implicaciones de hardware críticas:
+Cruzamiento de líneas de caché (Cache Line Split): Cuando un dato desalineado cruza el límite de una línea de caché de 64 bytes o una página de memoria virtual de 4 KB, la unidad de gestión de memoria (MMU) y el controlador del bus deben ejecutar dos transacciones físicas de lectura/escritura separadas, incrementando la latencia de la instrucción y provocando atascos en la canalización del procesador.
+Instrucciones estrictas sin soporte desalineado: Instrucciones exclusivas para sincronización entre hilos como LDXR/STXR (operaciones atómicas) o instrucciones de carga y almacenamiento de pares de registros (LDP/STP) exigen alineación estricta. Si se ejecutan en una dirección desalineada, el hardware generará inmediatamente una excepción fatal del sistema (Alignment Fault Exception).
+Memoria de dispositivo (Device Memory): Los accesos a memoria mapeada para entrada y salida de periféricos requieren alineación absoluta para evitar abortos en la ejecución.
+Por estas razones, el uso deliberado del relleno (padding) asegura que cada elemento coincida con su frontera natural en la memoria física, evitando excepciones de hardware y maximizando la eficiencia en la ejecución.
+
+Referencia IEEE:
+ARM Limited, "Arm Architecture Reference Manual for A-profile architecture," Arm Reference Documentation, 2024. Disponible en: [https://developer.arm.com/documentation/ddi0487/latest](https://developer.arm.com/documentation/ddi0487/latest?utm_source=gemini)
 
 Lista de herramientas:
-1) ChatGPT
-2) Gemini
+
+1. ChatGPT
+2. Gemini
 
 Retroalimentacion:
-Aprendí que las estructuras (struct) en ensamblador sirven para organizar varios datos relacionados en un mismo lugar. También aprendí que el desplazamiento (offset) indica dónde está cada dato dentro de la estructura y que el empaquetado (padding) puede agregar espacios para acomodar mejor los datos en la memoria. En pocas palabras, aprendí cómo se organizan y guardan los datos en la memoria usando ASM.
+Aprendí que las estructuras (struct) en ensamblador ARM64 sirven para organizar varios datos relacionados en un mismo lugar de la memoria RAM. También aprendí que el desplazamiento (offset) indica dónde está cada dato dentro de la estructura y que el empaquetado (padding) agrega espacios para cumplir con las reglas de alineación de ARM64 (AAPCS64). En pocas palabras, aprendí cómo se organizan los datos en la memoria y cómo el padding evita fallos de hardware y pérdida de rendimiento en procesadores de 64 bits.
