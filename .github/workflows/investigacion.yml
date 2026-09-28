@@ -1,0 +1,169 @@
+name: Revisión de estructura — investigación
+
+# Revisa la ESTRUCTURA de los PRs de investigación (no califica el contenido):
+# carpeta única en entregas/<ciclo>/research/<tema>/, README.md y anexo.md,
+# enlaces con utm_source, números de control publicados y fecha de entrega.
+#
+# Se usa pull_request_target para poder comentar/etiquetar PRs que vienen de
+# forks. Por seguridad NUNCA se hace checkout ni se ejecuta código del PR:
+# los archivos se leen como texto vía la API.
+#
+# Fecha de cierre: variable del repositorio CIERRE_INVESTIGACION en formato
+# ISO 8601 con zona horaria, p. ej.  2026-11-16T23:59:59-08:00
+#   gh variable set CIERRE_INVESTIGACION --body "2026-11-16T23:59:59-08:00"
+# Si no está definida, no se revisa la fecha.
+
+on:
+  pull_request_target:
+    types: [opened, reopened, synchronize]
+    paths:
+      - "entregas/**"
+
+permissions:
+  contents: read
+  pull-requests: write
+  issues: write
+
+jobs:
+  estructura:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Revisar estructura de la entrega
+        uses: actions/github-script@v7
+        env:
+          CIERRE: ${{ vars.CIERRE_INVESTIGACION }}
+        with:
+          script: |
+            const pr = context.payload.pull_request;
+            const { owner, repo } = context.repo;
+            const MARCA = '<!-- revision-estructura-investigacion -->';
+            const errores = [];
+            const avisos = [];
+
+            const files = await github.paginate(github.rest.pulls.listFiles, {
+              owner, repo, pull_number: pr.number, per_page: 100,
+            });
+
+            // 1. Todo dentro de una sola carpeta entregas/<ciclo>/research/<tema>/
+            const RE_CARPETA = /^entregas\/[^/]+\/research\/[^/]+\//;
+            const fuera = files.filter(f => !RE_CARPETA.test(f.filename)).map(f => f.filename);
+            const carpetas = [...new Set(files
+              .filter(f => RE_CARPETA.test(f.filename))
+              .map(f => f.filename.match(RE_CARPETA)[0]))];
+
+            const desincronizado = files.length > 20 || fuera.length > 5;
+            if (desincronizado) {
+              errores.push(
+                `El PR modifica **${files.length} archivos**. Tu fork está desincronizado con el ` +
+                `repositorio del curso. Usa **Sync fork** en GitHub (o crea una rama nueva desde ` +
+                `\`upstream/main\`) y verifica en *Files changed* que solo aparezcan tus archivos.`);
+            } else if (fuera.length) {
+              errores.push('Hay archivos fuera de `entregas/<ciclo>/research/<tema>/`:\n' +
+                fuera.map(f => `  - \`${f}\``).join('\n'));
+            }
+            if (carpetas.length > 1 && !desincronizado) {
+              errores.push('El PR toca más de una carpeta de investigación:\n' +
+                carpetas.map(c => `  - \`${c}\``).join('\n') +
+                '\n  Un PR debe contener únicamente tu investigación.');
+            }
+
+            // 2. Archivos requeridos y nombre de la carpeta
+            // (si el fork está desincronizado, el resto sería ruido de archivos ajenos)
+            for (const carpeta of desincronizado ? [] : carpetas) {
+              const tema = carpeta.split('/')[3];
+              let contenido = [];
+              try {
+                const { data } = await github.rest.repos.getContent({
+                  owner: pr.head.repo.owner.login, repo: pr.head.repo.name,
+                  path: carpeta.slice(0, -1), ref: pr.head.sha,
+                });
+                contenido = Array.isArray(data) ? data.map(d => d.name) : [];
+              } catch (e) { core.warning(`No se pudo listar ${carpeta}: ${e.message}`); }
+
+              if (!contenido.includes('README.md')) {
+                const casi = contenido.find(n => n.toLowerCase() === 'readme.md');
+                errores.push(casi
+                  ? `El archivo se llama \`${casi}\`; debe ser exactamente **\`README.md\`** (en mayúsculas).`
+                  : `Falta **\`README.md\`** en \`${carpeta}\`.`);
+              }
+              if (!contenido.some(n => n.toLowerCase() === 'anexo.md')) {
+                errores.push(`Falta **\`anexo.md\`** (bitácora de uso de IA, ver \`AI_GUIDANCE.md\`). ` +
+                  `Si no usaste IA, créalo y decláralo explícitamente.`);
+              }
+              if (/[<>:"|?*\x00-\x1f]/.test(tema) || /[ .]$/.test(tema) || /^ /.test(tema)) {
+                errores.push(`El nombre de la carpeta \`${tema}\` contiene caracteres no válidos en ` +
+                  `Windows (\`: " * ? < > |\`) o termina en espacio/punto. Renómbrala por el tema sin esos caracteres.`);
+              }
+              if (/\b\d{8}\b/.test(tema)) {
+                errores.push('El nombre de la carpeta parece incluir un número de control; ' +
+                  'la carpeta se nombra **por el tema**, no por el alumno.');
+              }
+            }
+
+            // 3. Contenido de los .md: enlaces con utm_source y números de control
+            const RE_CONTROL = /(n[uú]m(ero)?\.?\s*(de\s*)?control|no\.?\s*(de\s*)?control)\W{0,5}[A-Za-z]?\d{8}/i;
+            for (const f of desincronizado ? [] : files) {
+              if (!/\.md$/i.test(f.filename) || f.status === 'removed' || !RE_CARPETA.test(f.filename)) continue;
+              let texto = '';
+              try {
+                const { data } = await github.rest.repos.getContent({
+                  owner: pr.head.repo.owner.login, repo: pr.head.repo.name,
+                  path: f.filename, ref: pr.head.sha,
+                });
+                texto = Buffer.from(data.content, 'base64').toString('utf8');
+              } catch (e) { core.warning(`No se pudo leer ${f.filename}: ${e.message}`); continue; }
+
+              const utm = (texto.match(/[?&]utm_source=[^\s)\]"']*/g) || []).length;
+              if (utm) {
+                errores.push(`\`${f.filename.split('/').pop()}\` tiene **${utm} enlace(s) con \`utm_source=\`** ` +
+                  `(p. ej. \`?utm_source=chatgpt.com\`). Consulta y cita la fuente original, sin ese parámetro.`);
+              }
+              if (RE_CONTROL.test(texto)) {
+                errores.push(`\`${f.filename.split('/').pop()}\` publica un **número de control**. ` +
+                  `Este repositorio es público e indexado por buscadores: deja solo tu nombre.`);
+              }
+            }
+
+            // 4. Fecha de entrega
+            const cierre = process.env.CIERRE ? new Date(process.env.CIERRE) : null;
+            const abierto = new Date(pr.created_at);
+            let tarde = false;
+            if (cierre && !isNaN(cierre)) {
+              tarde = abierto > cierre;
+              if (tarde) {
+                const horas = ((abierto - cierre) / 36e5).toFixed(1);
+                avisos.push(`El PR se abrió **${horas} h después** del cierre de entrega ` +
+                  `(${process.env.CIERRE}). Queda a criterio del docente.`);
+                try {
+                  await github.rest.issues.createLabel({ owner, repo, name: 'extemporáneo',
+                    color: 'b60205', description: 'PR abierto después de la fecha de cierre' });
+                } catch (e) { /* ya existe */ }
+                await github.rest.issues.addLabels({ owner, repo, issue_number: pr.number,
+                  labels: ['extemporáneo'] });
+              }
+            }
+
+            // Comentario único (se actualiza en cada push)
+            const ok = errores.length === 0;
+            let cuerpo = `${MARCA}\n### Revisión automática de estructura\n\n`;
+            if (ok) {
+              cuerpo += '✅ La estructura de la entrega es correcta (carpeta, `README.md`, `anexo.md`, enlaces). ' +
+                'El contenido lo revisa el docente con la rúbrica.\n';
+            } else {
+              cuerpo += 'Antes de la revisión docente, corrige lo siguiente y haz push a la misma rama ' +
+                '(este comentario se actualiza solo):\n\n' + errores.map(e => `- ❌ ${e}`).join('\n') + '\n';
+            }
+            if (avisos.length) cuerpo += '\n' + avisos.map(a => `- ⏰ ${a}`).join('\n') + '\n';
+            cuerpo += '\n<sub>Esta revisión solo verifica la estructura; no es una calificación.</sub>';
+
+            const comentarios = await github.paginate(github.rest.issues.listComments, {
+              owner, repo, issue_number: pr.number, per_page: 100,
+            });
+            const previo = comentarios.find(c => c.user.type === 'Bot' && c.body.includes(MARCA));
+            if (previo) {
+              await github.rest.issues.updateComment({ owner, repo, comment_id: previo.id, body: cuerpo });
+            } else {
+              await github.rest.issues.createComment({ owner, repo, issue_number: pr.number, body: cuerpo });
+            }
+
+            if (!ok) core.setFailed(`${errores.length} problema(s) de estructura`);

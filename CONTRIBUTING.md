@@ -54,6 +54,11 @@ Flujo de entrega de cada práctica:
 este repositorio** (fork → rama → PR, como se describe abajo), porque el objetivo de esa
 unidad es precisamente aprender a contribuir a un repositorio colaborativo. Esos PRs se
 revisan con `REVIEW_RUBRIC.md` y al aprobarse se integran en `entregas/<ciclo>/research/`.
+Al abrir el PR, una **revisión automática de estructura** comenta si falta `README.md` o
+`anexo.md`, si hay archivos fuera de tu carpeta (fork desincronizado → usa *Sync fork*),
+enlaces con `utm_source=`, números de control publicados o nombres de carpeta inválidos, y
+marca como `extemporáneo` el PR abierto después del cierre. Corrige y haz push a la misma
+rama: el comentario se actualiza solo. No es una calificación; el contenido lo revisa el docente.
 
 Lo que sigue en este documento aplica a los PRs: la investigación de U1 y las
 **mejoras al material del curso** (correcciones, nuevas lecciones, erratas).
