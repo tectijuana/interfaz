@@ -46,6 +46,8 @@ De acuerdo al temario, en esta unidad se estudiarán los siguientes aspectos:
 
 > 📌 **Nota:** Esta introducción sirve como punto de partida. Los capítulos teóricos están en `lecturas/`, la lección de ARM Virtual Hardware en `labs/`, y las prácticas verificables de esta unidad en `../../practicas/`.
 
+> 🧩 **Extra (informal, opcional):** si quieres trastear con ARM64/RISC-V desde el navegador sin instalar nada —para probar rápido un modo de direccionamiento, verificar una duda de registros, etc.— existe [WebAssembliss](https://web.assembliss.app) ([código fuente](https://github.com/assembliss/webassembliss)), un simulador/compilador/depurador web hecho por gente fan del ensamblador. No es material oficial del curso ni sustituye `make test` en tu entorno real (PC/VM/AWS Academy) — es un proyecto independiente que puede cambiar o dejar de estar disponible en cualquier momento —, pero es útil como playground rápido para ejercicios simples y autoverificación mientras aprendes.
+
 ## 🧪 Actividades prácticas de la unidad
 | Subtema | Actividad |
 |---|---|
