@@ -12,6 +12,10 @@ units/pdd/
 # Auditorías internas del docente (no se versionan)
 auditoria/
 
+# Bóveda de Obsidian del docente (configuración local)
+.obsidian/
+.trash/
+
 # Artefactos de compilación (ensamblador/C)
 *.o
 *.out
