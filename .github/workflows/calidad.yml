@@ -21,6 +21,23 @@ jobs:
           fi
           echo "✅ Sin colisiones de mayúsculas"
 
+  rutas-windows:
+    name: Rutas válidas en Windows
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Detectar caracteres o nombres inválidos (rompen clones en Windows)
+        run: |
+          # Caracteres prohibidos en NTFS (< > : " | ? * y de control) o
+          # componentes que terminan en espacio/punto o empiezan con espacio.
+          MALAS=$(git ls-files -z | tr '\0' '\n' | grep -P '[<>:"|?*\x01-\x1f]|[ .](/|$)|(^|/) ' || true)
+          if [ -n "$MALAS" ]; then
+            echo "::error::Rutas inválidas en Windows (renombra la carpeta por el tema, sin ':' ni comillas):"
+            echo "$MALAS"
+            exit 1
+          fi
+          echo "✅ Rutas válidas en Windows"
+
   enlaces-locales:
     name: Enlaces internos de Markdown
     runs-on: ubuntu-latest
