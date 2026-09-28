@@ -9,6 +9,9 @@ CLAUDE.md
 # Repositorio anidado (clon independiente)
 units/pdd/
 
+# Auditorías internas del docente (no se versionan)
+auditoria/
+
 # Artefactos de compilación (ensamblador/C)
 *.o
 *.out
