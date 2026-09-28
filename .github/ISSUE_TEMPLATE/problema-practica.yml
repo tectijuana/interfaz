@@ -1,0 +1,82 @@
+name: 🧪 Problema con una práctica
+description: El Makefile, run_tests.sh o expected.txt de una práctica no funciona como indica su README.
+title: "[Práctica] "
+labels: [bug, prácticas]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Usa este formulario cuando el **material de la práctica** falla (Makefile, `run_tests.sh`,
+        `expected.txt`, instrucciones del README), no para pedir la solución ni para revisar tu código:
+        vivir y depurar tus propios fallos es parte del curso. Antes de reportar, prueba con el
+        código de ejemplo de la práctica sin modificar.
+  - type: dropdown
+    id: practica
+    attributes:
+      label: Práctica
+      options:
+        - P01 — hola-arm64
+        - P02 — modos-direccionamiento
+        - P03 — captura-cadenas
+        - P04 — archivos-disco
+        - P05 — macros-cpp
+        - P06 — python-ctypes-asm
+        - P07 — oled-framebuffer-asm
+        - P08 — uart-temperatura
+        - P09 — webserver-stitch
+        - Otra
+    validations:
+      required: true
+  - type: dropdown
+    id: entorno
+    attributes:
+      label: Entorno
+      options:
+        - AWS Academy / EC2 Graviton (ARM64 nativo)
+        - Raspberry Pi (ARM64 nativo)
+        - QEMU (qemu-aarch64) en x86_64
+        - Docker
+        - Android / Termux
+        - iPhone + VPN
+        - Raspberry Pico 2W
+        - Otro
+    validations:
+      required: true
+  - type: input
+    id: version
+    attributes:
+      label: Sistema y toolchain
+      description: Salida de `uname -a` y `as --version | head -1`.
+    validations:
+      required: true
+  - type: textarea
+    id: pasos
+    attributes:
+      label: Comandos ejecutados
+      description: Exactamente lo que corriste, en orden.
+      render: shell
+    validations:
+      required: true
+  - type: textarea
+    id: salida
+    attributes:
+      label: Salida completa
+      description: Copia la salida de `make test` como texto (no captura de pantalla).
+      render: text
+    validations:
+      required: true
+  - type: textarea
+    id: esperado
+    attributes:
+      label: ¿Qué esperabas que pasara?
+    validations:
+      required: true
+  - type: checkboxes
+    id: confirmacion
+    attributes:
+      label: Confirmación
+      options:
+        - label: Probé con el código de ejemplo de la práctica sin modificar y el problema persiste.
+          required: true
+        - label: No incluí datos personales (número de control, correo) en este issue; el repositorio es público.
+          required: true

@@ -1,0 +1,42 @@
+name: 💡 Sugerencia de mejora
+description: Propón un tema, ejemplo, lectura, herramienta o mejora al curso.
+title: "[Mejora] "
+labels: [enhancement]
+body:
+  - type: textarea
+    id: propuesta
+    attributes:
+      label: Propuesta
+      description: ¿Qué te gustaría agregar o cambiar?
+    validations:
+      required: true
+  - type: textarea
+    id: motivo
+    attributes:
+      label: ¿Por qué ayudaría?
+      description: ¿Qué problema resuelve o qué se aprendería mejor?
+    validations:
+      required: true
+  - type: dropdown
+    id: area
+    attributes:
+      label: Área
+      options:
+        - Material de una unidad
+        - Prácticas
+        - Entorno / herramientas
+        - Evaluación y documentos del curso
+        - Otro
+    validations:
+      required: true
+  - type: textarea
+    id: referencias
+    attributes:
+      label: Referencias o ejemplos
+      description: Enlaces a documentación, artículos o repositorios relacionados (opcional).
+  - type: checkboxes
+    id: contribuir
+    attributes:
+      label: Contribución
+      options:
+        - label: Me gustaría implementarlo yo mediante un Pull Request (ver CONTRIBUTING.md).

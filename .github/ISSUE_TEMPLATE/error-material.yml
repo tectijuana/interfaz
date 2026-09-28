@@ -1,0 +1,69 @@
+name: 🐛 Error en el material
+description: Errata, enlace roto, código o explicación incorrecta en una unidad, lectura o documento.
+title: "[Error] "
+labels: [bug, material]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Gracias por ayudar a mejorar el curso. Este formulario es para **errores del material**.
+        - ¿Tu **práctica** falla en tu entorno? Usa el formulario *Problema con una práctica*.
+        - La **investigación de la U1** se entrega por Pull Request y las **prácticas** por Gist; no se entregan aquí.
+  - type: dropdown
+    id: ubicacion
+    attributes:
+      label: ¿Dónde está el error?
+      options:
+        - U00 — AWS Academy
+        - U01 — Introducción / setup del compilador
+        - U02 — Programación básica
+        - U03 — Modularización
+        - U04 — Dispositivos
+        - docs/ (lecturas avanzadas, entorno, estilo)
+        - templates/
+        - Documentos generales (README, SYLLABUS, SCHEDULE, GRADING…)
+        - Otro
+    validations:
+      required: true
+  - type: input
+    id: ruta
+    attributes:
+      label: Archivo(s) y línea
+      description: Ruta dentro del repositorio o enlace directo a la línea en GitHub.
+      placeholder: units/U02-programacion-basica/lecturas/03-registros.md#L42
+    validations:
+      required: true
+  - type: dropdown
+    id: tipo
+    attributes:
+      label: Tipo de error
+      options:
+        - Explicación técnica incorrecta
+        - Código que no ensambla o no funciona
+        - Enlace roto o imagen que no carga
+        - Ortografía o redacción
+        - Diagrama o formato Markdown roto
+        - Otro
+    validations:
+      required: true
+  - type: textarea
+    id: descripcion
+    attributes:
+      label: ¿Qué está mal?
+      description: Cita el texto o código tal como aparece.
+    validations:
+      required: true
+  - type: textarea
+    id: correccion
+    attributes:
+      label: ¿Cuál sería lo correcto?
+      description: Si es un dato técnico, indica la fuente (manual de ARM, datasheet, etc.).
+    validations:
+      required: true
+  - type: checkboxes
+    id: confirmacion
+    attributes:
+      label: Confirmación
+      options:
+        - label: Busqué en los issues existentes y nadie lo había reportado.
+          required: true

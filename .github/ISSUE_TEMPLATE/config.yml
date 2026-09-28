@@ -1,0 +1,11 @@
+blank_issues_enabled: false
+contact_links:
+  - name: 📚 Entregar la investigación de la Unidad 1
+    url: https://github.com/tectijuana/interfaz/blob/main/CONTRIBUTING.md
+    about: La investigación se entrega por Pull Request, no como issue. Sigue CONTRIBUTING.md.
+  - name: 🧾 Entregar una práctica
+    url: https://github.com/tectijuana/interfaz/blob/main/CONTRIBUTING.md
+    about: Las prácticas se entregan como Gist y se reportan en iDoceo Connect o Google Classroom.
+  - name: 🙋 Dudas sobre calificaciones o fechas
+    url: https://classroom.google.com
+    about: Consulta Google Classroom o habla directamente con el docente; no abras un issue público.
