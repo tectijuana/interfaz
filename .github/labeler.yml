@@ -1,0 +1,30 @@
+# Etiquetas por ruta para PRs (usado por .github/workflows/labeler.yml).
+# Un PR puede recibir varias etiquetas si toca varias zonas.
+
+investigación:
+  - changed-files:
+      - any-glob-to-any-file: "entregas/*/research/**"
+
+entregas:
+  - changed-files:
+      - any-glob-to-any-file: "entregas/**"
+      - all-globs-to-all-files: "!entregas/*/research/**"
+
+material:
+  - changed-files:
+      - any-glob-to-any-file:
+          - "units/**"
+          - "docs/**"
+          - "templates/**"
+
+prácticas:
+  - changed-files:
+      - any-glob-to-any-file: "practicas/**"
+
+gobernanza:
+  - changed-files:
+      - any-glob-to-any-file:
+          - "*.md"
+          - "*.cff"
+          - ".github/**"
+          - "herramientas/**"
