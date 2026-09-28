@@ -166,4 +166,17 @@ jobs:
               await github.rest.issues.createComment({ owner, repo, issue_number: pr.number, body: cuerpo });
             }
 
-            if (!ok) core.setFailed(`${errores.length} problema(s) de estructura`);
+            // Etiqueta que usa stale.yml para cerrar PRs abandonados
+            const ETIQ = 'estructura-incompleta';
+            if (!ok) {
+              try {
+                await github.rest.issues.createLabel({ owner, repo, name: ETIQ, color: 'fbca04',
+                  description: 'La revisión automática encontró problemas de estructura' });
+              } catch (e) { /* ya existe */ }
+              await github.rest.issues.addLabels({ owner, repo, issue_number: pr.number, labels: [ETIQ] });
+              core.setFailed(`${errores.length} problema(s) de estructura`);
+            } else {
+              try {
+                await github.rest.issues.removeLabel({ owner, repo, issue_number: pr.number, name: ETIQ });
+              } catch (e) { /* no la tenía */ }
+            }

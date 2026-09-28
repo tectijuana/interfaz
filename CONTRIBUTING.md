@@ -59,6 +59,8 @@ Al abrir el PR, una **revisión automática de estructura** comenta si falta `RE
 enlaces con `utm_source=`, números de control publicados o nombres de carpeta inválidos, y
 marca como `extemporáneo` el PR abierto después del cierre. Corrige y haz push a la misma
 rama: el comentario se actualiza solo. No es una calificación; el contenido lo revisa el docente.
+Un PR con correcciones pendientes (`estructura-incompleta` o `requiere-cambios`) y sin
+actividad en **7 días** recibe un aviso, y se **cierra automáticamente 3 días después**.
 
 Lo que sigue en este documento aplica a los PRs: la investigación de U1 y las
 **mejoras al material del curso** (correcciones, nuevas lecciones, erratas).

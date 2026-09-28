@@ -1,0 +1,40 @@
+name: PRs abandonados
+
+# Solo PRs con la etiqueta `estructura-incompleta` (la pone/quita investigacion.yml)
+# o `requiere-cambios` (la pone el docente a mano al solicitar correcciones de contenido).
+# Si el alumno no hace push ni comenta en 7 días, se avisa; 3 días después se cierra.
+# Para excluir un PR, agrégale la etiqueta `no-cerrar`. No toca issues.
+
+on:
+  schedule:
+    - cron: "0 15 * * *"   # diario, 07:00/08:00 hora de Tijuana
+  workflow_dispatch:
+
+permissions:
+  pull-requests: write
+  issues: write
+
+jobs:
+  stale:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/stale@v9
+        with:
+          any-of-pr-labels: estructura-incompleta,requiere-cambios
+          exempt-pr-labels: no-cerrar
+          days-before-issue-stale: -1
+          days-before-issue-close: -1
+          days-before-pr-stale: 7
+          days-before-pr-close: 3
+          stale-pr-label: abandonado
+          remove-pr-stale-when-updated: true
+          stale-pr-message: >
+            Este Pull Request tiene correcciones pendientes y no ha tenido actividad en
+            **7 días**. Si no se atienden (push a la misma rama o respuesta en este hilo),
+            se cerrará automáticamente en **3 días**. Recuerda revisar la fecha de cierre
+            de entrega en `SCHEDULE.md` y Google Classroom.
+          close-pr-message: >
+            Se cierra este Pull Request por falta de actividad: las correcciones
+            solicitadas no se atendieron en el plazo. Si deseas retomar la entrega y
+            sigue dentro de la fecha límite, abre un nuevo PR con las correcciones aplicadas.
+          operations-per-run: 60
