@@ -23,3 +23,13 @@ a.out
 *.elf
 *.so
 prog
+
+# Documentales (video y subtítulos con derechos de autor; solo uso local)
+units/U02-programacion-basica/documentales/*.mp4
+units/U02-programacion-basica/documentales/*.mkv
+units/U02-programacion-basica/documentales/*.webm
+units/U02-programacion-basica/documentales/*.srt
+units/U02-programacion-basica/documentales/*.vtt
+
+# Videos
+*.mp4
