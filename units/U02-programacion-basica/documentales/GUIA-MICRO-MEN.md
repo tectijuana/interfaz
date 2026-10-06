@@ -1,7 +1,7 @@
 <img width="753" height="428" alt="image" src="https://github.com/user-attachments/assets/d850a158-db95-432b-bfb4-96ae244f1257" />
 
 
-# Guía de visionado — *Micro Men* (2009)
+# Guía para ver la película — *Micro Men* (2009)
 
 - **Curso:** Lenguajes de Interfaz (SCC-1014) · **Unidad 2:** Programación básica en ARM
 - **Video:** https://www.youtube.com/watch?v=XH5L-iTIbP8 · **Audio/subtítulos:** inglés
@@ -66,7 +66,7 @@ Los tiempos son aproximados; ajusta según tu reproducción.
 
 > **Aclaración:** el curso trabaja AArch64. El primer ARM era de 32 bits y con otro modelo de registros; no confundas ambos al comparar.
 
-## Preguntas durante el visionado (anota respuestas breves)
+## Preguntas mientras ves la película (anota respuestas breves)
 
 1. ¿Qué dos filosofías de empresa chocan, y cuál terminó influyendo más en la computación actual?
 2. ¿Por qué el éxito comercial de una máquina no siempre implica la mejor ingeniería?
@@ -93,7 +93,7 @@ Escribe una reflexión de **300–400 palabras** con:
 
 | Criterio | Excelente | Bueno | Suficiente | Insuficiente |
 |---|---|---|---|---|
-| **Preguntas durante el visionado** (20) | **20** · Responde las 5 con precisión y detalle propio del video | **16** · Responde las 5; alguna es general o imprecisa | **12** · Responde 3–4, o respuestas superficiales | **0–8** · Responde 2 o menos, o no se basan en el video |
+| **Preguntas mientras ves la película** (20) | **20** · Responde las 5 con precisión y detalle propio del video | **16** · Responde las 5; alguna es general o imprecisa | **12** · Responde 3–4, o respuestas superficiales | **0–8** · Responde 2 o menos, o no se basan en el video |
 | **Hecho verificado en fuente externa** (25) | **25** · Contrasta un hecho con fuente confiable citada y señala qué es dramatización | **20** · Hecho verificado con fuente citada, sin distinguir la dramatización | **15** · Hecho verificado pero fuente débil o sin cita completa | **0–10** · Sin verificación, o fuente inexistente o no confiable |
 | **Conexión con una práctica del curso** (25) | **25** · Relaciona la película con código o concepto concreto (p. ej. `ldr`/`str`, RISC, 4 bytes por instrucción) y lo explica | **20** · Conexión concreta pero explicación parcial | **15** · Conexión genérica, sin ejemplo de código ni práctica | **0–10** · No hay conexión, o es incorrecta |
 | **Redacción y formato de entrega** (15) | **15** · 300–400 palabras, claro, sin errores relevantes, Gist plano accesible | **12** · Cumple extensión y entrega con errores menores | **9** · Fuera de rango de palabras o con problemas de claridad o de acceso al Gist | **0–6** · No se puede leer o no se entregó por Gist |
