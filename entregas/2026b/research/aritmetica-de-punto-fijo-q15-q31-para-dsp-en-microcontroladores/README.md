@@ -1,384 +1,184 @@
-# ARITMÉTICA DE PUNTO FIJO Q15 Y Q31 PARA EL PROCESAMIENTO DIGITAL DE SEÑALES EN MICROCONTROLADORES ARM
+# Aritmética de punto fijo (Q15/Q31) para DSP en microcontroladores ARM
 
+> **Autoría:** Claude Code (Anthropic, modelo Claude Sonnet 5.5), por encargo del docente.
+> Documento unificado que sintetiza dos entregas del ciclo 2026b sobre el mismo tema.
+> Ver `anexo.md` para la declaración de IA y la validación realizada.
 
-Autor: [CARRERA AGUIRRE JOEL]
-Institución: [INSTITUTO TECNOLOGICO DE TIJUANA]
-Curso: [LENGUAJES DE INTERFAZ]
-Fecha: Septiembre de 2026
+## 1. Introducción
 
-## I. INTRODUCCIÓN
+El procesamiento digital de señales (**DSP**, *Digital Signal Processing*) se usa en sistemas embebidos para filtrado de audio, procesamiento de sensores, control de motores, comunicaciones y transformadas de Fourier. En un microcontrolador estas operaciones suelen ejecutarse en tiempo real con memoria, cómputo y energía limitados.
 
-El procesamiento digital de señales (DSP, *Digital Signal Processing*) constituye un área fundamental de la ingeniería electrónica y de sistemas embebidos, debido a su aplicación en campos como las telecomunicaciones, el procesamiento de audio, los sistemas de control, la instrumentación electrónica, el procesamiento biomédico y la automatización industrial. La implementación de algoritmos DSP en microcontroladores exige efectuar operaciones aritméticas de manera eficiente, manteniendo simultáneamente niveles adecuados de precisión, velocidad de procesamiento y consumo de recursos.
+Una alternativa al punto flotante es la **aritmética de punto fijo**: los números fraccionarios se guardan como enteros y se interpreta que una cantidad fija de bits es la parte fraccionaria. En microcontroladores ARM se usan sobre todo los formatos **Q15** y **Q31**. La biblioteca oficial **CMSIS-DSP** define `q15_t` (16 bits, formato 1.15) y `q31_t` (32 bits, formato 1.31), y ofrece filtros, operaciones matemáticas, transformadas y matrices optimizadas para Cortex-M y Cortex-A [1], [2].
 
-Una de las decisiones fundamentales durante el diseño de un sistema DSP embebido corresponde a la selección del formato numérico empleado para representar las señales y los coeficientes de los algoritmos. Las dos alternativas principales son la aritmética de punto flotante y la aritmética de punto fijo. Aunque el punto flotante proporciona un amplio rango dinámico y simplifica considerablemente el desarrollo de algoritmos matemáticos, la representación de punto fijo puede ofrecer ventajas significativas en sistemas con restricciones de memoria, procesamiento y consumo energético.
+## 2. Fundamentos del punto fijo
 
-Los microcontroladores basados en la arquitectura ARM Cortex-M son ampliamente utilizados en aplicaciones embebidas debido a su bajo consumo energético, reducido costo y capacidades de procesamiento. Dentro de este entorno, la biblioteca CMSIS-DSP proporciona funciones optimizadas para la ejecución de algoritmos de procesamiento digital de señales mediante diferentes formatos numéricos, entre ellos Q15 y Q31 [1].
+La posición del punto binario es implícita. Un entero $X$ con $F$ bits fraccionarios representa:
 
-Los formatos Q15 y Q31 corresponden a representaciones de punto fijo orientadas principalmente al procesamiento de valores fraccionarios. Q15 emplea una palabra de 16 bits, mientras que Q31 emplea una palabra de 32 bits. Ambos permiten representar valores normalizados aproximadamente dentro del intervalo \([-1,1)\), pero presentan diferencias importantes en términos de resolución, consumo de memoria, precisión y comportamiento durante las operaciones aritméticas.
-
-El propósito de este trabajo es analizar formalmente los fundamentos de la aritmética de punto fijo Q15 y Q31, describir sus principales características matemáticas y estudiar su aplicación en algoritmos DSP ejecutados sobre microcontroladores ARM. Asimismo, se analizan aspectos fundamentales como la cuantización, el error numérico, el overflow, la saturación, el escalamiento y la utilización de acumuladores de mayor precisión.
-
----
-
-## II. DESARROLLO TÉCNICO
-
-### A. Fundamentos de la representación de punto fijo
-
-La representación de punto fijo permite expresar números reales mediante números enteros utilizando un factor de escala previamente establecido. A diferencia del punto flotante, donde la posición del punto binario puede variar, en el punto fijo dicha posición permanece constante durante la representación.
-
-Si un número entero \(X\) dispone de \(F\) bits destinados a representar la parte fraccionaria, su equivalente real puede expresarse como:
-
-$$
-x=\frac{X}{2^F}
-$$
-
-donde \(x\) representa el valor real y \(X\) corresponde al valor entero almacenado en memoria.
-
-Esta metodología permite que un microcontrolador realice operaciones utilizando instrucciones enteras convencionales. La interpretación del resultado como número fraccionario depende exclusivamente de la escala establecida.
-
-En aplicaciones DSP, esta característica resulta particularmente importante debido a que una gran cantidad de algoritmos se basa en operaciones de multiplicación y acumulación. Si la escala se determina correctamente, es posible ejecutar dichos algoritmos empleando recursos computacionales relativamente reducidos.
-
----
-
-### B. Representación Q15
-
-El formato Q15 utiliza una palabra de 16 bits y normalmente se interpreta como un formato de signo con 15 bits fraccionarios. Su representación matemática es:
-
-$$
-x=\frac{X}{2^{15}}
-$$
-
-Por consiguiente, el intervalo representable es aproximadamente:
-
-$$
--1\leq x<1
-$$
-
-La resolución correspondiente es:
-
-$$
-\Delta_{Q15}=2^{-15}
-$$
-
-es decir:
-
-$$
-\Delta_{Q15}=\frac{1}{32768}\approx3.05176\times10^{-5}
-$$
-
-El valor entero mínimo es \(-32768\), mientras que el máximo es \(32767\). Por ejemplo, para representar el valor \(0.5\), se obtiene:
-
-$$
-X=0.5\times32768=16384
-$$
-
-Por lo tanto:
-
-$$
-0.5_{Q15}=16384_{10}=0x4000
-$$
-
-De manera similar, un valor de \(0.25\) se representa mediante:
-
-$$
-0.25\times32768=8192
-$$
-
-Por tanto:
-
-$$
-0.25_{Q15}=8192
-$$
-
-La representación Q15 resulta apropiada para señales normalizadas debido a su relación entre resolución y consumo de memoria. Cada muestra requiere solamente 16 bits, lo que permite reducir significativamente el almacenamiento requerido cuando se procesan grandes cantidades de datos.
-
----
-
-### C. Representación Q31
-
-El formato Q31 utiliza una palabra de 32 bits y dispone de 31 bits fraccionarios. Matemáticamente, puede expresarse como:
-
-$$
-x=\frac{X}{2^{31}}
-$$
-
-El rango representable es:
-
-$$
--1\leq x<1
-$$
-
-y la resolución es:
-
-$$
-\Delta_{Q31}=2^{-31}
-$$
-
-por lo que:
-
-$$
-\Delta_{Q31}\approx4.65661\times10^{-10}
-$$
-
-Para representar \(0.5\), se obtiene:
-
-$$
-X=0.5\times2^{31}
-$$
-
-$$
-X=1073741824
-$$
-
-En representación hexadecimal:
-
 $$
-0.5_{Q31}=0x40000000
+x = \frac{X}{2^F}
 $$
 
-El incremento mínimo representable en Q31 es considerablemente menor que en Q15. Por esta razón, Q31 proporciona una precisión numérica superior y puede resultar adecuado para algoritmos DSP sensibles a los errores de cuantización.
+Ejemplo en Q15 ($F=15$) para $0.75$:
 
-No obstante, esta mayor precisión implica un consumo de memoria superior. Mientras que una muestra Q15 ocupa 2 bytes, una muestra Q31 requiere 4 bytes.
-
----
-
-### D. Cuantización y error numérico
-
-La conversión de un valor real a punto fijo se denomina cuantización. Para un número real \(x\), el valor entero cuantizado puede calcularse mediante:
-
-$$
-X=round(x2^F)
-$$
-
-El valor reconstruido se obtiene mediante:
-
-$$
-\hat{x}=\frac{X}{2^F}
-$$
-
-La diferencia entre el valor original y el valor reconstruido corresponde al error de cuantización:
-
-$$
-e=x-\hat{x}
-$$
-
-En una cuantización basada en redondeo, el error máximo ideal puede aproximarse mediante:
-
-$$
-|e_{max}|\leq\frac{1}{2}2^{-F}
-$$
-
-En consecuencia, para Q15:
-
-$$
-|e_{max}|\leq2^{-16}
-$$
-
-mientras que para Q31:
-
 $$
-|e_{max}|\leq2^{-32}
+X = 0.75 \times 2^{15} = 24576 = \texttt{0x6000}
 $$
-
-Esto demuestra matemáticamente la mayor resolución de Q31. Sin embargo, la precisión final de un algoritmo no depende exclusivamente del formato utilizado. También deben considerarse el escalamiento, el redondeo, el truncamiento y los errores acumulativos producidos por las operaciones sucesivas.
-
----
-
-### E. Operaciones de suma y saturación
 
-La suma de dos números pertenecientes al mismo formato Q puede realizarse directamente sobre sus representaciones enteras. Por ejemplo:
+El procesador solo ve el entero 24576; el programa lo interpreta como 0.75. Así los cálculos fraccionarios se hacen con sumas, multiplicaciones y desplazamientos enteros.
 
-$$
-0.25+0.25=0.5
-$$
+## 3. Formatos Q15 y Q31
 
-En Q15:
-
-$$
-8192+8192=16384
-$$
+### Q15 (1.15, `q15_t`)
 
-y:
+- Resolución: $2^{-15} = 0.000030517578125$
+- Rango: $-1.0 \le x \le 1 - 2^{-15} \approx 0.999969$
+- CMSIS-DSP convierte a `float` dividiendo entre 32768 [3].
 
-$$
-\frac{16384}{32768}=0.5
-$$
+| Decimal | Q15 entero | Hexadecimal |
+|---:|---:|---:|
+| 0.0 | 0 | `0x0000` |
+| 0.25 | 8192 | `0x2000` |
+| 0.50 | 16384 | `0x4000` |
+| 0.75 | 24576 | `0x6000` |
+| -0.50 | -16384 | `0xC000` |
+| Máximo positivo | 32767 | `0x7FFF` |
+| -1.0 | -32768 | `0x8000` |
 
-Sin embargo, cuando el resultado excede el rango representable puede producirse un desbordamiento (*overflow*). Considérese:
+### Q31 (1.31, `q31_t`)
 
-$$
-0.75+0.75=1.5
-$$
+- Resolución: $2^{-31} \approx 4.6566 \times 10^{-10}$
+- Rango: $-1.0 \le x \le 1 - 2^{-31} \approx 0.9999999995$
+- CMSIS-DSP convierte a `float` dividiendo entre 2147483648 [4].
+- Ejemplo: $0.75 \times 2^{31} = 1610612736 = \texttt{0x60000000}$; $0.5 \to \texttt{0x40000000}$.
 
-El valor \(1.5\) no puede representarse en Q15 ni Q31 cuando se utiliza la representación fraccionaria normalizada.
+### Comparación
 
-Una estrategia habitual para evitar consecuencias no deseadas consiste en utilizar saturación. En lugar de permitir que el resultado experimente un desbordamiento circular, se limita al máximo o mínimo disponible.
+| Característica | Q15 | Q31 |
+|---|---:|---:|
+| Tamaño | 16 bits | 32 bits |
+| Formato / tipo CMSIS | 1.15 / `q15_t` | 1.31 / `q31_t` |
+| Bits fraccionarios | 15 | 31 |
+| Resolución | $2^{-15}$ | $2^{-31}$ |
+| Producto intermedio | 2.30 | 2.62 |
+| Memoria por muestra | 2 bytes | 4 bytes |
+| Error de cuantización máx. (redondeo) | $2^{-16}$ | $2^{-32}$ |
+| Aplicaciones típicas | Audio, filtros, sensores | DSP de alta precisión |
 
-Para Q15:
+Q31 no es "siempre mejor": cuesta el doble de memoria y sus multiplicaciones requieren resultados intermedios de 64 bits. Q15 puede ser muy eficiente si el núcleo tiene instrucciones DSP que procesan dos valores de 16 bits a la vez.
 
-$$
-X_{sat}=
-\begin{cases}
-32767,&X>32767\\
--32768,&X<-32768\\
-X,&\text{en otro caso}
-\end{cases}
-$$
+## 4. Cuantización y error numérico
 
-Para Q31:
+Convertir un real a punto fijo se llama **cuantización**:
 
 $$
-X_{sat}=
-\begin{cases}
-2147483647,&X>2147483647\\
--2147483648,&X<-2147483648\\
-X,&\text{en otro caso}
-\end{cases}
+X = \mathrm{round}(x \cdot 2^F), \qquad \hat{x} = \frac{X}{2^F}, \qquad e = x - \hat{x}
 $$
-
-La saturación resulta especialmente importante en DSP, ya que evita que una señal que supera ligeramente el rango permitido se convierta abruptamente en un valor de signo contrario.
-
----
-
-### F. Multiplicación en Q15
 
-La multiplicación requiere considerar la posición implícita del punto binario. Sean dos números Q15:
+Con redondeo, el error máximo ideal es $|e| \le \tfrac{1}{2}\,2^{-F}$. La precisión final del algoritmo depende además del escalamiento, del redondeo o truncamiento y de los errores que se acumulan en operaciones sucesivas. Si las muestras vienen de un ADC de 12 o 16 bits, Q15 puede bastar según la exigencia del algoritmo. CMSIS-DSP incluye conversiones `float` ↔ Q15/Q31 y permite aplicar redondeo [7].
 
-$$
-x=\frac{X}{2^{15}}
-$$
-
-$$
-y=\frac{Y}{2^{15}}
-$$
+## 5. Suma, resta y saturación
 
-El producto es:
+Con el mismo formato Q, la suma se hace directo sobre los enteros:
 
-$$
-xy=\frac{XY}{2^{30}}
-$$
+```text
+0.25 Q15 = 8192
+0.50 Q15 = 16384
+8192 + 16384 = 24576   →   24576 / 32768 = 0.75
+```
 
-Por lo tanto, el producto de dos valores Q15 genera inicialmente un resultado con 30 bits fraccionarios.
+Problema: $0.75 + 0.50 = 1.25$ no cabe en Q15. Hay dos comportamientos posibles:
 
-Para obtener nuevamente una representación Q15 es necesario realizar el escalamiento correspondiente:
+- **Desbordamiento (*wrap-around*):** `32767 + 1 → -32768`. El cambio de signo distorsiona fuertemente la señal.
+- **Saturación:** `32767 + 1 → 32767`. El resultado se fija al extremo del rango, evitando discontinuidades.
 
 $$
-Z=\frac{XY}{2^{15}}
+X_{sat}=\begin{cases}32767,&X>32767\\-32768,&X<-32768\\X,&\text{otro caso}\end{cases}
+\quad(\text{Q15})
 $$
-
-Este proceso puede involucrar desplazamientos, redondeo y saturación. La implementación específica depende del algoritmo y de las funciones utilizadas.
-
-CMSIS-DSP incorpora funciones optimizadas para trabajar con datos Q15 y contempla el manejo de los productos y acumulaciones intermedias [1], [2].
 
----
+En Q31 los límites son $2147483647$ y $-2147483648$. En DSP suele preferirse la saturación, y CMSIS-DSP la usa en varias operaciones Q15/Q31 (p. ej. multiplicación) [5].
 
-### G. Multiplicación en Q31
+## 6. Multiplicación
 
-En Q31, dos números se representan como:
-
-$$
-x=\frac{X}{2^{31}}
-$$
-
-$$
-y=\frac{Y}{2^{31}}
-$$
+Multiplicar aumenta los bits fraccionarios: $1.15 \times 1.15 = 2.30$. Para volver a Q15 se desplaza 15 bits:
 
-Por lo tanto:
+```text
+resultadoQ15 = (a × b) >> 15      // producto en al menos 32 bits
+```
 
-$$
-xy=\frac{XY}{2^{62}}
-$$
+Ejemplo: $0.75 \times (-0.5)$:
 
-El producto completo requiere potencialmente 64 bits. Para regresar al formato Q31 es necesario realizar un desplazamiento de 31 posiciones:
+```text
+24576 × -16384 = -402653184
+-402653184 >> 15 = -12288      →   -12288 / 32768 = -0.375
+```
 
-$$
-Z=\frac{XY}{2^{31}}
-$$
+En Q31 el producto es $1.31 \times 1.31 = 2.62$ y requiere 64 bits:
 
-La utilización de un resultado intermedio de mayor tamaño es importante para evitar pérdidas innecesarias de precisión. CMSIS-DSP implementa diferentes estrategias de acumulación y escalamiento para sus funciones Q31 [1], [2].
+```text
+producto64   = (int64)a * b;
+resultadoQ31 = producto64 >> 31;
+```
 
----
+**Caso límite:** $-1 \times -1 = +1$, pero ni Q15 ni Q31 pueden representar $+1.0$ exacto. Una implementación correcta satura al máximo positivo. Por eso no basta con "enteros y desplazamientos": hay que controlar **escalado, precisión, redondeo y saturación**.
 
-### H. Aplicación en filtros FIR
+## 7. Acumulación, MAC y filtros FIR
 
-Una aplicación representativa de la aritmética de punto fijo corresponde a los filtros FIR (*Finite Impulse Response*). La ecuación de un filtro FIR de orden \(N-1\) es:
+La operación fundamental en DSP es **MAC** (*Multiply-Accumulate*): $acc \leftarrow acc + a \cdot b$. Un filtro FIR la repite en cada salida:
 
 $$
-y[n]=\sum_{k=0}^{N-1}b[k]x[n-k]
+y[n] = \sum_{k=0}^{N-1} h[k]\,x[n-k]
 $$
-
-donde \(x[n]\) representa la señal de entrada, \(b[k]\) los coeficientes del filtro y \(y[n]\) la señal de salida.
-
-La ecuación requiere múltiples operaciones de multiplicación y acumulación, conocidas como operaciones MAC (*Multiply-Accumulate*). Debido a ello, los filtros FIR constituyen una aplicación especialmente adecuada para evaluar las ventajas y limitaciones de la aritmética Q15/Q31.
-
-CMSIS-DSP proporciona las funciones `arm_fir_q15()` y `arm_fir_q31()` para la implementación de filtros FIR utilizando estas representaciones [2].
-
-En la implementación Q15 estándar, los productos intermedios se generan con mayor precisión y posteriormente se realiza el escalamiento necesario para obtener la salida en formato Q15. El empleo de acumuladores de mayor tamaño permite disminuir el riesgo de overflow durante la suma de múltiples productos.
 
-Las versiones rápidas de determinadas funciones reducen el costo computacional, pero requieren un análisis más cuidadoso del rango de entrada y del posible desbordamiento. Por ello, existe un compromiso entre precisión, velocidad y rango dinámico.
+Aunque cada producto esté en rango, la suma de muchos productos puede exceder el acumulador. Según la documentación de CMSIS-DSP [6]:
 
----
+- `arm_fir_q15()` genera productos 1.15 × 1.15 (2.30) y los acumula internamente en 64 bits (formato 34.30). Algunas versiones rápidas reducen las protecciones contra desbordamiento a cambio de velocidad.
+- `arm_fir_q31()` usa un acumulador de 64 bits en formato 2.62, pero con un solo bit de guarda; la documentación recomienda reducir antes la amplitud de entrada si hace falta.
 
-### I. Escalamiento y control del rango dinámico
+Conclusión: Q31 da más precisión, **no** más seguridad automática; puede exigir un escalado más cuidadoso.
 
-El escalamiento es una técnica fundamental para implementar algoritmos de punto fijo correctamente. Antes de convertir un algoritmo de punto flotante a Q15 o Q31, debe determinarse el rango máximo esperado de cada señal y variable intermedia.
+## 8. Escalamiento y rango dinámico
 
-Para un filtro FIR, una estimación del máximo valor de salida puede expresarse como:
+Antes de portar un algoritmo de `float` a Q15/Q31 hay que conocer el rango máximo de cada señal y variable intermedia. Para un FIR:
 
 $$
-|y[n]|\leq\sum_{k=0}^{N-1}|b[k]||x[n-k]|
+|y[n]| \le \sum_{k=0}^{N-1} |h[k]|\,|x[n-k]|
 $$
-
-Si el resultado supera el rango permitido, es necesario modificar la escala de la señal o de los coeficientes.
-
-Una estrategia consiste en utilizar un factor de escala:
-
-$$
-x_s[n]=x[n]2^{-S}
-$$
-
-donde \(S\) se selecciona de acuerdo con el rango máximo esperado.
-
-El escalamiento incorrecto puede ocasionar dos situaciones opuestas. Si la escala es demasiado pequeña, se pierde precisión porque se utilizan pocos bits significativos. Si la escala es demasiado grande, puede producirse overflow. Por esta razón, el diseño de sistemas DSP de punto fijo requiere un análisis previo del rango dinámico.
-
----
-
-### J. Comparación técnica entre Q15 y Q31
-
-| Parámetro               |                      Q15 |                   Q31 |
-| ----------------------- | -----------------------: | --------------------: |
-| Longitud de palabra     |                  16 bits |               32 bits |
-| Bits fraccionarios      |                       15 |                    31 |
-| Rango normalizado       |               \([-1,1)\) |            \([-1,1)\) |
-| Resolución              |              \(2^{-15}\) |           \(2^{-31}\) |
-| Memoria por muestra     |                  2 bytes |               4 bytes |
-| Precisión               |                 Moderada |                  Alta |
-| Costo de almacenamiento |                     Bajo |                  Alto |
-| Error de cuantización   |                    Mayor |                 Menor |
-| Aplicaciones típicas    | Audio, filtros, sensores | DSP de alta precisión |
 
-Q15 presenta una ventaja significativa en sistemas con restricciones de memoria. Además, puede ser especialmente conveniente cuando el error de cuantización introducido es suficientemente pequeño en relación con el ruido inherente de la aplicación.
+Si ese máximo excede el rango, se reescala la señal o los coeficientes ($x_s[n] = x[n]\,2^{-S}$). Escala demasiado pequeña pierde precisión (pocos bits significativos); demasiado grande provoca desbordamiento.
 
-Q31, por su parte, ofrece una mayor resolución y resulta apropiado cuando pequeñas variaciones de la señal deben conservarse durante múltiples operaciones. Su principal desventaja es el incremento en el consumo de memoria.
+## 9. Instrucciones DSP de ARM y CMSIS-DSP
 
----
+CMSIS-Core ofrece intrínsecos para Cortex-M con extensión DSP [8]:
 
-### K. Implementación mediante CMSIS-DSP
+- `__SMLAD()`: dos multiplicaciones con signo de 16 bits, sumando ambos productos a un acumulador de 32 bits. Útil con dos valores Q15 empaquetados en una palabra.
+- `__SMLALD()`: igual, pero con acumulador de 64 bits.
 
-CMSIS-DSP constituye una biblioteca optimizada para procesadores Arm y proporciona funciones para diversas operaciones DSP. Su utilización permite reducir la necesidad de desarrollar rutinas aritméticas específicas para cada aplicación.
+**No todos los Cortex-M tienen el mismo conjunto DSP**; no se debe suponer que cualquiera ejecuta `SMLAD`. CMSIS permite usar una interfaz común en C sin escribir todo en ensamblador [1], [8].
 
-Un ejemplo básico de inicialización de un filtro FIR Q15 es:
+Multiplicación Q15 con CMSIS-DSP:
 
 ```c
 #include "arm_math.h"
 
-#define NUM_TAPS 8
+q15_t entradaA[4] = { 16384, 24576, -16384, 8192 };   // 0.50, 0.75, -0.50, 0.25
+q15_t entradaB[4] = { 16384, 16384,  16384, 16384 };  // 0.50 en las cuatro
+q15_t resultado[4];
+
+arm_mult_q15(entradaA, entradaB, resultado, 4);
+// ≈ 0.25, 0.375, -0.25, 0.125 (con saturación si hiciera falta)
+```
+
+Filtro FIR Q15 por bloques:
+
+```c
+#include "arm_math.h"
+
+#define NUM_TAPS   8
 #define BLOCK_SIZE 32
 
 q15_t coefficients[NUM_TAPS];
 q15_t state[NUM_TAPS + BLOCK_SIZE - 1];
-
 q15_t input[BLOCK_SIZE];
 q15_t output[BLOCK_SIZE];
 
@@ -386,66 +186,75 @@ arm_fir_instance_q15 filter;
 
 int main(void)
 {
-    arm_fir_init_q15(
-        &filter,
-        NUM_TAPS,
-        coefficients,
-        state,
-        BLOCK_SIZE
-    );
+    arm_fir_init_q15(&filter, NUM_TAPS, coefficients, state, BLOCK_SIZE);
 
-    while (1)
-    {
-        arm_fir_q15(
-            &filter,
-            input,
-            output,
-            BLOCK_SIZE
-        );
+    while (1) {
+        arm_fir_q15(&filter, input, output, BLOCK_SIZE);
     }
 }
 ```
 
-La función `arm_fir_init_q15()` configura la estructura necesaria para el filtro, mientras que `arm_fir_q15()` ejecuta el procesamiento de un bloque de muestras. Una estructura equivalente puede emplearse mediante las funciones Q31.
+`arm_fir_init_q15()` prepara la estructura y `arm_fir_q15()` procesa un bloque. Existen funciones equivalentes para Q31.
 
-Este enfoque permite desarrollar aplicaciones DSP manteniendo una separación entre el algoritmo y las optimizaciones específicas de la arquitectura ARM.
+## 10. ¿Q15, Q31 o punto flotante?
 
----
+**Q15 conviene cuando:** 15 bits fraccionarios bastan, hay que ahorrar memoria, se procesan muchas muestras, el núcleo tiene SIMD/DSP de 16 bits o los datos vienen de sensores/convertidores de resolución similar.
 
-## III. CONCLUSIONES
+**Q31 conviene cuando:** el error de Q15 es significativo, hay memoria suficiente, los 64 bits intermedios no penalizan el rendimiento o el algoritmo debe conservar pequeñas variaciones de amplitud o de coeficientes.
 
-La aritmética de punto fijo constituye una metodología eficiente para la implementación de algoritmos de procesamiento digital de señales en microcontroladores ARM, particularmente en sistemas embebidos donde existen restricciones de memoria, procesamiento y consumo energético. Los formatos Q15 y Q31 permiten representar señales fraccionarias mediante números enteros, aprovechando las capacidades de procesamiento disponibles en diferentes arquitecturas ARM Cortex-M.
+**Punto fijo frente a `float`:**
 
-El formato Q15 utiliza 16 bits, de los cuales 15 corresponden a la parte fraccionaria, proporcionando una resolución de \(2^{-15}\). Su principal ventaja consiste en el reducido consumo de memoria, por lo que resulta apropiado para aplicaciones donde se procesan grandes cantidades de muestras y la precisión requerida es moderada.
+| Ventajas del punto fijo | Desventajas |
+|---|---|
+| Representación compacta | El programador administra el escalado |
+| Control explícito de la precisión | Riesgo de desbordamiento y saturación |
+| Operaciones enteras eficientes | La multiplicación cambia de formato |
+| Comportamiento predecible | Cada etapa exige análisis de rango |
+| Aprovecha instrucciones DSP/SIMD | Error de cuantización |
 
-Por otra parte, Q31 utiliza 32 bits y proporciona una resolución de \(2^{-31}\), considerablemente superior a la de Q15. Esta característica permite disminuir el error de cuantización y conservar mayor precisión durante las operaciones sucesivas. No obstante, requiere el doble de memoria por muestra y puede demandar operaciones intermedias de mayor tamaño.
+Tampoco es cierto que punto fijo siempre sea más rápido: con una FPU eficiente, `float` puede ser competitivo y simplificar el código. La elección depende del núcleo, la frecuencia, la FPU, la memoria, el número de muestras, la precisión requerida y el algoritmo.
 
-Uno de los aspectos críticos en cualquier implementación de punto fijo corresponde al control del overflow. Las operaciones de multiplicación y acumulación pueden generar resultados que excedan el rango representable. En consecuencia, resulta necesario emplear técnicas de escalamiento, saturación y utilización de acumuladores apropiados.
+## 11. Buenas prácticas
 
-La biblioteca CMSIS-DSP facilita la implementación de algoritmos Q15 y Q31 en microcontroladores ARM al proporcionar funciones optimizadas para filtros FIR, convolución, transformadas y operaciones matemáticas. Su utilización permite aprovechar las características de las arquitecturas ARM sin necesidad de desarrollar completamente las rutinas de bajo nivel.
+1. Determinar el rango máximo y mínimo de las señales.
+2. Documentar el formato Q de cada variable.
+3. Reservar margen (*headroom*) antes de acumulaciones grandes.
+4. Usar registros más anchos para productos y acumuladores intermedios.
+5. Reescalar tras cada multiplicación.
+6. Saturar cuando corresponda.
+7. Considerar el redondeo y la cuantización.
+8. Probar casos límite como `-1 × -1`.
+9. Comparar contra una implementación de referencia en `float`.
+10. Verificar los peores casos de acumulación en filtros y convoluciones, con señales cercanas a escala completa.
+11. Usar CMSIS-DSP antes de escribir a mano una rutina crítica.
+12. Revisar qué instrucciones DSP tiene el Cortex-M concreto.
 
-En términos generales, Q15 constituye una alternativa adecuada cuando el ahorro de memoria y la eficiencia son factores prioritarios, mientras que Q31 debe considerarse cuando se requiere mayor precisión numérica. La selección definitiva debe realizarse mediante un análisis conjunto de los requisitos del algoritmo, el rango dinámico de las señales, la precisión necesaria, la memoria disponible y las características particulares del microcontrolador.
+## 12. Conclusiones
 
-En consecuencia, la implementación correcta de DSP mediante punto fijo no consiste únicamente en seleccionar un formato numérico, sino en diseñar cuidadosamente la cadena completa de representación, cuantización, escalamiento, multiplicación, acumulación y saturación. Una adecuada planificación de estos elementos permite obtener sistemas DSP eficientes, deterministas y apropiados para aplicaciones embebidas en tiempo real.
+Q15 y Q31 siguen siendo herramientas centrales para DSP en microcontroladores ARM: guardan valores fraccionarios como enteros con una escala binaria conocida, sin manejar un exponente como el punto flotante. Q15 ahorra memoria y aprovecha instrucciones de dos operandos de 16 bits; Q31 ofrece mucha más precisión a cambio de memoria y acumuladores de 64 bits.
 
----
+Lo esencial no es multiplicar y desplazar, sino controlar **escalado, saturación, redondeo, cuantización y desbordamiento de acumuladores**. Mayor precisión no implica mayor seguridad. La selección entre Q15, Q31 y `float` debe basarse en los requisitos reales y en el microcontrolador específico, y toda implementación debe probarse con datos límite y compararse con una referencia de mayor precisión antes de usarse en una aplicación real.
 
-## REFERENCIAS
+## Referencias
 
-[1] Arm Limited, “CMSIS-DSP: Fixed point datatypes,” *CMSIS-DSP Documentation*, 2026. [Online]. Available: https://arm-software.github.io/CMSIS-DSP/main/group__FIXED.html
+[1] Arm Limited, "CMSIS-DSP," *GitHub Repository*, 2026. <https://github.com/ARM-software/CMSIS-DSP>
 
-[2] Arm Limited, “CMSIS-DSP: Finite Impulse Response (FIR) Filters,” *CMSIS-DSP Documentation*, 2026. [Online]. Available: https://arm-software.github.io/CMSIS-DSP/latest/group__FIR.html
+[2] Arm Limited, "CMSIS-DSP: Fixed point datatypes," *CMSIS-DSP Documentation*, 2026. <https://arm-software.github.io/CMSIS-DSP/main/group__FIXED.html>
 
-[3] Arm Limited, “CMSIS-DSP,” *GitHub Repository*, 2026. [Online]. Available: https://github.com/ARM-software/CMSIS-DSP
+[3] Arm Limited, "Convert 16-bit fixed point value," *CMSIS-DSP Documentation*, 2026.
 
-[4] Arm Limited, “CMSIS-DSP: Basic Math Functions,” *CMSIS-DSP Documentation*, 2026. [Online]. Available: https://arm-software.github.io/CMSIS-DSP/latest/group__groupMath.html
+[4] Arm Limited, "Convert 32-bit fixed point value," *CMSIS-DSP Documentation*, 2026.
 
-[5] Arm Limited, “CMSIS-DSP: Convolution,” *CMSIS-DSP Documentation*, 2026. [Online]. Available: https://arm-software.github.io/CMSIS-DSP/latest/group__Conv.html
+[5] Arm Limited, "CMSIS-DSP: Basic Math Functions," *CMSIS-DSP Documentation*, 2026. <https://arm-software.github.io/CMSIS-DSP/latest/group__groupMath.html>
 
-[6] Arm Limited, “CMSIS-Core,” *CMSIS Documentation*, 2026. [Online]. Available: https://arm-software.github.io/CMSIS_6/latest/Core/
+[6] Arm Limited, "CMSIS-DSP: Finite Impulse Response (FIR) Filters," *CMSIS-DSP Documentation*, 2026. <https://arm-software.github.io/CMSIS-DSP/latest/group__FIR.html>
 
-[7] V. Zölzer, *Digital Audio Signal Processing*, 2nd ed. Chichester, U.K.: Wiley, 2008.
+[7] Arm Limited, "Convert 32-bit floating point value," *CMSIS-DSP Documentation*, 2026.
 
-[8] R. Lyons, *Understanding Digital Signal Processing*, 3rd ed. Upper Saddle River, NJ, USA: Prentice Hall, 2011.
+[8] Arm Limited, "Intrinsic Functions for SIMD Instructions," *CMSIS-Core Documentation*, 2026. <https://arm-software.github.io/CMSIS_6/latest/Core/>
 
-[9] A. V. Oppenheim and R. W. Schafer, *Discrete-Time Signal Processing*, 3rd ed. Upper Saddle River, NJ, USA: Prentice Hall, 2010.
+[9] U. Zölzer, *Digital Audio Signal Processing*, 2nd ed. Chichester, U.K.: Wiley, 2008.
+
+[10] R. G. Lyons, *Understanding Digital Signal Processing*, 3rd ed. Upper Saddle River, NJ, USA: Prentice Hall, 2011.
+
+[11] A. V. Oppenheim and R. W. Schafer, *Discrete-Time Signal Processing*, 3rd ed. Upper Saddle River, NJ, USA: Prentice Hall, 2010.
