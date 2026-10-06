@@ -28,7 +28,6 @@ prog
 units/U02-programacion-basica/documentales/*.mp4
 units/U02-programacion-basica/documentales/*.mkv
 units/U02-programacion-basica/documentales/*.webm
-units/U02-programacion-basica/documentales/*.srt
 units/U02-programacion-basica/documentales/*.vtt
 
 # Videos
