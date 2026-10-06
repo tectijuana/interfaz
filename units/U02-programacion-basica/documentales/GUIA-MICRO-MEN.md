@@ -3,9 +3,9 @@
 
 # Guía de visionado — *Micro Men* (2009)
 
-**Curso:** Lenguajes de Interfaz (SCC-1014) · **Unidad 2:** Programación básica en ARM
-**Video:** https://www.youtube.com/watch?v=XH5L-iTIbP8 · **Audio/subtítulos:** inglés
-**Formato:** drama-documental de la BBC sobre la rivalidad entre Sinclair Research y Acorn Computers en la Gran Bretaña de inicios de los 80.
+- **Curso:** Lenguajes de Interfaz (SCC-1014) · **Unidad 2:** Programación básica en ARM
+- **Video:** https://www.youtube.com/watch?v=XH5L-iTIbP8 · **Audio/subtítulos:** inglés
+- **Formato:** drama-documental de la BBC sobre la rivalidad entre Sinclair Research y Acorn Computers en la Gran Bretaña de inicios de los 80.
 
 ## Por qué verlo en este curso
 
