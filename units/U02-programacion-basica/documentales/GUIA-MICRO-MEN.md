@@ -101,6 +101,15 @@ Escribe una reflexión de **300–400 palabras** con:
 
 **Nota:** la reflexión debe ser personal; el contenido copiado o generado sin verificación se califica en *Insuficiente* en el criterio correspondiente.
 
+## Actividad opcional: simulación "Eres técnico en Acorn"
+
+Después de ver la película, puedes vivir el drama desde adentro: una simulación de rol con IA en la que eres técnico junior en Acorn y resuelves 5 misiones (placa Atom que no arranca, bug en la matriz del teclado en 6502, recorte de BOM, demo ante la BBC y el diseño del ARM1).
+
+- **Prompt y guion:** [`EresTecnicoSimuladoACORN.md`](EresTecnicoSimuladoACORN.md) (instrucciones de uso incluidas; se pega en un chat de ChatGPT).
+- **Antes de empezar:** verás mejor las referencias si ya viste el video; el guion de la simulación se basa en los subtítulos en español.
+- **Cierre:** al terminar, guarda el enlace del chat; puedes usarlo como evidencia en tu declaración de uso de IA (`AI_GUIDANCE.md`).
+- Los datos de hardware de las misiones son didácticos; verifica los hechos históricos como en la actividad principal.
+
 ## Para ampliar
 
 - Lecturas del curso en `units/U02-programacion-basica/lecturas/`.
