@@ -1,3 +1,6 @@
+<img width="753" height="428" alt="image" src="https://github.com/user-attachments/assets/d850a158-db95-432b-bfb4-96ae244f1257" />
+
+
 # Guía de visionado — *Micro Men* (2009)
 
 **Curso:** Lenguajes de Interfaz (SCC-1014) · **Unidad 2:** Programación básica en ARM
