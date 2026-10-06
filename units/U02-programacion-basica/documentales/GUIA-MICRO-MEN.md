@@ -87,7 +87,7 @@ Los tiempos son aproximados; ajusta según tu reproducción.
 Escribe una reflexión de **300–400 palabras** con:
 - Un hecho histórico de la película que verificaste en una fuente externa (cítala).
 - Una conexión concreta entre la película y una práctica del curso.
-- Tu declaración de uso de IA, siguiendo `AI_GUIDANCE.md`.
+- Tu declaración de uso de IA, siguiendo `AI_GUIDANCE.md`, de haber intervenido (excepto gramática) honestidad se agradece.
 
 ## Rúbrica (100 puntos)
 
