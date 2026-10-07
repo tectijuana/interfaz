@@ -354,20 +354,79 @@ Aquí va el ejemplo mínimo y probado en Termux:
 Edita con `nano` o `vim`:
 
 ```bash
-nano hello.S
+nano suma.S
 ```
 
 Pega este código:
 
 ```asm
+// ╔══════════════════════════════════════════════════════════╗
+// ║  Programa     : suma.S                                   ║
+// ║  Autor        : <Nombre Apellido> <No. de control>       ║
+// ║  Institución  : TecNM - Instituto Tecnológico de Tijuana ║
+// ║  Curso        : Lenguajes de Interfaz (SCC-1014)         ║
+// ║  Fecha        : <AAAA-MM-DD>                             ║
+// ║  Versión      : 1.0                                      ║
+// ║  Plataforma   : ARM64 (AArch64) / Linux / Termux         ║
+// ║  Toolchain    : as + ld (binutils)                       ║
+// ║  Descripción  : Suma dos enteros (a + b), convierte el   ║
+// ║                 resultado a ASCII y lo imprime con la    ║
+// ║                 syscall write. Termina con exit(0).      ║
+// ║  Entradas     : a = 5, b = 3 (constantes en el código)   ║
+// ║  Salidas      : "8" seguido de salto de línea            ║
+// ║  Restricción  : el resultado debe ser de un solo dígito  ║
+// ║  Compilación  : as suma.S -o suma.o                      ║
+// ║                 ld suma.o -o suma                        ║
+// ║  Ejecución    : ./suma                                   ║
+// ╚══════════════════════════════════════════════════════════╝
+
+// ------------------------------------------------------------
+// Algoritmo de referencia (C#): suma de dos enteros
+// ------------------------------------------------------------
+// using System;
+//
+// class Programa
+// {
+//     static int Suma(int a, int b)
+//     {
+//         return a + b;
+//     }
+//
+//     static void Main()
+//     {
+//         int a = 5;
+//         int b = 3;
+//         int resultado = Suma(a, b);
+//         Console.WriteLine(resultado);   // 8
+//     }
+// }
+// ------------------------------------------------------------
+
+// ------------------------------------------------------------
+// Implementación en ARM64 Assembly
+// ------------------------------------------------------------
     .section .text
     .global _start
 
 _start:
-    // write(1, msg, len)
+    // a = 5; b = 3;
+    mov     x19, #5             // x19 = a
+    mov     x20, #3             // x20 = b
+
+    // resultado = Suma(a, b);
+    add     x21, x19, x20       // x21 = a + b = 8
+
+    // Convertir el dígito a ASCII: '0' (48) + resultado
+    add     x21, x21, #48       // x21 = 56 = '8' (48 = '0')
+    ldr     x1, =buffer         // x1 = &buffer
+    strb    w21, [x1]           // buffer[0] = dígito ASCII
+    mov     w22, #10            // 10 = '\n' (salto de línea)
+    strb    w22, [x1, #1]       // buffer[1] = '\n'
+
+    // Console.WriteLine(resultado) -> write(1, buffer, 2)
     mov     x0, #1              // fd = 1 (stdout)
-    ldr     x1, =msg            // buf = &msg
-    mov     x2, #len            // count = len
+    ldr     x1, =buffer         // buf = &buffer
+    mov     x2, #2              // count = 2 (dígito + '\n')
     mov     x8, #64             // syscall write = 64
     svc     #0
 
@@ -376,10 +435,12 @@ _start:
     mov     x8, #93             // syscall exit = 93
     svc     #0
 
-    .section .rodata
-msg:
-    .ascii  "Hola Mundo desde ARM64 en Termux!\n"
-    .equ    len, . - msg
+    .section .bss
+buffer:
+    .skip   2                   // espacio para dígito + '\n'
+
+// Conclusiones/Observaciones:
+// - <qué aprendiste, qué ajustaste, cómo validaste>
 ```
 
 Guarda con **CTRL+O, ENTER, CTRL+X**.
